@@ -559,6 +559,7 @@ void LoginLayer::FriendClick(cocos2d::Ref *pSender)
 void LoginLayer::ShezhiClick(Ref* pSender)
 {
 	/*SheZhi* layer = SheZhi::create();
+
 	addChild(layer, 10, 131);*/
 	rootGameSettingNode = CSLoader::createNode("GameSetting.csb");
 	setCanTouchOtherLayer(rootGameSettingNode, false, [=](Touch * touch, Event * event){
@@ -573,6 +574,135 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 		return true;
 	});
+	auto close1 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close1");
+	close1->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			rootGameSettingNode->removeFromParent();
+			rootGameSettingNode = nullptr;
+		}
+	});
+
+	//ÕËºÅ°ó¶¨½çÃæ
+	auto btnBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangDing");
+	auto btnYiBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnYiBangDing");
+	auto zhanghaobangding = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "zhanghaobangding");
+	btnBangDing->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			zhanghaobangding->setVisible(true);
+		}
+	});
+
+	auto close2 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close2");
+	close2->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			zhanghaobangding->setVisible(false);
+		}
+	});
+
+	auto btntijiao = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btntijiao");
+	btntijiao->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("submit bangding zhanghao xinxi");
+		}
+	});
+
+
+	//ÇÐ»»ÕËºÅ
+	auto btnChange = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnChange");
+	auto qiehuanzhanghao = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "qiehuanzhanghao");
+	btnChange->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			qiehuanzhanghao->setVisible(true);
+		}
+	});
+
+	auto close3 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close3");
+	close3->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			qiehuanzhanghao->setVisible(false);
+		}
+	});
+
+	auto btnLogin = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnLogin");
+	btnLogin->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("qiehuanzhanghao dengluyouxi xinxi");
+		}
+	});
+
+	auto btnForget = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnForget");
+
+	auto zhaohuimima = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "zhaohuimima");
+	btnForget->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			zhaohuimima->setVisible(true);
+		}
+	});
+
+	//Íü¼ÇÃÜÂë ÕÒ»ØÃÜÂë
+	auto close5 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close5");
+	close5->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			zhaohuimima->setVisible(false);
+		}
+	});
+
+	auto btntijiao0 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btntijiao0");
+	btntijiao0->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("zhaohuimima tijiao xinxi");
+		}
+	});
+
+	//°ó¶¨ÓÊÏä
+	auto bangdingyouxiang = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "bangdingyouxiang");
+	auto btnBangYouXiang = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangYouXiang");
+	btnBangYouXiang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			bangdingyouxiang->setVisible(true);
+		}
+	});
+
+	auto close4 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close4");
+	close4->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			bangdingyouxiang->setVisible(false);
+		}
+	});
+
+	auto btntijiao1 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btntijiao1");
+	btntijiao1->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("bangdingyouxiang tijiao xinxi");
+		}
+	});
+
 	addChild(rootGameSettingNode,10000);
 
 }
