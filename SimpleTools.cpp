@@ -93,3 +93,11 @@ void setCanTouchOtherLayer(Node* node, bool isTouch)
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, node);
 }
 
+void setCanTouchOtherLayer(Node* node, bool isTouch, std::function<bool(Touch * touch, Event * event)> func)
+{
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->onTouchBegan = func;
+	listener->setSwallowTouches(!isTouch);
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, node);
+}
+

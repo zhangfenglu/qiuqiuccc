@@ -32,9 +32,9 @@ std::string getDataFromResponse(cocos2d::network::HttpResponse * response);
 
 string & replace_all_distinct(string & str, const string & old_value = "null", const string & new_value = "\"\"");
 
-
-
 void setCanTouchOtherLayer(Node* node, bool isTouch);
+
+void setCanTouchOtherLayer(Node* node, bool isTouch, std::function<bool(Touch * touch, Event * event)> func);
 
 
 #endif
