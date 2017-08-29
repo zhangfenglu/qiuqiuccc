@@ -27,10 +27,24 @@ bool LoginLayer::init()
 	if (!Layer::init())
 		return false;
 
+	rootGameSettingNode = nullptr;
 	//initUI();
 	initUI1();
 
+	//获取事件分发器
+	auto dispatcher = Director::getInstance()->getEventDispatcher();
 
+	//创建单点触摸监听器 EventListenerTouchOneByOne
+	auto touchListener = EventListenerTouchOneByOne::create();
+	//单点触摸响应事件绑定
+	touchListener->onTouchBegan = CC_CALLBACK_2(LoginLayer::onTouchBegan, this);
+	touchListener->onTouchMoved = CC_CALLBACK_2(LoginLayer::onTouchMoved, this);
+	touchListener->onTouchEnded = CC_CALLBACK_2(LoginLayer::onTouchEnded, this);
+	touchListener->onTouchCancelled = CC_CALLBACK_2(LoginLayer::onTouchCancelled, this);
+	touchListener->setSwallowTouches(true);
+
+	//在事件分发器中，添加触摸监听器，事件响应委托给 this 处理
+	dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 	return true;
 }
 
@@ -90,12 +104,12 @@ void LoginLayer::initUI1()
 	//团队
 
 	//生存模式
-	Button* liveBtn = Button::createBtnWithSpriteFrameName("live_mode.png", false);
+	/*Button* liveBtn = Button::createBtnWithSpriteFrameName("live_mode.png", false);
 	liveBtn->setPosition(Vec2(winSize.width * 0.5f + 320, winSize.height * 0.5f - 120));
 	liveBtn->setScale(0.45f);
 	liveBtn->setOnClickCallback(callfuncO_selector(LoginLayer::LiveClick), this);
 	addChild(liveBtn, 2);
-	liveBtn->setVisible(false);
+	liveBtn->setVisible(false);*/
 
 	//个人中心
 	Button* personBtn = Button::createBtnWithSpriteFrameName("personcenter.png", false);
@@ -544,8 +558,23 @@ void LoginLayer::FriendClick(cocos2d::Ref *pSender)
 }
 void LoginLayer::ShezhiClick(Ref* pSender)
 {
-	SheZhi* layer = SheZhi::create();
-	addChild(layer, 10, 131);
+	/*SheZhi* layer = SheZhi::create();
+	addChild(layer, 10, 131);*/
+	rootGameSettingNode = CSLoader::createNode("GameSetting.csb");
+	setCanTouchOtherLayer(rootGameSettingNode, false, [=](Touch * touch, Event * event){
+		if (rootGameSettingNode)
+		{
+			auto setBox = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "setBox");
+			if (!setBox->getBoundingBox().containsPoint(touch->getLocation()))
+			{
+				rootGameSettingNode->removeFromParent();
+				rootGameSettingNode = nullptr;
+			}
+		}
+		return true;
+	});
+	addChild(rootGameSettingNode,10000);
+
 }
 void LoginLayer::TeamClick(cocos2d::Ref *pSender)
 {
@@ -589,6 +618,34 @@ void LoginLayer::JingJiChangClick(Ref* pSender)
 void LoginLayer::ShengYiClick(Ref* pSender)
 {
 	log("===================================shengyi");
+}
+
+bool LoginLayer::onTouchBegan(Touch *touch, Event *unused_event)
+{
+	if (rootGameSettingNode)
+	{
+		auto setBox = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "setBox");
+		if (!setBox->getBoundingBox().containsPoint(touch->getLocation()))
+		{
+			rootGameSettingNode->removeFromParent();
+			rootGameSettingNode = nullptr;
+		}
+	}
+	return true;
+}
+
+void LoginLayer::onTouchEnded(Touch *touch, Event *unused_event)
+{
+	if (rootGameSettingNode)
+	{
+		auto setBox = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "setBox");
+		if (!setBox->getBoundingBox().containsPoint(touch->getLocation()))
+		{
+			rootGameSettingNode->removeFromParent();
+			rootGameSettingNode = nullptr;
+		}
+
+	}
 }
 
 ////////////////////////////////////////////////////////////////////

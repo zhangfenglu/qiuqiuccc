@@ -79,6 +79,15 @@ public:
 	netInfo getNetInfo();
 
 
+	//单点触摸事件响应函数
+	bool onTouchBegan(Touch *touch, Event *unused_event);
+	void onTouchMoved(Touch *touch, Event *unused_event)     { CCLOG("moved"); }
+	void onTouchEnded(Touch *touch, Event *unused_event);
+	void onTouchCancelled(Touch *touch, Event *unused_event) {}
+
+private:
+	Node* rootGameSettingNode;
+
 private:
 	//DropDownListLayer* dropLayer ;
 	bool m_isLogin;
