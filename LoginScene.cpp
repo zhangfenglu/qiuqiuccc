@@ -21,6 +21,7 @@
 #include "CurCularNode.h"
 #include "SimpleTools.h"
 //#include "DaTingLayer.h"
+using namespace cocos2d::network;
 
 bool LoginLayer::init()
 {
@@ -28,6 +29,8 @@ bool LoginLayer::init()
 		return false;
 
 	rootGameSettingNode = nullptr;
+	//初始化登陆数据
+	initDengLuData();
 	//initUI();
 	initUI1();
 
@@ -609,10 +612,42 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		btnBangDing->setTouchEnabled(true);
 	}
 
+	//绑定账号输入框
+	CEditBoxTool* zhanghaoedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+	CEditBoxTool* mimaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+	CEditBoxTool* mima1edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+
+	zhanghaoedbox->setPosition(Vec2(365, 440));
+	zhanghaoedbox->setInputMode(EditBox::InputMode::ANY);
+	zhanghaoedbox->setDelegate(this);
+	zhanghaoedbox->setFontSize(28);
+	zhanghaoedbox->setFontColor(Color3B::BLACK);
+	zhanghaobangding->addChild(zhanghaoedbox, 3, 101);
+
+	zhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input new account"));
+
+	mimaedbox->setPosition(Vec2(365, 320));
+	mimaedbox->setInputMode(EditBox::InputMode::ANY);
+	mimaedbox->setDelegate(this);
+	mimaedbox->setFontSize(28);
+	mimaedbox->setFontColor(Color3B::BLACK);
+	zhanghaobangding->addChild(mimaedbox, 3, 101);
+
+	mimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	mima1edbox->setPosition(Vec2(365, 200));
+	mima1edbox->setInputMode(EditBox::InputMode::ANY);
+	mima1edbox->setDelegate(this);
+	mima1edbox->setFontSize(28);
+	mima1edbox->setFontColor(Color3B::BLACK);
+	zhanghaobangding->addChild(mima1edbox, 3, 101);
+	mima1edbox->setPlaceHolder(Global::getInstance()->getString("please input password again"));
+
+
 	btnBangDing->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
+			//账号绑定界面显示
 			zhanghaobangding->setVisible(true);
 		}
 	});
@@ -631,7 +666,88 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-			log("submit bangding zhanghao xinxi");
+			log("zhanghao===%s  mima===%s mima ==== %s,", zhanghaoedbox->getText(), mimaedbox->getText(), mima1edbox->getText());
+			if (zhanghaoedbox->getText() != "" &&  strcmp(mimaedbox->getText(), mima1edbox->getText()) == 0 && mimaedbox->getText() != "")
+			{
+				log("submit bangding zhanghao xinxi");
+
+				std::string zhanghao1 = zhanghaoedbox->getText();
+				std::string data = "playerid=" + info.playerid + "&account=" + zhanghao1 + "&password=" + mimaedbox->getText();
+				
+				std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/bindaccount";
+				
+				requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+				{
+					if (response == nullptr || !response->isSucceed())
+					{
+						CCLOG("responese is null");
+						CCLOG("responese not succeed");
+
+						return;
+					}
+
+					vector<char> *buffer = response->getResponseData();
+
+					std::string responseStr = std::string(buffer->begin(), buffer->end());
+					CCLOG("%s", responseStr.c_str());
+
+					Json* root = Json_create(responseStr.c_str());
+					Json* result = Json_getItem(root, "resultCode");
+					Json * resultObj = Json_getItem(root, "resultObj");
+
+					if (result->type == Json_Number)
+					{
+						if (result->valueInt == 1)
+						{
+							log("*******************************bangding success");
+
+							Json * gmlevel = Json_getItem(resultObj, "gmlevel");
+							Json * id = Json_getItem(resultObj, "id");
+							Json* playerid = Json_getItem(resultObj, "playerid");
+							Json* isbinded = Json_getItem(resultObj, "isbinded");
+							Json* isforbidden = Json_getItem(resultObj, "isforbidden");
+							Json* macip = Json_getItem(resultObj, "macip");
+							Json* mail = Json_getItem(resultObj, "mail");
+							Json* accout = Json_getItem(resultObj, "accout");
+							Json* password = Json_getItem(resultObj, "password");
+
+							account_info info;
+							info.accout = accout->valueString;
+							info.gmlevel = gmlevel->valueInt;
+							info.id = id->valueInt;
+							info.password = password->valueString;
+							info.playerid = playerid->valueString;
+							info.isforbidden = isforbidden->valueInt;
+							info.isbinded = isbinded->valueInt;
+							info.macip = macip->valueString;
+							if (mail->valueString != NULL)
+								info.mail = mail->valueString;
+
+							Global::getInstance()->SetAccountInfo(info);
+							UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
+							UserDefault::getInstance()->setStringForKey("password", password->valueString);
+
+							zhanghao->setText(info.accout);
+							zhanghaobangding->setVisible(false);
+							btnBangDing->setVisible(false);
+							btnBangDing->setTouchEnabled(false);
+							btnYiBangDing->setVisible(true);
+						}
+						else
+						{
+							log("*******************************bangding error");
+						}
+					}
+					else
+					{
+						log("*******************************bangding error");
+					}
+
+
+
+				}, "bangdingzhanghao");
+
+			}
 		}
 	});
 
@@ -698,6 +814,10 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	//绑定邮箱
 	auto bangdingyouxiang = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "bangdingyouxiang");
 	auto btnBangYouXiang = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangYouXiang");
+	auto btnyanzhengma = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnyanzhengma");
+
+
+
 	btnBangYouXiang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
@@ -705,6 +825,92 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			bangdingyouxiang->setVisible(true);
 		}
 	});
+
+	//绑定邮箱输入框
+	CEditBoxTool* inputMiMadbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+	CEditBoxTool* emaildbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+	CEditBoxTool* yanZhengMaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+
+
+	inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	inputMiMadbox->setPosition(Vec2(365, 470));
+	inputMiMadbox->setInputMode(EditBox::InputMode::ANY);
+	inputMiMadbox->setDelegate(this);
+	inputMiMadbox->setFontSize(28);
+	inputMiMadbox->setFontColor(Color3B::BLACK);
+	bangdingyouxiang->addChild(inputMiMadbox, 3, 101);
+	inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+
+	emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	emaildbox->setPosition(Vec2(365, 350));
+	emaildbox->setInputMode(EditBox::InputMode::ANY);
+	emaildbox->setDelegate(this);
+	emaildbox->setFontSize(28);
+	emaildbox->setFontColor(Color3B::BLACK);
+	
+	bangdingyouxiang->addChild(emaildbox, 3, 101);
+	emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+
+	yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	yanZhengMaedbox->setPosition(Vec2(365, 220));
+	yanZhengMaedbox->setInputMode(EditBox::InputMode::EMAIL_ADDRESS);
+	yanZhengMaedbox->setDelegate(this);
+	yanZhengMaedbox->setFontSize(28);
+	yanZhengMaedbox->setFontColor(Color3B::BLACK);
+	bangdingyouxiang->addChild(yanZhengMaedbox, 3, 101);
+	yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("input password"));
+
+	btnyanzhengma->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			//获取验证码
+			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText();
+
+			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
+			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+			{
+				if (response == nullptr || !response->isSucceed())
+				{
+					CCLOG("responese is null");
+					CCLOG("responese not succeed");
+
+					return;
+				}
+
+				vector<char> *buffer = response->getResponseData();
+
+				std::string responseStr = std::string(buffer->begin(), buffer->end());
+				CCLOG("%s", responseStr.c_str());
+
+				/*Json* root = Json_create(responseStr.c_str());
+				Json* result = Json_getItem(root, "resultCode");
+				Json * resultObj = Json_getItem(root, "resultObj");
+
+				if (result->type == Json_Number)
+				{
+				if (result->valueInt == 1)
+				{
+				log("*******************************bangdingyouxiang success");
+
+				}
+				else
+				{
+				log("*******************************bangding error");
+				}
+				}
+				else
+				{
+				log("*******************************bangding error");
+				}*/
+
+
+
+			}, "getYanZhengMa");
+		}
+	});
+
+
 
 	auto close4 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close4");
 	close4->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
@@ -721,6 +927,82 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			log("bangdingyouxiang tijiao xinxi");
+			
+			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
+
+			std::string url = "47.93.50.101:8080/QQWar/Qqwar/bindmail";
+
+			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+			{
+				if (response == nullptr || !response->isSucceed())
+				{
+					CCLOG("responese is null");
+					CCLOG("responese not succeed");
+
+					return;
+				}
+
+				vector<char> *buffer = response->getResponseData();
+
+				std::string responseStr = std::string(buffer->begin(), buffer->end());
+				CCLOG("%s", responseStr.c_str());
+
+				Json* root = Json_create(responseStr.c_str());
+				Json* result = Json_getItem(root, "resultCode");
+				Json * resultObj = Json_getItem(root, "resultObj");
+
+				if (result->type == Json_Number)
+				{
+					if (result->valueInt == 1)
+					{
+						log("*******************************bangdingyouxiang success");
+
+						Json * gmlevel = Json_getItem(resultObj, "gmlevel");
+						Json * id = Json_getItem(resultObj, "id");
+						Json* playerid = Json_getItem(resultObj, "playerid");
+						Json* isbinded = Json_getItem(resultObj, "isbinded");
+						Json* isforbidden = Json_getItem(resultObj, "isforbidden");
+						Json* macip = Json_getItem(resultObj, "macip");
+						Json* mail = Json_getItem(resultObj, "mail");
+						Json* accout = Json_getItem(resultObj, "accout");
+						Json* password = Json_getItem(resultObj, "password");
+
+						account_info info;
+						info.accout = accout->valueString;
+						info.gmlevel = gmlevel->valueInt;
+						info.id = id->valueInt;
+						info.password = password->valueString;
+						info.playerid = playerid->valueString;
+						info.isforbidden = isforbidden->valueInt;
+						info.isbinded = isbinded->valueInt;
+						info.macip = macip->valueString;
+						if (mail->valueString != NULL)
+							info.mail = mail->valueString;
+
+						Global::getInstance()->SetAccountInfo(info);
+						UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
+						UserDefault::getInstance()->setStringForKey("password", password->valueString);
+
+					}
+					else
+					{
+						log("*******************************bangding error");
+					}
+				}
+				else
+				{
+					log("*******************************bangding error");
+				}
+
+
+
+			}, "BangDingYouXiang");
+
+
+
+
+
+
 		}
 	});
 
@@ -797,6 +1079,106 @@ void LoginLayer::onTouchEnded(Touch *touch, Event *unused_event)
 		}
 
 	}
+}
+
+void LoginLayer::initDengLuData()
+{
+	std::string UserAcc = ExchangeInfo::getIdentifier();
+	std::string zhanghao = UserDefault::getInstance()->getStringForKey("accout");
+	std::string mima = UserDefault::getInstance()->getStringForKey("password");
+	if (zhanghao != "" && mima != "")
+	{
+		log("*******************************zhanghao: %s mima:  %s", zhanghao.c_str(), mima.c_str());
+	}
+
+
+	std::string data = "account=" + zhanghao + "&password=" + mima + "&macip=" + UserAcc;
+	if (zhanghao == "" && mima == "")
+	{
+		data = "account=null&password=null&macip=" + UserAcc;
+	}
+	std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/validateUserLogin";
+
+	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+	{
+		if (response == nullptr || !response->isSucceed())
+		{
+			CCLOG("responese is null");
+			CCLOG("responese not succeed");
+
+			return;
+		}
+
+		vector<char> *buffer = response->getResponseData();
+
+		std::string responseStr = std::string(buffer->begin(), buffer->end());
+		CCLOG("%s", responseStr.c_str());
+
+		Json* root = Json_create(responseStr.c_str());
+		Json* result = Json_getItem(root, "resultCode");
+
+		if (result->type == Json_Number)
+		{
+			if (result->valueInt == 1)
+			{
+				log("user: %s", UserAcc.c_str());
+
+				Json* resultObj = Json_getItem(root, "resultObj");
+				Json* account = Json_getItem(resultObj, "account");
+				Json* accout = Json_getItem(account, "accout");
+				Json* password = Json_getItem(account, "password");
+				if (account->child != NULL)
+				{
+					if (accout->valueString != "" && password->valueString != "")
+					{
+						UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
+						UserDefault::getInstance()->setStringForKey("password", password->valueString);
+						Json * gmlevel = Json_getItem(account, "gmlevel");
+						Json * id = Json_getItem(account, "id");
+						Json* playerid = Json_getItem(account, "playerid");
+						Json* isbinded = Json_getItem(account, "isbinded");
+						Json* isforbidden = Json_getItem(account, "isforbidden");
+						Json* macip = Json_getItem(account, "macip");
+						Json* mail = Json_getItem(account, "mail");
+
+						account_info info;
+						info.accout = accout->valueString;
+						info.gmlevel = gmlevel->valueInt;
+						info.id = id->valueInt;
+						info.password = password->valueString;
+						info.playerid = playerid->valueString;
+						info.isforbidden = isforbidden->valueInt;
+						info.isbinded = isbinded->valueInt;
+						info.macip = macip->valueString;
+						if (mail->valueString != NULL)
+							info.mail = mail->valueString;
+
+						Global::getInstance()->SetAccountInfo(info);
+					}
+				}
+
+				// ui login
+				/*UM_Login req;
+				req.set_acc(UserAcc.c_str());
+				req.set_passwd(UserPass.c_str());
+				std::string str = req.SerializeAsString();
+
+				reqSendUIMsg(IDUM_Login, str);*/
+
+			}
+			else
+			{
+				log("*******************************login error: %s", UserAcc.c_str());
+			}
+		}
+		else
+		{
+			log("*******************************login error: %s ", UserAcc.c_str());
+		}
+
+
+
+	}, "Login");
 }
 
 ////////////////////////////////////////////////////////////////////

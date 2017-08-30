@@ -1043,99 +1043,13 @@ void MainScene::loginGame()
 		UserAcc = ExchangeInfo::getIdentifier();
 		UserPass = "";
 	}
-	std::string zhanghao = UserDefault::getInstance()->getStringForKey("accout");
-	std::string mima = UserDefault::getInstance()->getStringForKey("password");
-	if (zhanghao != "" && mima != "")
-	{
-		log("*******************************zhanghao: %s mima:  %s", zhanghao.c_str(), mima.c_str());
-	}
+	// ui login
+	UM_Login req;
+	req.set_acc(UserAcc.c_str());
+	req.set_passwd(UserPass.c_str());
+	std::string str = req.SerializeAsString();
 
-
-	std::string data = "account="+ zhanghao + "&password=" + mima + "&macip=" + UserAcc;
-	if (zhanghao == "" && mima == "")
-	{
-		data = "account=null&password=null&macip=" + UserAcc;
-	}
-	std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/validateUserLogin";
-
-	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
-	{
-		if (response == nullptr || !response->isSucceed())
-		{
-			CCLOG("responese is null");
-			CCLOG("responese not succeed");
-
-			return;
-		}
-
-		vector<char> *buffer = response->getResponseData();
-
-		std::string responseStr = std::string(buffer->begin(), buffer->end());
-		CCLOG("%s", responseStr.c_str());
-
-		Json* root = Json_create(responseStr.c_str());
-		Json* result = Json_getItem(root, "resultCode");
-
-		if (result->type == Json_Number)
-		{
-			if (result->valueInt == 1)
-			{
-				log("user: %s   %s", UserAcc.c_str(), UserPass.c_str());
-
-
-				Json* resultObj = Json_getItem(root, "resultObj");
-				Json* account = Json_getItem(resultObj, "account");
-				Json* accout = Json_getItem(account, "accout");
-				Json* password = Json_getItem(account, "password");
-				if (accout != NULL && password != NULL)
-				{
-					UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
-					UserDefault::getInstance()->setStringForKey("password", password->valueString);
-					Json * gmlevel = Json_getItem(account, "gmlevel");
-					Json * id = Json_getItem(account, "id");
-					Json* playerid = Json_getItem(account, "playerid");
-					Json* isbinded = Json_getItem(account, "isbinded");
-					Json* isforbidden = Json_getItem(account, "isforbidden");
-					Json* macip = Json_getItem(account, "macip");
-					Json* mail = Json_getItem(account, "mail");
-
-					account_info info;
-					info.accout = accout->valueString;
-					info.gmlevel = gmlevel->valueInt;
-					info.id = id->valueInt;
-					info.password = password->valueString;
-					info.playerid = playerid->valueString;
-					info.isforbidden = isforbidden->valueInt;
-					info.isbinded = isbinded->valueInt;
-					info.macip = macip->valueString;
-					if (mail->valueString != NULL)
-						info.mail = mail->valueString;
-
-					Global::getInstance()->SetAccountInfo(info);
-				}
-				
-				// ui login
-				UM_Login req;
-				req.set_acc(UserAcc.c_str());
-				req.set_passwd(UserPass.c_str());
-				std::string str = req.SerializeAsString();
-
-				reqSendUIMsg(IDUM_Login, str);
-
-			}
-			else
-			{
-				log("*******************************login error: %s   %s", UserAcc.c_str(), UserPass.c_str());
-			}
-		}
-		else
-		{
-			log("*******************************login error: %s   %s", UserAcc.c_str(), UserPass.c_str());
-		}
-
-
-
-	}, "Login");
+	reqSendUIMsg(IDUM_Login, str);
 }
 
 void MainScene::reqServerList()

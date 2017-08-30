@@ -39,6 +39,8 @@ public:
 	virtual bool init();
 	CREATE_FUNC(LoginLayer);
 
+	//初始化 登陆数据
+	void initDengLuData();
 	void initUI();
 	void initUI1();
 
