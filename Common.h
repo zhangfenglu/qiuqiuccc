@@ -103,6 +103,52 @@ struct nodeInfo
 	uint8_t isPlayer;
 };
 
+//张锋露 新增加的登陆后的账号玩家信息
+struct player_info
+{
+	player_info()
+	{
+		playerid = "";
+		pid = 0;
+		playername = "";
+		sex = 0;
+		age = 0;
+		playerdes = NULL;
+		headid = "";
+	}
+	std::string        playerid;
+	uint32_t           pid;
+	std::string        playername;
+	uint32_t           sex;
+	uint32_t           age;
+	uint32_t           playerdes;
+	std::string        headid;
+};
+
+//张锋露 账号
+struct account_info
+{
+	account_info()
+	{
+		id = 0;
+		playerid = "";
+		password = "";
+		isforbidden = 0;
+		gmlevel = 0;
+		mail = "";
+		macip = "";
+		accout = "";
+	}
+	uint32_t           id;
+	std::string        playerid;
+	std::string        password;
+	uint32_t           isforbidden;
+	uint32_t           gmlevel;
+	std::string        mail;
+	std::string        macip;
+	std::string        accout;
+};
+
 struct user_info {
     user_info()
     {
