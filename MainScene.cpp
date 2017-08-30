@@ -1089,7 +1089,7 @@ void MainScene::loginGame()
 				Json* password = Json_getItem(account, "password");
 				if (accout != NULL && password != NULL)
 				{
-					UserDefault::getInstance()->setStringForKey("account", accout->valueString);
+					UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
 					UserDefault::getInstance()->setStringForKey("password", password->valueString);
 				}
 				
