@@ -155,6 +155,13 @@ public:
     
     void SetUserInfo(user_info info){m_UserInfo=info;}
     user_info GetUserInfo(){return m_UserInfo;}
+
+	//ÕÅ·æÂ¶
+	void SetplayerDengLuInfo(player_info info){ m_PlayerDengLuInfo = info; }
+	player_info GetPlayerDengLuInfo(){ return m_PlayerDengLuInfo; }
+	//ÕÅ·æÂ¶
+	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
+	account_info GetAccountInfo(){ return m_AccountInfo; }
     void EquipUpdate(int type,int iteID);
     void HeroLeveUp(int heroID,int heroLeve);
     
@@ -204,6 +211,8 @@ private:
     user_info m_UserInfo;
     
     user_info m_PlayerInfo;
+	player_info m_PlayerDengLuInfo;
+	account_info m_AccountInfo;
     std::vector<nameMap> mComName;
     std::vector<shop_item>  shopItems;
     std::map<int,user_bag>  mUserBag;
