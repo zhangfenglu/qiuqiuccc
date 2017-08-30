@@ -561,6 +561,9 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	/*SheZhi* layer = SheZhi::create();
 
 	addChild(layer, 10, 131);*/
+
+	account_info info = Global::getInstance()->GetAccountInfo();
+
 	rootGameSettingNode = CSLoader::createNode("GameSetting.csb");
 	setCanTouchOtherLayer(rootGameSettingNode, false, [=](Touch * touch, Event * event){
 		if (rootGameSettingNode)
@@ -588,6 +591,24 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	auto btnBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangDing");
 	auto btnYiBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnYiBangDing");
 	auto zhanghaobangding = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "zhanghaobangding");
+
+	//ÕËºÅÏÔÊ¾
+	auto zhanghao = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "zhanghao");
+	zhanghao->setText(info.accout);
+
+	if (info.isbinded != 0)
+	{
+		btnBangDing->setVisible(false);
+		btnBangDing->setTouchEnabled(false);
+		btnYiBangDing->setVisible(true);
+	}
+	else
+	{
+		btnYiBangDing->setVisible(false);
+		btnBangDing->setVisible(true);
+		btnBangDing->setTouchEnabled(true);
+	}
+
 	btnBangDing->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
