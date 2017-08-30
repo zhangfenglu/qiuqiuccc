@@ -134,6 +134,7 @@ struct account_info
 		playerid = "";
 		password = "";
 		isforbidden = 0;
+		isbinded = 0;
 		gmlevel = 0;
 		mail = "";
 		macip = "";
@@ -143,6 +144,7 @@ struct account_info
 	std::string        playerid;
 	std::string        password;
 	uint32_t           isforbidden;
+	uint32_t           isbinded;
 	uint32_t           gmlevel;
 	std::string        mail;
 	std::string        macip;
