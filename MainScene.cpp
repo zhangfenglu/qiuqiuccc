@@ -1091,6 +1091,27 @@ void MainScene::loginGame()
 				{
 					UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
 					UserDefault::getInstance()->setStringForKey("password", password->valueString);
+					Json * gmlevel = Json_getItem(account, "gmlevel");
+					Json * id = Json_getItem(account, "id");
+					Json* playerid = Json_getItem(account, "playerid");
+					Json* isbinded = Json_getItem(account, "isbinded");
+					Json* isforbidden = Json_getItem(account, "isforbidden");
+					Json* macip = Json_getItem(account, "macip");
+					Json* mail = Json_getItem(account, "mail");
+
+					account_info info;
+					info.accout = accout->valueString;
+					info.gmlevel = gmlevel->valueInt;
+					info.id = id->valueInt;
+					info.password = password->valueString;
+					info.playerid = playerid->valueString;
+					info.isforbidden = isforbidden->valueInt;
+					info.isbinded = isbinded->valueInt;
+					info.macip = macip->valueString;
+					if (mail->valueString != NULL)
+						info.mail = mail->valueString;
+
+					Global::getInstance()->SetAccountInfo(info);
 				}
 				
 				// ui login
