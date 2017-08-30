@@ -2,7 +2,12 @@
 
 std::string ExchangeInfo::getIdentifier()
 {
-	return "66666666-6666-6666-6666-666666666666";
+	int end = 10000;
+	int start = 1;
+	long long num = (CCRANDOM_0_1()*(end - start + 1) + start) * 1000000000;
+	String* ns = String::createWithFormat("%ld", num);
+	return ns->getCString();
+	//return "66666666-6666-6666-6666-666666666666";
 }
 
 void ExchangeInfo::CreateQRFImage(const char* str, const char* headIcon, float mSize)
