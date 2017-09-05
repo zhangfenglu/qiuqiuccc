@@ -865,7 +865,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			//获取验证码
-			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText();
+			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "@qq.com";
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
@@ -928,7 +928,8 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		{
 			log("bangdingyouxiang tijiao xinxi");
 			
-			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
+			std::string data = "playerid=" + info.playerid + "&mail=383905358@qq.com" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + "yip9";
+				//yanZhengMaedbox->getText();
 
 			std::string url = "47.93.50.101:8080/QQWar/Qqwar/bindmail";
 
