@@ -56,7 +56,7 @@ void protobuf_AddDesc_msg_5ferror_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\017msg_error.proto*\236\004\n\004SERR\022\013\n\007SERR_OK\020\000\022"
+    "\n\017msg_error.proto*\316\003\n\004SERR\022\013\n\007SERR_OK\020\000\022"
     "\022\n\016SERR_Exception\020\001\022\014\n\010SERR_Msg\020\002\022\017\n\013SER"
     "R_Notplt\020\003\022\020\n\014SERR_Illegal\020\004\022\014\n\010SERR_Arg"
     "\020\005\022\016\n\nSERR_State\020\006\022\017\n\013SERR_Remote\020\007\022\016\n\nS"
@@ -68,9 +68,7 @@ void protobuf_AddDesc_msg_5ferror_2eproto() {
     "\022\022\n\016SERR_Friendyet\020Q\022\022\n\016SERR_HasInvite\020R"
     "\022\021\n\rSERR_Blackyet\020S\022\022\n\016SERR_FightGone\020T\022"
     "\025\n\021SERR_ReenterFight\020U\022\022\n\016SERR_ExitFight"
-    "\020V\022\021\n\rSERR_IsBinded\020e\022\024\n\020SERR_IsForbidde"
-    "n\020f\022\021\n\rSERR_HasLogin\020g\022\022\n\016SERR_EmptyMail"
-    "\020h", 562);
+    "\020V", 482);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_error.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_msg_5ferror_2eproto);
@@ -113,10 +111,6 @@ bool SERR_IsValid(int value) {
     case 84:
     case 85:
     case 86:
-    case 101:
-    case 102:
-    case 103:
-    case 104:
       return true;
     default:
       return false;

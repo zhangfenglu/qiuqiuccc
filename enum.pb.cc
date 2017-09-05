@@ -16,10 +16,6 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
-namespace com {
-namespace suyin {
-namespace proto {
-
 namespace {
 
 const ::google::protobuf::EnumDescriptor* SEX_T_descriptor_ = NULL;
@@ -60,8 +56,8 @@ void protobuf_AddDesc_enum_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\nenum.proto\022\017com.suyin.proto*#\n\005SEX_T\022\013"
-    "\n\007SEX_Man\020\000\022\r\n\tSEX_Woman\020\001", 66);
+    "\n\nenum.proto*#\n\005SEX_T\022\013\n\007SEX_Man\020\000\022\r\n\tSE"
+    "X_Woman\020\001", 49);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "enum.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_enum_2eproto);
@@ -89,9 +85,5 @@ bool SEX_T_IsValid(int value) {
 
 
 // @@protoc_insertion_point(namespace_scope)
-
-}  // namespace proto
-}  // namespace suyin
-}  // namespace com
 
 // @@protoc_insertion_point(global_scope)
