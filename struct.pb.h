@@ -27,6 +27,10 @@
 #include "enum.pb.h"
 // @@protoc_insertion_point(includes)
 
+namespace com {
+namespace suyin {
+namespace proto {
+
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_struct_2eproto();
 void protobuf_AssignDesc_struct_2eproto();
@@ -132,7 +136,7 @@ class acc_info : public ::google::protobuf::Message {
   inline ::std::string* release_passwd();
   inline void set_allocated_passwd(::std::string* passwd);
 
-  // @@protoc_insertion_point(class_scope:acc_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.acc_info)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -370,16 +374,16 @@ class role_info : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 exp() const;
   inline void set_exp(::google::protobuf::uint32 value);
 
-  // repeated .item_info equips = 22;
+  // repeated .com.suyin.proto.item_info equips = 22;
   inline int equips_size() const;
   inline void clear_equips();
   static const int kEquipsFieldNumber = 22;
-  inline const ::item_info& equips(int index) const;
-  inline ::item_info* mutable_equips(int index);
-  inline ::item_info* add_equips();
-  inline const ::google::protobuf::RepeatedPtrField< ::item_info >&
+  inline const ::com::suyin::proto::item_info& equips(int index) const;
+  inline ::com::suyin::proto::item_info* mutable_equips(int index);
+  inline ::com::suyin::proto::item_info* add_equips();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >&
       equips() const;
-  inline ::google::protobuf::RepeatedPtrField< ::item_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >*
       mutable_equips();
 
   // optional uint32 free_ticket = 23;
@@ -436,7 +440,7 @@ class role_info : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< bool >*
       mutable_award_gots();
 
-  // @@protoc_insertion_point(class_scope:role_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.role_info)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -515,7 +519,7 @@ class role_info : public ::google::protobuf::Message {
   ::std::string* describe_;
   ::google::protobuf::uint32 heroid_;
   ::google::protobuf::uint32 herolevel_;
-  ::google::protobuf::RepeatedPtrField< ::item_info > equips_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info > equips_;
   ::google::protobuf::uint32 exp_;
   ::google::protobuf::uint32 free_ticket_;
   ::google::protobuf::uint32 refresh_time_;
@@ -605,7 +609,7 @@ class award_info : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 day() const;
   inline void set_day(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:award_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.award_info)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -690,26 +694,26 @@ class award_list : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 refresh_time() const;
   inline void set_refresh_time(::google::protobuf::uint32 value);
 
-  // repeated .award_info list = 2;
+  // repeated .com.suyin.proto.award_info list = 2;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 2;
-  inline const ::award_info& list(int index) const;
-  inline ::award_info* mutable_list(int index);
-  inline ::award_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::award_info >&
+  inline const ::com::suyin::proto::award_info& list(int index) const;
+  inline ::com::suyin::proto::award_info* mutable_list(int index);
+  inline ::com::suyin::proto::award_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::award_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:award_list)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.award_list)
  private:
   inline void set_has_refresh_time();
   inline void clear_has_refresh_time();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::award_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info > list_;
   ::google::protobuf::uint32 refresh_time_;
 
   mutable int _cached_size_;
@@ -799,7 +803,7 @@ class item_info : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 create_time() const;
   inline void set_create_time(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:item_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.item_info)
  private:
   inline void set_has_tpltid();
   inline void clear_has_tpltid();
@@ -880,24 +884,24 @@ class item_list : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .item_info list = 1;
+  // repeated .com.suyin.proto.item_info list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::item_info& list(int index) const;
-  inline ::item_info* mutable_list(int index);
-  inline ::item_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::item_info >&
+  inline const ::com::suyin::proto::item_info& list(int index) const;
+  inline ::com::suyin::proto::item_info* mutable_list(int index);
+  inline ::com::suyin::proto::item_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::item_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:item_list)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.item_list)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::item_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -972,7 +976,7 @@ class shop_item : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 tpltid() const;
   inline void set_tpltid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:shop_item)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.shop_item)
  private:
   inline void set_has_tpltid();
   inline void clear_has_tpltid();
@@ -1085,7 +1089,7 @@ class server_info : public ::google::protobuf::Message {
   inline ::std::string* release_servername();
   inline void set_allocated_servername(::std::string* servername);
 
-  // @@protoc_insertion_point(class_scope:server_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.server_info)
  private:
   inline void set_has_serverid();
   inline void clear_has_serverid();
@@ -1209,7 +1213,7 @@ class fans_info : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 count() const;
   inline void set_count(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:fans_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.fans_info)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -1350,7 +1354,7 @@ class rank_info : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 value2() const;
   inline void set_value2(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:rank_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.rank_info)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -1509,7 +1513,7 @@ class msg_info : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 likecnt() const;
   inline void set_likecnt(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:msg_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.msg_info)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -1638,7 +1642,7 @@ class msg_base : public ::google::protobuf::Message {
   inline ::std::string* release_content();
   inline void set_allocated_content(::std::string* content);
 
-  // @@protoc_insertion_point(class_scope:msg_base)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.msg_base)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -1755,7 +1759,7 @@ class friend_info : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 sex() const;
   inline void set_sex(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:friend_info)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.friend_info)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -1914,7 +1918,7 @@ class game_record : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 copper() const;
   inline void set_copper(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:game_record)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.game_record)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -2044,7 +2048,7 @@ class season_rank : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 season() const;
   inline void set_season(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:season_rank)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.season_rank)
  private:
   inline void set_has_rank();
   inline void clear_has_rank();
@@ -2147,7 +2151,7 @@ class photo_data : public ::google::protobuf::Message {
   inline ::std::string* release_data();
   inline void set_allocated_data(::std::string* data);
 
-  // @@protoc_insertion_point(class_scope:photo_data)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.photo_data)
  private:
   inline void set_has_slot();
   inline void clear_has_slot();
@@ -2244,7 +2248,7 @@ class icon_data : public ::google::protobuf::Message {
   inline ::std::string* release_data();
   inline void set_allocated_data(::std::string* data);
 
-  // @@protoc_insertion_point(class_scope:icon_data)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.icon_data)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -2949,27 +2953,27 @@ inline void role_info::set_exp(::google::protobuf::uint32 value) {
   exp_ = value;
 }
 
-// repeated .item_info equips = 22;
+// repeated .com.suyin.proto.item_info equips = 22;
 inline int role_info::equips_size() const {
   return equips_.size();
 }
 inline void role_info::clear_equips() {
   equips_.Clear();
 }
-inline const ::item_info& role_info::equips(int index) const {
+inline const ::com::suyin::proto::item_info& role_info::equips(int index) const {
   return equips_.Get(index);
 }
-inline ::item_info* role_info::mutable_equips(int index) {
+inline ::com::suyin::proto::item_info* role_info::mutable_equips(int index) {
   return equips_.Mutable(index);
 }
-inline ::item_info* role_info::add_equips() {
+inline ::com::suyin::proto::item_info* role_info::add_equips() {
   return equips_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::item_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >&
 role_info::equips() const {
   return equips_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::item_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >*
 role_info::mutable_equips() {
   return &equips_;
 }
@@ -3205,27 +3209,27 @@ inline void award_list::set_refresh_time(::google::protobuf::uint32 value) {
   refresh_time_ = value;
 }
 
-// repeated .award_info list = 2;
+// repeated .com.suyin.proto.award_info list = 2;
 inline int award_list::list_size() const {
   return list_.size();
 }
 inline void award_list::clear_list() {
   list_.Clear();
 }
-inline const ::award_info& award_list::list(int index) const {
+inline const ::com::suyin::proto::award_info& award_list::list(int index) const {
   return list_.Get(index);
 }
-inline ::award_info* award_list::mutable_list(int index) {
+inline ::com::suyin::proto::award_info* award_list::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::award_info* award_list::add_list() {
+inline ::com::suyin::proto::award_info* award_list::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::award_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info >&
 award_list::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::award_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info >*
 award_list::mutable_list() {
   return &list_;
 }
@@ -3304,27 +3308,27 @@ inline void item_info::set_create_time(::google::protobuf::uint32 value) {
 
 // item_list
 
-// repeated .item_info list = 1;
+// repeated .com.suyin.proto.item_info list = 1;
 inline int item_list::list_size() const {
   return list_.size();
 }
 inline void item_list::clear_list() {
   list_.Clear();
 }
-inline const ::item_info& item_list::list(int index) const {
+inline const ::com::suyin::proto::item_info& item_list::list(int index) const {
   return list_.Get(index);
 }
-inline ::item_info* item_list::mutable_list(int index) {
+inline ::com::suyin::proto::item_info* item_list::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::item_info* item_list::add_list() {
+inline ::com::suyin::proto::item_info* item_list::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::item_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >&
 item_list::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::item_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >*
 item_list::mutable_list() {
   return &list_;
 }
@@ -5025,6 +5029,10 @@ inline void icon_data::set_allocated_data(::std::string* data) {
 
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace proto
+}  // namespace suyin
+}  // namespace com
 
 #ifndef SWIG
 namespace google {

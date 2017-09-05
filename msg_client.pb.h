@@ -29,12 +29,31 @@
 #include "struct.pb.h"
 // @@protoc_insertion_point(includes)
 
+namespace com {
+namespace suyin {
+namespace proto {
+
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_msg_5fclient_2eproto();
 void protobuf_AssignDesc_msg_5fclient_2eproto();
 void protobuf_ShutdownFile_msg_5fclient_2eproto();
 
 class UM_Login;
+class UM_BindAccout;
+class UM_ReqVersion;
+class UM_Version;
+class UM_ReqShowMsg;
+class UM_ShoMsg;
+class UM_ReqActivity;
+class UM_Activity;
+class UM_Activities;
+class UM_ReqReconncet;
+class UM_Reconnect;
+class UM_ReqTeamFight;
+class UM_ReadyFight;
+class UM_TeamFight;
+class UM_ReqCancelFight;
+class UM_CancelFight;
 class UM_Logout;
 class UM_EnterGame;
 class UM_SyncRole;
@@ -133,6 +152,13 @@ enum IDUM_CLI {
   IDUM_Sign = 116,
   IDUM_Award = 117,
   IDUM_ReqIcons = 120,
+  IDUM_BindAccout = 121,
+  IDUM_ReqVersion = 122,
+  IDUM_ReqShowMsg = 123,
+  IDUM_ReqActivity = 124,
+  IDUM_ReqReconnect = 130,
+  IDUM_ReqTeamFight = 131,
+  IDUM_ReqCancelFight = 132,
   IDUM_GATEE = 999,
   IDUM_CLIB = 1000,
   IDUM_Response = 1001,
@@ -161,6 +187,13 @@ enum IDUM_CLI {
   IDUM_Photos = 1103,
   IDUM_AwardList = 1117,
   IDUM_Icons = 1120,
+  IDUM_Version = 1122,
+  IDUM_ShowMsg = 1123,
+  IDUM_Activity = 1124,
+  IDUM_Reconnect = 1130,
+  IDUM_TeamFight = 1131,
+  IDUM_CancelFight = 1132,
+  IDUM_ReadyFight = 1135,
   IDUM_CLIE = 1999
 };
 bool IDUM_CLI_IsValid(int value);
@@ -258,7 +291,7 @@ class UM_Login : public ::google::protobuf::Message {
   inline ::std::string* release_passwd();
   inline void set_allocated_passwd(::std::string* passwd);
 
-  // @@protoc_insertion_point(class_scope:UM_Login)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Login)
  private:
   inline void set_has_acc();
   inline void clear_has_acc();
@@ -279,6 +312,1364 @@ class UM_Login : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static UM_Login* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_BindAccout : public ::google::protobuf::Message {
+ public:
+  UM_BindAccout();
+  virtual ~UM_BindAccout();
+
+  UM_BindAccout(const UM_BindAccout& from);
+
+  inline UM_BindAccout& operator=(const UM_BindAccout& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_BindAccout& default_instance();
+
+  void Swap(UM_BindAccout* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_BindAccout* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_BindAccout& from);
+  void MergeFrom(const UM_BindAccout& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string acc = 1;
+  inline bool has_acc() const;
+  inline void clear_acc();
+  static const int kAccFieldNumber = 1;
+  inline const ::std::string& acc() const;
+  inline void set_acc(const ::std::string& value);
+  inline void set_acc(const char* value);
+  inline void set_acc(const char* value, size_t size);
+  inline ::std::string* mutable_acc();
+  inline ::std::string* release_acc();
+  inline void set_allocated_acc(::std::string* acc);
+
+  // required string passwd = 2;
+  inline bool has_passwd() const;
+  inline void clear_passwd();
+  static const int kPasswdFieldNumber = 2;
+  inline const ::std::string& passwd() const;
+  inline void set_passwd(const ::std::string& value);
+  inline void set_passwd(const char* value);
+  inline void set_passwd(const char* value, size_t size);
+  inline ::std::string* mutable_passwd();
+  inline ::std::string* release_passwd();
+  inline void set_allocated_passwd(::std::string* passwd);
+
+  // required string mail = 3;
+  inline bool has_mail() const;
+  inline void clear_mail();
+  static const int kMailFieldNumber = 3;
+  inline const ::std::string& mail() const;
+  inline void set_mail(const ::std::string& value);
+  inline void set_mail(const char* value);
+  inline void set_mail(const char* value, size_t size);
+  inline ::std::string* mutable_mail();
+  inline ::std::string* release_mail();
+  inline void set_allocated_mail(::std::string* mail);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_BindAccout)
+ private:
+  inline void set_has_acc();
+  inline void clear_has_acc();
+  inline void set_has_passwd();
+  inline void clear_has_passwd();
+  inline void set_has_mail();
+  inline void clear_has_mail();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* acc_;
+  ::std::string* passwd_;
+  ::std::string* mail_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_BindAccout* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_ReqVersion : public ::google::protobuf::Message {
+ public:
+  UM_ReqVersion();
+  virtual ~UM_ReqVersion();
+
+  UM_ReqVersion(const UM_ReqVersion& from);
+
+  inline UM_ReqVersion& operator=(const UM_ReqVersion& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_ReqVersion& default_instance();
+
+  void Swap(UM_ReqVersion* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_ReqVersion* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_ReqVersion& from);
+  void MergeFrom(const UM_ReqVersion& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline const ::std::string& type() const;
+  inline void set_type(const ::std::string& value);
+  inline void set_type(const char* value);
+  inline void set_type(const char* value, size_t size);
+  inline ::std::string* mutable_type();
+  inline ::std::string* release_type();
+  inline void set_allocated_type(::std::string* type);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqVersion)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* type_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_ReqVersion* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_Version : public ::google::protobuf::Message {
+ public:
+  UM_Version();
+  virtual ~UM_Version();
+
+  UM_Version(const UM_Version& from);
+
+  inline UM_Version& operator=(const UM_Version& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_Version& default_instance();
+
+  void Swap(UM_Version* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_Version* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_Version& from);
+  void MergeFrom(const UM_Version& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string version = 1;
+  inline bool has_version() const;
+  inline void clear_version();
+  static const int kVersionFieldNumber = 1;
+  inline const ::std::string& version() const;
+  inline void set_version(const ::std::string& value);
+  inline void set_version(const char* value);
+  inline void set_version(const char* value, size_t size);
+  inline ::std::string* mutable_version();
+  inline ::std::string* release_version();
+  inline void set_allocated_version(::std::string* version);
+
+  // required string url = 2;
+  inline bool has_url() const;
+  inline void clear_url();
+  static const int kUrlFieldNumber = 2;
+  inline const ::std::string& url() const;
+  inline void set_url(const ::std::string& value);
+  inline void set_url(const char* value);
+  inline void set_url(const char* value, size_t size);
+  inline ::std::string* mutable_url();
+  inline ::std::string* release_url();
+  inline void set_allocated_url(::std::string* url);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Version)
+ private:
+  inline void set_has_version();
+  inline void clear_has_version();
+  inline void set_has_url();
+  inline void clear_has_url();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* version_;
+  ::std::string* url_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_Version* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_ReqShowMsg : public ::google::protobuf::Message {
+ public:
+  UM_ReqShowMsg();
+  virtual ~UM_ReqShowMsg();
+
+  UM_ReqShowMsg(const UM_ReqShowMsg& from);
+
+  inline UM_ReqShowMsg& operator=(const UM_ReqShowMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_ReqShowMsg& default_instance();
+
+  void Swap(UM_ReqShowMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_ReqShowMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_ReqShowMsg& from);
+  void MergeFrom(const UM_ReqShowMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string version = 1;
+  inline bool has_version() const;
+  inline void clear_version();
+  static const int kVersionFieldNumber = 1;
+  inline const ::std::string& version() const;
+  inline void set_version(const ::std::string& value);
+  inline void set_version(const char* value);
+  inline void set_version(const char* value, size_t size);
+  inline ::std::string* mutable_version();
+  inline ::std::string* release_version();
+  inline void set_allocated_version(::std::string* version);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqShowMsg)
+ private:
+  inline void set_has_version();
+  inline void clear_has_version();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* version_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_ReqShowMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_ShoMsg : public ::google::protobuf::Message {
+ public:
+  UM_ShoMsg();
+  virtual ~UM_ShoMsg();
+
+  UM_ShoMsg(const UM_ShoMsg& from);
+
+  inline UM_ShoMsg& operator=(const UM_ShoMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_ShoMsg& default_instance();
+
+  void Swap(UM_ShoMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_ShoMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_ShoMsg& from);
+  void MergeFrom(const UM_ShoMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bool activity = 1;
+  inline bool has_activity() const;
+  inline void clear_activity();
+  static const int kActivityFieldNumber = 1;
+  inline bool activity() const;
+  inline void set_activity(bool value);
+
+  // optional bool chat = 2;
+  inline bool has_chat() const;
+  inline void clear_chat();
+  static const int kChatFieldNumber = 2;
+  inline bool chat() const;
+  inline void set_chat(bool value);
+
+  // optional bool pvp = 3;
+  inline bool has_pvp() const;
+  inline void clear_pvp();
+  static const int kPvpFieldNumber = 3;
+  inline bool pvp() const;
+  inline void set_pvp(bool value);
+
+  // optional bool sybtn = 4;
+  inline bool has_sybtn() const;
+  inline void clear_sybtn();
+  static const int kSybtnFieldNumber = 4;
+  inline bool sybtn() const;
+  inline void set_sybtn(bool value);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ShoMsg)
+ private:
+  inline void set_has_activity();
+  inline void clear_has_activity();
+  inline void set_has_chat();
+  inline void clear_has_chat();
+  inline void set_has_pvp();
+  inline void clear_has_pvp();
+  inline void set_has_sybtn();
+  inline void clear_has_sybtn();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  bool activity_;
+  bool chat_;
+  bool pvp_;
+  bool sybtn_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_ShoMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_ReqActivity : public ::google::protobuf::Message {
+ public:
+  UM_ReqActivity();
+  virtual ~UM_ReqActivity();
+
+  UM_ReqActivity(const UM_ReqActivity& from);
+
+  inline UM_ReqActivity& operator=(const UM_ReqActivity& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_ReqActivity& default_instance();
+
+  void Swap(UM_ReqActivity* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_ReqActivity* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_ReqActivity& from);
+  void MergeFrom(const UM_ReqActivity& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqActivity)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_ReqActivity* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_Activity : public ::google::protobuf::Message {
+ public:
+  UM_Activity();
+  virtual ~UM_Activity();
+
+  UM_Activity(const UM_Activity& from);
+
+  inline UM_Activity& operator=(const UM_Activity& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_Activity& default_instance();
+
+  void Swap(UM_Activity* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_Activity* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_Activity& from);
+  void MergeFrom(const UM_Activity& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
+  // required string url = 2;
+  inline bool has_url() const;
+  inline void clear_url();
+  static const int kUrlFieldNumber = 2;
+  inline const ::std::string& url() const;
+  inline void set_url(const ::std::string& value);
+  inline void set_url(const char* value);
+  inline void set_url(const char* value, size_t size);
+  inline ::std::string* mutable_url();
+  inline ::std::string* release_url();
+  inline void set_allocated_url(::std::string* url);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Activity)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_url();
+  inline void clear_has_url();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* url_;
+  ::google::protobuf::int32 id_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_Activity* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_Activities : public ::google::protobuf::Message {
+ public:
+  UM_Activities();
+  virtual ~UM_Activities();
+
+  UM_Activities(const UM_Activities& from);
+
+  inline UM_Activities& operator=(const UM_Activities& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_Activities& default_instance();
+
+  void Swap(UM_Activities* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_Activities* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_Activities& from);
+  void MergeFrom(const UM_Activities& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .com.suyin.proto.UM_Activity activites = 1;
+  inline int activites_size() const;
+  inline void clear_activites();
+  static const int kActivitesFieldNumber = 1;
+  inline const ::com::suyin::proto::UM_Activity& activites(int index) const;
+  inline ::com::suyin::proto::UM_Activity* mutable_activites(int index);
+  inline ::com::suyin::proto::UM_Activity* add_activites();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::UM_Activity >&
+      activites() const;
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::UM_Activity >*
+      mutable_activites();
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Activities)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::UM_Activity > activites_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_Activities* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_ReqReconncet : public ::google::protobuf::Message {
+ public:
+  UM_ReqReconncet();
+  virtual ~UM_ReqReconncet();
+
+  UM_ReqReconncet(const UM_ReqReconncet& from);
+
+  inline UM_ReqReconncet& operator=(const UM_ReqReconncet& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_ReqReconncet& default_instance();
+
+  void Swap(UM_ReqReconncet* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_ReqReconncet* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_ReqReconncet& from);
+  void MergeFrom(const UM_ReqReconncet& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string playerid = 1;
+  inline bool has_playerid() const;
+  inline void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  inline const ::std::string& playerid() const;
+  inline void set_playerid(const ::std::string& value);
+  inline void set_playerid(const char* value);
+  inline void set_playerid(const char* value, size_t size);
+  inline ::std::string* mutable_playerid();
+  inline ::std::string* release_playerid();
+  inline void set_allocated_playerid(::std::string* playerid);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqReconncet)
+ private:
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* playerid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_ReqReconncet* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_Reconnect : public ::google::protobuf::Message {
+ public:
+  UM_Reconnect();
+  virtual ~UM_Reconnect();
+
+  UM_Reconnect(const UM_Reconnect& from);
+
+  inline UM_Reconnect& operator=(const UM_Reconnect& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_Reconnect& default_instance();
+
+  void Swap(UM_Reconnect* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_Reconnect* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_Reconnect& from);
+  void MergeFrom(const UM_Reconnect& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required bool connect = 1;
+  inline bool has_connect() const;
+  inline void clear_connect();
+  static const int kConnectFieldNumber = 1;
+  inline bool connect() const;
+  inline void set_connect(bool value);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Reconnect)
+ private:
+  inline void set_has_connect();
+  inline void clear_has_connect();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  bool connect_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_Reconnect* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_ReqTeamFight : public ::google::protobuf::Message {
+ public:
+  UM_ReqTeamFight();
+  virtual ~UM_ReqTeamFight();
+
+  UM_ReqTeamFight(const UM_ReqTeamFight& from);
+
+  inline UM_ReqTeamFight& operator=(const UM_ReqTeamFight& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_ReqTeamFight& default_instance();
+
+  void Swap(UM_ReqTeamFight* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_ReqTeamFight* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_ReqTeamFight& from);
+  void MergeFrom(const UM_ReqTeamFight& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string playerid = 1;
+  inline bool has_playerid() const;
+  inline void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  inline const ::std::string& playerid() const;
+  inline void set_playerid(const ::std::string& value);
+  inline void set_playerid(const char* value);
+  inline void set_playerid(const char* value, size_t size);
+  inline ::std::string* mutable_playerid();
+  inline ::std::string* release_playerid();
+  inline void set_allocated_playerid(::std::string* playerid);
+
+  // optional uint32 serverid = 2;
+  inline bool has_serverid() const;
+  inline void clear_serverid();
+  static const int kServeridFieldNumber = 2;
+  inline ::google::protobuf::uint32 serverid() const;
+  inline void set_serverid(::google::protobuf::uint32 value);
+
+  // optional int32 mode = 3;
+  inline bool has_mode() const;
+  inline void clear_mode();
+  static const int kModeFieldNumber = 3;
+  inline ::google::protobuf::int32 mode() const;
+  inline void set_mode(::google::protobuf::int32 value);
+
+  // optional uint32 ticket_count = 4;
+  inline bool has_ticket_count() const;
+  inline void clear_ticket_count();
+  static const int kTicketCountFieldNumber = 4;
+  inline ::google::protobuf::uint32 ticket_count() const;
+  inline void set_ticket_count(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqTeamFight)
+ private:
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
+  inline void set_has_serverid();
+  inline void clear_has_serverid();
+  inline void set_has_mode();
+  inline void clear_has_mode();
+  inline void set_has_ticket_count();
+  inline void clear_has_ticket_count();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* playerid_;
+  ::google::protobuf::uint32 serverid_;
+  ::google::protobuf::int32 mode_;
+  ::google::protobuf::uint32 ticket_count_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_ReqTeamFight* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_ReadyFight : public ::google::protobuf::Message {
+ public:
+  UM_ReadyFight();
+  virtual ~UM_ReadyFight();
+
+  UM_ReadyFight(const UM_ReadyFight& from);
+
+  inline UM_ReadyFight& operator=(const UM_ReadyFight& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_ReadyFight& default_instance();
+
+  void Swap(UM_ReadyFight* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_ReadyFight* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_ReadyFight& from);
+  void MergeFrom(const UM_ReadyFight& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint32 time = 1;
+  inline bool has_time() const;
+  inline void clear_time();
+  static const int kTimeFieldNumber = 1;
+  inline ::google::protobuf::uint32 time() const;
+  inline void set_time(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReadyFight)
+ private:
+  inline void set_has_time();
+  inline void clear_has_time();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 time_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_ReadyFight* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_TeamFight : public ::google::protobuf::Message {
+ public:
+  UM_TeamFight();
+  virtual ~UM_TeamFight();
+
+  UM_TeamFight(const UM_TeamFight& from);
+
+  inline UM_TeamFight& operator=(const UM_TeamFight& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_TeamFight& default_instance();
+
+  void Swap(UM_TeamFight* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_TeamFight* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_TeamFight& from);
+  void MergeFrom(const UM_TeamFight& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_TeamFight)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_TeamFight* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_ReqCancelFight : public ::google::protobuf::Message {
+ public:
+  UM_ReqCancelFight();
+  virtual ~UM_ReqCancelFight();
+
+  UM_ReqCancelFight(const UM_ReqCancelFight& from);
+
+  inline UM_ReqCancelFight& operator=(const UM_ReqCancelFight& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_ReqCancelFight& default_instance();
+
+  void Swap(UM_ReqCancelFight* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_ReqCancelFight* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_ReqCancelFight& from);
+  void MergeFrom(const UM_ReqCancelFight& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string playerid = 1;
+  inline bool has_playerid() const;
+  inline void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  inline const ::std::string& playerid() const;
+  inline void set_playerid(const ::std::string& value);
+  inline void set_playerid(const char* value);
+  inline void set_playerid(const char* value, size_t size);
+  inline ::std::string* mutable_playerid();
+  inline ::std::string* release_playerid();
+  inline void set_allocated_playerid(::std::string* playerid);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqCancelFight)
+ private:
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* playerid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_ReqCancelFight* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UM_CancelFight : public ::google::protobuf::Message {
+ public:
+  UM_CancelFight();
+  virtual ~UM_CancelFight();
+
+  UM_CancelFight(const UM_CancelFight& from);
+
+  inline UM_CancelFight& operator=(const UM_CancelFight& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UM_CancelFight& default_instance();
+
+  void Swap(UM_CancelFight* other);
+
+  // implements Message ----------------------------------------------
+
+  UM_CancelFight* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UM_CancelFight& from);
+  void MergeFrom(const UM_CancelFight& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_CancelFight)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_msg_5fclient_2eproto();
+  friend void protobuf_AssignDesc_msg_5fclient_2eproto();
+  friend void protobuf_ShutdownFile_msg_5fclient_2eproto();
+
+  void InitAsDefaultInstance();
+  static UM_CancelFight* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -343,7 +1734,7 @@ class UM_Logout : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 err() const;
   inline void set_err(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_Logout)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Logout)
  private:
   inline void set_has_err();
   inline void clear_has_err();
@@ -418,14 +1809,14 @@ class UM_EnterGame : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .role_info info = 1;
+  // optional .com.suyin.proto.role_info info = 1;
   inline bool has_info() const;
   inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  inline const ::role_info& info() const;
-  inline ::role_info* mutable_info();
-  inline ::role_info* release_info();
-  inline void set_allocated_info(::role_info* info);
+  inline const ::com::suyin::proto::role_info& info() const;
+  inline ::com::suyin::proto::role_info* mutable_info();
+  inline ::com::suyin::proto::role_info* release_info();
+  inline void set_allocated_info(::com::suyin::proto::role_info* info);
 
   // optional uint32 servertime = 2;
   inline bool has_servertime() const;
@@ -441,7 +1832,7 @@ class UM_EnterGame : public ::google::protobuf::Message {
   inline bool fighting() const;
   inline void set_fighting(bool value);
 
-  // @@protoc_insertion_point(class_scope:UM_EnterGame)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_EnterGame)
  private:
   inline void set_has_info();
   inline void clear_has_info();
@@ -452,7 +1843,7 @@ class UM_EnterGame : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::role_info* info_;
+  ::com::suyin::proto::role_info* info_;
   ::google::protobuf::uint32 servertime_;
   bool fighting_;
 
@@ -522,23 +1913,23 @@ class UM_SyncRole : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .role_info info = 1;
+  // optional .com.suyin.proto.role_info info = 1;
   inline bool has_info() const;
   inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  inline const ::role_info& info() const;
-  inline ::role_info* mutable_info();
-  inline ::role_info* release_info();
-  inline void set_allocated_info(::role_info* info);
+  inline const ::com::suyin::proto::role_info& info() const;
+  inline ::com::suyin::proto::role_info* mutable_info();
+  inline ::com::suyin::proto::role_info* release_info();
+  inline void set_allocated_info(::com::suyin::proto::role_info* info);
 
-  // @@protoc_insertion_point(class_scope:UM_SyncRole)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SyncRole)
  private:
   inline void set_has_info();
   inline void clear_has_info();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::role_info* info_;
+  ::com::suyin::proto::role_info* info_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -613,7 +2004,7 @@ class UM_BuyItem : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 id() const;
   inline void set_id(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_BuyItem)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_BuyItem)
  private:
   inline void set_has_id();
   inline void clear_has_id();
@@ -695,7 +2086,7 @@ class UM_UseItem : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 id() const;
   inline void set_id(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_UseItem)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_UseItem)
  private:
   inline void set_has_id();
   inline void clear_has_id();
@@ -770,16 +2161,16 @@ class UM_ItemUpdate : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .item_info list = 1;
+  // repeated .com.suyin.proto.item_info list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::item_info& list(int index) const;
-  inline ::item_info* mutable_list(int index);
-  inline ::item_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::item_info >&
+  inline const ::com::suyin::proto::item_info& list(int index) const;
+  inline ::com::suyin::proto::item_info* mutable_list(int index);
+  inline ::com::suyin::proto::item_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::item_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >*
       mutable_list();
 
   // optional int32 type = 2;
@@ -789,14 +2180,14 @@ class UM_ItemUpdate : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ItemUpdate)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ItemUpdate)
  private:
   inline void set_has_type();
   inline void clear_has_type();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::item_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info > list_;
   ::google::protobuf::int32 type_;
 
   mutable int _cached_size_;
@@ -872,7 +2263,7 @@ class UM_UnequipItem : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 itemtype() const;
   inline void set_itemtype(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_UnequipItem)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_UnequipItem)
  private:
   inline void set_has_itemtype();
   inline void clear_has_itemtype();
@@ -961,7 +2352,7 @@ class UM_EquipUpdate : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 id() const;
   inline void set_id(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_EquipUpdate)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_EquipUpdate)
  private:
   inline void set_has_itemtype();
   inline void clear_has_itemtype();
@@ -1039,7 +2430,7 @@ class UM_ReqShop : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:UM_ReqShop)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqShop)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1111,24 +2502,24 @@ class UM_Shop : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .shop_item list = 1;
+  // repeated .com.suyin.proto.shop_item list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::shop_item& list(int index) const;
-  inline ::shop_item* mutable_list(int index);
-  inline ::shop_item* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::shop_item >&
+  inline const ::com::suyin::proto::shop_item& list(int index) const;
+  inline ::com::suyin::proto::shop_item* mutable_list(int index);
+  inline ::com::suyin::proto::shop_item* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::shop_item >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::shop_item >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::shop_item >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_Shop)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Shop)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::shop_item > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::shop_item > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -1196,7 +2587,7 @@ class UM_HeroLevelup : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:UM_HeroLevelup)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_HeroLevelup)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1282,7 +2673,7 @@ class UM_Hero : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 herolevel() const;
   inline void set_herolevel(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_Hero)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Hero)
  private:
   inline void set_has_heroid();
   inline void clear_has_heroid();
@@ -1360,7 +2751,7 @@ class UM_ReqServerList : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:UM_ReqServerList)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqServerList)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1432,24 +2823,24 @@ class UM_ServerList : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .server_info list = 1;
+  // repeated .com.suyin.proto.server_info list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::server_info& list(int index) const;
-  inline ::server_info* mutable_list(int index);
-  inline ::server_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::server_info >&
+  inline const ::com::suyin::proto::server_info& list(int index) const;
+  inline ::com::suyin::proto::server_info* mutable_list(int index);
+  inline ::com::suyin::proto::server_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::server_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::server_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::server_info >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_ServerList)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ServerList)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::server_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::server_info > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -1517,29 +2908,43 @@ class UM_ReqLoginFight : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 serverid = 1;
+  // required string playerid = 1;
+  inline bool has_playerid() const;
+  inline void clear_playerid();
+  static const int kPlayeridFieldNumber = 1;
+  inline const ::std::string& playerid() const;
+  inline void set_playerid(const ::std::string& value);
+  inline void set_playerid(const char* value);
+  inline void set_playerid(const char* value, size_t size);
+  inline ::std::string* mutable_playerid();
+  inline ::std::string* release_playerid();
+  inline void set_allocated_playerid(::std::string* playerid);
+
+  // optional uint32 serverid = 2;
   inline bool has_serverid() const;
   inline void clear_serverid();
-  static const int kServeridFieldNumber = 1;
+  static const int kServeridFieldNumber = 2;
   inline ::google::protobuf::uint32 serverid() const;
   inline void set_serverid(::google::protobuf::uint32 value);
 
-  // optional int32 mode = 2;
+  // optional int32 mode = 3;
   inline bool has_mode() const;
   inline void clear_mode();
-  static const int kModeFieldNumber = 2;
+  static const int kModeFieldNumber = 3;
   inline ::google::protobuf::int32 mode() const;
   inline void set_mode(::google::protobuf::int32 value);
 
-  // optional uint32 ticket_count = 3;
+  // optional uint32 ticket_count = 4;
   inline bool has_ticket_count() const;
   inline void clear_ticket_count();
-  static const int kTicketCountFieldNumber = 3;
+  static const int kTicketCountFieldNumber = 4;
   inline ::google::protobuf::uint32 ticket_count() const;
   inline void set_ticket_count(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ReqLoginFight)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqLoginFight)
  private:
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
   inline void set_has_serverid();
   inline void clear_has_serverid();
   inline void set_has_mode();
@@ -1549,12 +2954,13 @@ class UM_ReqLoginFight : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* playerid_;
   ::google::protobuf::uint32 serverid_;
   ::google::protobuf::int32 mode_;
   ::google::protobuf::uint32 ticket_count_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_msg_5fclient_2eproto();
   friend void protobuf_AssignDesc_msg_5fclient_2eproto();
@@ -1633,20 +3039,30 @@ class UM_LoginFightKey : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 key() const;
   inline void set_key(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_LoginFightKey)
+  // optional uint32 roomid = 3;
+  inline bool has_roomid() const;
+  inline void clear_roomid();
+  static const int kRoomidFieldNumber = 3;
+  inline ::google::protobuf::uint32 roomid() const;
+  inline void set_roomid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_LoginFightKey)
  private:
   inline void set_has_serverid();
   inline void clear_has_serverid();
   inline void set_has_key();
   inline void clear_has_key();
+  inline void set_has_roomid();
+  inline void clear_has_roomid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 serverid_;
   ::google::protobuf::uint32 key_;
+  ::google::protobuf::uint32 roomid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_msg_5fclient_2eproto();
   friend void protobuf_AssignDesc_msg_5fclient_2eproto();
@@ -1711,7 +3127,7 @@ class UM_ExitFight : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:UM_ExitFight)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ExitFight)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1795,7 +3211,7 @@ class UM_Gm : public ::google::protobuf::Message {
   inline ::std::string* release_command();
   inline void set_allocated_command(::std::string* command);
 
-  // @@protoc_insertion_point(class_scope:UM_Gm)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Gm)
  private:
   inline void set_has_command();
   inline void clear_has_command();
@@ -1884,7 +3300,7 @@ class UM_Response : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 err() const;
   inline void set_err(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_Response)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Response)
  private:
   inline void set_has_msgid();
   inline void clear_has_msgid();
@@ -1983,7 +3399,7 @@ class UM_SetFocus : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_SetFocus)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SetFocus)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -2071,7 +3487,7 @@ class UM_ReqRole : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ReqRole)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqRole)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -2146,23 +3562,23 @@ class UM_RoleInfo : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .role_info info = 1;
+  // optional .com.suyin.proto.role_info info = 1;
   inline bool has_info() const;
   inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  inline const ::role_info& info() const;
-  inline ::role_info* mutable_info();
-  inline ::role_info* release_info();
-  inline void set_allocated_info(::role_info* info);
+  inline const ::com::suyin::proto::role_info& info() const;
+  inline ::com::suyin::proto::role_info* mutable_info();
+  inline ::com::suyin::proto::role_info* release_info();
+  inline void set_allocated_info(::com::suyin::proto::role_info* info);
 
-  // @@protoc_insertion_point(class_scope:UM_RoleInfo)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_RoleInfo)
  private:
   inline void set_has_info();
   inline void clear_has_info();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::role_info* info_;
+  ::com::suyin::proto::role_info* info_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -2258,7 +3674,7 @@ class UM_ReqFans : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ReqFans)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqFans)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -2342,16 +3758,16 @@ class UM_Fans : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .fans_info list = 1;
+  // repeated .com.suyin.proto.fans_info list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::fans_info& list(int index) const;
-  inline ::fans_info* mutable_list(int index);
-  inline ::fans_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::fans_info >&
+  inline const ::com::suyin::proto::fans_info& list(int index) const;
+  inline ::com::suyin::proto::fans_info* mutable_list(int index);
+  inline ::com::suyin::proto::fans_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::fans_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::fans_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::fans_info >*
       mutable_list();
 
   // optional uint32 range1 = 2;
@@ -2375,7 +3791,7 @@ class UM_Fans : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_Fans)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Fans)
  private:
   inline void set_has_range1();
   inline void clear_has_range1();
@@ -2386,7 +3802,7 @@ class UM_Fans : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::fans_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::fans_info > list_;
   ::google::protobuf::uint32 range1_;
   ::google::protobuf::uint32 range2_;
   ::google::protobuf::uint32 roleid_;
@@ -2471,7 +3887,7 @@ class UM_ReqRanks : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 subtype() const;
   inline void set_subtype(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ReqRanks)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqRanks)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -2549,24 +3965,24 @@ class UM_Ranks : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .rank_info list = 1;
+  // repeated .com.suyin.proto.rank_info list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::rank_info& list(int index) const;
-  inline ::rank_info* mutable_list(int index);
-  inline ::rank_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::rank_info >&
+  inline const ::com::suyin::proto::rank_info& list(int index) const;
+  inline ::com::suyin::proto::rank_info* mutable_list(int index);
+  inline ::com::suyin::proto::rank_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::rank_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rank_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::rank_info >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_Ranks)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Ranks)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::rank_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::rank_info > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -2670,7 +4086,7 @@ class UM_FightLikes : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_roles();
 
-  // @@protoc_insertion_point(class_scope:UM_FightLikes)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_FightLikes)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -2752,7 +4168,7 @@ class UM_GetTopMsg : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_GetTopMsg)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_GetTopMsg)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -2848,7 +4264,7 @@ class UM_GetMsg : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 range2() const;
   inline void set_range2(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_GetMsg)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_GetMsg)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -2948,7 +4364,7 @@ class UM_SendMsg : public ::google::protobuf::Message {
   inline ::std::string* release_content();
   inline void set_allocated_content(::std::string* content);
 
-  // @@protoc_insertion_point(class_scope:UM_SendMsg)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SendMsg)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -3047,7 +4463,7 @@ class UM_LikeMsg : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 set() const;
   inline void set_set(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_LikeMsg)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_LikeMsg)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -3135,26 +4551,26 @@ class UM_TopMsg : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // repeated .msg_info list = 2;
+  // repeated .com.suyin.proto.msg_info list = 2;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 2;
-  inline const ::msg_info& list(int index) const;
-  inline ::msg_info* mutable_list(int index);
-  inline ::msg_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::msg_info >&
+  inline const ::com::suyin::proto::msg_info& list(int index) const;
+  inline ::com::suyin::proto::msg_info* mutable_list(int index);
+  inline ::com::suyin::proto::msg_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::msg_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_TopMsg)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_TopMsg)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::msg_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info > list_;
   ::google::protobuf::uint32 roleid_;
 
   mutable int _cached_size_;
@@ -3244,19 +4660,19 @@ class UM_MsgList : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 range2() const;
   inline void set_range2(::google::protobuf::uint32 value);
 
-  // repeated .msg_info list = 4;
+  // repeated .com.suyin.proto.msg_info list = 4;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 4;
-  inline const ::msg_info& list(int index) const;
-  inline ::msg_info* mutable_list(int index);
-  inline ::msg_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::msg_info >&
+  inline const ::com::suyin::proto::msg_info& list(int index) const;
+  inline ::com::suyin::proto::msg_info* mutable_list(int index);
+  inline ::com::suyin::proto::msg_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::msg_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_MsgList)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_MsgList)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -3269,7 +4685,7 @@ class UM_MsgList : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 roleid_;
   ::google::protobuf::uint32 range1_;
-  ::google::protobuf::RepeatedPtrField< ::msg_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info > list_;
   ::google::protobuf::uint32 range2_;
 
   mutable int _cached_size_;
@@ -3345,7 +4761,7 @@ class UM_GetFriend : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_GetFriend)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_GetFriend)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -3420,16 +4836,16 @@ class UM_Friends : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .friend_info list = 1;
+  // repeated .com.suyin.proto.friend_info list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::friend_info& list(int index) const;
-  inline ::friend_info* mutable_list(int index);
-  inline ::friend_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::friend_info >&
+  inline const ::com::suyin::proto::friend_info& list(int index) const;
+  inline ::com::suyin::proto::friend_info* mutable_list(int index);
+  inline ::com::suyin::proto::friend_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::friend_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::friend_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::friend_info >*
       mutable_list();
 
   // optional int32 type = 3;
@@ -3439,14 +4855,14 @@ class UM_Friends : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_Friends)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Friends)
  private:
   inline void set_has_type();
   inline void clear_has_type();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::friend_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::friend_info > list_;
   ::google::protobuf::int32 type_;
 
   mutable int _cached_size_;
@@ -3529,7 +4945,7 @@ class UM_ResponseInvite : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ResponseInvite)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ResponseInvite)
  private:
   inline void set_has_ok();
   inline void clear_has_ok();
@@ -3614,16 +5030,16 @@ class UM_AddFriend : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // optional .friend_info info = 2;
+  // optional .com.suyin.proto.friend_info info = 2;
   inline bool has_info() const;
   inline void clear_info();
   static const int kInfoFieldNumber = 2;
-  inline const ::friend_info& info() const;
-  inline ::friend_info* mutable_info();
-  inline ::friend_info* release_info();
-  inline void set_allocated_info(::friend_info* info);
+  inline const ::com::suyin::proto::friend_info& info() const;
+  inline ::com::suyin::proto::friend_info* mutable_info();
+  inline ::com::suyin::proto::friend_info* release_info();
+  inline void set_allocated_info(::com::suyin::proto::friend_info* info);
 
-  // @@protoc_insertion_point(class_scope:UM_AddFriend)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_AddFriend)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -3632,7 +5048,7 @@ class UM_AddFriend : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::friend_info* info_;
+  ::com::suyin::proto::friend_info* info_;
   ::google::protobuf::int32 type_;
 
   mutable int _cached_size_;
@@ -3720,7 +5136,7 @@ class UM_InviteFriend : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // @@protoc_insertion_point(class_scope:UM_InviteFriend)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_InviteFriend)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -3805,16 +5221,16 @@ class UM_AddInvite : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // optional .friend_info info = 2;
+  // optional .com.suyin.proto.friend_info info = 2;
   inline bool has_info() const;
   inline void clear_info();
   static const int kInfoFieldNumber = 2;
-  inline const ::friend_info& info() const;
-  inline ::friend_info* mutable_info();
-  inline ::friend_info* release_info();
-  inline void set_allocated_info(::friend_info* info);
+  inline const ::com::suyin::proto::friend_info& info() const;
+  inline ::com::suyin::proto::friend_info* mutable_info();
+  inline ::com::suyin::proto::friend_info* release_info();
+  inline void set_allocated_info(::com::suyin::proto::friend_info* info);
 
-  // @@protoc_insertion_point(class_scope:UM_AddInvite)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_AddInvite)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -3823,7 +5239,7 @@ class UM_AddInvite : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::friend_info* info_;
+  ::com::suyin::proto::friend_info* info_;
   ::google::protobuf::int32 type_;
 
   mutable int _cached_size_;
@@ -3899,16 +5315,16 @@ class UM_DelInvite : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // optional .friend_info info = 2;
+  // optional .com.suyin.proto.friend_info info = 2;
   inline bool has_info() const;
   inline void clear_info();
   static const int kInfoFieldNumber = 2;
-  inline const ::friend_info& info() const;
-  inline ::friend_info* mutable_info();
-  inline ::friend_info* release_info();
-  inline void set_allocated_info(::friend_info* info);
+  inline const ::com::suyin::proto::friend_info& info() const;
+  inline ::com::suyin::proto::friend_info* mutable_info();
+  inline ::com::suyin::proto::friend_info* release_info();
+  inline void set_allocated_info(::com::suyin::proto::friend_info* info);
 
-  // @@protoc_insertion_point(class_scope:UM_DelInvite)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_DelInvite)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -3917,7 +5333,7 @@ class UM_DelInvite : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::friend_info* info_;
+  ::com::suyin::proto::friend_info* info_;
   ::google::protobuf::int32 type_;
 
   mutable int _cached_size_;
@@ -3993,7 +5409,7 @@ class UM_ToBlack : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ToBlack)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ToBlack)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -4068,23 +5484,23 @@ class UM_AddBlack : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .friend_info info = 1;
+  // optional .com.suyin.proto.friend_info info = 1;
   inline bool has_info() const;
   inline void clear_info();
   static const int kInfoFieldNumber = 1;
-  inline const ::friend_info& info() const;
-  inline ::friend_info* mutable_info();
-  inline ::friend_info* release_info();
-  inline void set_allocated_info(::friend_info* info);
+  inline const ::com::suyin::proto::friend_info& info() const;
+  inline ::com::suyin::proto::friend_info* mutable_info();
+  inline ::com::suyin::proto::friend_info* release_info();
+  inline void set_allocated_info(::com::suyin::proto::friend_info* info);
 
-  // @@protoc_insertion_point(class_scope:UM_AddBlack)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_AddBlack)
  private:
   inline void set_has_info();
   inline void clear_has_info();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::friend_info* info_;
+  ::com::suyin::proto::friend_info* info_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -4159,7 +5575,7 @@ class UM_ReqSeasonRank : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ReqSeasonRank)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqSeasonRank)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -4234,24 +5650,24 @@ class UM_SeasonRank : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .season_rank list = 1;
+  // repeated .com.suyin.proto.season_rank list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::season_rank& list(int index) const;
-  inline ::season_rank* mutable_list(int index);
-  inline ::season_rank* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::season_rank >&
+  inline const ::com::suyin::proto::season_rank& list(int index) const;
+  inline ::com::suyin::proto::season_rank* mutable_list(int index);
+  inline ::com::suyin::proto::season_rank* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::season_rank >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::season_rank >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::season_rank >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_SeasonRank)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SeasonRank)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::season_rank > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::season_rank > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -4326,7 +5742,7 @@ class UM_ReqGameRecord : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ReqGameRecord)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqGameRecord)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -4401,24 +5817,24 @@ class UM_GameRecord : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .game_record list = 1;
+  // repeated .com.suyin.proto.game_record list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::game_record& list(int index) const;
-  inline ::game_record* mutable_list(int index);
-  inline ::game_record* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::game_record >&
+  inline const ::com::suyin::proto::game_record& list(int index) const;
+  inline ::com::suyin::proto::game_record* mutable_list(int index);
+  inline ::com::suyin::proto::game_record* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::game_record >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::game_record >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::game_record >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_GameRecord)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_GameRecord)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::game_record > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::game_record > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -4486,23 +5902,23 @@ class UM_SetPhoto : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .photo_data data = 1;
+  // optional .com.suyin.proto.photo_data data = 1;
   inline bool has_data() const;
   inline void clear_data();
   static const int kDataFieldNumber = 1;
-  inline const ::photo_data& data() const;
-  inline ::photo_data* mutable_data();
-  inline ::photo_data* release_data();
-  inline void set_allocated_data(::photo_data* data);
+  inline const ::com::suyin::proto::photo_data& data() const;
+  inline ::com::suyin::proto::photo_data* mutable_data();
+  inline ::com::suyin::proto::photo_data* release_data();
+  inline void set_allocated_data(::com::suyin::proto::photo_data* data);
 
-  // @@protoc_insertion_point(class_scope:UM_SetPhoto)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SetPhoto)
  private:
   inline void set_has_data();
   inline void clear_has_data();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::photo_data* data_;
+  ::com::suyin::proto::photo_data* data_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -4577,7 +5993,7 @@ class UM_ReqPhotos : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_ReqPhotos)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqPhotos)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
@@ -4652,16 +6068,16 @@ class UM_Photos : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .photo_data list = 1;
+  // repeated .com.suyin.proto.photo_data list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::photo_data& list(int index) const;
-  inline ::photo_data* mutable_list(int index);
-  inline ::photo_data* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::photo_data >&
+  inline const ::com::suyin::proto::photo_data& list(int index) const;
+  inline ::com::suyin::proto::photo_data* mutable_list(int index);
+  inline ::com::suyin::proto::photo_data* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::photo_data >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::photo_data >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::photo_data >*
       mutable_list();
 
   // optional uint32 roleid = 2;
@@ -4671,14 +6087,14 @@ class UM_Photos : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 roleid() const;
   inline void set_roleid(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_Photos)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Photos)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::photo_data > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::photo_data > list_;
   ::google::protobuf::uint32 roleid_;
 
   mutable int _cached_size_;
@@ -4778,7 +6194,7 @@ class UM_SetName : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 sex() const;
   inline void set_sex(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_SetName)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SetName)
  private:
   inline void set_has_name();
   inline void clear_has_name();
@@ -4866,7 +6282,7 @@ class UM_SetSex : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 sex() const;
   inline void set_sex(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_SetSex)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SetSex)
  private:
   inline void set_has_sex();
   inline void clear_has_sex();
@@ -4953,7 +6369,7 @@ class UM_SetDesc : public ::google::protobuf::Message {
   inline ::std::string* release_desc();
   inline void set_allocated_desc(::std::string* desc);
 
-  // @@protoc_insertion_point(class_scope:UM_SetDesc)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SetDesc)
  private:
   inline void set_has_desc();
   inline void clear_has_desc();
@@ -5042,7 +6458,7 @@ class UM_SetGeo : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 city() const;
   inline void set_city(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:UM_SetGeo)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SetGeo)
  private:
   inline void set_has_province();
   inline void clear_has_province();
@@ -5139,7 +6555,7 @@ class UM_SetIcon : public ::google::protobuf::Message {
   inline ::std::string* release_data();
   inline void set_allocated_data(::std::string* data);
 
-  // @@protoc_insertion_point(class_scope:UM_SetIcon)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_SetIcon)
  private:
   inline void set_has_icon();
   inline void clear_has_icon();
@@ -5217,7 +6633,7 @@ class UM_GetTicket : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:UM_GetTicket)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_GetTicket)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -5301,7 +6717,7 @@ class UM_ReqIcons : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_ReqIcons)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_ReqIcons)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -5374,24 +6790,24 @@ class UM_Icons : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .icon_data list = 1;
+  // repeated .com.suyin.proto.icon_data list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::icon_data& list(int index) const;
-  inline ::icon_data* mutable_list(int index);
-  inline ::icon_data* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::icon_data >&
+  inline const ::com::suyin::proto::icon_data& list(int index) const;
+  inline ::com::suyin::proto::icon_data* mutable_list(int index);
+  inline ::com::suyin::proto::icon_data* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::icon_data >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::icon_data >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::icon_data >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_Icons)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Icons)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::icon_data > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::icon_data > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -5459,7 +6875,7 @@ class UM_Sign : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:UM_Sign)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Sign)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -5531,7 +6947,7 @@ class UM_Award : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:UM_Award)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Award)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -5603,24 +7019,24 @@ class UM_AwardList : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .award_info list = 1;
+  // repeated .com.suyin.proto.award_info list = 1;
   inline int list_size() const;
   inline void clear_list();
   static const int kListFieldNumber = 1;
-  inline const ::award_info& list(int index) const;
-  inline ::award_info* mutable_list(int index);
-  inline ::award_info* add_list();
-  inline const ::google::protobuf::RepeatedPtrField< ::award_info >&
+  inline const ::com::suyin::proto::award_info& list(int index) const;
+  inline ::com::suyin::proto::award_info* mutable_list(int index);
+  inline ::com::suyin::proto::award_info* add_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info >&
       list() const;
-  inline ::google::protobuf::RepeatedPtrField< ::award_info >*
+  inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info >*
       mutable_list();
 
-  // @@protoc_insertion_point(class_scope:UM_AwardList)
+  // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_AwardList)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::award_info > list_;
+  ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info > list_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -5781,6 +7197,1081 @@ inline void UM_Login::set_allocated_passwd(::std::string* passwd) {
 
 // -------------------------------------------------------------------
 
+// UM_BindAccout
+
+// required string acc = 1;
+inline bool UM_BindAccout::has_acc() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_BindAccout::set_has_acc() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_BindAccout::clear_has_acc() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_BindAccout::clear_acc() {
+  if (acc_ != &::google::protobuf::internal::kEmptyString) {
+    acc_->clear();
+  }
+  clear_has_acc();
+}
+inline const ::std::string& UM_BindAccout::acc() const {
+  return *acc_;
+}
+inline void UM_BindAccout::set_acc(const ::std::string& value) {
+  set_has_acc();
+  if (acc_ == &::google::protobuf::internal::kEmptyString) {
+    acc_ = new ::std::string;
+  }
+  acc_->assign(value);
+}
+inline void UM_BindAccout::set_acc(const char* value) {
+  set_has_acc();
+  if (acc_ == &::google::protobuf::internal::kEmptyString) {
+    acc_ = new ::std::string;
+  }
+  acc_->assign(value);
+}
+inline void UM_BindAccout::set_acc(const char* value, size_t size) {
+  set_has_acc();
+  if (acc_ == &::google::protobuf::internal::kEmptyString) {
+    acc_ = new ::std::string;
+  }
+  acc_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_BindAccout::mutable_acc() {
+  set_has_acc();
+  if (acc_ == &::google::protobuf::internal::kEmptyString) {
+    acc_ = new ::std::string;
+  }
+  return acc_;
+}
+inline ::std::string* UM_BindAccout::release_acc() {
+  clear_has_acc();
+  if (acc_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = acc_;
+    acc_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_BindAccout::set_allocated_acc(::std::string* acc) {
+  if (acc_ != &::google::protobuf::internal::kEmptyString) {
+    delete acc_;
+  }
+  if (acc) {
+    set_has_acc();
+    acc_ = acc;
+  } else {
+    clear_has_acc();
+    acc_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// required string passwd = 2;
+inline bool UM_BindAccout::has_passwd() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UM_BindAccout::set_has_passwd() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UM_BindAccout::clear_has_passwd() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UM_BindAccout::clear_passwd() {
+  if (passwd_ != &::google::protobuf::internal::kEmptyString) {
+    passwd_->clear();
+  }
+  clear_has_passwd();
+}
+inline const ::std::string& UM_BindAccout::passwd() const {
+  return *passwd_;
+}
+inline void UM_BindAccout::set_passwd(const ::std::string& value) {
+  set_has_passwd();
+  if (passwd_ == &::google::protobuf::internal::kEmptyString) {
+    passwd_ = new ::std::string;
+  }
+  passwd_->assign(value);
+}
+inline void UM_BindAccout::set_passwd(const char* value) {
+  set_has_passwd();
+  if (passwd_ == &::google::protobuf::internal::kEmptyString) {
+    passwd_ = new ::std::string;
+  }
+  passwd_->assign(value);
+}
+inline void UM_BindAccout::set_passwd(const char* value, size_t size) {
+  set_has_passwd();
+  if (passwd_ == &::google::protobuf::internal::kEmptyString) {
+    passwd_ = new ::std::string;
+  }
+  passwd_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_BindAccout::mutable_passwd() {
+  set_has_passwd();
+  if (passwd_ == &::google::protobuf::internal::kEmptyString) {
+    passwd_ = new ::std::string;
+  }
+  return passwd_;
+}
+inline ::std::string* UM_BindAccout::release_passwd() {
+  clear_has_passwd();
+  if (passwd_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = passwd_;
+    passwd_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_BindAccout::set_allocated_passwd(::std::string* passwd) {
+  if (passwd_ != &::google::protobuf::internal::kEmptyString) {
+    delete passwd_;
+  }
+  if (passwd) {
+    set_has_passwd();
+    passwd_ = passwd;
+  } else {
+    clear_has_passwd();
+    passwd_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// required string mail = 3;
+inline bool UM_BindAccout::has_mail() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void UM_BindAccout::set_has_mail() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void UM_BindAccout::clear_has_mail() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void UM_BindAccout::clear_mail() {
+  if (mail_ != &::google::protobuf::internal::kEmptyString) {
+    mail_->clear();
+  }
+  clear_has_mail();
+}
+inline const ::std::string& UM_BindAccout::mail() const {
+  return *mail_;
+}
+inline void UM_BindAccout::set_mail(const ::std::string& value) {
+  set_has_mail();
+  if (mail_ == &::google::protobuf::internal::kEmptyString) {
+    mail_ = new ::std::string;
+  }
+  mail_->assign(value);
+}
+inline void UM_BindAccout::set_mail(const char* value) {
+  set_has_mail();
+  if (mail_ == &::google::protobuf::internal::kEmptyString) {
+    mail_ = new ::std::string;
+  }
+  mail_->assign(value);
+}
+inline void UM_BindAccout::set_mail(const char* value, size_t size) {
+  set_has_mail();
+  if (mail_ == &::google::protobuf::internal::kEmptyString) {
+    mail_ = new ::std::string;
+  }
+  mail_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_BindAccout::mutable_mail() {
+  set_has_mail();
+  if (mail_ == &::google::protobuf::internal::kEmptyString) {
+    mail_ = new ::std::string;
+  }
+  return mail_;
+}
+inline ::std::string* UM_BindAccout::release_mail() {
+  clear_has_mail();
+  if (mail_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = mail_;
+    mail_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_BindAccout::set_allocated_mail(::std::string* mail) {
+  if (mail_ != &::google::protobuf::internal::kEmptyString) {
+    delete mail_;
+  }
+  if (mail) {
+    set_has_mail();
+    mail_ = mail;
+  } else {
+    clear_has_mail();
+    mail_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// UM_ReqVersion
+
+// required string type = 1;
+inline bool UM_ReqVersion::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_ReqVersion::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_ReqVersion::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_ReqVersion::clear_type() {
+  if (type_ != &::google::protobuf::internal::kEmptyString) {
+    type_->clear();
+  }
+  clear_has_type();
+}
+inline const ::std::string& UM_ReqVersion::type() const {
+  return *type_;
+}
+inline void UM_ReqVersion::set_type(const ::std::string& value) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::kEmptyString) {
+    type_ = new ::std::string;
+  }
+  type_->assign(value);
+}
+inline void UM_ReqVersion::set_type(const char* value) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::kEmptyString) {
+    type_ = new ::std::string;
+  }
+  type_->assign(value);
+}
+inline void UM_ReqVersion::set_type(const char* value, size_t size) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::kEmptyString) {
+    type_ = new ::std::string;
+  }
+  type_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_ReqVersion::mutable_type() {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::kEmptyString) {
+    type_ = new ::std::string;
+  }
+  return type_;
+}
+inline ::std::string* UM_ReqVersion::release_type() {
+  clear_has_type();
+  if (type_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = type_;
+    type_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_ReqVersion::set_allocated_type(::std::string* type) {
+  if (type_ != &::google::protobuf::internal::kEmptyString) {
+    delete type_;
+  }
+  if (type) {
+    set_has_type();
+    type_ = type;
+  } else {
+    clear_has_type();
+    type_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// UM_Version
+
+// required string version = 1;
+inline bool UM_Version::has_version() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_Version::set_has_version() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_Version::clear_has_version() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_Version::clear_version() {
+  if (version_ != &::google::protobuf::internal::kEmptyString) {
+    version_->clear();
+  }
+  clear_has_version();
+}
+inline const ::std::string& UM_Version::version() const {
+  return *version_;
+}
+inline void UM_Version::set_version(const ::std::string& value) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    version_ = new ::std::string;
+  }
+  version_->assign(value);
+}
+inline void UM_Version::set_version(const char* value) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    version_ = new ::std::string;
+  }
+  version_->assign(value);
+}
+inline void UM_Version::set_version(const char* value, size_t size) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    version_ = new ::std::string;
+  }
+  version_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_Version::mutable_version() {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    version_ = new ::std::string;
+  }
+  return version_;
+}
+inline ::std::string* UM_Version::release_version() {
+  clear_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = version_;
+    version_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_Version::set_allocated_version(::std::string* version) {
+  if (version_ != &::google::protobuf::internal::kEmptyString) {
+    delete version_;
+  }
+  if (version) {
+    set_has_version();
+    version_ = version;
+  } else {
+    clear_has_version();
+    version_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// required string url = 2;
+inline bool UM_Version::has_url() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UM_Version::set_has_url() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UM_Version::clear_has_url() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UM_Version::clear_url() {
+  if (url_ != &::google::protobuf::internal::kEmptyString) {
+    url_->clear();
+  }
+  clear_has_url();
+}
+inline const ::std::string& UM_Version::url() const {
+  return *url_;
+}
+inline void UM_Version::set_url(const ::std::string& value) {
+  set_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    url_ = new ::std::string;
+  }
+  url_->assign(value);
+}
+inline void UM_Version::set_url(const char* value) {
+  set_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    url_ = new ::std::string;
+  }
+  url_->assign(value);
+}
+inline void UM_Version::set_url(const char* value, size_t size) {
+  set_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    url_ = new ::std::string;
+  }
+  url_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_Version::mutable_url() {
+  set_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    url_ = new ::std::string;
+  }
+  return url_;
+}
+inline ::std::string* UM_Version::release_url() {
+  clear_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = url_;
+    url_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_Version::set_allocated_url(::std::string* url) {
+  if (url_ != &::google::protobuf::internal::kEmptyString) {
+    delete url_;
+  }
+  if (url) {
+    set_has_url();
+    url_ = url;
+  } else {
+    clear_has_url();
+    url_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// UM_ReqShowMsg
+
+// required string version = 1;
+inline bool UM_ReqShowMsg::has_version() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_ReqShowMsg::set_has_version() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_ReqShowMsg::clear_has_version() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_ReqShowMsg::clear_version() {
+  if (version_ != &::google::protobuf::internal::kEmptyString) {
+    version_->clear();
+  }
+  clear_has_version();
+}
+inline const ::std::string& UM_ReqShowMsg::version() const {
+  return *version_;
+}
+inline void UM_ReqShowMsg::set_version(const ::std::string& value) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    version_ = new ::std::string;
+  }
+  version_->assign(value);
+}
+inline void UM_ReqShowMsg::set_version(const char* value) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    version_ = new ::std::string;
+  }
+  version_->assign(value);
+}
+inline void UM_ReqShowMsg::set_version(const char* value, size_t size) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    version_ = new ::std::string;
+  }
+  version_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_ReqShowMsg::mutable_version() {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    version_ = new ::std::string;
+  }
+  return version_;
+}
+inline ::std::string* UM_ReqShowMsg::release_version() {
+  clear_has_version();
+  if (version_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = version_;
+    version_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_ReqShowMsg::set_allocated_version(::std::string* version) {
+  if (version_ != &::google::protobuf::internal::kEmptyString) {
+    delete version_;
+  }
+  if (version) {
+    set_has_version();
+    version_ = version;
+  } else {
+    clear_has_version();
+    version_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// UM_ShoMsg
+
+// optional bool activity = 1;
+inline bool UM_ShoMsg::has_activity() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_ShoMsg::set_has_activity() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_ShoMsg::clear_has_activity() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_ShoMsg::clear_activity() {
+  activity_ = false;
+  clear_has_activity();
+}
+inline bool UM_ShoMsg::activity() const {
+  return activity_;
+}
+inline void UM_ShoMsg::set_activity(bool value) {
+  set_has_activity();
+  activity_ = value;
+}
+
+// optional bool chat = 2;
+inline bool UM_ShoMsg::has_chat() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UM_ShoMsg::set_has_chat() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UM_ShoMsg::clear_has_chat() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UM_ShoMsg::clear_chat() {
+  chat_ = false;
+  clear_has_chat();
+}
+inline bool UM_ShoMsg::chat() const {
+  return chat_;
+}
+inline void UM_ShoMsg::set_chat(bool value) {
+  set_has_chat();
+  chat_ = value;
+}
+
+// optional bool pvp = 3;
+inline bool UM_ShoMsg::has_pvp() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void UM_ShoMsg::set_has_pvp() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void UM_ShoMsg::clear_has_pvp() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void UM_ShoMsg::clear_pvp() {
+  pvp_ = false;
+  clear_has_pvp();
+}
+inline bool UM_ShoMsg::pvp() const {
+  return pvp_;
+}
+inline void UM_ShoMsg::set_pvp(bool value) {
+  set_has_pvp();
+  pvp_ = value;
+}
+
+// optional bool sybtn = 4;
+inline bool UM_ShoMsg::has_sybtn() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void UM_ShoMsg::set_has_sybtn() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void UM_ShoMsg::clear_has_sybtn() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void UM_ShoMsg::clear_sybtn() {
+  sybtn_ = false;
+  clear_has_sybtn();
+}
+inline bool UM_ShoMsg::sybtn() const {
+  return sybtn_;
+}
+inline void UM_ShoMsg::set_sybtn(bool value) {
+  set_has_sybtn();
+  sybtn_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// UM_ReqActivity
+
+// -------------------------------------------------------------------
+
+// UM_Activity
+
+// required int32 id = 1;
+inline bool UM_Activity::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_Activity::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_Activity::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_Activity::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 UM_Activity::id() const {
+  return id_;
+}
+inline void UM_Activity::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+}
+
+// required string url = 2;
+inline bool UM_Activity::has_url() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UM_Activity::set_has_url() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UM_Activity::clear_has_url() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UM_Activity::clear_url() {
+  if (url_ != &::google::protobuf::internal::kEmptyString) {
+    url_->clear();
+  }
+  clear_has_url();
+}
+inline const ::std::string& UM_Activity::url() const {
+  return *url_;
+}
+inline void UM_Activity::set_url(const ::std::string& value) {
+  set_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    url_ = new ::std::string;
+  }
+  url_->assign(value);
+}
+inline void UM_Activity::set_url(const char* value) {
+  set_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    url_ = new ::std::string;
+  }
+  url_->assign(value);
+}
+inline void UM_Activity::set_url(const char* value, size_t size) {
+  set_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    url_ = new ::std::string;
+  }
+  url_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_Activity::mutable_url() {
+  set_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    url_ = new ::std::string;
+  }
+  return url_;
+}
+inline ::std::string* UM_Activity::release_url() {
+  clear_has_url();
+  if (url_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = url_;
+    url_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_Activity::set_allocated_url(::std::string* url) {
+  if (url_ != &::google::protobuf::internal::kEmptyString) {
+    delete url_;
+  }
+  if (url) {
+    set_has_url();
+    url_ = url;
+  } else {
+    clear_has_url();
+    url_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// UM_Activities
+
+// repeated .com.suyin.proto.UM_Activity activites = 1;
+inline int UM_Activities::activites_size() const {
+  return activites_.size();
+}
+inline void UM_Activities::clear_activites() {
+  activites_.Clear();
+}
+inline const ::com::suyin::proto::UM_Activity& UM_Activities::activites(int index) const {
+  return activites_.Get(index);
+}
+inline ::com::suyin::proto::UM_Activity* UM_Activities::mutable_activites(int index) {
+  return activites_.Mutable(index);
+}
+inline ::com::suyin::proto::UM_Activity* UM_Activities::add_activites() {
+  return activites_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::UM_Activity >&
+UM_Activities::activites() const {
+  return activites_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::UM_Activity >*
+UM_Activities::mutable_activites() {
+  return &activites_;
+}
+
+// -------------------------------------------------------------------
+
+// UM_ReqReconncet
+
+// required string playerid = 1;
+inline bool UM_ReqReconncet::has_playerid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_ReqReconncet::set_has_playerid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_ReqReconncet::clear_has_playerid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_ReqReconncet::clear_playerid() {
+  if (playerid_ != &::google::protobuf::internal::kEmptyString) {
+    playerid_->clear();
+  }
+  clear_has_playerid();
+}
+inline const ::std::string& UM_ReqReconncet::playerid() const {
+  return *playerid_;
+}
+inline void UM_ReqReconncet::set_playerid(const ::std::string& value) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(value);
+}
+inline void UM_ReqReconncet::set_playerid(const char* value) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(value);
+}
+inline void UM_ReqReconncet::set_playerid(const char* value, size_t size) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_ReqReconncet::mutable_playerid() {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  return playerid_;
+}
+inline ::std::string* UM_ReqReconncet::release_playerid() {
+  clear_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = playerid_;
+    playerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_ReqReconncet::set_allocated_playerid(::std::string* playerid) {
+  if (playerid_ != &::google::protobuf::internal::kEmptyString) {
+    delete playerid_;
+  }
+  if (playerid) {
+    set_has_playerid();
+    playerid_ = playerid;
+  } else {
+    clear_has_playerid();
+    playerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// UM_Reconnect
+
+// required bool connect = 1;
+inline bool UM_Reconnect::has_connect() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_Reconnect::set_has_connect() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_Reconnect::clear_has_connect() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_Reconnect::clear_connect() {
+  connect_ = false;
+  clear_has_connect();
+}
+inline bool UM_Reconnect::connect() const {
+  return connect_;
+}
+inline void UM_Reconnect::set_connect(bool value) {
+  set_has_connect();
+  connect_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// UM_ReqTeamFight
+
+// required string playerid = 1;
+inline bool UM_ReqTeamFight::has_playerid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_ReqTeamFight::set_has_playerid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_ReqTeamFight::clear_has_playerid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_ReqTeamFight::clear_playerid() {
+  if (playerid_ != &::google::protobuf::internal::kEmptyString) {
+    playerid_->clear();
+  }
+  clear_has_playerid();
+}
+inline const ::std::string& UM_ReqTeamFight::playerid() const {
+  return *playerid_;
+}
+inline void UM_ReqTeamFight::set_playerid(const ::std::string& value) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(value);
+}
+inline void UM_ReqTeamFight::set_playerid(const char* value) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(value);
+}
+inline void UM_ReqTeamFight::set_playerid(const char* value, size_t size) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_ReqTeamFight::mutable_playerid() {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  return playerid_;
+}
+inline ::std::string* UM_ReqTeamFight::release_playerid() {
+  clear_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = playerid_;
+    playerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_ReqTeamFight::set_allocated_playerid(::std::string* playerid) {
+  if (playerid_ != &::google::protobuf::internal::kEmptyString) {
+    delete playerid_;
+  }
+  if (playerid) {
+    set_has_playerid();
+    playerid_ = playerid;
+  } else {
+    clear_has_playerid();
+    playerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional uint32 serverid = 2;
+inline bool UM_ReqTeamFight::has_serverid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UM_ReqTeamFight::set_has_serverid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UM_ReqTeamFight::clear_has_serverid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UM_ReqTeamFight::clear_serverid() {
+  serverid_ = 0u;
+  clear_has_serverid();
+}
+inline ::google::protobuf::uint32 UM_ReqTeamFight::serverid() const {
+  return serverid_;
+}
+inline void UM_ReqTeamFight::set_serverid(::google::protobuf::uint32 value) {
+  set_has_serverid();
+  serverid_ = value;
+}
+
+// optional int32 mode = 3;
+inline bool UM_ReqTeamFight::has_mode() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void UM_ReqTeamFight::set_has_mode() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void UM_ReqTeamFight::clear_has_mode() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void UM_ReqTeamFight::clear_mode() {
+  mode_ = 0;
+  clear_has_mode();
+}
+inline ::google::protobuf::int32 UM_ReqTeamFight::mode() const {
+  return mode_;
+}
+inline void UM_ReqTeamFight::set_mode(::google::protobuf::int32 value) {
+  set_has_mode();
+  mode_ = value;
+}
+
+// optional uint32 ticket_count = 4;
+inline bool UM_ReqTeamFight::has_ticket_count() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void UM_ReqTeamFight::set_has_ticket_count() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void UM_ReqTeamFight::clear_has_ticket_count() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void UM_ReqTeamFight::clear_ticket_count() {
+  ticket_count_ = 0u;
+  clear_has_ticket_count();
+}
+inline ::google::protobuf::uint32 UM_ReqTeamFight::ticket_count() const {
+  return ticket_count_;
+}
+inline void UM_ReqTeamFight::set_ticket_count(::google::protobuf::uint32 value) {
+  set_has_ticket_count();
+  ticket_count_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// UM_ReadyFight
+
+// optional uint32 time = 1;
+inline bool UM_ReadyFight::has_time() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_ReadyFight::set_has_time() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_ReadyFight::clear_has_time() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_ReadyFight::clear_time() {
+  time_ = 0u;
+  clear_has_time();
+}
+inline ::google::protobuf::uint32 UM_ReadyFight::time() const {
+  return time_;
+}
+inline void UM_ReadyFight::set_time(::google::protobuf::uint32 value) {
+  set_has_time();
+  time_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// UM_TeamFight
+
+// -------------------------------------------------------------------
+
+// UM_ReqCancelFight
+
+// required string playerid = 1;
+inline bool UM_ReqCancelFight::has_playerid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UM_ReqCancelFight::set_has_playerid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UM_ReqCancelFight::clear_has_playerid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_ReqCancelFight::clear_playerid() {
+  if (playerid_ != &::google::protobuf::internal::kEmptyString) {
+    playerid_->clear();
+  }
+  clear_has_playerid();
+}
+inline const ::std::string& UM_ReqCancelFight::playerid() const {
+  return *playerid_;
+}
+inline void UM_ReqCancelFight::set_playerid(const ::std::string& value) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(value);
+}
+inline void UM_ReqCancelFight::set_playerid(const char* value) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(value);
+}
+inline void UM_ReqCancelFight::set_playerid(const char* value, size_t size) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_ReqCancelFight::mutable_playerid() {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  return playerid_;
+}
+inline ::std::string* UM_ReqCancelFight::release_playerid() {
+  clear_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = playerid_;
+    playerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_ReqCancelFight::set_allocated_playerid(::std::string* playerid) {
+  if (playerid_ != &::google::protobuf::internal::kEmptyString) {
+    delete playerid_;
+  }
+  if (playerid) {
+    set_has_playerid();
+    playerid_ = playerid;
+  } else {
+    clear_has_playerid();
+    playerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// UM_CancelFight
+
+// -------------------------------------------------------------------
+
 // UM_Logout
 
 // optional int32 err = 1;
@@ -5809,7 +8300,7 @@ inline void UM_Logout::set_err(::google::protobuf::int32 value) {
 
 // UM_EnterGame
 
-// optional .role_info info = 1;
+// optional .com.suyin.proto.role_info info = 1;
 inline bool UM_EnterGame::has_info() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -5820,24 +8311,24 @@ inline void UM_EnterGame::clear_has_info() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void UM_EnterGame::clear_info() {
-  if (info_ != NULL) info_->::role_info::Clear();
+  if (info_ != NULL) info_->::com::suyin::proto::role_info::Clear();
   clear_has_info();
 }
-inline const ::role_info& UM_EnterGame::info() const {
+inline const ::com::suyin::proto::role_info& UM_EnterGame::info() const {
   return info_ != NULL ? *info_ : *default_instance_->info_;
 }
-inline ::role_info* UM_EnterGame::mutable_info() {
+inline ::com::suyin::proto::role_info* UM_EnterGame::mutable_info() {
   set_has_info();
-  if (info_ == NULL) info_ = new ::role_info;
+  if (info_ == NULL) info_ = new ::com::suyin::proto::role_info;
   return info_;
 }
-inline ::role_info* UM_EnterGame::release_info() {
+inline ::com::suyin::proto::role_info* UM_EnterGame::release_info() {
   clear_has_info();
-  ::role_info* temp = info_;
+  ::com::suyin::proto::role_info* temp = info_;
   info_ = NULL;
   return temp;
 }
-inline void UM_EnterGame::set_allocated_info(::role_info* info) {
+inline void UM_EnterGame::set_allocated_info(::com::suyin::proto::role_info* info) {
   delete info_;
   info_ = info;
   if (info) {
@@ -5895,7 +8386,7 @@ inline void UM_EnterGame::set_fighting(bool value) {
 
 // UM_SyncRole
 
-// optional .role_info info = 1;
+// optional .com.suyin.proto.role_info info = 1;
 inline bool UM_SyncRole::has_info() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -5906,24 +8397,24 @@ inline void UM_SyncRole::clear_has_info() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void UM_SyncRole::clear_info() {
-  if (info_ != NULL) info_->::role_info::Clear();
+  if (info_ != NULL) info_->::com::suyin::proto::role_info::Clear();
   clear_has_info();
 }
-inline const ::role_info& UM_SyncRole::info() const {
+inline const ::com::suyin::proto::role_info& UM_SyncRole::info() const {
   return info_ != NULL ? *info_ : *default_instance_->info_;
 }
-inline ::role_info* UM_SyncRole::mutable_info() {
+inline ::com::suyin::proto::role_info* UM_SyncRole::mutable_info() {
   set_has_info();
-  if (info_ == NULL) info_ = new ::role_info;
+  if (info_ == NULL) info_ = new ::com::suyin::proto::role_info;
   return info_;
 }
-inline ::role_info* UM_SyncRole::release_info() {
+inline ::com::suyin::proto::role_info* UM_SyncRole::release_info() {
   clear_has_info();
-  ::role_info* temp = info_;
+  ::com::suyin::proto::role_info* temp = info_;
   info_ = NULL;
   return temp;
 }
-inline void UM_SyncRole::set_allocated_info(::role_info* info) {
+inline void UM_SyncRole::set_allocated_info(::com::suyin::proto::role_info* info) {
   delete info_;
   info_ = info;
   if (info) {
@@ -5989,27 +8480,27 @@ inline void UM_UseItem::set_id(::google::protobuf::uint32 value) {
 
 // UM_ItemUpdate
 
-// repeated .item_info list = 1;
+// repeated .com.suyin.proto.item_info list = 1;
 inline int UM_ItemUpdate::list_size() const {
   return list_.size();
 }
 inline void UM_ItemUpdate::clear_list() {
   list_.Clear();
 }
-inline const ::item_info& UM_ItemUpdate::list(int index) const {
+inline const ::com::suyin::proto::item_info& UM_ItemUpdate::list(int index) const {
   return list_.Get(index);
 }
-inline ::item_info* UM_ItemUpdate::mutable_list(int index) {
+inline ::com::suyin::proto::item_info* UM_ItemUpdate::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::item_info* UM_ItemUpdate::add_list() {
+inline ::com::suyin::proto::item_info* UM_ItemUpdate::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::item_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >&
 UM_ItemUpdate::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::item_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::item_info >*
 UM_ItemUpdate::mutable_list() {
   return &list_;
 }
@@ -6118,27 +8609,27 @@ inline void UM_EquipUpdate::set_id(::google::protobuf::uint32 value) {
 
 // UM_Shop
 
-// repeated .shop_item list = 1;
+// repeated .com.suyin.proto.shop_item list = 1;
 inline int UM_Shop::list_size() const {
   return list_.size();
 }
 inline void UM_Shop::clear_list() {
   list_.Clear();
 }
-inline const ::shop_item& UM_Shop::list(int index) const {
+inline const ::com::suyin::proto::shop_item& UM_Shop::list(int index) const {
   return list_.Get(index);
 }
-inline ::shop_item* UM_Shop::mutable_list(int index) {
+inline ::com::suyin::proto::shop_item* UM_Shop::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::shop_item* UM_Shop::add_list() {
+inline ::com::suyin::proto::shop_item* UM_Shop::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::shop_item >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::shop_item >&
 UM_Shop::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::shop_item >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::shop_item >*
 UM_Shop::mutable_list() {
   return &list_;
 }
@@ -6203,27 +8694,27 @@ inline void UM_Hero::set_herolevel(::google::protobuf::uint32 value) {
 
 // UM_ServerList
 
-// repeated .server_info list = 1;
+// repeated .com.suyin.proto.server_info list = 1;
 inline int UM_ServerList::list_size() const {
   return list_.size();
 }
 inline void UM_ServerList::clear_list() {
   list_.Clear();
 }
-inline const ::server_info& UM_ServerList::list(int index) const {
+inline const ::com::suyin::proto::server_info& UM_ServerList::list(int index) const {
   return list_.Get(index);
 }
-inline ::server_info* UM_ServerList::mutable_list(int index) {
+inline ::com::suyin::proto::server_info* UM_ServerList::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::server_info* UM_ServerList::add_list() {
+inline ::com::suyin::proto::server_info* UM_ServerList::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::server_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::server_info >&
 UM_ServerList::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::server_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::server_info >*
 UM_ServerList::mutable_list() {
   return &list_;
 }
@@ -6232,15 +8723,85 @@ UM_ServerList::mutable_list() {
 
 // UM_ReqLoginFight
 
-// optional uint32 serverid = 1;
-inline bool UM_ReqLoginFight::has_serverid() const {
+// required string playerid = 1;
+inline bool UM_ReqLoginFight::has_playerid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void UM_ReqLoginFight::set_has_serverid() {
+inline void UM_ReqLoginFight::set_has_playerid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void UM_ReqLoginFight::clear_has_serverid() {
+inline void UM_ReqLoginFight::clear_has_playerid() {
   _has_bits_[0] &= ~0x00000001u;
+}
+inline void UM_ReqLoginFight::clear_playerid() {
+  if (playerid_ != &::google::protobuf::internal::kEmptyString) {
+    playerid_->clear();
+  }
+  clear_has_playerid();
+}
+inline const ::std::string& UM_ReqLoginFight::playerid() const {
+  return *playerid_;
+}
+inline void UM_ReqLoginFight::set_playerid(const ::std::string& value) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(value);
+}
+inline void UM_ReqLoginFight::set_playerid(const char* value) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(value);
+}
+inline void UM_ReqLoginFight::set_playerid(const char* value, size_t size) {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  playerid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_ReqLoginFight::mutable_playerid() {
+  set_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    playerid_ = new ::std::string;
+  }
+  return playerid_;
+}
+inline ::std::string* UM_ReqLoginFight::release_playerid() {
+  clear_has_playerid();
+  if (playerid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = playerid_;
+    playerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_ReqLoginFight::set_allocated_playerid(::std::string* playerid) {
+  if (playerid_ != &::google::protobuf::internal::kEmptyString) {
+    delete playerid_;
+  }
+  if (playerid) {
+    set_has_playerid();
+    playerid_ = playerid;
+  } else {
+    clear_has_playerid();
+    playerid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional uint32 serverid = 2;
+inline bool UM_ReqLoginFight::has_serverid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UM_ReqLoginFight::set_has_serverid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UM_ReqLoginFight::clear_has_serverid() {
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void UM_ReqLoginFight::clear_serverid() {
   serverid_ = 0u;
@@ -6254,15 +8815,15 @@ inline void UM_ReqLoginFight::set_serverid(::google::protobuf::uint32 value) {
   serverid_ = value;
 }
 
-// optional int32 mode = 2;
+// optional int32 mode = 3;
 inline bool UM_ReqLoginFight::has_mode() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void UM_ReqLoginFight::set_has_mode() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void UM_ReqLoginFight::clear_has_mode() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void UM_ReqLoginFight::clear_mode() {
   mode_ = 0;
@@ -6276,15 +8837,15 @@ inline void UM_ReqLoginFight::set_mode(::google::protobuf::int32 value) {
   mode_ = value;
 }
 
-// optional uint32 ticket_count = 3;
+// optional uint32 ticket_count = 4;
 inline bool UM_ReqLoginFight::has_ticket_count() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void UM_ReqLoginFight::set_has_ticket_count() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void UM_ReqLoginFight::clear_has_ticket_count() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void UM_ReqLoginFight::clear_ticket_count() {
   ticket_count_ = 0u;
@@ -6344,6 +8905,28 @@ inline ::google::protobuf::uint32 UM_LoginFightKey::key() const {
 inline void UM_LoginFightKey::set_key(::google::protobuf::uint32 value) {
   set_has_key();
   key_ = value;
+}
+
+// optional uint32 roomid = 3;
+inline bool UM_LoginFightKey::has_roomid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void UM_LoginFightKey::set_has_roomid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void UM_LoginFightKey::clear_has_roomid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void UM_LoginFightKey::clear_roomid() {
+  roomid_ = 0u;
+  clear_has_roomid();
+}
+inline ::google::protobuf::uint32 UM_LoginFightKey::roomid() const {
+  return roomid_;
+}
+inline void UM_LoginFightKey::set_roomid(::google::protobuf::uint32 value) {
+  set_has_roomid();
+  roomid_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -6572,7 +9155,7 @@ inline void UM_ReqRole::set_roleid(::google::protobuf::uint32 value) {
 
 // UM_RoleInfo
 
-// optional .role_info info = 1;
+// optional .com.suyin.proto.role_info info = 1;
 inline bool UM_RoleInfo::has_info() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -6583,24 +9166,24 @@ inline void UM_RoleInfo::clear_has_info() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void UM_RoleInfo::clear_info() {
-  if (info_ != NULL) info_->::role_info::Clear();
+  if (info_ != NULL) info_->::com::suyin::proto::role_info::Clear();
   clear_has_info();
 }
-inline const ::role_info& UM_RoleInfo::info() const {
+inline const ::com::suyin::proto::role_info& UM_RoleInfo::info() const {
   return info_ != NULL ? *info_ : *default_instance_->info_;
 }
-inline ::role_info* UM_RoleInfo::mutable_info() {
+inline ::com::suyin::proto::role_info* UM_RoleInfo::mutable_info() {
   set_has_info();
-  if (info_ == NULL) info_ = new ::role_info;
+  if (info_ == NULL) info_ = new ::com::suyin::proto::role_info;
   return info_;
 }
-inline ::role_info* UM_RoleInfo::release_info() {
+inline ::com::suyin::proto::role_info* UM_RoleInfo::release_info() {
   clear_has_info();
-  ::role_info* temp = info_;
+  ::com::suyin::proto::role_info* temp = info_;
   info_ = NULL;
   return temp;
 }
-inline void UM_RoleInfo::set_allocated_info(::role_info* info) {
+inline void UM_RoleInfo::set_allocated_info(::com::suyin::proto::role_info* info) {
   delete info_;
   info_ = info;
   if (info) {
@@ -6706,27 +9289,27 @@ inline void UM_ReqFans::set_roleid(::google::protobuf::uint32 value) {
 
 // UM_Fans
 
-// repeated .fans_info list = 1;
+// repeated .com.suyin.proto.fans_info list = 1;
 inline int UM_Fans::list_size() const {
   return list_.size();
 }
 inline void UM_Fans::clear_list() {
   list_.Clear();
 }
-inline const ::fans_info& UM_Fans::list(int index) const {
+inline const ::com::suyin::proto::fans_info& UM_Fans::list(int index) const {
   return list_.Get(index);
 }
-inline ::fans_info* UM_Fans::mutable_list(int index) {
+inline ::com::suyin::proto::fans_info* UM_Fans::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::fans_info* UM_Fans::add_list() {
+inline ::com::suyin::proto::fans_info* UM_Fans::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::fans_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::fans_info >&
 UM_Fans::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::fans_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::fans_info >*
 UM_Fans::mutable_list() {
   return &list_;
 }
@@ -6849,27 +9432,27 @@ inline void UM_ReqRanks::set_subtype(::google::protobuf::int32 value) {
 
 // UM_Ranks
 
-// repeated .rank_info list = 1;
+// repeated .com.suyin.proto.rank_info list = 1;
 inline int UM_Ranks::list_size() const {
   return list_.size();
 }
 inline void UM_Ranks::clear_list() {
   list_.Clear();
 }
-inline const ::rank_info& UM_Ranks::list(int index) const {
+inline const ::com::suyin::proto::rank_info& UM_Ranks::list(int index) const {
   return list_.Get(index);
 }
-inline ::rank_info* UM_Ranks::mutable_list(int index) {
+inline ::com::suyin::proto::rank_info* UM_Ranks::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::rank_info* UM_Ranks::add_list() {
+inline ::com::suyin::proto::rank_info* UM_Ranks::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rank_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::rank_info >&
 UM_Ranks::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rank_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::rank_info >*
 UM_Ranks::mutable_list() {
   return &list_;
 }
@@ -7241,27 +9824,27 @@ inline void UM_TopMsg::set_roleid(::google::protobuf::uint32 value) {
   roleid_ = value;
 }
 
-// repeated .msg_info list = 2;
+// repeated .com.suyin.proto.msg_info list = 2;
 inline int UM_TopMsg::list_size() const {
   return list_.size();
 }
 inline void UM_TopMsg::clear_list() {
   list_.Clear();
 }
-inline const ::msg_info& UM_TopMsg::list(int index) const {
+inline const ::com::suyin::proto::msg_info& UM_TopMsg::list(int index) const {
   return list_.Get(index);
 }
-inline ::msg_info* UM_TopMsg::mutable_list(int index) {
+inline ::com::suyin::proto::msg_info* UM_TopMsg::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::msg_info* UM_TopMsg::add_list() {
+inline ::com::suyin::proto::msg_info* UM_TopMsg::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::msg_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info >&
 UM_TopMsg::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::msg_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info >*
 UM_TopMsg::mutable_list() {
   return &list_;
 }
@@ -7336,27 +9919,27 @@ inline void UM_MsgList::set_range2(::google::protobuf::uint32 value) {
   range2_ = value;
 }
 
-// repeated .msg_info list = 4;
+// repeated .com.suyin.proto.msg_info list = 4;
 inline int UM_MsgList::list_size() const {
   return list_.size();
 }
 inline void UM_MsgList::clear_list() {
   list_.Clear();
 }
-inline const ::msg_info& UM_MsgList::list(int index) const {
+inline const ::com::suyin::proto::msg_info& UM_MsgList::list(int index) const {
   return list_.Get(index);
 }
-inline ::msg_info* UM_MsgList::mutable_list(int index) {
+inline ::com::suyin::proto::msg_info* UM_MsgList::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::msg_info* UM_MsgList::add_list() {
+inline ::com::suyin::proto::msg_info* UM_MsgList::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::msg_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info >&
 UM_MsgList::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::msg_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::msg_info >*
 UM_MsgList::mutable_list() {
   return &list_;
 }
@@ -7391,27 +9974,27 @@ inline void UM_GetFriend::set_type(::google::protobuf::int32 value) {
 
 // UM_Friends
 
-// repeated .friend_info list = 1;
+// repeated .com.suyin.proto.friend_info list = 1;
 inline int UM_Friends::list_size() const {
   return list_.size();
 }
 inline void UM_Friends::clear_list() {
   list_.Clear();
 }
-inline const ::friend_info& UM_Friends::list(int index) const {
+inline const ::com::suyin::proto::friend_info& UM_Friends::list(int index) const {
   return list_.Get(index);
 }
-inline ::friend_info* UM_Friends::mutable_list(int index) {
+inline ::com::suyin::proto::friend_info* UM_Friends::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::friend_info* UM_Friends::add_list() {
+inline ::com::suyin::proto::friend_info* UM_Friends::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::friend_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::friend_info >&
 UM_Friends::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::friend_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::friend_info >*
 UM_Friends::mutable_list() {
   return &list_;
 }
@@ -7512,7 +10095,7 @@ inline void UM_AddFriend::set_type(::google::protobuf::int32 value) {
   type_ = value;
 }
 
-// optional .friend_info info = 2;
+// optional .com.suyin.proto.friend_info info = 2;
 inline bool UM_AddFriend::has_info() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -7523,24 +10106,24 @@ inline void UM_AddFriend::clear_has_info() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void UM_AddFriend::clear_info() {
-  if (info_ != NULL) info_->::friend_info::Clear();
+  if (info_ != NULL) info_->::com::suyin::proto::friend_info::Clear();
   clear_has_info();
 }
-inline const ::friend_info& UM_AddFriend::info() const {
+inline const ::com::suyin::proto::friend_info& UM_AddFriend::info() const {
   return info_ != NULL ? *info_ : *default_instance_->info_;
 }
-inline ::friend_info* UM_AddFriend::mutable_info() {
+inline ::com::suyin::proto::friend_info* UM_AddFriend::mutable_info() {
   set_has_info();
-  if (info_ == NULL) info_ = new ::friend_info;
+  if (info_ == NULL) info_ = new ::com::suyin::proto::friend_info;
   return info_;
 }
-inline ::friend_info* UM_AddFriend::release_info() {
+inline ::com::suyin::proto::friend_info* UM_AddFriend::release_info() {
   clear_has_info();
-  ::friend_info* temp = info_;
+  ::com::suyin::proto::friend_info* temp = info_;
   info_ = NULL;
   return temp;
 }
-inline void UM_AddFriend::set_allocated_info(::friend_info* info) {
+inline void UM_AddFriend::set_allocated_info(::com::suyin::proto::friend_info* info) {
   delete info_;
   info_ = info;
   if (info) {
@@ -7672,7 +10255,7 @@ inline void UM_AddInvite::set_type(::google::protobuf::int32 value) {
   type_ = value;
 }
 
-// optional .friend_info info = 2;
+// optional .com.suyin.proto.friend_info info = 2;
 inline bool UM_AddInvite::has_info() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -7683,24 +10266,24 @@ inline void UM_AddInvite::clear_has_info() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void UM_AddInvite::clear_info() {
-  if (info_ != NULL) info_->::friend_info::Clear();
+  if (info_ != NULL) info_->::com::suyin::proto::friend_info::Clear();
   clear_has_info();
 }
-inline const ::friend_info& UM_AddInvite::info() const {
+inline const ::com::suyin::proto::friend_info& UM_AddInvite::info() const {
   return info_ != NULL ? *info_ : *default_instance_->info_;
 }
-inline ::friend_info* UM_AddInvite::mutable_info() {
+inline ::com::suyin::proto::friend_info* UM_AddInvite::mutable_info() {
   set_has_info();
-  if (info_ == NULL) info_ = new ::friend_info;
+  if (info_ == NULL) info_ = new ::com::suyin::proto::friend_info;
   return info_;
 }
-inline ::friend_info* UM_AddInvite::release_info() {
+inline ::com::suyin::proto::friend_info* UM_AddInvite::release_info() {
   clear_has_info();
-  ::friend_info* temp = info_;
+  ::com::suyin::proto::friend_info* temp = info_;
   info_ = NULL;
   return temp;
 }
-inline void UM_AddInvite::set_allocated_info(::friend_info* info) {
+inline void UM_AddInvite::set_allocated_info(::com::suyin::proto::friend_info* info) {
   delete info_;
   info_ = info;
   if (info) {
@@ -7736,7 +10319,7 @@ inline void UM_DelInvite::set_type(::google::protobuf::int32 value) {
   type_ = value;
 }
 
-// optional .friend_info info = 2;
+// optional .com.suyin.proto.friend_info info = 2;
 inline bool UM_DelInvite::has_info() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -7747,24 +10330,24 @@ inline void UM_DelInvite::clear_has_info() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void UM_DelInvite::clear_info() {
-  if (info_ != NULL) info_->::friend_info::Clear();
+  if (info_ != NULL) info_->::com::suyin::proto::friend_info::Clear();
   clear_has_info();
 }
-inline const ::friend_info& UM_DelInvite::info() const {
+inline const ::com::suyin::proto::friend_info& UM_DelInvite::info() const {
   return info_ != NULL ? *info_ : *default_instance_->info_;
 }
-inline ::friend_info* UM_DelInvite::mutable_info() {
+inline ::com::suyin::proto::friend_info* UM_DelInvite::mutable_info() {
   set_has_info();
-  if (info_ == NULL) info_ = new ::friend_info;
+  if (info_ == NULL) info_ = new ::com::suyin::proto::friend_info;
   return info_;
 }
-inline ::friend_info* UM_DelInvite::release_info() {
+inline ::com::suyin::proto::friend_info* UM_DelInvite::release_info() {
   clear_has_info();
-  ::friend_info* temp = info_;
+  ::com::suyin::proto::friend_info* temp = info_;
   info_ = NULL;
   return temp;
 }
-inline void UM_DelInvite::set_allocated_info(::friend_info* info) {
+inline void UM_DelInvite::set_allocated_info(::com::suyin::proto::friend_info* info) {
   delete info_;
   info_ = info;
   if (info) {
@@ -7804,7 +10387,7 @@ inline void UM_ToBlack::set_roleid(::google::protobuf::uint32 value) {
 
 // UM_AddBlack
 
-// optional .friend_info info = 1;
+// optional .com.suyin.proto.friend_info info = 1;
 inline bool UM_AddBlack::has_info() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -7815,24 +10398,24 @@ inline void UM_AddBlack::clear_has_info() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void UM_AddBlack::clear_info() {
-  if (info_ != NULL) info_->::friend_info::Clear();
+  if (info_ != NULL) info_->::com::suyin::proto::friend_info::Clear();
   clear_has_info();
 }
-inline const ::friend_info& UM_AddBlack::info() const {
+inline const ::com::suyin::proto::friend_info& UM_AddBlack::info() const {
   return info_ != NULL ? *info_ : *default_instance_->info_;
 }
-inline ::friend_info* UM_AddBlack::mutable_info() {
+inline ::com::suyin::proto::friend_info* UM_AddBlack::mutable_info() {
   set_has_info();
-  if (info_ == NULL) info_ = new ::friend_info;
+  if (info_ == NULL) info_ = new ::com::suyin::proto::friend_info;
   return info_;
 }
-inline ::friend_info* UM_AddBlack::release_info() {
+inline ::com::suyin::proto::friend_info* UM_AddBlack::release_info() {
   clear_has_info();
-  ::friend_info* temp = info_;
+  ::com::suyin::proto::friend_info* temp = info_;
   info_ = NULL;
   return temp;
 }
-inline void UM_AddBlack::set_allocated_info(::friend_info* info) {
+inline void UM_AddBlack::set_allocated_info(::com::suyin::proto::friend_info* info) {
   delete info_;
   info_ = info;
   if (info) {
@@ -7872,27 +10455,27 @@ inline void UM_ReqSeasonRank::set_roleid(::google::protobuf::uint32 value) {
 
 // UM_SeasonRank
 
-// repeated .season_rank list = 1;
+// repeated .com.suyin.proto.season_rank list = 1;
 inline int UM_SeasonRank::list_size() const {
   return list_.size();
 }
 inline void UM_SeasonRank::clear_list() {
   list_.Clear();
 }
-inline const ::season_rank& UM_SeasonRank::list(int index) const {
+inline const ::com::suyin::proto::season_rank& UM_SeasonRank::list(int index) const {
   return list_.Get(index);
 }
-inline ::season_rank* UM_SeasonRank::mutable_list(int index) {
+inline ::com::suyin::proto::season_rank* UM_SeasonRank::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::season_rank* UM_SeasonRank::add_list() {
+inline ::com::suyin::proto::season_rank* UM_SeasonRank::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::season_rank >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::season_rank >&
 UM_SeasonRank::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::season_rank >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::season_rank >*
 UM_SeasonRank::mutable_list() {
   return &list_;
 }
@@ -7927,27 +10510,27 @@ inline void UM_ReqGameRecord::set_roleid(::google::protobuf::uint32 value) {
 
 // UM_GameRecord
 
-// repeated .game_record list = 1;
+// repeated .com.suyin.proto.game_record list = 1;
 inline int UM_GameRecord::list_size() const {
   return list_.size();
 }
 inline void UM_GameRecord::clear_list() {
   list_.Clear();
 }
-inline const ::game_record& UM_GameRecord::list(int index) const {
+inline const ::com::suyin::proto::game_record& UM_GameRecord::list(int index) const {
   return list_.Get(index);
 }
-inline ::game_record* UM_GameRecord::mutable_list(int index) {
+inline ::com::suyin::proto::game_record* UM_GameRecord::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::game_record* UM_GameRecord::add_list() {
+inline ::com::suyin::proto::game_record* UM_GameRecord::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::game_record >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::game_record >&
 UM_GameRecord::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::game_record >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::game_record >*
 UM_GameRecord::mutable_list() {
   return &list_;
 }
@@ -7956,7 +10539,7 @@ UM_GameRecord::mutable_list() {
 
 // UM_SetPhoto
 
-// optional .photo_data data = 1;
+// optional .com.suyin.proto.photo_data data = 1;
 inline bool UM_SetPhoto::has_data() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -7967,24 +10550,24 @@ inline void UM_SetPhoto::clear_has_data() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void UM_SetPhoto::clear_data() {
-  if (data_ != NULL) data_->::photo_data::Clear();
+  if (data_ != NULL) data_->::com::suyin::proto::photo_data::Clear();
   clear_has_data();
 }
-inline const ::photo_data& UM_SetPhoto::data() const {
+inline const ::com::suyin::proto::photo_data& UM_SetPhoto::data() const {
   return data_ != NULL ? *data_ : *default_instance_->data_;
 }
-inline ::photo_data* UM_SetPhoto::mutable_data() {
+inline ::com::suyin::proto::photo_data* UM_SetPhoto::mutable_data() {
   set_has_data();
-  if (data_ == NULL) data_ = new ::photo_data;
+  if (data_ == NULL) data_ = new ::com::suyin::proto::photo_data;
   return data_;
 }
-inline ::photo_data* UM_SetPhoto::release_data() {
+inline ::com::suyin::proto::photo_data* UM_SetPhoto::release_data() {
   clear_has_data();
-  ::photo_data* temp = data_;
+  ::com::suyin::proto::photo_data* temp = data_;
   data_ = NULL;
   return temp;
 }
-inline void UM_SetPhoto::set_allocated_data(::photo_data* data) {
+inline void UM_SetPhoto::set_allocated_data(::com::suyin::proto::photo_data* data) {
   delete data_;
   data_ = data;
   if (data) {
@@ -8024,27 +10607,27 @@ inline void UM_ReqPhotos::set_roleid(::google::protobuf::uint32 value) {
 
 // UM_Photos
 
-// repeated .photo_data list = 1;
+// repeated .com.suyin.proto.photo_data list = 1;
 inline int UM_Photos::list_size() const {
   return list_.size();
 }
 inline void UM_Photos::clear_list() {
   list_.Clear();
 }
-inline const ::photo_data& UM_Photos::list(int index) const {
+inline const ::com::suyin::proto::photo_data& UM_Photos::list(int index) const {
   return list_.Get(index);
 }
-inline ::photo_data* UM_Photos::mutable_list(int index) {
+inline ::com::suyin::proto::photo_data* UM_Photos::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::photo_data* UM_Photos::add_list() {
+inline ::com::suyin::proto::photo_data* UM_Photos::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::photo_data >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::photo_data >&
 UM_Photos::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::photo_data >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::photo_data >*
 UM_Photos::mutable_list() {
   return &list_;
 }
@@ -8518,27 +11101,27 @@ UM_ReqIcons::mutable_list() {
 
 // UM_Icons
 
-// repeated .icon_data list = 1;
+// repeated .com.suyin.proto.icon_data list = 1;
 inline int UM_Icons::list_size() const {
   return list_.size();
 }
 inline void UM_Icons::clear_list() {
   list_.Clear();
 }
-inline const ::icon_data& UM_Icons::list(int index) const {
+inline const ::com::suyin::proto::icon_data& UM_Icons::list(int index) const {
   return list_.Get(index);
 }
-inline ::icon_data* UM_Icons::mutable_list(int index) {
+inline ::com::suyin::proto::icon_data* UM_Icons::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::icon_data* UM_Icons::add_list() {
+inline ::com::suyin::proto::icon_data* UM_Icons::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::icon_data >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::icon_data >&
 UM_Icons::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::icon_data >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::icon_data >*
 UM_Icons::mutable_list() {
   return &list_;
 }
@@ -8555,27 +11138,27 @@ UM_Icons::mutable_list() {
 
 // UM_AwardList
 
-// repeated .award_info list = 1;
+// repeated .com.suyin.proto.award_info list = 1;
 inline int UM_AwardList::list_size() const {
   return list_.size();
 }
 inline void UM_AwardList::clear_list() {
   list_.Clear();
 }
-inline const ::award_info& UM_AwardList::list(int index) const {
+inline const ::com::suyin::proto::award_info& UM_AwardList::list(int index) const {
   return list_.Get(index);
 }
-inline ::award_info* UM_AwardList::mutable_list(int index) {
+inline ::com::suyin::proto::award_info* UM_AwardList::mutable_list(int index) {
   return list_.Mutable(index);
 }
-inline ::award_info* UM_AwardList::add_list() {
+inline ::com::suyin::proto::award_info* UM_AwardList::add_list() {
   return list_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::award_info >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info >&
 UM_AwardList::list() const {
   return list_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::award_info >*
+inline ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::award_info >*
 UM_AwardList::mutable_list() {
   return &list_;
 }
@@ -8583,13 +11166,17 @@ UM_AwardList::mutable_list() {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace proto
+}  // namespace suyin
+}  // namespace com
+
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::IDUM_CLI>() {
-  return ::IDUM_CLI_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::suyin::proto::IDUM_CLI>() {
+  return ::com::suyin::proto::IDUM_CLI_descriptor();
 }
 
 }  // namespace google

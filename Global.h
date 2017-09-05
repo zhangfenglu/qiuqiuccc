@@ -15,6 +15,8 @@ USING_NS_CC_EXT;
 //#include "RichLabel.h"
 #include "msgStru.h"
 #include "struct.pb.h"
+using namespace com::suyin::proto;
+
 
 #include "Common.h"
 //客户端测试算法控制宏

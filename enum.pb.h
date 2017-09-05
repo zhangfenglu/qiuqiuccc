@@ -25,6 +25,10 @@
 #include <google/protobuf/generated_enum_reflection.h>
 // @@protoc_insertion_point(includes)
 
+namespace com {
+namespace suyin {
+namespace proto {
+
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_enum_2eproto();
 void protobuf_AssignDesc_enum_2eproto();
@@ -61,13 +65,17 @@ inline bool SEX_T_Parse(
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace proto
+}  // namespace suyin
+}  // namespace com
+
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::SEX_T>() {
-  return ::SEX_T_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::suyin::proto::SEX_T>() {
+  return ::com::suyin::proto::SEX_T_descriptor();
 }
 
 }  // namespace google

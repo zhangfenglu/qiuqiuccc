@@ -16,6 +16,10 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
+namespace com {
+namespace suyin {
+namespace proto {
+
 namespace {
 
 const ::google::protobuf::Descriptor* acc_info_descriptor_ = NULL;
@@ -501,52 +505,54 @@ void protobuf_AddDesc_struct_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::protobuf_AddDesc_enum_2eproto();
+  ::com::suyin::proto::protobuf_AddDesc_enum_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\014struct.proto\032\nenum.proto\";\n\010acc_info\022\016"
-    "\n\006roleid\030\001 \001(\r\022\017\n\007gmlevel\030\002 \001(\r\022\016\n\006passw"
-    "d\030\003 \001(\t\"\224\004\n\trole_info\022\016\n\006roleid\030\001 \001(\r\022\014\n"
-    "\004name\030\002 \001(\t\022\023\n\013create_time\030\003 \001(\r\022\014\n\004icon"
-    "\030\004 \001(\r\022\013\n\003sex\030\005 \001(\r\022\r\n\005level\030\006 \001(\r\022\016\n\006co"
-    "pper\030\007 \001(\r\022\014\n\004gold\030\010 \001(\r\022\017\n\007duanwei\030\t \001("
-    "\r\022\014\n\004star\030\n \001(\r\022\017\n\007mvp_cnt\030\013 \001(\r\022\024\n\014cham"
-    "pion_cnt\030\014 \001(\r\022\020\n\010eat1_cnt\030\r \001(\r\022\020\n\010eat2"
-    "_cnt\030\016 \001(\r\022\020\n\010max_mass\030\017 \001(\r\022\020\n\010province"
-    "\030\020 \001(\r\022\014\n\004city\030\021 \001(\r\022\020\n\010describe\030\022 \001(\t\022\016"
-    "\n\006heroid\030\023 \001(\r\022\021\n\therolevel\030\024 \001(\r\022\013\n\003exp"
-    "\030\025 \001(\r\022\032\n\006equips\030\026 \003(\0132\n.item_info\022\023\n\013fr"
-    "ee_ticket\030\027 \001(\r\022\024\n\014refresh_time\030\030 \001(\r\022\014\n"
-    "\004sign\030\031 \001(\010\022\026\n\016last_sign_time\030\035 \001(\r\022\021\n\ts"
-    "ign_tags\030\036 \001(\r\022\032\n\022award_refresh_time\030\037 \001"
-    "(\r\022\022\n\naward_gots\030  \003(\010\"\'\n\naward_info\022\014\n\004"
-    "type\030\001 \001(\r\022\013\n\003day\030\002 \001(\r\"=\n\naward_list\022\024\n"
-    "\014refresh_time\030\001 \001(\r\022\031\n\004list\030\002 \003(\0132\013.awar"
-    "d_info\"\?\n\titem_info\022\016\n\006tpltid\030\001 \001(\r\022\r\n\005s"
-    "tack\030\003 \001(\r\022\023\n\013create_time\030\004 \001(\r\"%\n\titem_"
-    "list\022\030\n\004list\030\001 \003(\0132\n.item_info\"\033\n\tshop_i"
-    "tem\022\016\n\006tpltid\030\001 \001(\r\"Y\n\013server_info\022\020\n\010se"
-    "rverid\030\001 \001(\r\022\020\n\010serverip\030\002 \001(\t\022\022\n\nserver"
-    "port\030\003 \001(\r\022\022\n\nservername\030\004 \001(\t\"S\n\tfans_i"
-    "nfo\022\016\n\006roleid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\014\n\004ico"
-    "n\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\022\r\n\005count\030\005 \001(\r\"r\n\tr"
-    "ank_info\022\016\n\006roleid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\014"
-    "\n\004icon\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\022\014\n\004rank\030\005 \001(\r\022"
-    "\016\n\006value1\030\006 \001(\r\022\016\n\006value2\030\007 \001(\r\"\205\001\n\010msg_"
+    "\n\014struct.proto\022\017com.suyin.proto\032\nenum.pr"
+    "oto\";\n\010acc_info\022\016\n\006roleid\030\001 \001(\r\022\017\n\007gmlev"
+    "el\030\002 \001(\r\022\016\n\006passwd\030\003 \001(\t\"\244\004\n\trole_info\022\016"
+    "\n\006roleid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\023\n\013create_t"
+    "ime\030\003 \001(\r\022\014\n\004icon\030\004 \001(\r\022\013\n\003sex\030\005 \001(\r\022\r\n\005"
+    "level\030\006 \001(\r\022\016\n\006copper\030\007 \001(\r\022\014\n\004gold\030\010 \001("
+    "\r\022\017\n\007duanwei\030\t \001(\r\022\014\n\004star\030\n \001(\r\022\017\n\007mvp_"
+    "cnt\030\013 \001(\r\022\024\n\014champion_cnt\030\014 \001(\r\022\020\n\010eat1_"
+    "cnt\030\r \001(\r\022\020\n\010eat2_cnt\030\016 \001(\r\022\020\n\010max_mass\030"
+    "\017 \001(\r\022\020\n\010province\030\020 \001(\r\022\014\n\004city\030\021 \001(\r\022\020\n"
+    "\010describe\030\022 \001(\t\022\016\n\006heroid\030\023 \001(\r\022\021\n\therol"
+    "evel\030\024 \001(\r\022\013\n\003exp\030\025 \001(\r\022*\n\006equips\030\026 \003(\0132"
+    "\032.com.suyin.proto.item_info\022\023\n\013free_tick"
+    "et\030\027 \001(\r\022\024\n\014refresh_time\030\030 \001(\r\022\014\n\004sign\030\031"
+    " \001(\010\022\026\n\016last_sign_time\030\035 \001(\r\022\021\n\tsign_tag"
+    "s\030\036 \001(\r\022\032\n\022award_refresh_time\030\037 \001(\r\022\022\n\na"
+    "ward_gots\030  \003(\010\"\'\n\naward_info\022\014\n\004type\030\001 "
+    "\001(\r\022\013\n\003day\030\002 \001(\r\"M\n\naward_list\022\024\n\014refres"
+    "h_time\030\001 \001(\r\022)\n\004list\030\002 \003(\0132\033.com.suyin.p"
+    "roto.award_info\"\?\n\titem_info\022\016\n\006tpltid\030\001"
+    " \001(\r\022\r\n\005stack\030\003 \001(\r\022\023\n\013create_time\030\004 \001(\r"
+    "\"5\n\titem_list\022(\n\004list\030\001 \003(\0132\032.com.suyin."
+    "proto.item_info\"\033\n\tshop_item\022\016\n\006tpltid\030\001"
+    " \001(\r\"Y\n\013server_info\022\020\n\010serverid\030\001 \001(\r\022\020\n"
+    "\010serverip\030\002 \001(\t\022\022\n\nserverport\030\003 \001(\r\022\022\n\ns"
+    "ervername\030\004 \001(\t\"S\n\tfans_info\022\016\n\006roleid\030\001"
+    " \001(\r\022\014\n\004name\030\002 \001(\t\022\014\n\004icon\030\003 \001(\r\022\013\n\003sex\030"
+    "\004 \001(\r\022\r\n\005count\030\005 \001(\r\"r\n\trank_info\022\016\n\006rol"
+    "eid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\014\n\004icon\030\003 \001(\r\022\013\n"
+    "\003sex\030\004 \001(\r\022\014\n\004rank\030\005 \001(\r\022\016\n\006value1\030\006 \001(\r"
+    "\022\016\n\006value2\030\007 \001(\r\"\205\001\n\010msg_info\022\016\n\006roleid\030"
+    "\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\014\n\004icon\030\003 \001(\r\022\013\n\003sex"
+    "\030\004 \001(\r\022\n\n\002id\030\005 \001(\r\022\022\n\ncreatetime\030\006 \001(\r\022\017"
+    "\n\007content\030\007 \001(\t\022\017\n\007likecnt\030\010 \001(\r\"K\n\010msg_"
+    "base\022\016\n\006roleid\030\001 \001(\r\022\n\n\002id\030\002 \001(\r\022\022\n\ncrea"
+    "tetime\030\003 \001(\r\022\017\n\007content\030\004 \001(\t\"F\n\013friend_"
     "info\022\016\n\006roleid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\014\n\004ic"
-    "on\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\022\n\n\002id\030\005 \001(\r\022\022\n\ncre"
-    "atetime\030\006 \001(\r\022\017\n\007content\030\007 \001(\t\022\017\n\007likecn"
-    "t\030\010 \001(\r\"K\n\010msg_base\022\016\n\006roleid\030\001 \001(\r\022\n\n\002i"
-    "d\030\002 \001(\r\022\022\n\ncreatetime\030\003 \001(\r\022\017\n\007content\030\004"
-    " \001(\t\"F\n\013friend_info\022\016\n\006roleid\030\001 \001(\r\022\014\n\004n"
-    "ame\030\002 \001(\t\022\014\n\004icon\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\"\237\001\n"
-    "\013game_record\022\016\n\006roleid\030\001 \001(\r\022\020\n\010nickname"
-    "\030\002 \001(\t\022\014\n\004icon\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\022\014\n\004tim"
-    "e\030\005 \001(\r\022\014\n\004rank\030\006 \001(\r\022\014\n\004mass\030\007 \001(\r\022\013\n\003e"
-    "at\030\010 \001(\r\022\014\n\004live\030\t \001(\r\022\016\n\006copper\030\n \001(\r\"J"
-    "\n\013season_rank\022\014\n\004rank\030\001 \001(\r\022\017\n\007duanwei\030\002"
-    " \001(\r\022\014\n\004star\030\003 \001(\r\022\016\n\006season\030\004 \001(\r\"(\n\nph"
-    "oto_data\022\014\n\004slot\030\001 \001(\r\022\014\n\004data\030\002 \001(\t\")\n\t"
-    "icon_data\022\016\n\006roleid\030\001 \001(\r\022\014\n\004data\030\002 \001(\t", 1759);
+    "on\030\003 \001(\r\022\013\n\003sex\030\004 \001(\r\"\237\001\n\013game_record\022\016\n"
+    "\006roleid\030\001 \001(\r\022\020\n\010nickname\030\002 \001(\t\022\014\n\004icon\030"
+    "\003 \001(\r\022\013\n\003sex\030\004 \001(\r\022\014\n\004time\030\005 \001(\r\022\014\n\004rank"
+    "\030\006 \001(\r\022\014\n\004mass\030\007 \001(\r\022\013\n\003eat\030\010 \001(\r\022\014\n\004liv"
+    "e\030\t \001(\r\022\016\n\006copper\030\n \001(\r\"J\n\013season_rank\022\014"
+    "\n\004rank\030\001 \001(\r\022\017\n\007duanwei\030\002 \001(\r\022\014\n\004star\030\003 "
+    "\001(\r\022\016\n\006season\030\004 \001(\r\"(\n\nphoto_data\022\014\n\004slo"
+    "t\030\001 \001(\r\022\014\n\004data\030\002 \001(\t\")\n\ticon_data\022\016\n\006ro"
+    "leid\030\001 \001(\r\022\014\n\004data\030\002 \001(\t", 1824);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "struct.proto", &protobuf_RegisterTypes);
   acc_info::default_instance_ = new acc_info();
@@ -1407,7 +1413,7 @@ bool role_info::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .item_info equips = 22;
+      // repeated .com.suyin.proto.item_info equips = 22;
       case 22: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1671,7 +1677,7 @@ void role_info::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(21, this->exp(), output);
   }
 
-  // repeated .item_info equips = 22;
+  // repeated .com.suyin.proto.item_info equips = 22;
   for (int i = 0; i < this->equips_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       22, this->equips(i), output);
@@ -1836,7 +1842,7 @@ void role_info::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(21, this->exp(), target);
   }
 
-  // repeated .item_info equips = 22;
+  // repeated .com.suyin.proto.item_info equips = 22;
   for (int i = 0; i < this->equips_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -2084,7 +2090,7 @@ int role_info::ByteSize() const {
     }
 
   }
-  // repeated .item_info equips = 22;
+  // repeated .com.suyin.proto.item_info equips = 22;
   total_size += 2 * this->equips_size();
   for (int i = 0; i < this->equips_size(); i++) {
     total_size +=
@@ -2616,7 +2622,7 @@ bool award_list::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .award_info list = 2;
+      // repeated .com.suyin.proto.award_info list = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2654,7 +2660,7 @@ void award_list::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->refresh_time(), output);
   }
 
-  // repeated .award_info list = 2;
+  // repeated .com.suyin.proto.award_info list = 2;
   for (int i = 0; i < this->list_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->list(i), output);
@@ -2673,7 +2679,7 @@ void award_list::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->refresh_time(), target);
   }
 
-  // repeated .award_info list = 2;
+  // repeated .com.suyin.proto.award_info list = 2;
   for (int i = 0; i < this->list_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -2699,7 +2705,7 @@ int award_list::ByteSize() const {
     }
 
   }
-  // repeated .award_info list = 2;
+  // repeated .com.suyin.proto.award_info list = 2;
   total_size += 1 * this->list_size();
   for (int i = 0; i < this->list_size(); i++) {
     total_size +=
@@ -3132,7 +3138,7 @@ bool item_list::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .item_info list = 1;
+      // repeated .com.suyin.proto.item_info list = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -3165,7 +3171,7 @@ bool item_list::MergePartialFromCodedStream(
 
 void item_list::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .item_info list = 1;
+  // repeated .com.suyin.proto.item_info list = 1;
   for (int i = 0; i < this->list_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->list(i), output);
@@ -3179,7 +3185,7 @@ void item_list::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* item_list::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .item_info list = 1;
+  // repeated .com.suyin.proto.item_info list = 1;
   for (int i = 0; i < this->list_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -3196,7 +3202,7 @@ void item_list::SerializeWithCachedSizes(
 int item_list::ByteSize() const {
   int total_size = 0;
 
-  // repeated .item_info list = 1;
+  // repeated .com.suyin.proto.item_info list = 1;
   total_size += 1 * this->list_size();
   for (int i = 0; i < this->list_size(); i++) {
     total_size +=
@@ -7350,5 +7356,9 @@ void icon_data::Swap(icon_data* other) {
 
 
 // @@protoc_insertion_point(namespace_scope)
+
+}  // namespace proto
+}  // namespace suyin
+}  // namespace com
 
 // @@protoc_insertion_point(global_scope)

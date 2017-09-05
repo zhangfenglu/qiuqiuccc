@@ -56,11 +56,15 @@ enum SERR {
   SERR_Blackyet = 83,
   SERR_FightGone = 84,
   SERR_ReenterFight = 85,
-  SERR_ExitFight = 86
+  SERR_ExitFight = 86,
+  SERR_IsBinded = 101,
+  SERR_IsForbidden = 102,
+  SERR_HasLogin = 103,
+  SERR_EmptyMail = 104
 };
 bool SERR_IsValid(int value);
 const SERR SERR_MIN = SERR_OK;
-const SERR SERR_MAX = SERR_ExitFight;
+const SERR SERR_MAX = SERR_EmptyMail;
 const int SERR_ARRAYSIZE = SERR_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* SERR_descriptor();
