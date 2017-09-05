@@ -1045,8 +1045,12 @@ void MainScene::loginGame()
 	}
 	// ui login
 	UM_Login req;
-	req.set_acc(UserAcc.c_str());
-	req.set_passwd(UserPass.c_str());
+	account_info info;
+	info = Global::getInstance()->GetAccountInfo();
+	/*req.set_acc(UserAcc.c_str());
+	req.set_passwd(UserPass.c_str());*/
+	req.set_acc(info.macip);
+	req.set_passwd(info.password);
 	std::string str = req.SerializeAsString();
 
 	reqSendUIMsg(IDUM_Login, str);
