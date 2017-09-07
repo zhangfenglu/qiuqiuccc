@@ -30,7 +30,7 @@ WebSocketLayer::WebSocketLayer()
     uiUrl.append(IP_UI_PORT);
     uiUrl.append("/QQWar/websocket");
     
-    //log("url is:%s", uiUrl.c_str());
+    log("url is:%s", uiUrl.c_str());
     
     
     if( !_wsiUIBinary->init(*this, uiUrl.c_str()))
@@ -199,6 +199,7 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
 				 CCScene* pScene = dynamic_cast<CCScene*>(getParent());
 				 MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
 				 layer->respDuanXianChongLian(data);
+
 			}
 				  break;
 			case IDUM_TeamFight: //组队协议
@@ -264,7 +265,7 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
             }
                 break;
                 
-            case IDUM_ServerList:
+            case IDUM_ServerList://从服务器拿到 服务器 集合信息
             {
                 CCScene* pScene = dynamic_cast<CCScene*>(getParent());
                 MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));

@@ -86,8 +86,10 @@ bool MainScene::init()
 	m_grid_off_pos = Vec2(winSize.width * 0.5f, winSize.height * 0.5f);
 	initJson();
 
+
 	//ZhanDouEnd* gameEnd = ZhanDouEnd::create();
 	//addChild(gameEnd, 2, TAG_GAME_END);
+	this->scheduleOnce(schedule_selector(MainScene::reqServerList1), 0.1f);
 	return true;
 }
 
@@ -424,7 +426,9 @@ void MainScene::enterGame(const char *nick, int key)
 	
 
 	account_info info = Global::getInstance()->GetAccountInfo();
-	std::string userID = info.playerid;
+	std::string userID1 = info.playerid;
+	uint32_t userID = atoi(userID1.c_str());
+	//uint32_t userID = 100223;
 	//uint32_t userID = info.roleID;
 
 	uint8_t msgid = 255;
@@ -441,13 +445,13 @@ void MainScene::enterGame(const char *nick, int key)
 	headSize += sizeof(uint32_t);
 	memcpy(msg + headSize, &index, sizeof(uint8_t));
 	headSize += sizeof(uint8_t);
-	//memcpy(msg + headSize, &userID, sizeof(uint32_t));
-	memcpy(msg + headSize, &userID, sizeof(std::string));
-	//headSize += sizeof(uint32_t);
-	headSize += sizeof(std::string);
-	memcpy(msg + headSize, &roomId, sizeof(uint32_t));
+	memcpy(msg + headSize, &userID, sizeof(uint32_t));
+	//memcpy(msg + headSize, &userID, sizeof(std::string));
 	headSize += sizeof(uint32_t);
+	//headSize += sizeof(std::string);
 	memcpy(msg + headSize, &key, sizeof(uint32_t));
+	headSize += sizeof(uint32_t);
+	memcpy(msg + headSize, &roomId, sizeof(uint32_t));
 	headSize += sizeof(uint32_t);
 	memcpy(msg + headSize, &len, sizeof(uint8_t));
 	headSize += sizeof(uint8_t);
@@ -1665,7 +1669,7 @@ void MainScene::respServerList(const cocos2d::network::WebSocket::Data &data)
 			Global::getInstance()->addNetInfos(net_info);
 		}
 
-		if (m_isFighting)
+		/*if (m_isFighting)
 		{
 			reqServerKey(0, 0, 0);
 		}
@@ -1674,7 +1678,7 @@ void MainScene::respServerList(const cocos2d::network::WebSocket::Data &data)
 			LoginLayer* login = dynamic_cast<LoginLayer*>(getChildByTag(TAG_LAYER_LOGIN));
 			if (login)
 				login->updateNetInfos();
-		}
+		}*/
 	}
 }
 
@@ -2406,8 +2410,8 @@ void MainScene::reOpenSocket()
 
 void MainScene::reConnectFightServer(float ft)
 {
-	if (!Global::getInstance()->getConnectState())
-		return;
+	/*if (!Global::getInstance()->getConnectState())
+		return;*/
 
 	unschedule(schedule_selector(MainScene::reConnectFightServer));
 
@@ -2553,6 +2557,19 @@ void MainScene::respZhanDouZhunBei(const cocos2d::network::WebSocket::Data &data
 	{
 		log("not zhandou zhunbei");
 	}
+}
+
+void MainScene::reqServerList1(float f)
+{
+	WebSocketLayer* socket = dynamic_cast<WebSocketLayer*>(getParent()->getChildByTag(1));
+
+	UM_ReqServerList req;
+	uint16_t header = IDUM_ReqServerList;
+	int headUISize = sizeof(uint16_t);
+	char msgUI[2];
+	memcpy(msgUI, &header, headUISize);
+
+	socket->onSendUIMsg(msgUI, headUISize);
 }
 
 /////////////////

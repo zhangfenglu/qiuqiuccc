@@ -103,6 +103,7 @@ public:
 	void reqZuDui();//组队请求
 	void reqQuXiaoZuDui();//取消组队
 	void reqServerList();
+	void reqServerList1(float f);
 	void reqServerKey(int netID, int modeID, int ticket_count); // mode 0,1
 	void reqShopList();
 	void reqBuyItem(int itemID);

@@ -23,6 +23,7 @@ struct EnterBoard {
     uint8_t index;          // 创建的index
     uint32_t roleID;        // 角色id
     uint32_t key;           // 服务器key
+	uint32_t roomId;           // 房间
     uint8_t name_len;       // 名字长度
     char name[];             // 名字字节
 };
