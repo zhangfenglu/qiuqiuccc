@@ -164,7 +164,7 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
     {
         uint16_t header;
         memcpy(&header, data.bytes , sizeof(uint16_t));
-        //log("header si::%d", header);
+        log("header si::%d", header);
         IDUM_CLI head = (IDUM_CLI)header;
         switch (head) {
             case IDUM_CLIB:
@@ -194,7 +194,36 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
                 layer->setPlayerInfo(data);
             }
                 break;
-                
+			case IDUM_Reconnect: //断线重连
+			{
+				 CCScene* pScene = dynamic_cast<CCScene*>(getParent());
+				 MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
+				 layer->respDuanXianChongLian(data);
+			}
+				  break;
+			case IDUM_TeamFight: //组队协议
+			{
+				 CCScene* pScene = dynamic_cast<CCScene*>(getParent());
+				 MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
+				 layer->respZuDui(data);
+
+			}
+				break;
+			case IDUM_ReqCancelFight://取消组队协议
+			{
+				 CCScene* pScene = dynamic_cast<CCScene*>(getParent());
+				 MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
+				 layer->respQuXiaoZuDui(data);
+			}
+				break;
+			case IDUM_ReadyFight: //战斗准备协议
+			{
+				CCScene* pScene = dynamic_cast<CCScene*>(getParent());
+				MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
+
+				layer->respZhanDouZhunBei(data);
+			}
+				break;
             case IDUM_SyncRole:
             {
                 CCScene* pScene = dynamic_cast<CCScene*>(getParent());
@@ -243,7 +272,7 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
             }
                 break;
                 
-            case IDUM_LoginFightKey:
+            case IDUM_LoginFightKey: //战斗密匙
             {
                 CCScene* pScene = dynamic_cast<CCScene*>(getParent());
                 MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
@@ -451,6 +480,7 @@ void WebSocketLayer::onSendUIMsg(const char *buf, int nLen)
 {
     if(_wsiUIBinary != NULL && _wsiUIBinary->getReadyState() == cocos2d::network::WebSocket::State::OPEN)
     {
+		log("================================buf==%s",buf);
         _wsiUIBinary->send((unsigned char*)buf, nLen);
     }
 }

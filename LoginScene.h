@@ -44,7 +44,7 @@ public:
 	void initUI();
 	void initUI1();
 
-	void NextScene(Ref* pSender);
+	void NextScene(Ref* pSender); //ÓÎÏ·¿ªÊ¼
 	void ResetName(Ref* pSender);
 	void ShowGM(Ref* pSender);
 	void ShowQiandao(Ref* pSender);

@@ -420,13 +420,18 @@ void MainScene::enterGame(const char *nick, int key)
 {
 	removeChildByTag(TAG_LAYER_LOGIN);
 
-	user_info info = Global::getInstance()->GetUserInfo();
-	uint32_t userID = info.roleID;
+	//user_info info = Global::getInstance()->GetUserInfo();
+	
+
+	account_info info = Global::getInstance()->GetAccountInfo();
+	std::string userID = info.playerid;
+	//uint32_t userID = info.roleID;
 
 	uint8_t msgid = 255;
 	uint32_t protocol = 0;
 	uint8_t index = Global::getInstance()->GetMainPicIndex();
 	uint8_t len = strlen(nick);
+	uint32_t roomId = Global::getInstance()->GetRoomId();
 	int headSize = 0;
 	char msg[sizeof(EnterBoard)+255];
 	int msgsize = sizeof(EnterBoard)+len;
@@ -436,7 +441,11 @@ void MainScene::enterGame(const char *nick, int key)
 	headSize += sizeof(uint32_t);
 	memcpy(msg + headSize, &index, sizeof(uint8_t));
 	headSize += sizeof(uint8_t);
-	memcpy(msg + headSize, &userID, sizeof(uint32_t));
+	//memcpy(msg + headSize, &userID, sizeof(uint32_t));
+	memcpy(msg + headSize, &userID, sizeof(std::string));
+	//headSize += sizeof(uint32_t);
+	headSize += sizeof(std::string);
+	memcpy(msg + headSize, &roomId, sizeof(uint32_t));
 	headSize += sizeof(uint32_t);
 	memcpy(msg + headSize, &key, sizeof(uint32_t));
 	headSize += sizeof(uint32_t);
@@ -1077,6 +1086,7 @@ void MainScene::reqServerKey(int netID, int modeID, int ticket_count)
 	req.set_ticket_count(ticket_count);
 
 	std::string str = req.SerializeAsString();
+	log("================================%s", str.c_str());
 
 	reqSendUIMsg(IDUM_ReqLoginFight, str);
 }
@@ -1545,6 +1555,7 @@ void MainScene::setPlayerInfo(const cocos2d::network::WebSocket::Data &data)
 
 		m_isFighting = resp.fighting();
 
+
 		// 战斗服重连
 		if (m_isFighting)
 		{
@@ -1675,6 +1686,8 @@ void MainScene::respServerKey(const cocos2d::network::WebSocket::Data &data)
 	{
 		int netID = resp.serverid();
 		int netKey = resp.key();
+		int roomId = resp.roomid();
+		Global::getInstance()->SetRoomId(roomId);
 
 		if (m_isFighting)
 		{
@@ -2442,6 +2455,105 @@ void MainScene::reRebirth()
 
 }
 
+void MainScene::respDuanXianChongLian(const cocos2d::network::WebSocket::Data &data)
+{
+	static UM_Reconnect resp;
+	bool re = resp.ParseFromArray(data.bytes + 2, data.len - 2);
+	if (re)
+	{
+		ReqOpenFight* layer = ReqOpenFight::create();
+		addChild(layer, 100);
+	}
+}
+
+void MainScene::reqDuanXianChongLian()
+{
+	static UM_ReqReconncet req;
+	// ui login
+	account_info info;
+	info = Global::getInstance()->GetAccountInfo();
+	req.set_playerid(info.playerid);
+	std::string str = req.SerializeAsString();
+
+	reqSendUIMsg(IDUM_ReqReconnect, str);
+}
+
+void MainScene::reqZuDui()
+{
+	static UM_ReqTeamFight req;
+	account_info info;
+	info = Global::getInstance()->GetAccountInfo();
+	
+	req.set_playerid(info.playerid);
+	req.set_serverid(0);
+	req.set_mode(10);
+	req.set_ticket_count(1);
+	std::string str = req.SerializeAsString();
+
+	reqSendUIMsg(IDUM_ReqTeamFight, str);
+}
+
+void MainScene::respZuDui(const cocos2d::network::WebSocket::Data &data)
+{
+	static UM_TeamFight resp;
+	log("shen qing zudui dengdai zhong ");
+	bool re = resp.ParseFromArray(data.bytes + 2, data.len - 2);
+	if (re)
+	{
+		log("zudui chenggong");
+		/*ReqOpenFight* layer = ReqOpenFight::create();
+		addChild(layer, 100);*/
+	}
+	else
+	{
+		log("zudui shibai");
+	}
+}
+
+void MainScene::respQuXiaoZuDui(const cocos2d::network::WebSocket::Data &data)
+{
+	static UM_CancelFight resp;
+	log("qu xiao zudui zhong");
+	bool re = resp.ParseFromArray(data.bytes + 2, data.len - 2);
+	if (re)
+	{
+		log("qu xiao zudui chenggong");
+		/*ReqOpenFight* layer = ReqOpenFight::create();
+		addChild(layer, 100);*/
+	}
+	else
+	{
+		log("qu xiao zudui shibai");
+	}
+}
+
+void MainScene::reqQuXiaoZuDui()
+{
+	static UM_ReqCancelFight req;
+	account_info info;
+	info = Global::getInstance()->GetAccountInfo();
+	req.set_playerid(info.playerid);
+	std::string str = req.SerializeAsString();
+	reqSendUIMsg(IDUM_ReqCancelFight, str);
+}
+
+void MainScene::respZhanDouZhunBei(const cocos2d::network::WebSocket::Data &data)
+{
+	static UM_ReadyFight resp;
+	bool re = resp.ParseFromArray(data.bytes + 2, data.len - 2);
+	if (re)
+	{
+		log("zhandou zhunbei");
+		//战斗准备倒计时 时间
+		uint32_t time = resp.time();
+		/*ReqOpenFight* layer = ReqOpenFight::create();
+		addChild(layer, 100);*/
+	}
+	else
+	{
+		log("not zhandou zhunbei");
+	}
+}
 
 /////////////////
 //战斗结束

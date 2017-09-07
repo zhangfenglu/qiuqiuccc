@@ -120,7 +120,7 @@ void LoginLayer::initUI1()
 	personBtn->setScale(0.55f);
 	personBtn->setOnClickCallback(callfuncO_selector(LoginLayer::PersonCenter), this);
 	addChild(personBtn, 2);
-	personBtn->setVisible(false);
+	//personBtn->setVisible(false);
 
 
 	//¹ØÏµ
@@ -151,7 +151,7 @@ void LoginLayer::initUI1()
 	magicBtn->setScale(0.55f);
 	magicBtn->setOnClickCallback(callfuncO_selector(LoginLayer::MagicClick), this);
 	addChild(magicBtn, 2);
-	magicBtn->setVisible(false);
+	//magicBtn->setVisible(false);
 	/*
 	Button* helpBtn = Button::createBtnWithSpriteFrameName("help.png", false);
 	helpBtn->setPosition(Vec2(winSize.width - 50, winSize.height - 50));
@@ -346,6 +346,7 @@ void LoginLayer::initLogin(float ft)
 {
 	MainScene* main = dynamic_cast<MainScene*>(getParent());
 	main->loginGame();
+	main->reqDuanXianChongLian();
 }
 void LoginLayer::InitHeadInfo()
 {
@@ -515,11 +516,12 @@ netInfo LoginLayer::getNetInfo()
 
 void LoginLayer::PersonCenter(cocos2d::Ref *pSender)
 {
-	user_info user = Global::getInstance()->GetUserInfo();
-	Global::getInstance()->SetplayerInfo(user);
+	/*user_info user = Global::getInstance()->GetUserInfo();
+	Global::getInstance()->SetplayerInfo(user);*/
 
 	MainScene* main = dynamic_cast<MainScene*>(getParent());
-	main->CheckLayer(MainScene::TAG_LAYER_USERINFO);
+	//main->CheckLayer(MainScene::TAG_LAYER_USERINFO);
+	main->reqQuXiaoZuDui();
 }
 
 void LoginLayer::RelationClick(cocos2d::Ref *pSender)
@@ -539,7 +541,8 @@ void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 	//    MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//    main->CheckLayer(MainScene::TAG_LAYER_SHOP);
 	MainScene* main = dynamic_cast<MainScene*>(getParent());
-	main->reqShopList();
+	//main->reqShopList();
+	main->reqZuDui();
 }
 
 void LoginLayer::HelpClick(cocos2d::Ref *pSender)

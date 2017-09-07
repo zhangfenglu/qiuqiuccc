@@ -98,7 +98,10 @@ public:
 	void CloseWebNet();
 
 	// c->s
-	void loginGame();
+	void loginGame(); //将来会废弃
+	void reqDuanXianChongLian();//断线重连
+	void reqZuDui();//组队请求
+	void reqQuXiaoZuDui();//取消组队
 	void reqServerList();
 	void reqServerKey(int netID, int modeID, int ticket_count); // mode 0,1
 	void reqShopList();
@@ -138,6 +141,14 @@ public:
 
 	// s->c
 	void setPlayerInfo(const cocos2d::network::WebSocket::Data &data);
+	//获取服务器断线重连
+	void respDuanXianChongLian(const cocos2d::network::WebSocket::Data &data);
+	//获取服务器组队协议处理
+	void respZuDui(const cocos2d::network::WebSocket::Data &data);
+	//获取服务器取消组队协议处理
+	void respQuXiaoZuDui(const cocos2d::network::WebSocket::Data &data);
+	//获取服务器战斗准备协议
+	void respZhanDouZhunBei(const cocos2d::network::WebSocket::Data &data);
 	void respSyncRole(const cocos2d::network::WebSocket::Data &data);
 	void respServerList(const cocos2d::network::WebSocket::Data& data);
 	void respServerKey(const cocos2d::network::WebSocket::Data& data);

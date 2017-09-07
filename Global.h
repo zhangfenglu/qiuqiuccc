@@ -72,6 +72,16 @@ public:
     {
         return gridPos;
     }
+
+	void SetRoomId(uint32_t roomid)
+	{
+		roomId = roomid;
+	}
+
+	uint32_t GetRoomId()
+	{
+		return roomId;
+	}
     
     void SetMainNodeID(uint32_t nodeid)
     {
@@ -196,6 +206,7 @@ private:
     
     cocos2d::Size gridSize;
     cocos2d::Point gridPos;
+	uint32_t roomId;;
     uint32_t  mainID;
     cocos2d::Point mainPos;
     cocos2d::Point centerPos;
