@@ -31,7 +31,7 @@ void RotateMenu::addMenuItem(cocos2d::MenuItem *item){
 }
 void RotateMenu::updatePosition(){
 	auto menuSize = getContentSize();
-	auto disY = menuSize.height / 8;
+	auto disY = menuSize.height / 6;
 	auto disX = menuSize.width / 3;
 	for (int i = 0; i < _items.size(); i++){
 		float x = menuSize.width / 2 + disX*sin(i*_unitAngle + getAngle());
@@ -39,11 +39,11 @@ void RotateMenu::updatePosition(){
 
 		if (y == 270 && x < 600)
 		{
-			_items.at(i)->setPosition(Vec2(x + 80, y));
+			_items.at(i)->setPosition(Vec2(x + 40, y));
 		}
 		else if (y == 270)
 		{
-			_items.at(i)->setPosition(Vec2(x - 80, y));
+			_items.at(i)->setPosition(Vec2(x - 40, y));
 		}
 		else
 		{
@@ -71,19 +71,19 @@ void RotateMenu::updatePositionWithAnimation(){
 		float y = menuSize.height / 2 - disY*cos(i*_unitAngle + getAngle());
 	
 		auto moveTo = MoveTo::create(animationDuration, Vec2(x, y));
-		auto moveTo1 = MoveTo::create(animationDuration, Vec2(x-80, y));
-		auto moveTo2 = MoveTo::create(animationDuration, Vec2(x + 80, y));
+		auto moveTo1 = MoveTo::create(animationDuration, Vec2(x-40, y));
+		auto moveTo2 = MoveTo::create(animationDuration, Vec2(x + 40, y));
 
 		if (_items.at(i)->getName() == "duo")
 		{
-			log("duox===========================%f", x);
-			log("duoy===========================%f", y);
+			//log("duox===========================%f", x);
+			//log("duoy===========================%f", y);
 		}
 
 		if (_items.at(i)->getName() == "shao")
 		{
-			log("shaox===========================%f", x);
-			log("shaoy===========================%f", y);
+			//log("shaox===========================%f", x);
+			//log("shaoy===========================%f", y);
 		}
 
 
