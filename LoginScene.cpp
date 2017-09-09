@@ -20,6 +20,7 @@
 #include "Resources.h"
 #include "CurCularNode.h"
 #include "SimpleTools.h"
+#include "HttpGetImg.h"
 //#include "DaTingLayer.h"
 using namespace cocos2d::network;
 
@@ -75,6 +76,7 @@ void LoginLayer::initUI1()
 		char randName[126] = { 0 };
 		sprintf(randName, "name_%d", nIdex);
 		edbox->setText(Global::getInstance()->getString(randName));
+		CCUserDefault::sharedUserDefault()->setStringForKey("UserName", name.c_str());
 	}
 
 	//随机生成名字
@@ -259,6 +261,102 @@ void LoginLayer::initUI1()
 		}
 	});
 
+
+
+
+	//获取活动图片资源
+	auto rootNode1 = CSLoader::createNode("ActiveLayer.csb");
+	addChild(rootNode1,100000);
+
+	auto huoodng = (cocos2d::ui::ImageView*)seekNodeByName(rootNode1, "huoodng");
+	auto closeBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode1, "btnOk");
+	closeBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			rootNode1->removeFromParent();
+	
+		}
+	});
+
+	std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/activity";
+	
+	requestFroGet(url, [=](HttpClient *sender, HttpResponse *response)
+	{
+		if (response == nullptr || !response->isSucceed())
+		{
+			CCLOG("responese is null");
+			CCLOG("responese not succeed");
+
+			return;
+		}
+
+		vector<char> *buffer = response->getResponseData();
+
+		std::string responseStr = std::string(buffer->begin(), buffer->end());
+		CCLOG("%s", responseStr.c_str());
+
+		Json* root = Json_create(responseStr.c_str());
+		Json* result = Json_getItem(root, "resultCode");
+		Json * resultObj = Json_getItem(root, "resultObj");
+
+		if (result->type == Json_Number)
+		{
+			if (result->valueInt == 1)
+			{
+				log("*******************************picPath success");
+
+				Json * id = Json_getItem(resultObj->child, "id");
+
+				if (id && id->valueInt == 1)
+				{
+					Json * url1 = Json_getItem(resultObj->child, "url");
+					std::string u = url1->valueString;
+					std::string picUrl = "http://" + u;
+			
+					HttpGetImg::GetHttpImg(picUrl, [=](Texture2D * texture)
+					{
+						auto tupian = Sprite::createWithTexture(texture);
+						tupian->setAnchorPoint(Vec2::ZERO);
+						//tupian->setPosition(huoodng->getPosition());
+						huoodng->addChild(tupian);
+					}
+					);
+
+
+
+
+				}
+				else
+				{
+
+				}
+
+				
+			}
+			else
+			{
+				log("*******************************picPath error");
+			}
+		}
+		else
+		{
+			log("*******************************picPath error");
+		}
+
+
+
+
+
+
+
+		
+
+	}, "GetImgPath");
+
+
+	
+	
 }
 
 
@@ -299,6 +397,7 @@ void LoginLayer::ResetName(Ref* pSender)
 	sprintf(randName, "name_%d", nIdex);
 	CEditBoxTool* edbox = (CEditBoxTool*)getChildByTag(101);
 	edbox->setText(Global::getInstance()->getString(randName));
+	CCUserDefault::sharedUserDefault()->setStringForKey("UserName", Global::getInstance()->getString(randName));
 }
 void LoginLayer::updateNetInfos()
 {
@@ -476,7 +575,10 @@ void LoginLayer::setNetKey(int key)
 	CEditBoxTool* input = dynamic_cast<CEditBoxTool*>(getChildByTag(101));
 	std::string nick = input->getText();
 	if (nick == "" || nick.size() == 0)
-		return;
+	{
+		input->setText(CCUserDefault::sharedUserDefault()->getStringForKey("UserName").c_str());
+		nick = input->getText();
+	}
 
 	//srand(time(0)) ;
 	//int index = rand()%MAXIMUM_PICTURE_NUM;

@@ -51,6 +51,10 @@ bool MainSprite::init()
     
 	this->scheduleUpdate();
     int index = Global::getInstance()->GetMainPicIndex();
+	if (index > 40)
+	{
+		int index = Global::getInstance()->getRand(MAXIMUM_PICTURE_NUM);
+	}
     
     char temp[32];
     sprintf(temp, "%s%d.png", BACK_IMG_FILE_PRE, index);
