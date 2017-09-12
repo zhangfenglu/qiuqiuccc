@@ -1,0 +1,14 @@
+{
+	"initial_speed" : 600,
+	"attenuation_speed" : 0.01,
+	"minimum_speed" : 10,
+	"r_length" : 80,
+    "split_scene_size" : 0.6,
+    "player_size_up_camera" : 10,
+    "camera_up_scale_diff" : 0.04,
+    "camera_up_min_scale" : 0.4,
+    "change_text_size"  : 60,
+    "minimum_size" : 30,
+    "maximum_picture_num" : 8,
+    "minimum_player_scale_or" : 0.05
+}
