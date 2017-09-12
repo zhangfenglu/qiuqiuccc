@@ -21,6 +21,7 @@
 #include "CurCularNode.h"
 #include "SimpleTools.h"
 #include "HttpGetImg.h"
+#include "TimeYuanZhengLayer.h"
 //#include "DaTingLayer.h"
 using namespace cocos2d::network;
 
@@ -645,6 +646,10 @@ void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 	MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//main->reqShopList();
 	main->reqZuDui();
+
+	auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
+	addChild(timeYuanZhengLayer);
+
 }
 
 void LoginLayer::HelpClick(cocos2d::Ref *pSender)

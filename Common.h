@@ -151,6 +151,27 @@ struct account_info
 	std::string        accout;
 };
 
+//µ¹¼ÆÊ±
+struct zuduidaojishi_info
+{
+	zuduidaojishi_info()
+	{
+		xing1time = 0;
+		xing2time = 0;
+		xing3time = 0;
+		xing4time = 0;
+		xing5time = 0;
+		xing6time = 0;
+	}
+
+	uint32_t           xing1time;
+	uint32_t           xing2time;
+	uint32_t           xing3time;
+	uint32_t           xing4time;
+	uint32_t           xing5time;
+	uint32_t           xing6time;
+};
+
 struct user_info {
     user_info()
     {

@@ -174,6 +174,10 @@ public:
 	//ÕÅ·æÂ¶
 	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
 	account_info GetAccountInfo(){ return m_AccountInfo; }
+	//µ¹¼ÆÊ±
+	void SetZuDuiDaoJiShiInfo(zuduidaojishi_info info){ m_ZuDuiDaoJiShi = info; }
+	zuduidaojishi_info GetZuDuiDaoJiShiInfo(){ return m_ZuDuiDaoJiShi; }
+
     void EquipUpdate(int type,int iteID);
     void HeroLeveUp(int heroID,int heroLeve);
     
@@ -225,6 +229,7 @@ private:
     
     user_info m_PlayerInfo;
 	player_info m_PlayerDengLuInfo;
+	zuduidaojishi_info m_ZuDuiDaoJiShi;
 	account_info m_AccountInfo;
     std::vector<nameMap> mComName;
     std::vector<shop_item>  shopItems;
