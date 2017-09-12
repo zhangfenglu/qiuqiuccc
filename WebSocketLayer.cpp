@@ -223,6 +223,7 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
 				MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
 
 				layer->respZhanDouZhunBei(data);
+				layer->readyFightDaoJiShi();
 			}
 				break;
             case IDUM_SyncRole:

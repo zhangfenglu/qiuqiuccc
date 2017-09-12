@@ -2572,6 +2572,34 @@ void MainScene::reqServerList1(float f)
 	socket->onSendUIMsg(msgUI, headUISize);
 }
 
+void MainScene::readyFightDaoJiShi()
+{
+	 daojishiNode = CSLoader::createNode("daojishi10s.csb");
+	addChild(daojishiNode,100000);
+	Size size = Director::getInstance()->getWinSize();
+	daojishiNode->setPosition(size.width / 2, size.height / 2);
+
+	ActionTimeline* action = CSLoader::createTimeline("daojishi10s.csb");
+	daojishiNode->runAction(action);
+	//从第0帧开始，并且只播放一次  
+	action->gotoFrameAndPlay(0, false);
+	//获取动画持续时间  
+	float duration = action->getDuration();
+	//获取结束帧，经测试是你动画添加帧的最后位置  
+	float lastFrame = action->getEndFrame();
+	//捕获事件帧  
+	//action->setFrameEventCallFunc(CC_CALLBACK_1(SplashScene::onFrameEvent, this));
+	//捕获到最后一帧的回调事件，比如你总共是60帧的动画，那么60就是最后帧，每次循环到60都会触发一次  
+	action->setLastFrameCallFunc(CC_CALLBACK_0(MainScene::delteReadyFightDaoJiShi, this));
+
+}
+
+void MainScene::delteReadyFightDaoJiShi()
+{
+	daojishiNode->removeFromParent();
+	daojishiNode = nullptr;
+}
+
 /////////////////
 //战斗结束
 /////////////////

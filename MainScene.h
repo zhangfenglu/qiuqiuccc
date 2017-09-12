@@ -178,6 +178,10 @@ public:
 
 	// 战斗重连逻辑
 	void reLogin(float ft);
+	//准备战斗倒计时
+	void readyFightDaoJiShi();
+	//隐藏战斗准备倒计时
+	void delteReadyFightDaoJiShi();
 	void reOpenSocket();
 	void reConnectFightServer(float ft);
 	void reSetNetKey(int netID, int netKey);
@@ -195,6 +199,7 @@ protected:
 	void resetUpdateCamera(float ft);
 
 private:
+	Node* daojishiNode;
 	cocos2d::Point m_diff;
 
 	bool m_isFirstEnter;
