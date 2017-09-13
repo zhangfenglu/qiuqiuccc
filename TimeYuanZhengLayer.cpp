@@ -10,12 +10,39 @@ bool TimeYuanZhengLayer::init()
 	{
 		return false;
 	}
-	auto rootNode = CSLoader::createNode("TimeYuanZhengLayer.csb");
+	rootNode = CSLoader::createNode("TimeYuanZhengLayer.csb");
 
 	addChild(rootNode);
 	cocos2d::ui::Layout* rongqi = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "Panel_xuanzhuan");
-
 	Size visibleSize = rongqi->getContentSize();
+
+	zuduiBox = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+	auto btn_close = (cocos2d::ui::Button*)seekNodeByName(zuduiBox, "btn_close");
+	btn_close->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			
+			zuduiBox->setVisible(false);
+		}
+	});
+	auto btn_zudui = (cocos2d::ui::Button*)seekNodeByName(zuduiBox, "btn_zudui");
+	btn_zudui->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+
+			log("zudui========================================");
+		}
+	});
+
+
+	auto Image_award = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "Image_award");
+	auto scrollView = (cocos2d::ui::ScrollView*)seekNodeByName(rootNode, "ScrollView");
+	Image_award_width = Image_award->getSize().width;
+	Image_award_poiX = Image_award->getPositionX();
+	//Image_award_poiY = scrollView->getSize().height + Image_award->getSize().height * 2;
+	Image_award_poiY = Image_award->getPositionY();
 
 
 	auto btn1 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin1");
@@ -228,40 +255,44 @@ bool TimeYuanZhengLayer::init()
 
 	this->schedule(schedule_selector(TimeYuanZhengLayer::timeUpdate), 1);
 
-
+	initZuDuiAwardInfo();
 	return true;
 }
 
 void TimeYuanZhengLayer::menuItem1Callback(cocos2d::Ref* pSender)
 {
 	log("btn1");
-
+	showZuDuiBox(1);
 }
 
 void TimeYuanZhengLayer::menuItem2Callback(cocos2d::Ref* pSender)
 {
 	log("btn2");
-	
+	showZuDuiBox(2);
 }
 
 void TimeYuanZhengLayer::menuItem3Callback(cocos2d::Ref* pSender)
 {
 	log("btn3");
+	showZuDuiBox(3);
 }
 
 void TimeYuanZhengLayer::menuItem4Callback(cocos2d::Ref* pSender)
 {
 	log("btn4");
+	showZuDuiBox(4);
 }
 
 void TimeYuanZhengLayer::menuItem5Callback(cocos2d::Ref* pSender)
 {
 	log("btn5");
+	showZuDuiBox(5);
 }
 
 void TimeYuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
 {
 	log("btn6");
+	showZuDuiBox(6);
 }
 void TimeYuanZhengLayer::hideAllSprite()
 {
@@ -397,5 +428,84 @@ void TimeYuanZhengLayer::timeUpdate(float dt)
 		t5--;
 		t6--;
 	
+}
+
+void TimeYuanZhengLayer::showZuDuiBox(int tag)
+{
+	std::string titleStr = awards[tag].title;
+	titleStr = "TimeYuanZhengLayer\\xiaohao\\title\\" + titleStr + ".png";
+	auto title = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "title");
+	title->loadTexture(titleStr.c_str());
+	std::string xiaohaoStr = awards[tag].xiaohao;
+	xiaohaoStr = "TimeYuanZhengLayer\\xiaohao\\killzuanshi\\" + xiaohaoStr + ".png";
+	auto xiaohao = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuanshi");
+	xiaohao->loadTexture(xiaohaoStr.c_str());
+	std::string awardsStr = awards[tag].allawards;
+	std::vector<std::string> awardsArrays = Global::getInstance()->split(awardsStr, "|");
+
+	auto scrollView = (cocos2d::ui::ScrollView*)seekNodeByName(rootNode, "ScrollView");
+	scrollView->removeAllChildren();
+	for (int i = 0; i < awardsArrays.size(); i++)
+	{
+		cocos2d::ui::ImageView* cloneImage = cocos2d::ui::ImageView::create();
+		scrollView->addChild(cloneImage);
+		std::string clonePath = "TimeYuanZhengLayer\\xiaohao\\reward\\" + awardsArrays.at(i) + ".png";
+		cloneImage->loadTexture(clonePath.c_str());
+		cloneImage->setPosition(ccp(Image_award_poiX + Image_award_width * i, Image_award_poiY));
+
+	}
+	zuduiBox->setVisible(true);
+}
+
+void TimeYuanZhengLayer::initZuDuiAwardInfo()
+{
+	Json* root = ReadJson("jingjichang.json");
+
+	Json* jsonChild = root->child;
+	int i = -1;
+	while (jsonChild)
+	{
+		i++;
+		switch (jsonChild->type)
+		{
+		case Json_NULL:
+			break;
+		case Json_Number:
+			break;
+		case Json_Object:
+		{
+
+
+							Json* title = Json_getItem(jsonChild, "title");
+							//CCLog("<<<<<<%s", title->valuestring);
+							Json * xiaohao = Json_getItem(jsonChild, "xiaohao");
+							Json* allawards = Json_getItem(jsonChild, "allawards");
+							AwardInfo info;
+							info.title = title->valueString;
+							info.xiaohao = xiaohao->valueString;
+							info.allawards = allawards->valueString;
+							awards[i] = info;
+		}
+			break;
+		case Json_String:
+			log("<<<<<<%s", jsonChild->valueString);
+
+			break;
+		case Json_True:
+			break;
+		case Json_Array:
+			break;
+		default:
+			break;
+		}
+
+		jsonChild = jsonChild->next;
+	}
+
+	for (int i = 0; i < sizeof(awards) / sizeof(awards[0]); i++)
+	{
+		std::string title = awards[i].title;
+		log("<<<<<<%s", title.c_str());
+	}
 }
 

@@ -80,6 +80,20 @@ struct eatInfo
     uint32_t eatedID;
 };
 
+
+struct AwardInfo
+{
+	AwardInfo()
+	{
+		title = "";
+		xiaohao = "";
+		allawards = "";
+	}
+	std::string title;
+	std::string xiaohao;
+	std::string allawards;
+};
+
 struct nodeInfo
 {
 	std::string name;

@@ -4,6 +4,7 @@
 #include "ui/CocosGUI.h"
 #include "cocos2d.h"
 USING_NS_CC;
+#include "Common.h"
 class TimeYuanZhengLayer : public Layer
 {
 public:
@@ -26,6 +27,8 @@ public:
 	void showDaoJiShi();
 
 private:
+	Node* rootNode;
+
 	cocos2d::ui::Button* copy1;
 	cocos2d::ui::Button* copy2;
 	cocos2d::ui::Button* copy3;
@@ -59,6 +62,23 @@ private:
 	void timeUpdate(float dt);
 
 	int nSecond;
+
+public:
+	enum
+	{
+		teams = 15
+	};
+private:
+	int Image_award_width;
+	int Image_award_poiX;
+	int Image_award_poiY;
+	void initZuDuiAwardInfo();
+	void showZuDuiBox(int tag);
+	
+	AwardInfo awards[teams];
+
+	cocos2d::ui::Layout* zuduiBox;
+
 
 };
 

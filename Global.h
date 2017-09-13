@@ -178,6 +178,32 @@ public:
 	void SetZuDuiDaoJiShiInfo(zuduidaojishi_info info){ m_ZuDuiDaoJiShi = info; }
 	zuduidaojishi_info GetZuDuiDaoJiShiInfo(){ return m_ZuDuiDaoJiShi; }
 
+	//燃烧远征组队 对应的消耗及其奖励信息
+	void SetAwardInfo(AwardInfo info){ m_AwardInfo = info; }
+	AwardInfo GetAwardInfo(){ return m_AwardInfo; }
+
+	//以 某个符号标记 分割字符串数组
+	std::vector<std::string> split(std::string str, std::string pattern)
+	{
+		std::string::size_type pos;
+		std::vector<std::string> result;
+		str += pattern;//扩展字符串以方便操作
+		int size = str.size();
+
+		for (int i = 0; i < size; i++)
+		{
+			pos = str.find(pattern, i);
+			if (pos < size)
+			{
+				std::string s = str.substr(i, pos - i);
+				result.push_back(s);
+				i = pos + pattern.size() - 1;
+			}
+		}
+		return result;
+
+	}
+
     void EquipUpdate(int type,int iteID);
     void HeroLeveUp(int heroID,int heroLeve);
     
@@ -230,6 +256,7 @@ private:
     user_info m_PlayerInfo;
 	player_info m_PlayerDengLuInfo;
 	zuduidaojishi_info m_ZuDuiDaoJiShi;
+	AwardInfo m_AwardInfo;
 	account_info m_AccountInfo;
     std::vector<nameMap> mComName;
     std::vector<shop_item>  shopItems;

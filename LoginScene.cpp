@@ -275,8 +275,7 @@ void LoginLayer::initUI1()
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-			rootNode1->removeFromParent();
-	
+			rootNode1->setVisible(false);
 		}
 	});
 
@@ -320,7 +319,12 @@ void LoginLayer::initUI1()
 						auto tupian = Sprite::createWithTexture(texture);
 						tupian->setAnchorPoint(Vec2::ZERO);
 						//tupian->setPosition(huoodng->getPosition());
-						huoodng->addChild(tupian);
+						if (huoodng)
+						{
+							huoodng->addChild(tupian);
+							tupian->setContentSize(huoodng->getContentSize());
+						}
+							
 					}
 					);
 
@@ -648,7 +652,7 @@ void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 	main->reqZuDui();
 
 	auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
-	addChild(timeYuanZhengLayer);
+	addChild(timeYuanZhengLayer,100000);
 
 }
 
