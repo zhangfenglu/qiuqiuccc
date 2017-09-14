@@ -365,6 +365,65 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
+          <AbstractNodeData Name="zuduidengdaiBg" ActionTag="-489959388" Tag="27" IconVisible="False" LeftMargin="400.3574" RightMargin="382.6426" TopMargin="-0.5000" BottomMargin="579.5000" LeftEage="164" RightEage="164" TopEage="46" BottomEage="46" Scale9OriginX="164" Scale9OriginY="46" Scale9Width="169" Scale9Height="49" ctype="ImageViewObjectData">
+            <Size X="497.0000" Y="141.0000" />
+            <Children>
+              <AbstractNodeData Name="btnZuduiClose" ActionTag="-296498918" Tag="28" IconVisible="False" LeftMargin="447.9869" RightMargin="3.0131" TopMargin="-0.3829" BottomMargin="90.3829" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="29" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                <Size X="46.0000" Y="51.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="470.9869" Y="115.8829" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.9477" Y="0.8219" />
+                <PreSize X="0.0926" Y="0.3617" />
+                <TextColor A="255" R="65" G="65" B="70" />
+                <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                <PressedFileData Type="Normal" Path="DaTingLayer/zuduiClose.png" Plist="" />
+                <NormalFileData Type="Normal" Path="DaTingLayer/zuduiClose.png" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="titleImg" ActionTag="-1442077102" Tag="29" IconVisible="False" LeftMargin="182.2220" RightMargin="179.7780" TopMargin="13.9719" BottomMargin="95.0281" LeftEage="44" RightEage="44" TopEage="10" BottomEage="10" Scale9OriginX="44" Scale9OriginY="10" Scale9Width="47" Scale9Height="12" ctype="ImageViewObjectData">
+                <Size X="135.0000" Y="32.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="249.7220" Y="111.0281" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5025" Y="0.7874" />
+                <PreSize X="0.2716" Y="0.2270" />
+                <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/title/biaoti1jjjc.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="pipei" ActionTag="-379160619" Tag="102" IconVisible="False" LeftMargin="191.0865" RightMargin="215.9135" TopMargin="54.0012" BottomMargin="68.9988" FontSize="18" LabelText="匹配中……" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="90.0000" Y="18.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="236.0865" Y="77.9988" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="127" G="127" B="127" />
+                <PrePosition X="0.4750" Y="0.5532" />
+                <PreSize X="0.1811" Y="0.1277" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="startTime" ActionTag="1615607870" Tag="101" IconVisible="False" LeftMargin="190.9203" RightMargin="186.0797" TopMargin="73.8479" BottomMargin="19.1521" FontSize="48" LabelText="00:10" HorizontalAlignmentType="HT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="120.0000" Y="48.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="250.9203" Y="43.1521" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5049" Y="0.3060" />
+                <PreSize X="0.2414" Y="0.3404" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+            </Children>
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="648.8574" Y="650.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5069" Y="0.9028" />
+            <PreSize X="0.3883" Y="0.1958" />
+            <FileData Type="Normal" Path="DaTingLayer/zuduidengdaiBg.png" Plist="" />
+          </AbstractNodeData>
         </Children>
       </ObjectData>
     </Content>

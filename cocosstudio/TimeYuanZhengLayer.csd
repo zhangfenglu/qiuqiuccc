@@ -808,7 +808,7 @@
                     <PreSize X="0.2646" Y="0.0978" />
                     <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/killzuanshi/xiaohao1jjjc.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_close" ActionTag="-1865798568" Tag="70" IconVisible="False" LeftMargin="148.1530" RightMargin="480.8470" TopMargin="519.4622" BottomMargin="58.5379" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="161" Scale9Height="44" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_close" ActionTag="-1865798568" Tag="70" IconVisible="False" LeftMargin="148.1530" RightMargin="480.8470" TopMargin="519.4621" BottomMargin="58.5379" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="161" Scale9Height="44" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="191.0000" Y="66.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="243.6530" Y="91.5379" />
@@ -823,7 +823,7 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_zudui" ActionTag="692070471" Tag="71" IconVisible="False" LeftMargin="470.2264" RightMargin="156.7736" TopMargin="518.9625" BottomMargin="58.0376" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="163" Scale9Height="45" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_zudui" ActionTag="692070471" Tag="71" IconVisible="False" LeftMargin="470.2264" RightMargin="156.7736" TopMargin="518.9624" BottomMargin="58.0376" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="163" Scale9Height="45" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="193.0000" Y="67.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="566.7264" Y="91.5376" />
@@ -835,6 +835,21 @@
                     <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
                     <PressedFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/btn_zudui.png" Plist="" />
                     <NormalFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/btn_zudui.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_quxiaozudui" ActionTag="-696805393" Tag="174" IconVisible="False" LeftMargin="146.6694" RightMargin="480.3306" TopMargin="516.9803" BottomMargin="60.0197" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="163" Scale9Height="45" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                    <Size X="193.0000" Y="67.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="243.1694" Y="93.5197" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.2965" Y="0.1452" />
+                    <PreSize X="0.2354" Y="0.1040" />
+                    <TextColor A="255" R="65" G="65" B="70" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                    <PressedFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/btn_quxiaozudui.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/btn_quxiaozudui.png" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
