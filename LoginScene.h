@@ -43,6 +43,9 @@ public:
 	void initDengLuData();
 	void initUI();
 	void initUI1();
+	void initWaitBox();
+	void hideWaitBox();
+	void timeUpdate(float dt);
 
 	void NextScene(Ref* pSender); //游戏开始
 	void ResetName(Ref* pSender);
@@ -88,12 +91,17 @@ public:
 	void onTouchCancelled(Touch *touch, Event *unused_event) {}
 
 private:
+	Node* rootNode; //大厅
 	Node* rootGameSettingNode;
 
 private:
 	//DropDownListLayer* dropLayer ;
 	bool m_isLogin;
 	int net_key;
+
+	int upMiaoTime = 0;
+	int upFenTime = 0;
+	Vec2 waitBoxVec2;
 };
 
 //////

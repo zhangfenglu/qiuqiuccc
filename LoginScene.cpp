@@ -55,9 +55,10 @@ bool LoginLayer::init()
 
 void LoginLayer::initUI1()
 {
-	auto rootNode = CSLoader::createNode("DaTingLayer.csb");
+	rootNode = CSLoader::createNode("DaTingLayer.csb");
 	addChild(rootNode);
-
+	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg");
+	zuduidengdaiBg->setVisible(false);
 	CEditBoxTool* edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	edbox->setPosition(Vec2(winSize.width * 0.5f, winSize.height * 0.67));
 	//edbox->setFont("STXingkai.ttf", 29.0f);
@@ -647,9 +648,9 @@ void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 {
 	//    MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//    main->CheckLayer(MainScene::TAG_LAYER_SHOP);
-	MainScene* main = dynamic_cast<MainScene*>(getParent());
+	//MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//main->reqShopList();
-	main->reqZuDui();
+	//main->reqZuDui();
 
 	auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
 	addChild(timeYuanZhengLayer,100000);
@@ -1294,6 +1295,91 @@ void LoginLayer::initDengLuData()
 
 
 	}, "Login");
+}
+
+void LoginLayer::initWaitBox()
+{
+	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg");
+	zuduidengdaiBg->setZOrder(100000);
+	zuduidengdaiBg->setVisible(true);
+	waitBoxVec2 = zuduidengdaiBg->getPosition();
+	//auto moveTo = MoveBy::create(0.2, Vec2(waitBoxVec2.x, waitBoxVec2.y - zuduidengdaiBg->getContentSize().height * 2));
+	auto moveTo = MoveBy::create(0.2, Vec2(648, 650));
+	//zuduidengdaiBg->runAction(moveTo);
+	auto moveToBack = moveTo->reverse();
+	auto titleImg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "titleImg");
+	auto  titleStr = ( Global::getInstance()->GetWaitTimeBoxTitleStr());
+	//log("=================%s",titleStr);
+	//titleImg->loadTexture(titleStr);
+	this->schedule(schedule_selector(LoginLayer::timeUpdate), 1);
+
+	auto btnZuduiClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnZuduiClose");
+	btnZuduiClose->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			//zuduidengdaiBg->runAction(moveToBack);
+			zuduidengdaiBg->setVisible(false);
+			this->unschedule(schedule_selector(LoginLayer::timeUpdate));
+			upFenTime = 0;
+			upMiaoTime = 0;
+		}
+	});
+}
+
+void LoginLayer::timeUpdate(float dt)
+{
+	upMiaoTime++;
+	auto startTime = (cocos2d::ui::Text*)seekNodeByName(rootNode, "startTime");
+
+	if (upMiaoTime >= 60)
+	{
+		upMiaoTime = 0;
+		upFenTime++;
+	}
+	
+	std::ostringstream tt;
+	std::ostringstream t1;
+	std::ostringstream s1;
+	std::ostringstream s2;
+	std::ostringstream s3;
+
+
+	if (upMiaoTime < 10 && upFenTime == 0 )
+	{
+		tt << "00:0" << upMiaoTime;
+		startTime->setText(tt.str());
+	}
+	else if (upMiaoTime < 60 && upFenTime == 0)
+	{
+		t1 << "00:" << upMiaoTime;
+		startTime->setText(t1.str());
+	}
+	else if (upMiaoTime < 10 && upFenTime < 10)
+	{
+		s1 << "0" << upFenTime << ":0" + upMiaoTime;
+		startTime->setText(s1.str());
+	}
+	else if (upMiaoTime < 60 && upFenTime < 10)
+	{
+		s2 << upFenTime << ":0" + upMiaoTime;
+		startTime->setText(s2.str());
+	}
+	else if (upMiaoTime < 60 && upFenTime < 60)
+	{
+		s3 << upFenTime << ":" + upMiaoTime;
+		startTime->setText(s3.str());
+	}
+	
+}
+
+void LoginLayer::hideWaitBox()
+{
+	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg");
+	zuduidengdaiBg->setVisible(false);
+	this->unschedule(schedule_selector(LoginLayer::timeUpdate));
+	upFenTime = 0;
+	upMiaoTime = 0;
 }
 
 ////////////////////////////////////////////////////////////////////

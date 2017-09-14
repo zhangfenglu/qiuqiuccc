@@ -53,7 +53,7 @@ bool MainSprite::init()
     int index = Global::getInstance()->GetMainPicIndex();
 	if (index > 40)
 	{
-		int index = Global::getInstance()->getRand(MAXIMUM_PICTURE_NUM);
+		index = Global::getInstance()->getRand(MAXIMUM_PICTURE_NUM);
 	}
     
     char temp[32];

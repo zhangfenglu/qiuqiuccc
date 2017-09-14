@@ -2507,6 +2507,11 @@ void MainScene::respZuDui(const cocos2d::network::WebSocket::Data &data)
 		log("zudui chenggong");
 		/*ReqOpenFight* layer = ReqOpenFight::create();
 		addChild(layer, 100);*/
+
+		LoginLayer* layer = (LoginLayer*)getChildByTag(TAG_LAYER_LOGIN);
+		if (layer) {
+			layer->initWaitBox();
+		}
 	}
 	else
 	{
@@ -2552,6 +2557,11 @@ void MainScene::respZhanDouZhunBei(const cocos2d::network::WebSocket::Data &data
 		uint32_t time = resp.time();
 		/*ReqOpenFight* layer = ReqOpenFight::create();
 		addChild(layer, 100);*/
+
+		LoginLayer* layer = (LoginLayer*)getChildByTag(TAG_LAYER_LOGIN);
+		if (layer) {
+			layer->hideWaitBox();
+		}
 	}
 	else
 	{

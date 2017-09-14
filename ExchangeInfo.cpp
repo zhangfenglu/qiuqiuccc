@@ -4,11 +4,14 @@ std::string ExchangeInfo::getIdentifier()
 {
 	int end = 10000;
 	int start = 1;
-	int  num = (CCRANDOM_0_1()*(end - start + 1) + start);
+	int  num = CCRANDOM_0_1()*10000000;
 	log("num==================================%d" + num);
-	String* ns = String::createWithFormat("%d", num);
+	//String* ns = String::createWithFormat("%d", num);
 	//return ns->getCString();
-	return "1116";
+	std::ostringstream ss;
+	ss << num << "";
+	return ss.str().c_str();
+	//return "8282882";
 	//user: 1351258
 	//return "66666666-6666-6666-6666-666666666666";
 }

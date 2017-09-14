@@ -2,6 +2,7 @@
 #include "SimpleTools.h"
 #include "RotateMenu.h"
 #include "Global.h"
+#include "MainScene.h"
 
 
 bool TimeYuanZhengLayer::init()
@@ -22,10 +23,31 @@ bool TimeYuanZhengLayer::init()
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-			
+			log("yincang zuduiBox========================================");
 			zuduiBox->setVisible(false);
 		}
 	});
+
+	auto btn_quxiaozudui = (cocos2d::ui::Button*)seekNodeByName(zuduiBox, "btn_quxiaozudui");
+	if (Global::getInstance()->GetIsZuDui())
+	{
+		btn_close->setVisible(false);
+		btn_quxiaozudui->setVisible(true);
+	}
+	else
+	{
+		btn_close->setVisible(true);
+		btn_quxiaozudui->setVisible(false);
+	}
+	btn_quxiaozudui->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("quxiao zudui========================================");
+			zuduiBox->setVisible(false);
+		}
+	});
+
 	auto btn_zudui = (cocos2d::ui::Button*)seekNodeByName(zuduiBox, "btn_zudui");
 	btn_zudui->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -33,6 +55,12 @@ bool TimeYuanZhengLayer::init()
 		{
 
 			log("zudui========================================");
+			MainScene* main = dynamic_cast<MainScene*>(getParent()->getParent());
+			Global::getInstance()->SetIsZuDui(true);
+			main->reqZuDui();
+			this->unschedule(schedule_selector(TimeYuanZhengLayer::timeUpdate));
+			this->removeFromParent();
+			
 		}
 	});
 
@@ -433,7 +461,9 @@ void TimeYuanZhengLayer::timeUpdate(float dt)
 void TimeYuanZhengLayer::showZuDuiBox(int tag)
 {
 	std::string titleStr = awards[tag].title;
+	Global::getInstance()->SetWaitTimeBoxTitleStr(titleStr.c_str());
 	titleStr = "TimeYuanZhengLayer\\xiaohao\\title\\" + titleStr + ".png";
+	
 	auto title = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "title");
 	title->loadTexture(titleStr.c_str());
 	std::string xiaohaoStr = awards[tag].xiaohao;

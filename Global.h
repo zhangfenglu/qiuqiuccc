@@ -204,6 +204,18 @@ public:
 
 	}
 
+	//是否申请了组队
+	void SetIsZuDui(bool isZuDui){ m_IsZuDui = isZuDui; }
+	bool GetIsZuDui(){ return m_IsZuDui; }
+
+	//保存 设置 大厅 组队等待时间框 哪种燃烧远征标题
+	void SetWaitTimeBoxTitleStr(const char* title){ 
+		m_Title = title;
+	}
+	const char* GetWaitTimeBoxTitleStr(){
+		return m_Title; 
+	}
+
     void EquipUpdate(int type,int iteID);
     void HeroLeveUp(int heroID,int heroLeve);
     
@@ -257,6 +269,8 @@ private:
 	player_info m_PlayerDengLuInfo;
 	zuduidaojishi_info m_ZuDuiDaoJiShi;
 	AwardInfo m_AwardInfo;
+	bool m_IsZuDui = false;
+	const char* m_Title;
 	account_info m_AccountInfo;
     std::vector<nameMap> mComName;
     std::vector<shop_item>  shopItems;
