@@ -2437,7 +2437,7 @@ void MainScene::reSetNetKey(int netID, int netKey)
 				return;
 			m_netKey = netKey;
 
-			schedule(schedule_selector(MainScene::reConnectFightServer), 0.1f);
+			schedule(schedule_selector(MainScene::reConnectFightServer), 1.0f);
 		}
 	}
 
