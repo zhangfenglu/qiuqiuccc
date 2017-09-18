@@ -22,6 +22,7 @@
 #include "SimpleTools.h"
 #include "HttpGetImg.h"
 #include "TimeYuanZhengLayer.h"
+#include "TimeYuanZhengLayer1.h"
 //#include "DaTingLayer.h"
 using namespace cocos2d::network;
 
@@ -652,9 +653,11 @@ void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 	//main->reqShopList();
 	//main->reqZuDui();
 
-	auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
-	addChild(timeYuanZhengLayer,100000);
+	/*auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
+	addChild(timeYuanZhengLayer,100000);*/
 
+	auto timeYuanZhengLayer1 = TimeYuanZhengLayer1::create();
+	addChild(timeYuanZhengLayer1, 100000);
 }
 
 void LoginLayer::HelpClick(cocos2d::Ref *pSender)
