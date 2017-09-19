@@ -6,7 +6,7 @@
       <ObjectData Name="Layer" Tag="2" ctype="GameLayerObjectData">
         <Size X="1280.0000" Y="720.0000" />
         <Children>
-          <AbstractNodeData Name="back" ActionTag="-1759022423" Tag="4" IconVisible="False" LeftMargin="1.4213" RightMargin="-1.4214" TopMargin="-6.0000" BottomMargin="0.0000" LeftEage="422" RightEage="422" TopEage="237" BottomEage="237" Scale9OriginX="422" Scale9OriginY="237" Scale9Width="436" Scale9Height="252" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="back" ActionTag="-1759022423" Tag="4" IconVisible="False" LeftMargin="1.4213" RightMargin="-1.4213" TopMargin="-6.0000" LeftEage="422" RightEage="422" TopEage="237" BottomEage="237" Scale9OriginX="422" Scale9OriginY="237" Scale9Width="436" Scale9Height="252" ctype="ImageViewObjectData">
             <Size X="1280.0000" Y="726.0000" />
             <Children>
               <AbstractNodeData Name="juanBg" ActionTag="1757316731" Tag="6" IconVisible="False" LeftMargin="6.0836" RightMargin="1077.9164" TopMargin="219.7820" BottomMargin="36.2180" LeftEage="64" RightEage="64" TopEage="155" BottomEage="155" Scale9OriginX="64" Scale9OriginY="155" Scale9Width="68" Scale9Height="160" ctype="ImageViewObjectData">
@@ -335,10 +335,10 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint />
-            <Position X="1.4213" Y="0.0000" />
+            <Position X="1.4213" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.0011" Y="0.0000" />
+            <PrePosition X="0.0011" />
             <PreSize X="1.0000" Y="1.0083" />
             <FileData Type="Normal" Path="TimeYuanZhengLayer/mianTime/shiguangBg.png" Plist="" />
           </AbstractNodeData>
@@ -394,10 +394,10 @@
                     <PreSize X="0.2646" Y="0.0978" />
                     <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/killzuanshi/xiaohao1jjjc.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_baoming1" ActionTag="-1865798568" Tag="70" IconVisible="False" LeftMargin="40.1460" RightMargin="661.8540" TopMargin="481.2708" BottomMargin="103.7292" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_baoming1" ActionTag="-1865798568" Tag="70" IconVisible="False" LeftMargin="40.1460" RightMargin="661.8540" TopMargin="481.2700" BottomMargin="103.7300" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="118.0000" Y="59.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="99.1460" Y="133.2292" />
+                    <Position X="99.1460" Y="133.2300" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.1209" Y="0.2069" />
@@ -409,7 +409,7 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_baoming2" ActionTag="-594386588" Tag="146" IconVisible="False" LeftMargin="40.7168" RightMargin="661.2833" TopMargin="544.0734" BottomMargin="40.9266" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_baoming2" ActionTag="-594386588" Tag="146" IconVisible="False" LeftMargin="40.7168" RightMargin="661.2832" TopMargin="544.0734" BottomMargin="40.9266" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="118.0000" Y="59.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="99.7168" Y="70.4266" />
@@ -439,10 +439,10 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_baoming4" ActionTag="-1335642946" Tag="148" IconVisible="False" LeftMargin="659.4292" RightMargin="42.5708" TopMargin="544.0734" BottomMargin="40.9266" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_baoming4" ActionTag="-1335642946" Tag="148" IconVisible="False" LeftMargin="659.4292" RightMargin="42.5708" TopMargin="544.0700" BottomMargin="40.9300" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="118.0000" Y="59.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="718.4292" Y="70.4266" />
+                    <Position X="718.4292" Y="70.4300" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.8761" Y="0.1094" />
@@ -495,6 +495,66 @@
                     <CColor A="255" R="255" G="165" B="0" />
                     <PrePosition X="0.6569" Y="0.1012" />
                     <PreSize X="0.3049" Y="0.0311" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_yibaoming1" ActionTag="1371865311" VisibleForFrame="False" Tag="42" IconVisible="False" LeftMargin="40.1500" RightMargin="661.8500" TopMargin="481.2700" BottomMargin="103.7300" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                    <Size X="118.0000" Y="59.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="99.1500" Y="133.2300" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.1209" Y="0.2069" />
+                    <PreSize X="0.1439" Y="0.0916" />
+                    <TextColor A="255" R="65" G="65" B="70" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                    <PressedFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/btn_yibaoming.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/btn_yibaoming.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_yibaoming2" ActionTag="1305440553" VisibleForFrame="False" Tag="43" IconVisible="False" LeftMargin="40.7200" RightMargin="661.2800" TopMargin="544.0700" BottomMargin="40.9300" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                    <Size X="118.0000" Y="59.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="99.7200" Y="70.4300" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.1216" Y="0.1094" />
+                    <PreSize X="0.1439" Y="0.0916" />
+                    <TextColor A="255" R="65" G="65" B="70" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                    <PressedFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/btn_yibaoming.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/btn_yibaoming.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_yibaoming3" ActionTag="-41356984" VisibleForFrame="False" Tag="44" IconVisible="False" LeftMargin="659.4300" RightMargin="42.5700" TopMargin="481.2700" BottomMargin="103.7300" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                    <Size X="118.0000" Y="59.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="718.4300" Y="133.2300" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.8761" Y="0.2069" />
+                    <PreSize X="0.1439" Y="0.0916" />
+                    <TextColor A="255" R="65" G="65" B="70" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                    <PressedFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/btn_yibaoming.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/btn_yibaoming.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_yibaoming4" ActionTag="-1511905523" VisibleForFrame="False" Tag="45" IconVisible="False" LeftMargin="659.4300" RightMargin="42.5700" TopMargin="544.0700" BottomMargin="40.9300" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="88" Scale9Height="37" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                    <Size X="118.0000" Y="59.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="718.4300" Y="70.4300" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.8761" Y="0.1094" />
+                    <PreSize X="0.1439" Y="0.0916" />
+                    <TextColor A="255" R="65" G="65" B="70" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                    <PressedFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/btn_yibaoming.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/btn_yibaoming.png" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>

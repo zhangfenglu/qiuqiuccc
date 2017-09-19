@@ -1,4 +1,4 @@
-#ifndef _GLOBAL_H_
+ï»¿#ifndef _GLOBAL_H_
 #define _GLOBAL_H_
 #pragma once
 
@@ -19,7 +19,7 @@ using namespace com::suyin::proto;
 
 
 #include "Common.h"
-//¿Í»§¶Ë²âÊÔËã·¨¿ØÖÆºê
+//å®¢æˆ·ç«¯æµ‹è¯•ç®—æ³•æ§åˆ¶å®
 //#define EditEXE
 
 #define PRI _pri(this)
@@ -168,26 +168,26 @@ public:
     void SetUserInfo(user_info info){m_UserInfo=info;}
     user_info GetUserInfo(){return m_UserInfo;}
 
-	//ÕÅ·æÂ¶
+	//å¼ é”‹éœ²
 	void SetplayerDengLuInfo(player_info info){ m_PlayerDengLuInfo = info; }
 	player_info GetPlayerDengLuInfo(){ return m_PlayerDengLuInfo; }
-	//ÕÅ·æÂ¶
+	//å¼ é”‹éœ²
 	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
 	account_info GetAccountInfo(){ return m_AccountInfo; }
-	//µ¹¼ÆÊ±
+	//å€’è®¡æ—¶
 	void SetZuDuiDaoJiShiInfo(zuduidaojishi_info info){ m_ZuDuiDaoJiShi = info; }
 	zuduidaojishi_info GetZuDuiDaoJiShiInfo(){ return m_ZuDuiDaoJiShi; }
 
-	//È¼ÉÕÔ¶Õ÷×é¶Ó ¶ÔÓ¦µÄÏûºÄ¼°Æä½±ÀøĞÅÏ¢
+	//ç‡ƒçƒ§è¿œå¾ç»„é˜Ÿ å¯¹åº”çš„æ¶ˆè€—åŠå…¶å¥–åŠ±ä¿¡æ¯
 	void SetAwardInfo(AwardInfo info){ m_AwardInfo = info; }
 	AwardInfo GetAwardInfo(){ return m_AwardInfo; }
 
-	//ÒÔ Ä³¸ö·ûºÅ±ê¼Ç ·Ö¸î×Ö·û´®Êı×é
+	//ä»¥ æŸä¸ªç¬¦å·æ ‡è®° åˆ†å‰²å­—ç¬¦ä¸²æ•°ç»„
 	std::vector<std::string> split(std::string str, std::string pattern)
 	{
 		std::string::size_type pos;
 		std::vector<std::string> result;
-		str += pattern;//À©Õ¹×Ö·û´®ÒÔ·½±ã²Ù×÷
+		str += pattern;//æ‰©å±•å­—ç¬¦ä¸²ä»¥æ–¹ä¾¿æ“ä½œ
 		int size = str.size();
 
 		for (int i = 0; i < size; i++)
@@ -204,11 +204,13 @@ public:
 
 	}
 
-	//ÊÇ·ñÉêÇëÁË×é¶Ó
+	void SetCangKuObj(timeyuanzheng_cangku_info info){ m_CangKuObj = info; }
+	timeyuanzheng_cangku_info GetCangKuObj(){ return m_CangKuObj; }
+	//æ˜¯å¦ç”³è¯·äº†ç»„é˜Ÿ
 	void SetIsZuDui(bool isZuDui){ m_IsZuDui = isZuDui; }
 	bool GetIsZuDui(){ return m_IsZuDui; }
 
-	//±£´æ ÉèÖÃ ´óÌü ×é¶ÓµÈ´ıÊ±¼ä¿ò ÄÄÖÖÈ¼ÉÕÔ¶Õ÷±êÌâ
+	//ä¿å­˜ è®¾ç½® å¤§å… ç»„é˜Ÿç­‰å¾…æ—¶é—´æ¡† å“ªç§ç‡ƒçƒ§è¿œå¾æ ‡é¢˜
 	void SetWaitTimeBoxTitleStr(const char* title){ 
 		m_Title = title;
 	}
@@ -269,6 +271,7 @@ private:
 	player_info m_PlayerDengLuInfo;
 	zuduidaojishi_info m_ZuDuiDaoJiShi;
 	AwardInfo m_AwardInfo;
+	timeyuanzheng_cangku_info m_CangKuObj;
 	bool m_IsZuDui = false;
 	const char* m_Title;
 	account_info m_AccountInfo;

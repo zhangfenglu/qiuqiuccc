@@ -5,6 +5,8 @@
 #include "cocos2d.h"
 USING_NS_CC;
 #include "Common.h"
+#include "network/HttpClient.h"
+using namespace cocos2d::network;
 class TimeYuanZhengLayer1 : public Layer
 {
 public:
@@ -24,7 +26,9 @@ public:
 	void hideAllSprite();
 	cocos2d::Sprite *sprite[6];
 
-
+private:
+	void initCangKuObj();
+	void initUI();
 private:
 	Node* rootNode;
 
@@ -61,6 +65,8 @@ public:
 		teams = 15
 	};
 private:
+	//当前的 星级 包名
+	int star_level;
 	int Image_award_width;
 	int Image_award_poiX;
 	int Image_award_poiY;

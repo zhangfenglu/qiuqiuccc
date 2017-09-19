@@ -1,4 +1,4 @@
-#include "Global.h"
+ï»¿#include "Global.h"
 #include "external/json/stringbuffer.h"
 #include "external/json/writer.h"
 
@@ -31,14 +31,14 @@ Global::Global(void)
 //    netInfo info1;
 //    info1.m_netID = 1;
 //    info1.m_netUrl = "60.174.233.70";
-//    info1.m_netName = "²âÊÔÒ»Çø";
+//    info1.m_netName = "æµ‹è¯•ä¸€åŒº";
 //    info1.m_netPort = "1448";
 //    m_nets.push_back(info1);
 //    
 //    netInfo info2;
 //    info2.m_netID = 2;
 //    info2.m_netUrl = "60.174.233.70";
-//    info2.m_netName = "²âÊÔ¶þÇø";
+//    info2.m_netName = "æµ‹è¯•äºŒåŒº";
 //    info2.m_netPort = "1449";
 //    m_nets.push_back(info2);
     
@@ -548,7 +548,7 @@ void CCPromMoveBox::SetTypeAndValue(std::vector<item> vec)
      addChild(smalllab,10);
      */
     
-    CCLabelTTF* tile = CCLabelTTF::create("»ñµÃÎïÆ·","STXingkai.ttf",40.0f);
+    CCLabelTTF* tile = CCLabelTTF::create("èŽ·å¾—ç‰©å“","STXingkai.ttf",40.0f);
     tile->setPosition(Vec2(winSize.width/2,winSize.height/2+220));
     tile->setColor(Color3B(255,255,255));
     addChild(tile,10);

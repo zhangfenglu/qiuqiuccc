@@ -1,8 +1,8 @@
-//
+ï»¿//
 //  Common.h
 //  qiuFight
 //
-//  Created by ÕÅÔ¾¶« on 16/3/3.
+//  Created by å¼ è·ƒä¸œ on 16/3/3.
 //
 //
 
@@ -18,17 +18,17 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-#define  INITIAL_SPEED          10       //³õÊ¼ËÙ¶È
-#define  ATTENUATION_SPEED      0.01     //Ë¥¼õËÙ¶È
-#define  MINIMUM_SPEED          1       //×îĞ¡ËÙ¶È
+#define  INITIAL_SPEED          10       //åˆå§‹é€Ÿåº¦
+#define  ATTENUATION_SPEED      0.01     //è¡°å‡é€Ÿåº¦
+#define  MINIMUM_SPEED          1       //æœ€å°é€Ÿåº¦
 
-#define R_LENGTH                60      //ÄÚÈ¦Ô²µÄ°ë¾¶
+#define R_LENGTH                60      //å†…åœˆåœ†çš„åŠå¾„
 
-#define MINIMUM_SIZE            32      //×îĞ¡Ê±ºòÌå»ı
+#define MINIMUM_SIZE            32      //æœ€å°æ—¶å€™ä½“ç§¯
 
-#define MAXIMUM_PICTURE_NUM     40       //Í¼Æ¬µÄ×î´óÊıÁ¿
+#define MAXIMUM_PICTURE_NUM     40       //å›¾ç‰‡çš„æœ€å¤§æ•°é‡
 
-#define MINMUN_PLAYER_SCALE_OR  0.05    //player³õÊ¼»¯Ê±ºòµÄËõ·Å±È
+#define MINMUN_PLAYER_SCALE_OR  0.05    //playeråˆå§‹åŒ–æ—¶å€™çš„ç¼©æ”¾æ¯”
 
 #define PLAYER_PIX_SIZE         300 * 2
 #define CI_PIX_SIZE             155 * 2
@@ -36,16 +36,16 @@ USING_NS_CC_EXT;
 
 #define MASS_FORM_SIZE_PERCENT  0.01
 
-#define DISTANCE_PER_CIRCLE     2000    // ÇòÓëÇòÖ®¼äµÄ¾àÀëÀ´½øĞĞËõ·Å
+#define DISTANCE_PER_CIRCLE     2000    // çƒä¸çƒä¹‹é—´çš„è·ç¦»æ¥è¿›è¡Œç¼©æ”¾
 
-//ÖÊÁ¿ºÍÏà»ú±ÈÀıµÄ¹ØÏµ
+//è´¨é‡å’Œç›¸æœºæ¯”ä¾‹çš„å…³ç³»
 #define MASS_PERCENT_1          100
 #define MASS_PERCENT_2          500
 #define MASS_PERCENT_3          1500
 #define MASS_PERCENT_4          5000
 #define MASS_PERCENT_5          10000
 #define MASS_PERCENT_6          22500
-//±ÈÀı
+//æ¯”ä¾‹
 #define MAIN_CAMERA_SCALE_1     0.9
 #define MAIN_CAMERA_SCALE_2     0.8
 #define MAIN_CAMERA_SCALE_3     0.7
@@ -53,7 +53,7 @@ USING_NS_CC_EXT;
 #define MAIN_CAMERA_SCALE_5     0.5
 #define MAIN_CAMERA_SCALE_6     0.4
 
-//Ïà»ú±ä»¯ ¹«Ê½ÇúÏßÀàĞÍ £ºy=ax^k+b
+//ç›¸æœºå˜åŒ– å…¬å¼æ›²çº¿ç±»å‹ ï¼šy=ax^k+b
 #define K_VALUE                 -0.04
 #define A_VALUE                 2.47667
 #define B_VALUE                 -1.25875
@@ -117,7 +117,7 @@ struct nodeInfo
 	uint8_t isPlayer;
 };
 
-//ÕÅ·æÂ¶ ĞÂÔö¼ÓµÄµÇÂ½ºóµÄÕËºÅÍæ¼ÒĞÅÏ¢
+//å¼ é”‹éœ² æ–°å¢åŠ çš„ç™»é™†åçš„è´¦å·ç©å®¶ä¿¡æ¯
 struct player_info
 {
 	player_info()
@@ -139,7 +139,28 @@ struct player_info
 	std::string        headid;
 };
 
-//ÕÅ·æÂ¶ ÕËºÅ
+struct timeyuanzheng_cangku_info
+{
+	timeyuanzheng_cangku_info()
+	{
+		diamonds = 0;
+		juan1 = 0;
+		juan2 = 0;
+		juan3 = 0;
+		juan4 = 0;
+		juan5 = 0;
+		juan6 = 0;
+	}
+	uint32_t           diamonds;
+	uint32_t           juan1;
+	uint32_t           juan2;
+	uint32_t           juan3;
+	uint32_t           juan4;
+	uint32_t           juan5;
+	uint32_t           juan6;
+};
+
+//å¼ é”‹éœ² è´¦å·
 struct account_info
 {
 	account_info()
@@ -165,7 +186,7 @@ struct account_info
 	std::string        accout;
 };
 
-//µ¹¼ÆÊ±
+//å€’è®¡æ—¶
 struct zuduidaojishi_info
 {
 	zuduidaojishi_info()
@@ -333,14 +354,14 @@ struct NameColor
 	int colorB;
 };
 
-// Õ½¶·ÄÚÅÅĞĞ
+// æˆ˜æ–—å†…æ’è¡Œ
 struct fight_rank
 {
     int             rankID;
     std::string     name;
 };
 
-//Õ½¶·½áËã
+//æˆ˜æ–—ç»“ç®—
 struct EndGame
 {
     EndGame()
@@ -529,7 +550,7 @@ struct user_bag
     int count;
 };
 
-//²âÊÔ
+//æµ‹è¯•
 struct TestAtt
 {
     int         m_id;
@@ -539,7 +560,7 @@ struct TestAtt
     std::string m_dest;
     std::string m_state;
     std::string m_times;
-    std::string m_iconStr;   //iconÕÕÆ¬
+    std::string m_iconStr;   //iconç…§ç‰‡
 };
 
 struct duanweiInfo
