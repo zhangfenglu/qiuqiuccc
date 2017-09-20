@@ -271,7 +271,7 @@ void LoginLayer::initUI1()
 	auto rootNode1 = CSLoader::createNode("ActiveLayer.csb");
 	addChild(rootNode1,100000);
 
-	auto huoodng = (cocos2d::ui::ImageView*)seekNodeByName(rootNode1, "huoodng");
+	auto ScrollView_1 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode1, "ScrollView_1");
 	auto closeBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode1, "btnOk");
 	closeBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -321,12 +321,10 @@ void LoginLayer::initUI1()
 						if (texture)
 						{
 							auto tupian = Sprite::createWithTexture(texture);
-							tupian->setAnchorPoint(Vec2::ZERO);
-							//tupian->setPosition(huoodng->getPosition());
-							if (huoodng)
+							tupian->setAnchorPoint(Point(0,0));
+							if (ScrollView_1)
 							{
-								huoodng->addChild(tupian);
-								tupian->setContentSize(huoodng->getContentSize());
+								ScrollView_1->addChild(tupian);
 							}
 						}	
 					}
