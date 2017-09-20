@@ -1048,7 +1048,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		{
 			log("bangdingyouxiang tijiao xinxi");
 			
-			std::string data = "playerid=" + info.playerid + "&mail=383905358@qq.com" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + "yip9";
+			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "qq.com" + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
 				//yanZhengMaedbox->getText();
 
 			std::string url = "47.93.50.101:8080/QQWar/Qqwar/bindmail";
