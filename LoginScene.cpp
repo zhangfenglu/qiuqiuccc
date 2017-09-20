@@ -156,7 +156,7 @@ void LoginLayer::initUI1()
 	magicBtn->setScale(0.55f);
 	magicBtn->setOnClickCallback(callfuncO_selector(LoginLayer::MagicClick), this);
 	addChild(magicBtn, 2);
-	//magicBtn->setVisible(false);
+	magicBtn->setVisible(false);
 	/*
 	Button* helpBtn = Button::createBtnWithSpriteFrameName("help.png", false);
 	helpBtn->setPosition(Vec2(winSize.width - 50, winSize.height - 50));
@@ -655,8 +655,8 @@ void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 	//main->reqShopList();
 	//main->reqZuDui();
 
-	auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
-	addChild(timeYuanZhengLayer,100000);
+	/*auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
+	addChild(timeYuanZhengLayer,100000);*/
 
 	/*auto YuanZhengLayer = YuanZhengLayer::create();
 	addChild(YuanZhengLayer, 100000);*/
@@ -1167,11 +1167,15 @@ void LoginLayer::rushmenpiao()
 void LoginLayer::JingJiChangClick(Ref* pSender)
 {
 	log("===================================jingjichang");
+	auto YuanZhengLayer = YuanZhengLayer::create();
+	addChild(YuanZhengLayer, 100000);
 }
 
 void LoginLayer::ShengYiClick(Ref* pSender)
 {
 	log("===================================shengyi");
+	auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
+	addChild(timeYuanZhengLayer, 100000);
 }
 
 bool LoginLayer::onTouchBegan(Touch *touch, Event *unused_event)
