@@ -7,11 +7,16 @@ USING_NS_CC;
 #include "RotateMenu.h"
 #include "Global.h"
 #include "Common.h"
+
+#include "network/HttpClient.h"
+using namespace cocos2d::network;
 class TimeYuanZhengLayer : public Layer
 {
 public:
 	CREATE_FUNC(TimeYuanZhengLayer);
+	void initCangKuObj();
 	virtual bool init();
+	void initUI();
 
 
 
