@@ -211,10 +211,10 @@ public:
 	bool GetIsZuDui(){ return m_IsZuDui; }
 
 	//保存 设置 大厅 组队等待时间框 哪种燃烧远征标题
-	void SetWaitTimeBoxTitleStr(const char* title){ 
+	void SetWaitTimeBoxTitleStr(std::string title){ 
 		m_Title = title;
 	}
-	const char* GetWaitTimeBoxTitleStr(){
+	std::string GetWaitTimeBoxTitleStr(){
 		return m_Title; 
 	}
 
@@ -273,7 +273,7 @@ private:
 	AwardInfo m_AwardInfo;
 	timeyuanzheng_cangku_info m_CangKuObj;
 	bool m_IsZuDui = false;
-	const char* m_Title;
+	std::string m_Title;
 	account_info m_AccountInfo;
     std::vector<nameMap> mComName;
     std::vector<shop_item>  shopItems;

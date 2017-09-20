@@ -1,7 +1,5 @@
 #include "TimeYuanZhengLayer.h"
 #include "SimpleTools.h"
-#include "RotateMenu.h"
-#include "Global.h"
 #include "MainScene.h"
 
 
@@ -462,6 +460,7 @@ void TimeYuanZhengLayer::showZuDuiBox(int tag)
 {
 	std::string titleStr = awards[tag].title;
 	titleStr = "TimeYuanZhengLayer\\xiaohao\\title\\" + titleStr + ".png";
+	Global::getInstance()->SetWaitTimeBoxTitleStr(titleStr);
 	auto title = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "title");
 	title->loadTexture(titleStr.c_str());
 

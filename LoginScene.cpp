@@ -1311,9 +1311,9 @@ void LoginLayer::initWaitBox()
 	//zuduidengdaiBg->runAction(moveTo);
 	auto moveToBack = moveTo->reverse();
 	auto titleImg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "titleImg");
-	auto  titleStr = ( Global::getInstance()->GetWaitTimeBoxTitleStr());
-	//log("=================%s",titleStr);
-	//titleImg->loadTexture(titleStr);
+	std::string  titleStr = "" + Global::getInstance()->GetWaitTimeBoxTitleStr();
+	log("=================%s",titleStr.c_str());
+	titleImg->loadTexture(titleStr);
 	this->schedule(schedule_selector(LoginLayer::timeUpdate), 1);
 
 	auto btnZuduiClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnZuduiClose");

@@ -4,6 +4,8 @@
 #include "ui/CocosGUI.h"
 #include "cocos2d.h"
 USING_NS_CC;
+#include "RotateMenu.h"
+#include "Global.h"
 #include "Common.h"
 class TimeYuanZhengLayer : public Layer
 {
