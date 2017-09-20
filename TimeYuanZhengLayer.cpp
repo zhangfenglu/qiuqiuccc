@@ -290,37 +290,37 @@ bool TimeYuanZhengLayer::init()
 void TimeYuanZhengLayer::menuItem1Callback(cocos2d::Ref* pSender)
 {
 	log("btn1");
-	showZuDuiBox(1);
+	showZuDuiBox(0);
 }
 
 void TimeYuanZhengLayer::menuItem2Callback(cocos2d::Ref* pSender)
 {
 	log("btn2");
-	showZuDuiBox(2);
+	showZuDuiBox(1);
 }
 
 void TimeYuanZhengLayer::menuItem3Callback(cocos2d::Ref* pSender)
 {
 	log("btn3");
-	showZuDuiBox(3);
+	showZuDuiBox(2);
 }
 
 void TimeYuanZhengLayer::menuItem4Callback(cocos2d::Ref* pSender)
 {
 	log("btn4");
-	showZuDuiBox(4);
+	showZuDuiBox(3);
 }
 
 void TimeYuanZhengLayer::menuItem5Callback(cocos2d::Ref* pSender)
 {
 	log("btn5");
-	showZuDuiBox(5);
+	showZuDuiBox(4);
 }
 
 void TimeYuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
 {
 	log("btn6");
-	showZuDuiBox(6);
+	showZuDuiBox(5);
 }
 void TimeYuanZhengLayer::hideAllSprite()
 {
@@ -461,27 +461,80 @@ void TimeYuanZhengLayer::timeUpdate(float dt)
 void TimeYuanZhengLayer::showZuDuiBox(int tag)
 {
 	std::string titleStr = awards[tag].title;
-	Global::getInstance()->SetWaitTimeBoxTitleStr(titleStr.c_str());
 	titleStr = "TimeYuanZhengLayer\\xiaohao\\title\\" + titleStr + ".png";
-	
 	auto title = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "title");
 	title->loadTexture(titleStr.c_str());
-	std::string xiaohaoStr = awards[tag].xiaohao;
-	xiaohaoStr = "TimeYuanZhengLayer\\xiaohao\\killzuanshi\\" + xiaohaoStr + ".png";
-	auto xiaohao = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuanshi");
-	xiaohao->loadTexture(xiaohaoStr.c_str());
-	std::string awardsStr = awards[tag].allawards;
-	std::vector<std::string> awardsArrays = Global::getInstance()->split(awardsStr, "|");
+
+	auto xiaohaoTitle = (cocos2d::ui::Text*)seekNodeByName(rootNode, "xiaohaoTitle");
+	std::string xiaohaoTitleStr = awards[tag].xiaohaoTitle;
+	xiaohaoTitle->setText(xiaohaoTitleStr.c_str());
+
+	std::string zuanshiStr = awards[tag].zuanshi;
+	zuanshiStr = "TimeYuanZhengLayer\\xiaohao\\killzuanshi\\" + zuanshiStr;
+	auto zuanshi = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuanshi");
+	zuanshi->loadTexture(zuanshiStr.c_str());
+
+	std::string xiaohaoNumStr = awards[tag].xiaohaoNum;
+	auto xiaohaoNum = (cocos2d::ui::Text*)seekNodeByName(rootNode, "xiaohaoNum");
+	xiaohaoNumStr = "X" + xiaohaoNumStr;
+	xiaohaoNum->setText(xiaohaoNumStr.c_str());
+
+	std::string allawardsBgStr = awards[tag].allawardsBg;
+	std::string allawardsTypeStr = awards[tag].allawardsType;
+	std::string allawardsTitleStr = awards[tag].allawardsTitle;
+	std::string allawardsStr = awards[tag].allawards;
+	std::string allawardsNumStr = awards[tag].allawardsNum;
+	std::string allawardsNameStr = awards[tag].allawardsName;
+	std::vector<std::string> allawardsBgArrays = Global::getInstance()->split(allawardsBgStr, "|");
+	std::vector<std::string> allawardsTypeArrays = Global::getInstance()->split(allawardsTypeStr, "|");
+	std::vector<std::string> allawardsTitleArrays = Global::getInstance()->split(allawardsTitleStr, "|");
+	std::vector<std::string> allawardsArrays = Global::getInstance()->split(allawardsStr, "|");
+	std::vector<std::string> allawardsNumArrays = Global::getInstance()->split(allawardsNumStr, "|");
+	std::vector<std::string> allawardsNameArrays = Global::getInstance()->split(allawardsNameStr, "|");
 
 	auto scrollView = (cocos2d::ui::ScrollView*)seekNodeByName(rootNode, "ScrollView");
-	scrollView->removeAllChildren();
-	for (int i = 0; i < awardsArrays.size(); i++)
+	auto Image_award = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "Image_award");
+	Image_award->setVisible(false);
+	//scrollView->removeAllChildren();
+
+	for (int i = 0; i < allawardsBgArrays.size(); i++)
 	{
-		cocos2d::ui::ImageView* cloneImage = cocos2d::ui::ImageView::create();
+		auto cloneImage = (cocos2d::ui::ImageView*)Image_award->clone();
+		cloneImage->setVisible(true);
+		//cocos2d::ui::ImageView* cloneImage = cocos2d::ui::ImageView::create();
 		scrollView->addChild(cloneImage);
-		std::string clonePath = "TimeYuanZhengLayer\\xiaohao\\reward\\" + awardsArrays.at(i) + ".png";
+
+		std::string clonePath = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsBgArrays.at(i);
 		cloneImage->loadTexture(clonePath.c_str());
 		cloneImage->setPosition(ccp(Image_award_poiX + Image_award_width * i, Image_award_poiY));
+
+		auto allawardsType = (cocos2d::ui::ImageView*)cloneImage->getChildByName("allawardsType");
+		std::string allawardsTypeStr1 = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsTypeArrays.at(i);
+		allawardsType->loadTexture(allawardsTypeStr1.c_str());
+
+		auto allawardsTitle = (cocos2d::ui::Text*)allawardsType->getChildByName("allawardsTitle");
+		std::string allawardsTitleStr1 = "" + allawardsTitleArrays.at(i);
+		if (allawardsTitleStr1 == "null")
+		{
+			allawardsTitle->setText("");
+		}
+		else
+		{
+			allawardsTitle->setText(allawardsTitleStr1.c_str());
+		}
+
+		auto allawards = (cocos2d::ui::ImageView*)cloneImage->getChildByName("allawards");
+		std::string allawardsStr1 = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsArrays.at(i);
+		allawards->loadTexture(allawardsStr1.c_str());
+
+		auto allawardsNum = (cocos2d::ui::Text*)cloneImage->getChildByName("allawardsNum");
+		std::string allawardsNumStr1 = "" + allawardsNumArrays.at(i);
+		allawardsNum->setText(allawardsNumStr1.c_str());
+
+		auto allawardsName = (cocos2d::ui::Text*)cloneImage->getChildByName("allawardsName");
+		std::string allawardsNameStr1 = "" + allawardsNameArrays.at(i);
+		allawardsName->setText(allawardsNameStr1.c_str());
+
 
 	}
 	zuduiBox->setVisible(true);
@@ -508,12 +561,28 @@ void TimeYuanZhengLayer::initZuDuiAwardInfo()
 
 							Json* title = Json_getItem(jsonChild, "title");
 							//CCLog("<<<<<<%s", title->valuestring);
-							Json * xiaohao = Json_getItem(jsonChild, "xiaohao");
+							Json * xiaohaoTitle = Json_getItem(jsonChild, "xiaohaoTitle");
+							Json * zuanshi = Json_getItem(jsonChild, "xiaohaoIcon");
+							Json * xiaohaoNum = Json_getItem(jsonChild, "xiaohaoNum");
+
+							Json* allawardsBg = Json_getItem(jsonChild, "allawardsBg");
 							Json* allawards = Json_getItem(jsonChild, "allawards");
+							Json* allawardsType = Json_getItem(jsonChild, "allawardsType");
+							Json* allawardsTitle = Json_getItem(jsonChild, "allawardsTitle");
+							Json* allawardsNum = Json_getItem(jsonChild, "allawardsNum");
+							Json* allawardsName = Json_getItem(jsonChild, "allawardsName");
 							AwardInfo info;
 							info.title = title->valueString;
-							info.xiaohao = xiaohao->valueString;
+							info.xiaohaoTitle = xiaohaoTitle->valueString;
+							info.zuanshi = zuanshi->valueString;
+							info.xiaohaoNum = xiaohaoNum->valueString;
+
+							info.allawardsBg = allawardsBg->valueString;
 							info.allawards = allawards->valueString;
+							info.allawardsType = allawardsType->valueString;
+							info.allawardsTitle = allawardsTitle->valueString;
+							info.allawardsNum = allawardsNum->valueString;
+							info.allawardsName = allawardsName->valueString;
 							awards[i] = info;
 		}
 			break;
