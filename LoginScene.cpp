@@ -318,15 +318,17 @@ void LoginLayer::initUI1()
 			
 					HttpGetImg::GetHttpImg(picUrl, [=](Texture2D * texture)
 					{
-						auto tupian = Sprite::createWithTexture(texture);
-						tupian->setAnchorPoint(Vec2::ZERO);
-						//tupian->setPosition(huoodng->getPosition());
-						if (huoodng)
+						if (texture)
 						{
-							huoodng->addChild(tupian);
-							tupian->setContentSize(huoodng->getContentSize());
-						}
-							
+							auto tupian = Sprite::createWithTexture(texture);
+							tupian->setAnchorPoint(Vec2::ZERO);
+							//tupian->setPosition(huoodng->getPosition());
+							if (huoodng)
+							{
+								huoodng->addChild(tupian);
+								tupian->setContentSize(huoodng->getContentSize());
+							}
+						}	
 					}
 					);
 
