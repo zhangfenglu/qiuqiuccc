@@ -19,42 +19,42 @@ void YuanZhengLayer::menuItem1Callback(cocos2d::Ref* pSender)
 {
 	log("btn1");
 	star_level = 1;
-	showZuDuiBox(1);
+	showZuDuiBox(star_level - 1);
 }
 
 void YuanZhengLayer::menuItem2Callback(cocos2d::Ref* pSender)
 {
 	log("btn2");
 	star_level = 2;
-	showZuDuiBox(2);
+	showZuDuiBox(star_level - 1);
 }
 
 void YuanZhengLayer::menuItem3Callback(cocos2d::Ref* pSender)
 {
 	log("btn3");
 	star_level = 3;
-	showZuDuiBox(3);
+	showZuDuiBox(star_level - 1);
 }
 
 void YuanZhengLayer::menuItem4Callback(cocos2d::Ref* pSender)
 {
 	log("btn4");
 	star_level = 4;
-	showZuDuiBox(4);
+	showZuDuiBox(star_level - 1);
 }
 
 void YuanZhengLayer::menuItem5Callback(cocos2d::Ref* pSender)
 {
 	log("btn5");
 	star_level = 5;
-	showZuDuiBox(5);
+	showZuDuiBox(star_level - 1);
 }
 
 void YuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
 {
 	log("btn6");
 	star_level = 6;
-	showZuDuiBox(6);
+	showZuDuiBox(star_level - 1);
 }
 
 
