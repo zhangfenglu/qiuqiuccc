@@ -284,6 +284,21 @@
           <AbstractNodeData Name="zhaohuimima" ActionTag="-1688390556" VisibleForFrame="False" Tag="63" IconVisible="False" LeftMargin="176.4901" RightMargin="179.5099" TopMargin="38.4901" BottomMargin="41.5099" LeftEage="248" RightEage="248" TopEage="150" BottomEage="150" Scale9OriginX="248" Scale9OriginY="150" Scale9Width="428" Scale9Height="340" ctype="ImageViewObjectData">
             <Size X="924.0000" Y="640.0000" />
             <Children>
+              <AbstractNodeData Name="btnyanzhengma1" ActionTag="333855400" Tag="101" IconVisible="False" LeftMargin="470.7271" RightMargin="203.2729" TopMargin="254.0518" BottomMargin="306.9482" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="220" Scale9Height="57" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                <Size X="250.0000" Y="79.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="595.7271" Y="346.4482" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.6447" Y="0.5413" />
+                <PreSize X="0.2706" Y="0.1234" />
+                <TextColor A="255" R="65" G="65" B="70" />
+                <DisabledFileData Type="Normal" Path="GameSetting/btnyanzhengma.png" Plist="" />
+                <PressedFileData Type="Normal" Path="GameSetting/btnyanzhengma.png" Plist="" />
+                <NormalFileData Type="Normal" Path="GameSetting/btnyanzhengma.png" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
               <AbstractNodeData Name="close5" ActionTag="-323252029" Tag="64" IconVisible="False" LeftMargin="834.8384" RightMargin="2.1616" TopMargin="3.1151" BottomMargin="561.8849" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="57" Scale9Height="53" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="87.0000" Y="75.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

@@ -762,18 +762,75 @@
               <AbstractNodeData Name="bg" ActionTag="-784420103" Tag="65" IconVisible="False" LeftMargin="230.0000" RightMargin="-850.0000" TopMargin="-482.0000" BottomMargin="38.0000" LeftEage="270" RightEage="270" TopEage="212" BottomEage="212" Scale9OriginX="270" Scale9OriginY="212" Scale9Width="280" Scale9Height="220" ctype="ImageViewObjectData">
                 <Size X="820.0000" Y="644.0000" />
                 <Children>
-                  <AbstractNodeData Name="ScrollView" ActionTag="704477145" Tag="66" IconVisible="False" LeftMargin="25.5797" RightMargin="24.4203" TopMargin="149.1415" BottomMargin="214.8585" TouchEnable="True" ClipAble="True" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" IsBounceEnabled="True" ScrollDirectionType="Horizontal" ctype="ScrollViewObjectData">
+                  <AbstractNodeData Name="ScrollView" ActionTag="770023712" Tag="178" IconVisible="False" LeftMargin="25.5797" RightMargin="24.4203" TopMargin="149.1415" BottomMargin="214.8585" TouchEnable="True" ClipAble="True" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" IsBounceEnabled="True" ScrollDirectionType="Horizontal" ctype="ScrollViewObjectData">
                     <Size X="770.0000" Y="280.0000" />
                     <Children>
-                      <AbstractNodeData Name="Image_award" ActionTag="157306069" Tag="67" IconVisible="False" LeftMargin="11.0750" RightMargin="658.9250" TopMargin="89.8061" BottomMargin="26.1939" LeftEage="42" RightEage="42" TopEage="54" BottomEage="54" Scale9OriginX="42" Scale9OriginY="54" Scale9Width="46" Scale9Height="56" ctype="ImageViewObjectData">
-                        <Size X="130.0000" Y="164.0000" />
+                      <AbstractNodeData Name="Image_award" ActionTag="-1506811664" Tag="179" IconVisible="False" LeftMargin="3.0750" RightMargin="648.9250" TopMargin="63.8061" BottomMargin="28.1939" LeftEage="15" RightEage="15" TopEage="15" BottomEage="15" Scale9OriginX="15" Scale9OriginY="15" Scale9Width="118" Scale9Height="158" ctype="ImageViewObjectData">
+                        <Size X="148.0000" Y="188.0000" />
+                        <Children>
+                          <AbstractNodeData Name="allawardsType" ActionTag="-907490517" Tag="180" IconVisible="False" LeftMargin="5.9378" RightMargin="7.0622" TopMargin="-41.0409" BottomMargin="185.0409" LeftEage="44" RightEage="44" TopEage="14" BottomEage="14" Scale9OriginX="44" Scale9OriginY="14" Scale9Width="47" Scale9Height="16" ctype="ImageViewObjectData">
+                            <Size X="135.0000" Y="44.0000" />
+                            <Children>
+                              <AbstractNodeData Name="allawardsTitle" ActionTag="1059112657" Tag="181" IconVisible="False" LeftMargin="35.3592" RightMargin="33.6408" TopMargin="6.3503" BottomMargin="15.6497" FontSize="22" LabelText="第10名" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                                <Size X="66.0000" Y="22.0000" />
+                                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                                <Position X="68.3592" Y="26.6497" />
+                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                <CColor A="255" R="255" G="0" B="0" />
+                                <PrePosition X="0.5064" Y="0.6057" />
+                                <PreSize X="0.4889" Y="0.5000" />
+                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <ShadowColor A="255" R="110" G="110" B="110" />
+                              </AbstractNodeData>
+                            </Children>
+                            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                            <Position X="73.4378" Y="207.0409" />
+                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                            <CColor A="255" R="255" G="255" B="255" />
+                            <PrePosition X="0.4962" Y="1.1013" />
+                            <PreSize X="0.9122" Y="0.2340" />
+                            <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/reward/bianqian.png" Plist="" />
+                          </AbstractNodeData>
+                          <AbstractNodeData Name="allawards" ActionTag="1021888928" Tag="182" IconVisible="False" LeftMargin="26.5835" RightMargin="28.4165" TopMargin="32.2094" BottomMargin="62.7906" LeftEage="44" RightEage="44" TopEage="14" BottomEage="14" Scale9OriginX="44" Scale9OriginY="14" Scale9Width="5" Scale9Height="65" ctype="ImageViewObjectData">
+                            <Size X="93.0000" Y="93.0000" />
+                            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                            <Position X="73.0835" Y="109.2906" />
+                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                            <CColor A="255" R="255" G="255" B="255" />
+                            <PrePosition X="0.4938" Y="0.5813" />
+                            <PreSize X="0.6284" Y="0.4947" />
+                            <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/reward/daojuicon1.png" Plist="" />
+                          </AbstractNodeData>
+                          <AbstractNodeData Name="allawardsNum" ActionTag="-157005293" Tag="183" IconVisible="False" LeftMargin="86.2376" RightMargin="13.7624" TopMargin="114.7559" BottomMargin="49.2441" FontSize="24" LabelText="5000" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                            <Size X="48.0000" Y="24.0000" />
+                            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                            <Position X="110.2376" Y="61.2441" />
+                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                            <CColor A="255" R="255" G="0" B="0" />
+                            <PrePosition X="0.7448" Y="0.3258" />
+                            <PreSize X="0.3243" Y="0.1277" />
+                            <OutlineColor A="255" R="255" G="0" B="0" />
+                            <ShadowColor A="255" R="110" G="110" B="110" />
+                          </AbstractNodeData>
+                          <AbstractNodeData Name="allawardsName" ActionTag="-917021438" Tag="184" IconVisible="False" LeftMargin="19.6910" RightMargin="20.3090" TopMargin="144.4782" BottomMargin="7.5218" FontSize="36" LabelText="黄石玉" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                            <Size X="108.0000" Y="36.0000" />
+                            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                            <Position X="73.6910" Y="25.5218" />
+                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                            <CColor A="255" R="0" G="0" B="0" />
+                            <PrePosition X="0.4979" Y="0.1358" />
+                            <PreSize X="0.7297" Y="0.1915" />
+                            <OutlineColor A="255" R="255" G="0" B="0" />
+                            <ShadowColor A="255" R="110" G="110" B="110" />
+                          </AbstractNodeData>
+                        </Children>
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="76.0750" Y="108.1939" />
+                        <Position X="77.0750" Y="122.1939" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.0951" Y="0.3864" />
-                        <PreSize X="0.1625" Y="0.5857" />
-                        <FileData Type="Default" Path="Default/ImageFile.png" Plist="" />
+                        <PrePosition X="0.0963" Y="0.4364" />
+                        <PreSize X="0.1850" Y="0.6714" />
+                        <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/reward/green.png" Plist="" />
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint />
@@ -798,15 +855,37 @@
                     <PreSize X="0.1646" Y="0.0497" />
                     <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/title/biaoti1jjjc.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="zuanshi" ActionTag="840205361" Tag="69" IconVisible="False" LeftMargin="292.8486" RightMargin="310.1514" TopMargin="450.4243" BottomMargin="130.5757" LeftEage="71" RightEage="71" TopEage="20" BottomEage="20" Scale9OriginX="71" Scale9OriginY="20" Scale9Width="75" Scale9Height="23" ctype="ImageViewObjectData">
-                    <Size X="217.0000" Y="63.0000" />
+                  <AbstractNodeData Name="xiaohaoNum" ActionTag="-1053863488" Tag="185" IconVisible="False" LeftMargin="488.2255" RightMargin="271.7745" TopMargin="460.4741" BottomMargin="159.5259" FontSize="24" LabelText="X1000" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="60.0000" Y="24.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="401.3486" Y="162.0757" />
+                    <Position X="518.2255" Y="171.5259" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="128" G="0" B="128" />
+                    <PrePosition X="0.6320" Y="0.2663" />
+                    <PreSize X="0.0732" Y="0.0373" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="zuanshi" ActionTag="1559163533" Tag="186" IconVisible="False" LeftMargin="410.4355" RightMargin="341.5645" TopMargin="443.0607" BottomMargin="136.9393" LeftEage="22" RightEage="22" TopEage="20" BottomEage="20" Scale9OriginX="22" Scale9OriginY="20" Scale9Width="24" Scale9Height="24" ctype="ImageViewObjectData">
+                    <Size X="68.0000" Y="64.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="444.4355" Y="168.9393" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.4894" Y="0.2517" />
-                    <PreSize X="0.2646" Y="0.0978" />
-                    <FileData Type="Default" Path="Default/ImageFile.png" Plist="" />
+                    <PrePosition X="0.5420" Y="0.2623" />
+                    <PreSize X="0.0829" Y="0.0994" />
+                    <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/killzuanshi/xing1.png" Plist="" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="xiaohaoTitle" ActionTag="-1997724422" Tag="187" IconVisible="False" LeftMargin="239.9260" RightMargin="412.0740" TopMargin="461.8379" BottomMargin="158.1621" FontSize="24" LabelText="进入消耗：砖石" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="168.0000" Y="24.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="323.9260" Y="170.1621" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="128" G="0" B="128" />
+                    <PrePosition X="0.3950" Y="0.2642" />
+                    <PreSize X="0.2049" Y="0.0373" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="btn_close" ActionTag="-1865798568" Tag="70" IconVisible="False" LeftMargin="148.1530" RightMargin="480.8470" TopMargin="519.4621" BottomMargin="58.5379" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="161" Scale9Height="44" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="191.0000" Y="66.0000" />
