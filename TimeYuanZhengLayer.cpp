@@ -264,6 +264,106 @@ void TimeYuanZhengLayer::showZuDuiBox(int tag)
 
 
 	}
+
+	//组队按钮 是否 可点击 是否制灰色 当仓库物品 无法满足消耗时候 制灰色 且不可点击
+	timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
+	//组队按钮
+	auto btn_zudui = (cocos2d::ui::Button*)seekNodeByName(zuduiBox, "btn_zudui");
+	
+	switch (tag)
+	{
+	case 0://1星
+	{
+			   if (cangKuInfo.diamonds < atoi(awards[tag].xiaohaoNum.c_str()))
+			   {
+				   btn_zudui->setTouchEnabled(false);
+				   btn_zudui->setColor(Color3B::GRAY);
+			
+			   }
+			   else
+			   {
+				  btn_zudui->setTouchEnabled(true);
+				  btn_zudui->setColor(Color3B::WHITE);
+			   }
+	}
+		break;
+	case 1:
+	{
+			  if (cangKuInfo.juan2 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  btn_zudui->setTouchEnabled(false);
+				  btn_zudui->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  btn_zudui->setTouchEnabled(true);
+				  btn_zudui->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+	case 2:
+	{
+			  if (cangKuInfo.juan3 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  btn_zudui->setTouchEnabled(false);
+				  btn_zudui->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  btn_zudui->setTouchEnabled(true);
+				  btn_zudui->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+	case 3:
+	{
+			  if (cangKuInfo.juan4 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  btn_zudui->setTouchEnabled(false);
+				  btn_zudui->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  btn_zudui->setTouchEnabled(true);
+				  btn_zudui->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+	case 4:
+	{
+			  if (cangKuInfo.juan5 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  btn_zudui->setTouchEnabled(false);
+				  btn_zudui->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  btn_zudui->setTouchEnabled(true);
+				  btn_zudui->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+	case 5:
+	{
+			  if (cangKuInfo.juan6 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  btn_zudui->setTouchEnabled(false);
+				  btn_zudui->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  btn_zudui->setTouchEnabled(true);
+				  btn_zudui->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+
+	default:
+		break;
+	}
+
+
+
 	zuduiBox->setVisible(true);
 }
 

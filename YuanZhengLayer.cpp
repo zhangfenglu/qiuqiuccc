@@ -137,6 +137,180 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 
 
 	}
+
+
+
+	//报名按钮 是否 可点击 是否制灰色 当仓库物品 无法满足消耗时候 制灰色 且不可点击
+	timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
+	//四个按钮
+	auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
+	auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
+	auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
+	auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
+	switch (tag)
+	{
+	case 0://1星
+	{
+			   if (cangKuInfo.diamonds < atoi(awards[tag].xiaohaoNum.c_str()))
+			   {
+				   bao1->setTouchEnabled(false);
+				   bao1->setColor(Color3B::GRAY);
+				   bao2->setTouchEnabled(false);
+				   bao2->setColor(Color3B::GRAY);
+				   bao3->setTouchEnabled(false);
+				   bao3->setColor(Color3B::GRAY);
+				   bao4->setTouchEnabled(false);
+				   bao4->setColor(Color3B::GRAY);
+			   }
+			   else
+			   {
+				   bao1->setTouchEnabled(true);
+				   bao1->setColor(Color3B::WHITE);
+				   bao2->setTouchEnabled(true);
+				   bao2->setColor(Color3B::WHITE);
+				   bao3->setTouchEnabled(true);
+				   bao3->setColor(Color3B::WHITE);
+				   bao4->setTouchEnabled(true);
+				   bao4->setColor(Color3B::WHITE);
+			   }
+	}
+		break;
+	case 1:
+	{
+			  if (cangKuInfo.juan2 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  bao1->setTouchEnabled(false);
+				  bao1->setColor(Color3B::GRAY);
+				  bao2->setTouchEnabled(false);
+				  bao2->setColor(Color3B::GRAY);
+				  bao3->setTouchEnabled(false);
+				  bao3->setColor(Color3B::GRAY);
+				  bao4->setTouchEnabled(false);
+				  bao4->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  bao1->setTouchEnabled(true);
+				  bao1->setColor(Color3B::WHITE);
+				  bao2->setTouchEnabled(true);
+				  bao2->setColor(Color3B::WHITE);
+				  bao3->setTouchEnabled(true);
+				  bao3->setColor(Color3B::WHITE);
+				  bao4->setTouchEnabled(true);
+				  bao4->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+	case 2:
+	{
+			  if (cangKuInfo.juan3 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  bao1->setTouchEnabled(false);
+				  bao1->setColor(Color3B::GRAY);
+				  bao2->setTouchEnabled(false);
+				  bao2->setColor(Color3B::GRAY);
+				  bao3->setTouchEnabled(false);
+				  bao3->setColor(Color3B::GRAY);
+				  bao4->setTouchEnabled(false);
+				  bao4->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  bao1->setTouchEnabled(true);
+				  bao1->setColor(Color3B::WHITE);
+				  bao2->setTouchEnabled(true);
+				  bao2->setColor(Color3B::WHITE);
+				  bao3->setTouchEnabled(true);
+				  bao3->setColor(Color3B::WHITE);
+				  bao4->setTouchEnabled(true);
+				  bao4->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+	case 3:
+	{
+			  if (cangKuInfo.juan4 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  bao1->setTouchEnabled(false);
+				  bao1->setColor(Color3B::GRAY);
+				  bao2->setTouchEnabled(false);
+				  bao2->setColor(Color3B::GRAY);
+				  bao3->setTouchEnabled(false);
+				  bao3->setColor(Color3B::GRAY);
+				  bao4->setTouchEnabled(false);
+				  bao4->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  bao1->setTouchEnabled(true);
+				  bao1->setColor(Color3B::WHITE);
+				  bao2->setTouchEnabled(true);
+				  bao2->setColor(Color3B::WHITE);
+				  bao3->setTouchEnabled(true);
+				  bao3->setColor(Color3B::WHITE);
+				  bao4->setTouchEnabled(true);
+				  bao4->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+	case 4:
+	{
+			  if (cangKuInfo.juan5 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  bao1->setTouchEnabled(false);
+				  bao1->setColor(Color3B::GRAY);
+				  bao2->setTouchEnabled(false);
+				  bao2->setColor(Color3B::GRAY);
+				  bao3->setTouchEnabled(false);
+				  bao3->setColor(Color3B::GRAY);
+				  bao4->setTouchEnabled(false);
+				  bao4->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  bao1->setTouchEnabled(true);
+				  bao1->setColor(Color3B::WHITE);
+				  bao2->setTouchEnabled(true);
+				  bao2->setColor(Color3B::WHITE);
+				  bao3->setTouchEnabled(true);
+				  bao3->setColor(Color3B::WHITE);
+				  bao4->setTouchEnabled(true);
+				  bao4->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+	case 5:
+	{
+			  if (cangKuInfo.juan6 < atoi(awards[tag].xiaohaoNum.c_str()))
+			  {
+				  bao1->setTouchEnabled(false);
+				  bao1->setColor(Color3B::GRAY);
+				  bao2->setTouchEnabled(false);
+				  bao2->setColor(Color3B::GRAY);
+				  bao3->setTouchEnabled(false);
+				  bao3->setColor(Color3B::GRAY);
+				  bao4->setTouchEnabled(false);
+				  bao4->setColor(Color3B::GRAY);
+			  }
+			  else
+			  {
+				  bao1->setTouchEnabled(true);
+				  bao1->setColor(Color3B::WHITE);
+				  bao2->setTouchEnabled(true);
+				  bao2->setColor(Color3B::WHITE);
+				  bao3->setTouchEnabled(true);
+				  bao3->setColor(Color3B::WHITE);
+				  bao4->setTouchEnabled(true);
+				  bao4->setColor(Color3B::WHITE);
+			  }
+	}
+		break;
+
+	default:
+		break;
+	}
+	
+
 	baomingBox->setVisible(true);
 }
 
@@ -488,6 +662,9 @@ void YuanZhengLayer::baoming1Click()
 	std::string data = "id=" + infos.playerid + "&aid=" + aid;
 
 	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
+
+
+
 	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 	{
 		if (response == nullptr || !response->isSucceed())
@@ -507,7 +684,7 @@ void YuanZhengLayer::baoming1Click()
 		Json* result = Json_getItem(root, "resultCode");
 		Json * ok = Json_getItem(root, "ok");
 
-		if (result->type == Json_Number /*&& ok->type == Json_True*/)
+		if (result->type == Json_Number && ok->type == Json_True)
 		{
 			if (result->valueInt == 1)
 			{
@@ -535,7 +712,6 @@ void YuanZhengLayer::baoming1Click()
 
 void YuanZhengLayer::baoming2Click()
 {
-	
 	std::string aid = "";
 	switch (star_level)
 	{
