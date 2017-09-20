@@ -4,7 +4,10 @@
 #include "ui/CocosGUI.h"
 #include "cocos2d.h"
 USING_NS_CC;
+#include "RotateMenu.h"
+#include "Global.h"
 #include "Common.h"
+
 #include "network/HttpClient.h"
 using namespace cocos2d::network;
 class YuanZhengLayer : public Layer
@@ -42,20 +45,6 @@ private:
 	cocos2d::ui::Button* copy6;
 	
 
-
-
-
-
-	/*char str1[2];
-	char str2[2];
-	char str3[2];
-	char str4[2];
-	char str5[2];
-	char str6[2];*/
-
-
-	//int nSecond;
-
 public:
 	enum
 	{
@@ -70,9 +59,11 @@ private:
 	void initZuDuiAwardInfo();
 	void showZuDuiBox(int tag);
 	
-	AwardInfo awards[teams];
+	AwardInfo awards[15];
 
 	cocos2d::ui::Layout* baomingBox;
+
+	account_info infos;
 
 
 };

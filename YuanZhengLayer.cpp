@@ -1,7 +1,6 @@
 ﻿#include "YuanZhengLayer.h"
 #include "SimpleTools.h"
-#include "RotateMenu.h"
-#include "Global.h"
+
 
 
 bool YuanZhengLayer::init()
@@ -10,8 +9,8 @@ bool YuanZhengLayer::init()
 	{
 		return false;
 	}
-	//initCangKuObj();
-	
+	initCangKuObj();
+	//initUI();
 	
 	return true;
 }
@@ -87,28 +86,34 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 	std::string allawardsNumStr = awards[tag].allawardsNum;
 	std::string allawardsNameStr = awards[tag].allawardsName;
 	std::vector<std::string> allawardsBgArrays = Global::getInstance()->split(allawardsBgStr, "|");
+	std::vector<std::string> allawardsTypeArrays = Global::getInstance()->split(allawardsTypeStr, "|");
+	std::vector<std::string> allawardsTitleArrays = Global::getInstance()->split(allawardsTitleStr, "|");
+	std::vector<std::string> allawardsArrays = Global::getInstance()->split(allawardsStr, "|");
+	std::vector<std::string> allawardsNumArrays = Global::getInstance()->split(allawardsNumStr, "|");
+	std::vector<std::string> allawardsNameArrays = Global::getInstance()->split(allawardsNameStr, "|");
 
 	auto scrollView = (cocos2d::ui::ScrollView*)seekNodeByName(rootNode, "ScrollView");
 	auto Image_award = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "Image_award");
 	Image_award->setVisible(false);
 	//scrollView->removeAllChildren();
 
-	for (int i = 0; i < allawardsBgStr.size(); i++)
+	for (int i = 0; i < allawardsBgArrays.size(); i++)
 	{
 		auto cloneImage = (cocos2d::ui::ImageView*)Image_award->clone();
+		cloneImage->setVisible(true);
 		//cocos2d::ui::ImageView* cloneImage = cocos2d::ui::ImageView::create();
 		scrollView->addChild(cloneImage);
 
-		std::string clonePath = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsBgStr.at(i);
+		std::string clonePath = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsBgArrays.at(i);
 		cloneImage->loadTexture(clonePath.c_str());
 		cloneImage->setPosition(ccp(Image_award_poiX + Image_award_width * i, Image_award_poiY));
 
 		auto allawardsType = (cocos2d::ui::ImageView*)cloneImage->getChildByName("allawardsType");
-		std::string allawardsTypeStr1 = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsTypeStr.at(i);
+		std::string allawardsTypeStr1 = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsTypeArrays.at(i);
 		allawardsType->loadTexture(allawardsTypeStr1.c_str());
 
 		auto allawardsTitle = (cocos2d::ui::Text*)allawardsType->getChildByName("allawardsTitle");
-		std::string allawardsTitleStr1 = "" + allawardsTitleStr.at(i);
+		std::string allawardsTitleStr1 = "" + allawardsTitleArrays.at(i);
 		if (allawardsTitleStr1 == "null")
 		{
 			allawardsTitle->setText("");
@@ -119,15 +124,15 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 		}
 
 		auto allawards = (cocos2d::ui::ImageView*)cloneImage->getChildByName("allawards");
-		std::string allawardsStr1 = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsStr.at(i);
+		std::string allawardsStr1 = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsArrays.at(i);
 		allawards->loadTexture(allawardsStr1.c_str());
 
 		auto allawardsNum = (cocos2d::ui::Text*)cloneImage->getChildByName("allawardsNum");
-		std::string allawardsNumStr1 = "" + allawardsNumStr.at(i);
+		std::string allawardsNumStr1 = "" + allawardsNumArrays.at(i);
 		allawardsNum->setText(allawardsNumStr1.c_str());
 
-		auto allawardsName = (cocos2d::ui::Text*)cloneImage->getChildByName("allawardsNam");
-		std::string allawardsNameStr1 = "" + allawardsNameStr.at(i);
+		auto allawardsName = (cocos2d::ui::Text*)cloneImage->getChildByName("allawardsName");
+		std::string allawardsNameStr1 = "" + allawardsNameArrays.at(i);
 		allawardsName->setText(allawardsNameStr1.c_str());
 
 
@@ -157,7 +162,7 @@ void YuanZhengLayer::initZuDuiAwardInfo()
 							Json* title = Json_getItem(jsonChild, "title");
 							//CCLog("<<<<<<%s", title->valuestring);
 							Json * xiaohaoTitle = Json_getItem(jsonChild, "xiaohaoTitle");
-							Json * zuanshi = Json_getItem(jsonChild, "zuanshi");
+							Json * zuanshi = Json_getItem(jsonChild, "xiaohaoIcon");
 							Json * xiaohaoNum = Json_getItem(jsonChild, "xiaohaoNum");
 
 							Json* allawardsBg = Json_getItem(jsonChild, "allawardsBg");
@@ -288,15 +293,16 @@ void YuanZhengLayer::initCangKuObj()
 			cangku_info.diamonds = 0;
 		}
 		Global::getInstance()->SetCangKuObj(cangku_info);
-		//initUI();
+		initUI();
 	}, "getCangKu");
 }
 
 void YuanZhengLayer::initUI()
 {
 	star_level = 1;
+	infos = Global::getInstance()->GetAccountInfo();
 
-	rootNode = CSLoader::createNode("YuanZhengLayer1.csb");
+	rootNode = CSLoader::createNode("TimeYuanZhengLayer1.csb");
 
 	addChild(rootNode);
 	cocos2d::ui::Layout* rongqi = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "Panel_xuanzhuan");
@@ -307,155 +313,154 @@ void YuanZhengLayer::initUI()
 
 	
 	
-	/*auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
+	cocos2d::ui::Button* btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
 	btn_bao1->addTouchEventListener(CC_CALLBACK_0(YuanZhengLayer::baoming1Click, this));
-	auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
+	cocos2d::ui::Button* btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
 	btn_bao2->addTouchEventListener(CC_CALLBACK_0(YuanZhengLayer::baoming2Click, this));
-	auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
+	cocos2d::ui::Button* btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
 	btn_bao3->addTouchEventListener(CC_CALLBACK_0(YuanZhengLayer::baoming3Click, this));
-	auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
+	cocos2d::ui::Button* btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
 	btn_bao4->addTouchEventListener(CC_CALLBACK_0(YuanZhengLayer::baoming4Click, this));
-	*/
-
-
-	//timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
-
-	//auto text_wukuanNum = (cocos2d::ui::Text*)seekNodeByName(rootNode, "text_wukuanNum");
-	//std::ostringstream w1;
-	//w1 << "X" << cangKuInfo.diamonds;
-	//text_wukuanNum->setText(w1.str().c_str());
-
-	//auto juan2 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan2");
-	//auto text_juanNum2 = (cocos2d::ui::Text*)seekNodeByName(juan2, "text_juanNum");
-	//std::ostringstream w2;
-	//w2 << "X" << cangKuInfo.juan2;
-	//text_juanNum2->setText(w2.str().c_str());
-
-	//auto juan3 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan3");
-	//auto text_juanNum3 = (cocos2d::ui::Text*)seekNodeByName(juan3, "text_juanNum");
-	//std::ostringstream w3;
-	//w3 << "X" << cangKuInfo.juan3;
-	//text_juanNum3->setText(w3.str().c_str());
-
-	//auto juan4 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan4");
-	//auto text_juanNum4 = (cocos2d::ui::Text*)seekNodeByName(juan4, "text_juanNum");
-	//std::ostringstream w4;
-	//w4 << "X" << cangKuInfo.juan4;
-	//text_juanNum4->setText(w4.str().c_str());
-
-	//auto juan5 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan5");
-	//auto text_juanNum5 = (cocos2d::ui::Text*)seekNodeByName(juan5, "text_juanNum");
-	//std::ostringstream w5;
-	//w5 << "X" << cangKuInfo.juan5;
-	//text_juanNum5->setText(w5.str().c_str());
-
-	//auto juan6 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan6");
-	//auto text_juanNum6 = (cocos2d::ui::Text*)seekNodeByName(juan6, "text_juanNum");
-	//std::ostringstream w6;
-	//w6 << "X" << cangKuInfo.juan6;
-	//text_juanNum6->setText(w6.str().c_str());
-
-	//auto Image_award = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "Image_award");
-	//auto scrollView = (cocos2d::ui::ScrollView*)seekNodeByName(rootNode, "ScrollView");
-	//Image_award_width = Image_award->getSize().width;
-	//Image_award_poiX = Image_award->getPositionX();
-	////Image_award_poiY = scrollView->getSize().height + Image_award->getSize().height * 2;
-	//Image_award_poiY = Image_award->getPositionY();
-
-
-	//auto btn1 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin1");
-	//auto btn2 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin2");
-	//auto btn3 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin3");
-	//auto btn4 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin4");
-	//auto btn5 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin5");
-	//auto btn6 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin6");
-	//copy1 = (cocos2d::ui::Button*)btn1->clone();
-	//copy2 = (cocos2d::ui::Button*)btn2->clone();
-	//copy3 = (cocos2d::ui::Button*)btn3->clone();
-	//copy4 = (cocos2d::ui::Button*)btn4->clone();
-	//copy5 = (cocos2d::ui::Button*)btn5->clone();
-	//copy6 = (cocos2d::ui::Button*)btn6->clone();
-
-	//copy1->setVisible(true);
-	//copy2->setVisible(true);
-	//copy3->setVisible(true);
-	//copy4->setVisible(true);
-	//copy5->setVisible(true);
-	//copy6->setVisible(true);
 
 
 
+	timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
 
-	//auto item1 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao1.png", "TimeYuanZhengLayer/mianTime/bao1.png", CC_CALLBACK_1(YuanZhengLayer::menuItem1Callback, this));
-	//auto item2 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao2.png", "TimeYuanZhengLayer/mianTime/bao2.png", CC_CALLBACK_1(YuanZhengLayer::menuItem2Callback, this));
-	//auto item3 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao3.png", "TimeYuanZhengLayer/mianTime/bao3.png", CC_CALLBACK_1(YuanZhengLayer::menuItem3Callback, this));
-	//auto item4 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao4.png", "TimeYuanZhengLayer/mianTime/bao4.png", CC_CALLBACK_1(YuanZhengLayer::menuItem4Callback, this));
-	//auto item5 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao5.png", "TimeYuanZhengLayer/mianTime/bao5.png", CC_CALLBACK_1(YuanZhengLayer::menuItem5Callback, this));
-	//auto item6 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao6.png", "TimeYuanZhengLayer/mianTime/bao6.png", CC_CALLBACK_1(YuanZhengLayer::menuItem6Callback, this));
+	auto text_wukuanNum = (cocos2d::ui::Text*)seekNodeByName(rootNode, "text_wukuanNum");
+	std::ostringstream w1;
+	w1 << "X" << cangKuInfo.diamonds;
+	text_wukuanNum->setText(w1.str().c_str());
 
-	//copy1->setAnchorPoint(Vec2::ZERO);
-	//copy2->setAnchorPoint(Vec2::ZERO);
-	//copy3->setAnchorPoint(Vec2::ZERO);
-	//copy4->setAnchorPoint(Vec2::ZERO);
-	//copy5->setAnchorPoint(Vec2::ZERO);
-	//copy6->setAnchorPoint(Vec2::ZERO);
-	//copy1->setPosition(item1->getPosition());
-	//copy2->setPosition(item2->getPosition());
-	//copy3->setPosition(item3->getPosition());
-	//copy4->setPosition(item4->getPosition());
-	//copy5->setPosition(item5->getPosition());
-	//copy6->setPosition(item6->getPosition());
+	auto juan2 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan2");
+	auto text_juanNum2 = (cocos2d::ui::Text*)seekNodeByName(juan2, "text_juanNum");
+	std::ostringstream w2;
+	w2 << "X" << cangKuInfo.juan2;
+	text_juanNum2->setText(w2.str().c_str());
 
-	//item1->addChild(copy1);
-	//item2->addChild(copy2);
-	//item3->addChild(copy3);
-	//item4->addChild(copy4);
-	//item5->addChild(copy5);
-	//item6->addChild(copy6);
+	auto juan3 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan3");
+	auto text_juanNum3 = (cocos2d::ui::Text*)seekNodeByName(juan3, "text_juanNum");
+	std::ostringstream w3;
+	w3 << "X" << cangKuInfo.juan3;
+	text_juanNum3->setText(w3.str().c_str());
+
+	auto juan4 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan4");
+	auto text_juanNum4 = (cocos2d::ui::Text*)seekNodeByName(juan4, "text_juanNum");
+	std::ostringstream w4;
+	w4 << "X" << cangKuInfo.juan4;
+	text_juanNum4->setText(w4.str().c_str());
+
+	auto juan5 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan5");
+	auto text_juanNum5 = (cocos2d::ui::Text*)seekNodeByName(juan5, "text_juanNum");
+	std::ostringstream w5;
+	w5 << "X" << cangKuInfo.juan5;
+	text_juanNum5->setText(w5.str().c_str());
+
+	auto juan6 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "juan6");
+	auto text_juanNum6 = (cocos2d::ui::Text*)seekNodeByName(juan6, "text_juanNum");
+	std::ostringstream w6;
+	w6 << "X" << cangKuInfo.juan6;
+	text_juanNum6->setText(w6.str().c_str());
+
+	auto Image_award = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "Image_award");
+	auto scrollView = (cocos2d::ui::ScrollView*)seekNodeByName(rootNode, "ScrollView");
+	Image_award_width = Image_award->getSize().width;
+	Image_award_poiX = Image_award->getPositionX();
+	//Image_award_poiY = scrollView->getSize().height + Image_award->getSize().height * 2;
+	Image_award_poiY = Image_award->getPositionY();
 
 
-	//RotateMenu *menu = RotateMenu::create();
+	auto btn1 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin1");
+	auto btn2 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin2");
+	auto btn3 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin3");
+	auto btn4 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin4");
+	auto btn5 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin5");
+	auto btn6 = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_huangjin6");
+	copy1 = (cocos2d::ui::Button*)btn1->clone();
+	copy2 = (cocos2d::ui::Button*)btn2->clone();
+	copy3 = (cocos2d::ui::Button*)btn3->clone();
+	copy4 = (cocos2d::ui::Button*)btn4->clone();
+	copy5 = (cocos2d::ui::Button*)btn5->clone();
+	copy6 = (cocos2d::ui::Button*)btn6->clone();
 
-	//menu->addMenuItem(item1);
-	//menu->addMenuItem(item2);
-	//menu->addMenuItem(item3);
-	//item3->setName("shao");
-	//menu->addMenuItem(item4);
-
-	//menu->addMenuItem(item5);
-	//item5->setName("duo");
-	//menu->addMenuItem(item6);
-
-	//menu->setPosition(visibleSize / 2);
-	//rongqi->addChild(menu, 2);
+	copy1->setVisible(true);
+	copy2->setVisible(true);
+	copy3->setVisible(true);
+	copy4->setVisible(true);
+	copy5->setVisible(true);
+	copy6->setVisible(true);
 
 
-	//auto btnClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnClose");
-	//btnClose->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
-	//{
-	//	if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
-	//	{
-	//		this->removeFromParent();
 
-	//	}
-	//});
 
-	//auto btnHelp = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnHelp");
-	//btnHelp->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
-	//{
-	//	if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
-	//	{
-	//		log("click    btnHelp");
+	MenuItemImage* item1 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao1.png", "TimeYuanZhengLayer/mianTime/bao1.png", CC_CALLBACK_1(YuanZhengLayer::menuItem1Callback, this));
+	MenuItemImage* item2 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao2.png", "TimeYuanZhengLayer/mianTime/bao2.png", CC_CALLBACK_1(YuanZhengLayer::menuItem2Callback, this));
+	MenuItemImage* item3 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao3.png", "TimeYuanZhengLayer/mianTime/bao3.png", CC_CALLBACK_1(YuanZhengLayer::menuItem3Callback, this));
+	MenuItemImage* item4 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao4.png", "TimeYuanZhengLayer/mianTime/bao4.png", CC_CALLBACK_1(YuanZhengLayer::menuItem4Callback, this));
+	MenuItemImage* item5 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao5.png", "TimeYuanZhengLayer/mianTime/bao5.png", CC_CALLBACK_1(YuanZhengLayer::menuItem5Callback, this));
+	MenuItemImage* item6 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao6.png", "TimeYuanZhengLayer/mianTime/bao6.png", CC_CALLBACK_1(YuanZhengLayer::menuItem6Callback, this));
 
-	//	}
-	//});
+	copy1->setAnchorPoint(Vec2::ZERO);
+	copy2->setAnchorPoint(Vec2::ZERO);
+	copy3->setAnchorPoint(Vec2::ZERO);
+	copy4->setAnchorPoint(Vec2::ZERO);
+	copy5->setAnchorPoint(Vec2::ZERO);
+	copy6->setAnchorPoint(Vec2::ZERO);
+	copy1->setPosition(item1->getPosition());
+	copy2->setPosition(item2->getPosition());
+	copy3->setPosition(item3->getPosition());
+	copy4->setPosition(item4->getPosition());
+	copy5->setPosition(item5->getPosition());
+	copy6->setPosition(item6->getPosition());
 
-	//initZuDuiAwardInfo();
+	item1->addChild(copy1);
+	item2->addChild(copy2);
+	item3->addChild(copy3);
+	item4->addChild(copy4);
+	item5->addChild(copy5);
+	item6->addChild(copy6);
+
+
+	RotateMenu *menu = RotateMenu::create();
+
+	menu->addMenuItem(item1);
+	menu->addMenuItem(item2);
+	menu->addMenuItem(item3);
+	item3->setName("shao");
+	menu->addMenuItem(item4);
+
+	menu->addMenuItem(item5);
+	item5->setName("duo");
+	menu->addMenuItem(item6);
+
+	menu->setPosition(visibleSize / 2);
+	rongqi->addChild(menu, 2);
+
+
+	auto btnClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnClose");
+	btnClose->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			this->removeFromParent();
+
+		}
+	});
+
+	auto btnHelp = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnHelp");
+	btnHelp->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("click    btnHelp");
+
+		}
+	});
+
+	initZuDuiAwardInfo();
 }
 
 void YuanZhengLayer::baoming1Click()
 {
-	account_info info = Global::getInstance()->GetAccountInfo();
 	std::string aid = "";
 	switch (star_level)
 	{
@@ -480,7 +485,7 @@ void YuanZhengLayer::baoming1Click()
 	default:
 		break;
 	}
-	std::string data = "id=" + info.playerid + "&aid=" + aid;
+	std::string data = "id=" + infos.playerid + "&aid=" + aid;
 
 	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
 	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
@@ -507,9 +512,10 @@ void YuanZhengLayer::baoming1Click()
 			if (result->valueInt == 1)
 			{
 				log("***************************************baoming1 success");
-				auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
+				auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+				auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 				btn_bao1->setVisible(false);
-				auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
+				auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
 				btn_yibaoming1->setVisible(true);
 			}
 			else
@@ -529,7 +535,7 @@ void YuanZhengLayer::baoming1Click()
 
 void YuanZhengLayer::baoming2Click()
 {
-	account_info info = Global::getInstance()->GetAccountInfo();
+	
 	std::string aid = "";
 	switch (star_level)
 	{
@@ -554,7 +560,7 @@ void YuanZhengLayer::baoming2Click()
 	default:
 		break;
 	}
-	std::string data = "id=" + info.playerid + "&aid=" + aid;
+	std::string data = "id=" + infos.playerid + "&aid=" + aid;
 
 	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
 	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
@@ -581,9 +587,10 @@ void YuanZhengLayer::baoming2Click()
 			if (result->valueInt == 1)
 			{
 				log("***************************************baoming2 success");
-				auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
+				auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+				auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming2");
 				btn_bao2->setVisible(false);
-				auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
+				auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming2");
 				btn_yibaoming2->setVisible(true);
 			}
 			else
@@ -603,7 +610,7 @@ void YuanZhengLayer::baoming2Click()
 
 void YuanZhengLayer::baoming3Click()
 {
-	account_info info = Global::getInstance()->GetAccountInfo();
+	
 	std::string aid = "";
 	switch (star_level)
 	{
@@ -628,7 +635,7 @@ void YuanZhengLayer::baoming3Click()
 	default:
 		break;
 	}
-	std::string data = "id=" + info.playerid + "&aid=" + aid;
+	std::string data = "id=" + infos.playerid + "&aid=" + aid;
 
 	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
 	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
@@ -655,9 +662,10 @@ void YuanZhengLayer::baoming3Click()
 			if (result->valueInt == 1)
 			{
 				log("***************************************baoming3 success");
-				auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
+				auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+				auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming3");
 				btn_bao3->setVisible(false);
-				auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
+				auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming3");
 				btn_yibaoming3->setVisible(true);
 			}
 			else
@@ -677,7 +685,7 @@ void YuanZhengLayer::baoming3Click()
 
 void YuanZhengLayer::baoming4Click()
 {
-	account_info info = Global::getInstance()->GetAccountInfo();
+	
 	std::string aid = "";
 	switch (star_level)
 	{
@@ -702,7 +710,7 @@ void YuanZhengLayer::baoming4Click()
 	default:
 		break;
 	}
-	std::string data = "id=" + info.playerid + "&aid=" + aid;
+	std::string data = "id=" + infos.playerid + "&aid=" + aid;
 
 	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
 	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
@@ -729,9 +737,10 @@ void YuanZhengLayer::baoming4Click()
 			if (result->valueInt == 1)
 			{
 				log("***************************************baoming4 success");
-				auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
+				auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+				auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming4");
 				btn_bao4->setVisible(false);
-				auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
+				auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming4");
 				btn_yibaoming4->setVisible(true);
 			}
 			else
