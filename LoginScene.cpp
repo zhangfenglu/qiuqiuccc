@@ -1,8 +1,8 @@
-//
+ï»¿//
 //  LoginScene.cpp
 //  qiuFight
 //
-//  Created by ÕÅÔ¾¶« on 16/3/4.
+//  Created by å¼ è·ƒä¸œ on 16/3/4.
 //
 //
 
@@ -32,24 +32,24 @@ bool LoginLayer::init()
 		return false;
 
 	rootGameSettingNode = nullptr;
-	//³õÊ¼»¯µÇÂ½Êı¾İ
+	//åˆå§‹åŒ–ç™»é™†æ•°æ®
 	initDengLuData();
 	//initUI();
 	initUI1();
 
-	//»ñÈ¡ÊÂ¼ş·Ö·¢Æ÷
+	//è·å–äº‹ä»¶åˆ†å‘å™¨
 	auto dispatcher = Director::getInstance()->getEventDispatcher();
 
-	//´´½¨µ¥µã´¥Ãş¼àÌıÆ÷ EventListenerTouchOneByOne
+	//åˆ›å»ºå•ç‚¹è§¦æ‘¸ç›‘å¬å™¨ EventListenerTouchOneByOne
 	auto touchListener = EventListenerTouchOneByOne::create();
-	//µ¥µã´¥ÃşÏìÓ¦ÊÂ¼ş°ó¶¨
+	//å•ç‚¹è§¦æ‘¸å“åº”äº‹ä»¶ç»‘å®š
 	touchListener->onTouchBegan = CC_CALLBACK_2(LoginLayer::onTouchBegan, this);
 	touchListener->onTouchMoved = CC_CALLBACK_2(LoginLayer::onTouchMoved, this);
 	touchListener->onTouchEnded = CC_CALLBACK_2(LoginLayer::onTouchEnded, this);
 	touchListener->onTouchCancelled = CC_CALLBACK_2(LoginLayer::onTouchCancelled, this);
 	touchListener->setSwallowTouches(true);
 
-	//ÔÚÊÂ¼ş·Ö·¢Æ÷ÖĞ£¬Ìí¼Ó´¥Ãş¼àÌıÆ÷£¬ÊÂ¼şÏìÓ¦Î¯ÍĞ¸ø this ´¦Àí
+	//åœ¨äº‹ä»¶åˆ†å‘å™¨ä¸­ï¼Œæ·»åŠ è§¦æ‘¸ç›‘å¬å™¨ï¼Œäº‹ä»¶å“åº”å§”æ‰˜ç»™ this å¤„ç†
 	dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 	return true;
 }
@@ -82,7 +82,7 @@ void LoginLayer::initUI1()
 		CCUserDefault::sharedUserDefault()->setStringForKey("UserName", name.c_str());
 	}
 
-	//Ëæ»úÉú³ÉÃû×Ö
+	//éšæœºç”Ÿæˆåå­—
 	cocos2d::ui::Button* resetName = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnRandom");
 	resetName->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -92,7 +92,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ÓÎÏ·¿ªÊ¼
+	//æ¸¸æˆå¼€å§‹
 	cocos2d::ui::Button* loginBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnStatGame");
 	loginBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -109,9 +109,9 @@ void LoginLayer::initUI1()
 	//teamBtn->setOnClickCallback(callfuncO_selector(LoginLayer::TeamClick), this);
 	//addChild(teamBtn, 2);
 
-	//ÍÅ¶Ó
+	//å›¢é˜Ÿ
 
-	//Éú´æÄ£Ê½
+	//ç”Ÿå­˜æ¨¡å¼
 	/*Button* liveBtn = Button::createBtnWithSpriteFrameName("live_mode.png", false);
 	liveBtn->setPosition(Vec2(winSize.width * 0.5f + 320, winSize.height * 0.5f - 120));
 	liveBtn->setScale(0.45f);
@@ -119,7 +119,7 @@ void LoginLayer::initUI1()
 	addChild(liveBtn, 2);
 	liveBtn->setVisible(false);*/
 
-	//¸öÈËÖĞĞÄ
+	//ä¸ªäººä¸­å¿ƒ
 	Button* personBtn = Button::createBtnWithSpriteFrameName("personcenter.png", false);
 	personBtn->setPosition(Vec2(270, 60));
 	personBtn->setScale(0.55f);
@@ -128,7 +128,7 @@ void LoginLayer::initUI1()
 	//personBtn->setVisible(false);
 
 
-	//¹ØÏµ
+	//å…³ç³»
 	cocos2d::ui::Button* relationBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnGuanXi");
 	relationBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -139,7 +139,7 @@ void LoginLayer::initUI1()
 	});
 
 
-	//ÅÅĞĞ°ñ
+	//æ’è¡Œæ¦œ
 	cocos2d::ui::Button* rankBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnPaiHangBang");
 	//rankBtn->setOnClickCallback(callfuncO_selector(LoginLayer::RankClick), this);
 	rankBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
@@ -150,7 +150,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ÉÌµê
+	//å•†åº—
 	Button* magicBtn = Button::createBtnWithSpriteFrameName("magichouse.png", false);
 	magicBtn->setPosition(Vec2(900, 60));
 	magicBtn->setScale(0.55f);
@@ -166,7 +166,7 @@ void LoginLayer::initUI1()
 	*/
 
 
-	//ÕÒÅóÓÑ
+	//æ‰¾æœ‹å‹
 	cocos2d::ui::Button* friendBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnFindFriend");
 	friendBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -176,7 +176,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ÓÎÏ·ÉèÖÃ
+	//æ¸¸æˆè®¾ç½®
 	cocos2d::ui::Button* setBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnSet");
 	setBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -186,7 +186,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//Ò»ÅÅ°´Å¥Èº
+	//ä¸€æ’æŒ‰é’®ç¾¤
 	auto btnOpen = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnOpen");
 	btnOpen->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -199,7 +199,7 @@ void LoginLayer::initUI1()
 			float x1 = x - bg->getContentSize().width;
 
 			auto moveTo = MoveTo::create(0.2, Vec2(x1, y));
-			//bg->runAction(Sequence::create(moveTo£¬NULL));
+			//bg->runAction(Sequence::create(moveToï¼ŒNULL));
 			bg->runAction(moveTo);
 
 			auto btnClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnClose");
@@ -222,7 +222,7 @@ void LoginLayer::initUI1()
 	if (info.roleID)
 	{
 		InitHeadInfo();
-		updateNetInfos();//»ñÈ¡·şÎñÆ÷
+		updateNetInfos();//è·å–æœåŠ¡å™¨
 	}
 	else{
 		scheduleOnce(schedule_selector(LoginLayer::initLogin), 0.15f);
@@ -244,7 +244,7 @@ void LoginLayer::initUI1()
 	//friendBtn->setOnClickCallback(callfuncO_selector(LoginLayer::ShowGM), this);
 	//addChild(friendBtn, 2);
 
-	//¾º¼¼³¡
+	//ç«æŠ€åœº
 	auto btnJingJiChang = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnJingJiChang");
 	btnJingJiChang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -254,7 +254,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//Ê¥ÒÂ
+	//åœ£è¡£
 	auto btnShengYi = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnShengYi");
 	btnShengYi->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -267,7 +267,7 @@ void LoginLayer::initUI1()
 
 
 
-	//»ñÈ¡»î¶¯Í¼Æ¬×ÊÔ´
+	//è·å–æ´»åŠ¨å›¾ç‰‡èµ„æº
 	auto rootNode1 = CSLoader::createNode("ActiveLayer.csb");
 	addChild(rootNode1,100000);
 
@@ -392,7 +392,7 @@ void LoginLayer::ShowGM(Ref* pSender)
 	std::vector<item> arr;
 	for (int i = 0; i<5; i++) {
 	item ite;
-	ite.itemName = "²âÊÔÃû×Ö";
+	ite.itemName = "æµ‹è¯•åå­—";
 	ite.maxCount = i+2;
 	arr.push_back(ite);
 	}
@@ -410,7 +410,7 @@ void LoginLayer::ResetName(Ref* pSender)
 }
 void LoginLayer::updateNetInfos()
 {
-	// »ñµÃ·şÎñÆ÷ÁĞ±í
+	// è·å¾—æœåŠ¡å™¨åˆ—è¡¨
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
 
 	if (nets.size() == 0)
@@ -428,7 +428,7 @@ void LoginLayer::updateNetInfos()
 		CCLabelTTF* netname = CCLabelTTF::create(nets[0].m_netName.c_str(), "STXingkai.ttf", 29);
 		netname->setColor(Color3B(0, 0, 0));
 
-		// ÖÆ×÷ÏÂÀ­
+		// åˆ¶ä½œä¸‹æ‹‰
 		//Size size = Size(200, 30);
 		//dropLayer = DropDownListLayer::create(netname, size);
 
@@ -611,7 +611,7 @@ void LoginLayer::delayEnter(float ft)
 	//DropDownListLayer* dropLayer = dynamic_cast<DropDownListLayer*>(getChildByTag(121));
 	//int selectIdx = dropLayer->getSelectedIndex();
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
-	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
+	// è·å–æˆ˜æ–—æœåŠ¡å™¨ç§˜é’¥
 	main->reqServerKey(nets[0].m_netID, 0, 0);
 	Global::getInstance()->SetFightType(0);
 }
@@ -621,7 +621,7 @@ netInfo LoginLayer::getNetInfo()
 	//DropDownListLayer* dropLayer = dynamic_cast<DropDownListLayer*>(getChildByTag(121));
 	//int selectIdx = dropLayer->getSelectedIndex();
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
-	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
+	// è·å–æˆ˜æ–—æœåŠ¡å™¨ç§˜é’¥
 	return nets[0];
 }
 
@@ -710,12 +710,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//ÕËºÅ°ó¶¨½çÃæ
+	//è´¦å·ç»‘å®šç•Œé¢
 	auto btnBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangDing");
 	auto btnYiBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnYiBangDing");
 	auto zhanghaobangding = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "zhanghaobangding");
 
-	//ÕËºÅÏÔÊ¾
+	//è´¦å·æ˜¾ç¤º
 	auto zhanghao = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "zhanghao");
 	zhanghao->setText(info.accout);
 
@@ -732,7 +732,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		btnBangDing->setTouchEnabled(true);
 	}
 
-	//°ó¶¨ÕËºÅÊäÈë¿ò
+	//ç»‘å®šè´¦å·è¾“å…¥æ¡†
 	CEditBoxTool* zhanghaoedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* mimaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* mima1edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -767,7 +767,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-			//ÕËºÅ°ó¶¨½çÃæÏÔÊ¾
+			//è´¦å·ç»‘å®šç•Œé¢æ˜¾ç¤º
 			zhanghaobangding->setVisible(true);
 		}
 	});
@@ -872,7 +872,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	});
 
 
-	//ÇĞ»»ÕËºÅ
+	//åˆ‡æ¢è´¦å·
 	auto btnChange = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnChange");
 	auto qiehuanzhanghao = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "qiehuanzhanghao");
 	btnChange->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
@@ -892,12 +892,109 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
+	//åˆ‡æ¢è´¦å· ä¸Šçš„å¼¹çª— è¾“å…¥æ¡†
+	CEditBoxTool* qiehuanzhanghaoedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+	CEditBoxTool* qiehuanmimaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+
+	qiehuanzhanghaoedbox->setPosition(Vec2(330, 365));
+	qiehuanzhanghaoedbox->setInputMode(EditBox::InputMode::ANY);
+	qiehuanzhanghaoedbox->setDelegate(this);
+	qiehuanzhanghaoedbox->setFontSize(28);
+	qiehuanzhanghaoedbox->setFontColor(Color3B::BLACK);
+	qiehuanzhanghao->addChild(qiehuanzhanghaoedbox, 3, 101);
+	qiehuanzhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input account"));
+
+	qiehuanmimaedbox->setPosition(Vec2(330, 260));
+	qiehuanmimaedbox->setInputMode(EditBox::InputMode::ANY);
+	qiehuanmimaedbox->setDelegate(this);
+	qiehuanmimaedbox->setFontSize(28);
+	qiehuanmimaedbox->setFontColor(Color3B::BLACK);
+	qiehuanzhanghao->addChild(qiehuanmimaedbox, 3, 101);
+	qiehuanmimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+
 	auto btnLogin = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnLogin");
 	btnLogin->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			log("qiehuanzhanghao dengluyouxi xinxi");
+			std::string zhanghao = qiehuanzhanghaoedbox->getText();
+			std::string data = "account=" + zhanghao + "&password=" + qiehuanmimaedbox->getText();
+
+			std::string url = "47.93.50.101:8080/QQWar/Qqwar/relogin";
+
+			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+			{
+				if (response == nullptr || !response->isSucceed())
+				{
+					CCLOG("responese is null");
+					CCLOG("responese not succeed");
+
+					return;
+				}
+
+				vector<char> *buffer = response->getResponseData();
+
+				std::string responseStr = std::string(buffer->begin(), buffer->end());
+				CCLOG("%s", responseStr.c_str());
+
+				Json* root = Json_create(responseStr.c_str());
+				Json* result = Json_getItem(root, "resultCode");
+				Json * resultObj = Json_getItem(root, "resultObj");
+
+				/*if (result->type == Json_Number)
+				{
+				if (result->valueInt == 1)
+				{
+				log("*******************************qiehuanzhanghao success");
+
+				Json * gmlevel = Json_getItem(resultObj, "gmlevel");
+				Json * id = Json_getItem(resultObj, "id");
+				Json* playerid = Json_getItem(resultObj, "playerid");
+				Json* isbinded = Json_getItem(resultObj, "isbinded");
+				Json* isforbidden = Json_getItem(resultObj, "isforbidden");
+				Json* macip = Json_getItem(resultObj, "macip");
+				Json* mail = Json_getItem(resultObj, "mail");
+				Json* accout = Json_getItem(resultObj, "accout");
+				Json* password = Json_getItem(resultObj, "password");
+
+				account_info info;
+				info.accout = accout->valueString;
+				info.gmlevel = gmlevel->valueInt;
+				info.id = id->valueInt;
+				info.password = password->valueString;
+				info.playerid = playerid->valueString;
+				info.isforbidden = isforbidden->valueInt;
+				info.isbinded = isbinded->valueInt;
+				info.macip = macip->valueString;
+				if (mail->valueString != NULL)
+				info.mail = mail->valueString;
+
+				Global::getInstance()->SetAccountInfo(info);
+				UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
+				UserDefault::getInstance()->setStringForKey("password", password->valueString);
+
+				}
+				else
+				{
+				log("*******************************qiehuanzhanghao error");
+				}
+				}
+				else
+				{
+				log("*******************************qiehuanzhanghao error");
+				}*/
+
+
+
+			}, "qieHuanZhangHao");
+
+
+
+
+
+
+
 		}
 	});
 
@@ -912,7 +1009,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//Íü¼ÇÃÜÂë ÕÒ»ØÃÜÂë
+	//å¿˜è®°å¯†ç  æ‰¾å›å¯†ç 
 	auto close5 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close5");
 	close5->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -922,16 +1019,172 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
+	//å¿˜è®°ç”¨æˆ·æˆ–å¯†ç  ä¸Šçš„å¼¹çª— è¾“å…¥æ¡†
+	CEditBoxTool* zhaohuimimaEmailedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+	CEditBoxTool* zhaohuimimaYanZhengMaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+	CEditBoxTool* zhaohuimimaNewPasswordedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
+
+	zhaohuimimaEmailedbox->setPosition(Vec2(360, 470));
+	zhaohuimimaEmailedbox->setInputMode(EditBox::InputMode::ANY);
+	zhaohuimimaEmailedbox->setDelegate(this);
+	zhaohuimimaEmailedbox->setFontSize(28);
+	zhaohuimimaEmailedbox->setFontColor(Color3B::BLACK);
+	zhaohuimima->addChild(zhaohuimimaEmailedbox, 3, 101);
+	zhaohuimimaEmailedbox->setPlaceHolder(Global::getInstance()->getString("please input email"));
+
+	zhaohuimimaYanZhengMaedbox->setPosition(Vec2(360, 340));
+	zhaohuimimaYanZhengMaedbox->setInputMode(EditBox::InputMode::ANY);
+	zhaohuimimaYanZhengMaedbox->setDelegate(this);
+	zhaohuimimaYanZhengMaedbox->setFontSize(28);
+	zhaohuimimaYanZhengMaedbox->setFontColor(Color3B::BLACK);
+	zhaohuimima->addChild(zhaohuimimaYanZhengMaedbox, 3, 101);
+	zhaohuimimaYanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input yanzhengma"));
+
+	zhaohuimimaNewPasswordedbox->setPosition(Vec2(360, 230));
+	zhaohuimimaNewPasswordedbox->setInputMode(EditBox::InputMode::ANY);
+	zhaohuimimaNewPasswordedbox->setDelegate(this);
+	zhaohuimimaNewPasswordedbox->setFontSize(28);
+	zhaohuimimaNewPasswordedbox->setFontColor(Color3B::BLACK);
+	zhaohuimima->addChild(zhaohuimimaNewPasswordedbox, 3, 101);
+	zhaohuimimaNewPasswordedbox->setPlaceHolder(Global::getInstance()->getString("please input new password"));
+
+
+	auto btnyanzhengma1 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnyanzhengma1");
+	btnyanzhengma1->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("wangjiyonghu huo mima huoqu yanzhengma");
+			//è·å–éªŒè¯ç 
+			std::string emailInput = zhaohuimimaEmailedbox->getText();
+			std::string data = "mail=" + emailInput + "@qq.com";
+
+			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
+			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+			{
+				if (response == nullptr || !response->isSucceed())
+				{
+					CCLOG("responese is null");
+					CCLOG("responese not succeed");
+
+					return;
+				}
+
+				vector<char> *buffer = response->getResponseData();
+
+				std::string responseStr = std::string(buffer->begin(), buffer->end());
+				CCLOG("%s", responseStr.c_str());
+
+				/*Json* root = Json_create(responseStr.c_str());
+				Json* result = Json_getItem(root, "resultCode");
+				Json * resultObj = Json_getItem(root, "resultObj");
+
+				if (result->type == Json_Number)
+				{
+				if (result->valueInt == 1)
+				{
+				log("*******************************bangdingyouxiang success");
+
+				}
+				else
+				{
+				log("*******************************bangding error");
+				}
+				}
+				else
+				{
+				log("*******************************bangding error");
+				}*/
+
+
+
+			}, "getYanZhengMa1");
+		}
+	});
+
 	auto btntijiao0 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btntijiao0");
 	btntijiao0->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			log("zhaohuimima tijiao xinxi");
+			std::string emailInput = zhaohuimimaEmailedbox->getText();
+			std::string data = "&mail=" + emailInput + "qq.com" + "&password=" + zhaohuimimaNewPasswordedbox->getText() + "&code=" + zhaohuimimaYanZhengMaedbox->getText();
+			//yanZhengMaedbox->getText();
+
+			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/forgetpwd";
+
+			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+			{
+				if (response == nullptr || !response->isSucceed())
+				{
+					CCLOG("responese is null");
+					CCLOG("responese not succeed");
+
+					return;
+				}
+
+				vector<char> *buffer = response->getResponseData();
+
+				std::string responseStr = std::string(buffer->begin(), buffer->end());
+				CCLOG("%s", responseStr.c_str());
+
+				/*Json* root = Json_create(responseStr.c_str());
+				Json* result = Json_getItem(root, "resultCode");
+				Json * resultObj = Json_getItem(root, "resultObj");
+
+				if (result->type == Json_Number)
+				{
+				if (result->valueInt == 1)
+				{
+				log("*******************************sheZhiXinMiMa success");
+
+				Json * gmlevel = Json_getItem(resultObj, "gmlevel");
+				Json * id = Json_getItem(resultObj, "id");
+				Json* playerid = Json_getItem(resultObj, "playerid");
+				Json* isbinded = Json_getItem(resultObj, "isbinded");
+				Json* isforbidden = Json_getItem(resultObj, "isforbidden");
+				Json* macip = Json_getItem(resultObj, "macip");
+				Json* mail = Json_getItem(resultObj, "mail");
+				Json* accout = Json_getItem(resultObj, "accout");
+				Json* password = Json_getItem(resultObj, "password");
+
+				account_info info;
+				info.accout = accout->valueString;
+				info.gmlevel = gmlevel->valueInt;
+				info.id = id->valueInt;
+				info.password = password->valueString;
+				info.playerid = playerid->valueString;
+				info.isforbidden = isforbidden->valueInt;
+				info.isbinded = isbinded->valueInt;
+				info.macip = macip->valueString;
+				if (mail->valueString != NULL)
+				info.mail = mail->valueString;
+
+				Global::getInstance()->SetAccountInfo(info);
+				UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
+				UserDefault::getInstance()->setStringForKey("password", password->valueString);
+
+				}
+				else
+				{
+				log("*******************************shezhiXinMiMa error");
+				}
+				}
+				else
+				{
+				log("*******************************sheZhiXinMiMa error");
+				}*/
+
+
+
+			}, "xinMiMa");
+
+
 		}
 	});
 
-	//°ó¶¨ÓÊÏä
+	//ç»‘å®šé‚®ç®±
 	auto bangdingyouxiang = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "bangdingyouxiang");
 	auto btnBangYouXiang = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangYouXiang");
 	auto btnyanzhengma = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnyanzhengma");
@@ -946,7 +1199,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//°ó¶¨ÓÊÏäÊäÈë¿ò
+	//ç»‘å®šé‚®ç®±è¾“å…¥æ¡†
 	CEditBoxTool* inputMiMadbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* emaildbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* yanZhengMaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -984,7 +1237,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-			//»ñÈ¡ÑéÖ¤Âë
+			//è·å–éªŒè¯ç 
 			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "@qq.com";
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
@@ -1051,7 +1304,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "qq.com" + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
 				//yanZhengMaedbox->getText();
 
-			std::string url = "47.93.50.101:8080/QQWar/Qqwar/bindmail";
+			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/bindmail";
 
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
@@ -1119,11 +1372,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 			}, "BangDingYouXiang");
 
-
-
-
-
-
 		}
 	});
 
@@ -1144,7 +1392,7 @@ void LoginLayer::LiveClick(cocos2d::Ref *pSender)
 {
 	ShengCun* layer = ShengCun::create();
 	addChild(layer, 10, TAG_SHENGCUN);
-	//Global::getInstance()->ShowPromBox("²âÊÔ¿´¿´Õâ¸öµÂĞĞ²»");
+	//Global::getInstance()->ShowPromBox("æµ‹è¯•çœ‹çœ‹è¿™ä¸ªå¾·è¡Œä¸");
 }
 
 void LoginLayer::editBoxReturn(cocos2d::extension::EditBox *editBox)
@@ -1392,7 +1640,7 @@ void LoginLayer::hideWaitBox()
 }
 
 ////////////////////////////////////////////////////////////////////
-// Éú´æÄ£Ê½¿ªÊ¼½çÃæ
+// ç”Ÿå­˜æ¨¡å¼å¼€å§‹ç•Œé¢
 ////////////////////////////////////////////////////////////////////
 ShengCun::ShengCun()
 {
@@ -1598,7 +1846,7 @@ void ShengCun::delayEnter(float ft)
 	LoginLayer* login = dynamic_cast<LoginLayer*>(getParent());
 	netInfo netID = login->getNetInfo();
 	MainScene* main = dynamic_cast<MainScene*>(login->getParent());
-	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
+	// è·å–æˆ˜æ–—æœåŠ¡å™¨ç§˜é’¥
 	main->reqServerKey(netID.m_netID, 1, menpiaoxiaohao);
 	Global::getInstance()->SetFightType(1);
 }
@@ -1701,7 +1949,7 @@ void ShengCun::onTouchEnded(Touch* pTouch, Event* pEvent)
 }
 
 ////////////////////////////////////////////////////////////////////
-// ÁìÈ¡Èë³¡È¯½çÃæ
+// é¢†å–å…¥åœºåˆ¸ç•Œé¢
 ////////////////////////////////////////////////////////////////////
 LingRuchangQuan::LingRuchangQuan()
 {
@@ -1865,7 +2113,7 @@ void LingRuchangQuan::rushmenpiao()
 	useName = (CCLabelTTF*)getChildByTag(TAG_MONEYLAB);
 	useName->setString(ton);
 
-	sprintf(ton, "½ñÈÕ¿É¶Ò»»£º%d/1", info.freeTicket);
+	sprintf(ton, "ä»Šæ—¥å¯å…‘æ¢ï¼š%d/1", info.freeTicket);
 	useName = (CCLabelTTF*)getChildByTag(TAG_LINQUCISHU);
 	useName->setString(ton);
 
