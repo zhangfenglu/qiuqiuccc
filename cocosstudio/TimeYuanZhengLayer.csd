@@ -773,7 +773,7 @@
                         <CColor A="255" R="255" G="255" B="255" />
                         <PrePosition X="0.0951" Y="0.3864" />
                         <PreSize X="0.1625" Y="0.5857" />
-                        <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/reward/zuduizcjiangli1.png" Plist="" />
+                        <FileData Type="Default" Path="Default/ImageFile.png" Plist="" />
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint />
@@ -806,7 +806,7 @@
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.4894" Y="0.2517" />
                     <PreSize X="0.2646" Y="0.0978" />
-                    <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/killzuanshi/xiaohao1jjjc.png" Plist="" />
+                    <FileData Type="Default" Path="Default/ImageFile.png" Plist="" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="btn_close" ActionTag="-1865798568" Tag="70" IconVisible="False" LeftMargin="148.1530" RightMargin="480.8470" TopMargin="519.4621" BottomMargin="58.5379" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="161" Scale9Height="44" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="191.0000" Y="66.0000" />

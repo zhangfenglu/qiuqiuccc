@@ -1,5 +1,5 @@
-﻿#ifndef TimeYuanZhengLayer1_h__
-#define TimeYuanZhengLayer1_h__
+﻿#ifndef YuanZhengLayer_h__
+#define YuanZhengLayer_h__
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "cocos2d.h"
@@ -7,10 +7,10 @@ USING_NS_CC;
 #include "Common.h"
 #include "network/HttpClient.h"
 using namespace cocos2d::network;
-class TimeYuanZhengLayer1 : public Layer
+class YuanZhengLayer : public Layer
 {
 public:
-	CREATE_FUNC(TimeYuanZhengLayer1);
+	CREATE_FUNC(YuanZhengLayer);
 	virtual bool init();
 
 
@@ -24,6 +24,10 @@ public:
 	void menuItem6Callback(cocos2d::Ref* pSender);
 
 
+	void baoming1Click();
+	void baoming2Click();
+	void baoming3Click();
+	void baoming4Click();
 private:
 	void initCangKuObj();
 	void initUI();
@@ -73,4 +77,4 @@ private:
 
 };
 
-#endif // TimeYuanZhengLayer1_h__
+#endif // YuanZhengLayer_h__

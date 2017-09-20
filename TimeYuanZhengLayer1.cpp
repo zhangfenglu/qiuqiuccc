@@ -10,7 +10,7 @@ bool TimeYuanZhengLayer1::init()
 	{
 		return false;
 	}
-	initCangKuObj();
+	//initCangKuObj();
 	
 	
 	return true;
@@ -57,13 +57,7 @@ void TimeYuanZhengLayer1::menuItem6Callback(cocos2d::Ref* pSender)
 	star_level = 6;
 	showZuDuiBox(6);
 }
-void TimeYuanZhengLayer1::hideAllSprite()
-{
-	for (auto p : sprite){
-		if (p->isVisible())
-			p->setVisible(false);
-	}
-}
+
 
 
 void TimeYuanZhengLayer1::showZuDuiBox(int tag)
@@ -72,22 +66,71 @@ void TimeYuanZhengLayer1::showZuDuiBox(int tag)
 	titleStr = "TimeYuanZhengLayer\\xiaohao\\title\\" + titleStr + ".png";
 	auto title = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "title");
 	title->loadTexture(titleStr.c_str());
-	std::string xiaohaoStr = awards[tag].xiaohao;
-	xiaohaoStr = "TimeYuanZhengLayer\\xiaohao\\killzuanshi\\" + xiaohaoStr + ".png";
-	auto xiaohao = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuanshi");
-	xiaohao->loadTexture(xiaohaoStr.c_str());
-	std::string awardsStr = awards[tag].allawards;
-	std::vector<std::string> awardsArrays = Global::getInstance()->split(awardsStr, "|");
+
+	auto xiaohaoTitle = (cocos2d::ui::Text*)seekNodeByName(rootNode, "xiaohaoTitle");
+	std::string xiaohaoTitleStr = awards[tag].xiaohaoTitle;
+	xiaohaoTitle->setText(xiaohaoTitleStr.c_str());
+
+	std::string zuanshiStr = awards[tag].zuanshi;
+	zuanshiStr = "TimeYuanZhengLayer\\xiaohao\\killzuanshi\\" + zuanshiStr;
+	auto zuanshi = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuanshi");
+	zuanshi->loadTexture(zuanshiStr.c_str());
+
+	std::string xiaohaoNumStr = awards[tag].xiaohaoNum;
+	auto xiaohaoNum = (cocos2d::ui::Text*)seekNodeByName(rootNode, "xiaohaoNum");
+	xiaohaoNumStr = "X" + xiaohaoNumStr;
+	xiaohaoNum->setText(xiaohaoNumStr.c_str());
+
+	std::string allawardsBgStr = awards[tag].allawardsBg;
+	std::string allawardsTypeStr = awards[tag].allawardsType;
+	std::string allawardsTitleStr = awards[tag].allawardsTitle;
+	std::string allawardsStr = awards[tag].allawards;
+	std::string allawardsNumStr = awards[tag].allawardsNum;
+	std::string allawardsNameStr = awards[tag].allawardsName;
+	std::vector<std::string> allawardsBgArrays = Global::getInstance()->split(allawardsBgStr, "|");
 
 	auto scrollView = (cocos2d::ui::ScrollView*)seekNodeByName(rootNode, "ScrollView");
-	scrollView->removeAllChildren();
-	for (int i = 0; i < awardsArrays.size(); i++)
+	auto Image_award = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "Image_award");
+	Image_award->setVisible(false);
+	//scrollView->removeAllChildren();
+
+	for (int i = 0; i < allawardsBgStr.size(); i++)
 	{
-		cocos2d::ui::ImageView* cloneImage = cocos2d::ui::ImageView::create();
+		auto cloneImage = (cocos2d::ui::ImageView*)Image_award->clone();
+		//cocos2d::ui::ImageView* cloneImage = cocos2d::ui::ImageView::create();
 		scrollView->addChild(cloneImage);
-		std::string clonePath = "TimeYuanZhengLayer\\xiaohao\\reward\\" + awardsArrays.at(i) + ".png";
+
+		std::string clonePath = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsBgStr.at(i);
 		cloneImage->loadTexture(clonePath.c_str());
 		cloneImage->setPosition(ccp(Image_award_poiX + Image_award_width * i, Image_award_poiY));
+
+		auto allawardsType = (cocos2d::ui::ImageView*)cloneImage->getChildByName("allawardsType");
+		std::string allawardsTypeStr1 = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsTypeStr.at(i);
+		allawardsType->loadTexture(allawardsTypeStr1.c_str());
+
+		auto allawardsTitle = (cocos2d::ui::Text*)allawardsType->getChildByName("allawardsTitle");
+		std::string allawardsTitleStr1 = "" + allawardsTitleStr.at(i);
+		if (allawardsTitleStr1 == "null")
+		{
+			allawardsTitle->setText("");
+		}
+		else
+		{
+			allawardsTitle->setText(allawardsTitleStr1.c_str());
+		}
+
+		auto allawards = (cocos2d::ui::ImageView*)cloneImage->getChildByName("allawards");
+		std::string allawardsStr1 = "TimeYuanZhengLayer\\xiaohao\\reward\\" + allawardsStr.at(i);
+		allawards->loadTexture(allawardsStr1.c_str());
+
+		auto allawardsNum = (cocos2d::ui::Text*)cloneImage->getChildByName("allawardsNum");
+		std::string allawardsNumStr1 = "" + allawardsNumStr.at(i);
+		allawardsNum->setText(allawardsNumStr1.c_str());
+
+		auto allawardsName = (cocos2d::ui::Text*)cloneImage->getChildByName("allawardsNam");
+		std::string allawardsNameStr1 = "" + allawardsNameStr.at(i);
+		allawardsName->setText(allawardsNameStr1.c_str());
+
 
 	}
 	baomingBox->setVisible(true);
@@ -114,12 +157,28 @@ void TimeYuanZhengLayer1::initZuDuiAwardInfo()
 
 							Json* title = Json_getItem(jsonChild, "title");
 							//CCLog("<<<<<<%s", title->valuestring);
-							Json * xiaohao = Json_getItem(jsonChild, "xiaohao");
+							Json * xiaohaoTitle = Json_getItem(jsonChild, "xiaohaoTitle");
+							Json * zuanshi = Json_getItem(jsonChild, "zuanshi");
+							Json * xiaohaoNum = Json_getItem(jsonChild, "xiaohaoNum");
+
+							Json* allawardsBg = Json_getItem(jsonChild, "allawardsBg");
 							Json* allawards = Json_getItem(jsonChild, "allawards");
+							Json* allawardsType = Json_getItem(jsonChild, "allawardsType");
+							Json* allawardsTitle = Json_getItem(jsonChild, "allawardsTitle");
+							Json* allawardsNum = Json_getItem(jsonChild, "allawardsNum");
+							Json* allawardsName = Json_getItem(jsonChild, "allawardsName");
 							AwardInfo info;
 							info.title = title->valueString;
-							info.xiaohao = xiaohao->valueString;
+							info.xiaohaoTitle = xiaohaoTitle->valueString;
+							info.zuanshi = zuanshi->valueString;
+							info.xiaohaoNum = xiaohaoNum->valueString;
+
+							info.allawardsBg = allawardsBg->valueString;
 							info.allawards = allawards->valueString;
+							info.allawardsType = allawardsType->valueString;
+							info.allawardsTitle = allawardsTitle->valueString;
+							info.allawardsNum = allawardsNum->valueString;
+							info.allawardsName = allawardsName->valueString;
 							awards[i] = info;
 		}
 			break;
@@ -630,7 +689,7 @@ void TimeYuanZhengLayer1::initUI()
 	auto item3 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao3.png", "TimeYuanZhengLayer/mianTime/bao3.png", CC_CALLBACK_1(TimeYuanZhengLayer1::menuItem3Callback, this));
 	auto item4 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao4.png", "TimeYuanZhengLayer/mianTime/bao4.png", CC_CALLBACK_1(TimeYuanZhengLayer1::menuItem4Callback, this));
 	auto item5 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao5.png", "TimeYuanZhengLayer/mianTime/bao5.png", CC_CALLBACK_1(TimeYuanZhengLayer1::menuItem5Callback, this));
-	auto item6 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao6.png", "TimeYuanZhengLayer/mianTime/bao6.png", CC_CALLBACK_1(TimeYuanZhengLayer1::menuItem5Callback, this));
+	auto item6 = MenuItemImage::create("TimeYuanZhengLayer/mianTime/bao6.png", "TimeYuanZhengLayer/mianTime/bao6.png", CC_CALLBACK_1(TimeYuanZhengLayer1::menuItem6Callback, this));
 
 	copy1->setAnchorPoint(Vec2::ZERO);
 	copy2->setAnchorPoint(Vec2::ZERO);
@@ -674,7 +733,6 @@ void TimeYuanZhengLayer1::initUI()
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-			//this->unschedule(schedule_selector(TimeYuanZhengLayer1::timeUpdate));
 			this->removeFromParent();
 
 		}

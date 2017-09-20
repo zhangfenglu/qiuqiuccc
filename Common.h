@@ -86,12 +86,31 @@ struct AwardInfo
 	AwardInfo()
 	{
 		title = "";
-		xiaohao = "";
+
+		xiaohaoTitle = "";
+		zuanshi = "";
+		xiaohaoNum = "";
+
+		allawardsBg = "";
 		allawards = "";
+		allawardsType = "";
+		allawardsTitle = "";
+		allawardsNum = "";
+		allawardsName = "";
 	}
-	std::string title;
-	std::string xiaohao;
-	std::string allawards;
+	std::string title; //box 标题
+	
+	std::string xiaohaoTitle;//消耗钻石 叙述文字
+	std::string zuanshi; //钻石icon 或星卷icon
+	std::string xiaohaoNum;//消耗 钻石或星卷的数量
+
+	std::string allawardsBg;//奖励的道具背景
+	std::string allawards;//奖励的道具
+	std::string allawardsType;//标签图片
+	std::string allawardsTitle;//标签图片上的文字
+	std::string allawardsNum;//奖励的道具数量
+	std::string allawardsName;//奖励的道具的名字
+
 };
 
 struct nodeInfo
