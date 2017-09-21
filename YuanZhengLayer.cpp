@@ -9,6 +9,7 @@ bool YuanZhengLayer::init()
 	{
 		return false;
 	}
+	initPlayerBaoMingState();
 	initCangKuObj();
 	//initUI();
 	
@@ -60,6 +61,301 @@ void YuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
 
 void YuanZhengLayer::showZuDuiBox(int tag)
 {
+
+	if (baomingInfos.size() > 0)
+	{
+		
+				switch (tag)
+				{
+				case 0://处于第一个竞技
+				{
+						   for (int i = 0; i < baomingInfos.size(); i++)
+						   {
+							   yuanzhengBaoMing_Info baomingStateInfo = baomingInfos.at(i);
+							   switch (baomingStateInfo.aid)
+							   {
+							   case 1200101://第一个按钮
+							   {
+												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
+												btn_bao1->setVisible(false);
+												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
+												btn_yibaoming1->setVisible(true);
+							   }
+							   case 1800101:
+							   {
+											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
+											   btn_bao2->setVisible(false);
+											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
+											   btn_yibaoming2->setVisible(true);
+							   }
+							   case 2000101:
+							   {
+											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
+											   btn_bao3->setVisible(false);
+											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
+											   btn_yibaoming3->setVisible(true);
+							   }
+							   case 2200101:
+							   {
+											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
+											   btn_bao4->setVisible(false);
+											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
+											   btn_yibaoming4->setVisible(true);
+							   }
+								   break;
+							   default:
+								   break;
+							   }
+						   }
+						  
+				}
+					break;
+				case 1://第二个竞技场
+				{
+						   for (int i = 0; i < baomingInfos.size(); i++)
+						   {
+							   yuanzhengBaoMing_Info baomingStateInfo = baomingInfos.at(i);
+							   switch (baomingStateInfo.aid)
+							   {
+							   case 1200102://第一个按钮
+							   {
+												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
+												btn_bao1->setVisible(false);
+												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
+												btn_yibaoming1->setVisible(true);
+							   }
+							   case 1800102:
+							   {
+											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
+											   btn_bao2->setVisible(false);
+											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
+											   btn_yibaoming2->setVisible(true);
+							   }
+							   case 2000102:
+							   {
+											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
+											   btn_bao3->setVisible(false);
+											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
+											   btn_yibaoming3->setVisible(true);
+							   }
+							   case 2200102:
+							   {
+											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
+											   btn_bao4->setVisible(false);
+											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
+											   btn_yibaoming4->setVisible(true);
+							   }
+								   break;
+							   default:
+								   break;
+							   }
+						   }
+				}
+					break;
+				case 2://第三个竞技场
+				{
+						   for (int i = 0; i < baomingInfos.size(); i++)
+						   {
+							   yuanzhengBaoMing_Info baomingStateInfo = baomingInfos.at(i);
+							   switch (baomingStateInfo.aid)
+							   {
+							   case 1200103://第一个按钮
+							   {
+												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
+												btn_bao1->setVisible(false);
+												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
+												btn_yibaoming1->setVisible(true);
+							   }
+							   case 1800103:
+							   {
+											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
+											   btn_bao2->setVisible(false);
+											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
+											   btn_yibaoming2->setVisible(true);
+							   }
+							   case 2000103:
+							   {
+											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
+											   btn_bao3->setVisible(false);
+											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
+											   btn_yibaoming3->setVisible(true);
+							   }
+							   case 2200103:
+							   {
+											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
+											   btn_bao4->setVisible(false);
+											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
+											   btn_yibaoming4->setVisible(true);
+							   }
+								   break;
+							   default:
+								   break;
+							   }
+						   }
+						  
+				}
+					break;
+				case 3://第四个竞技场
+				{
+						   for (int i = 0; i < baomingInfos.size(); i++)
+						   {
+							   yuanzhengBaoMing_Info baomingStateInfo = baomingInfos.at(i);
+							   switch (baomingStateInfo.aid)
+							   {
+							   case 1200104://第一个按钮
+							   {
+												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
+												btn_bao1->setVisible(false);
+												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
+												btn_yibaoming1->setVisible(true);
+							   }
+							   case 1800104:
+							   {
+											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
+											   btn_bao2->setVisible(false);
+											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
+											   btn_yibaoming2->setVisible(true);
+							   }
+							   case 2000104:
+							   {
+											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
+											   btn_bao3->setVisible(false);
+											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
+											   btn_yibaoming3->setVisible(true);
+							   }
+							   case 2200104:
+							   {
+											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
+											   btn_bao4->setVisible(false);
+											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
+											   btn_yibaoming4->setVisible(true);
+							   }
+								   break;
+							   default:
+								   break;
+							   }
+						   }
+						   
+				}
+					break;
+				case 4://第五个竞技场
+				{
+						   for (int i = 0; i < baomingInfos.size(); i++)
+						   {
+							   yuanzhengBaoMing_Info baomingStateInfo = baomingInfos.at(i);
+							   switch (baomingStateInfo.aid)
+							   {
+							   case 1200105://第一个按钮
+							   {
+												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
+												btn_bao1->setVisible(false);
+												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
+												btn_yibaoming1->setVisible(true);
+							   }
+							   case 1800105:
+							   {
+											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
+											   btn_bao2->setVisible(false);
+											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
+											   btn_yibaoming2->setVisible(true);
+							   }
+							   case 2000105:
+							   {
+											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
+											   btn_bao3->setVisible(false);
+											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
+											   btn_yibaoming3->setVisible(true);
+							   }
+							   case 2200105:
+							   {
+											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
+											   btn_bao4->setVisible(false);
+											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
+											   btn_yibaoming4->setVisible(true);
+							   }
+								   break;
+							   default:
+								   break;
+							   }
+						   }
+						  
+				}
+					break;
+				case 5://第六个竞技场
+				{
+						   for (int i = 0; i < baomingInfos.size(); i++)
+						   {
+							   yuanzhengBaoMing_Info baomingStateInfo = baomingInfos.at(i);
+							   switch (baomingStateInfo.aid)
+							   {
+							   case 1200106://第一个按钮
+							   {
+												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
+												btn_bao1->setVisible(false);
+												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
+												btn_yibaoming1->setVisible(true);
+							   }
+							   case 1800106:
+							   {
+											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
+											   btn_bao2->setVisible(false);
+											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
+											   btn_yibaoming2->setVisible(true);
+							   }
+							   case 2000106:
+							   {
+											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
+											   btn_bao3->setVisible(false);
+											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
+											   btn_yibaoming3->setVisible(true);
+							   }
+							   case 2200106:
+							   {
+											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
+											   btn_bao4->setVisible(false);
+											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
+											   btn_yibaoming4->setVisible(true);
+							   }
+								   break;
+							   default:
+								   break;
+							   }
+						   }
+						 
+				}
+					break;
+				default:
+					break;
+				}
+
+			
+				
+	}
+
 	std::string titleStr = awards[tag].title;
 	titleStr = "TimeYuanZhengLayer\\xiaohao\\title\\" + titleStr + ".png";
 	auto title = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "title");
@@ -932,5 +1228,80 @@ void YuanZhengLayer::baoming4Click()
 
 
 	}, "getBaoMing4");
+}
+
+void YuanZhengLayer::initPlayerBaoMingState()
+{
+	account_info info = Global::getInstance()->GetAccountInfo();
+	std::string data = "playerid=" + info.playerid;
+	std::string url = "http://47.93.50.101:8080/QQWar/expedition/getExpeditionByid";
+	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+	{
+		if (response == nullptr || !response->isSucceed())
+		{
+			CCLOG("responese is null");
+			CCLOG("responese not succeed");
+
+			return;
+		}
+
+		vector<char> *buffer = response->getResponseData();
+
+		std::string responseStr = std::string(buffer->begin(), buffer->end());
+		CCLOG("%s", responseStr.c_str());
+
+		Json* root = Json_create(responseStr.c_str());
+		Json* result = Json_getItem(root, "resultCode");
+		Json* resultObj = Json_getItem(root, "resultObj");
+		Json * ok = Json_getItem(root, "ok");
+
+		if (result->type == Json_Number && ok->type == Json_True)
+		{
+			if (result->valueInt == 1)
+			{
+				log("***************************************baomingState success");
+
+				//保存 玩家远征 报名状态
+				if (resultObj)
+				{
+						Json* child = resultObj->child;
+						//if (child)
+						{
+
+							for (int i = 0; i < resultObj->size; i++)
+							{
+								//Json* child = resultObj->child;
+								//if (child)
+								{
+									if (child == NULL)
+										break;
+									uint32_t aid = Json_getItem(child, "aid")->valueInt;
+									uint32_t state = Json_getItem(child, "state")->valueInt;
+									yuanzhengBaoMing_Info info;
+									info.aid = aid;
+									info.state = state;
+									baomingInfos.push_back(info);
+									child = child->next;
+								}
+								
+							}
+						}
+				}
+				
+			}
+			else
+			{
+				log("***************************************baomingState error");
+			}
+		}
+		else
+		{
+			log("***************************************baomingState error");
+		}
+
+
+
+	}, "getBaoMingState");
+
 }
 

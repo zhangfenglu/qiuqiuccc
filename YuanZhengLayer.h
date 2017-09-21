@@ -32,9 +32,12 @@ public:
 	void baoming3Click();
 	void baoming4Click();
 private:
+	void initPlayerBaoMingState();
 	void initCangKuObj();
 	void initUI();
 private:
+	std::vector<yuanzhengBaoMing_Info> baomingInfos;
+
 	Node* rootNode;
 
 	cocos2d::ui::Button* copy1;

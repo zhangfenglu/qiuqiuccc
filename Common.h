@@ -226,6 +226,18 @@ struct zuduidaojishi_info
 	uint32_t           xing6time;
 };
 
+struct yuanzhengBaoMing_Info
+{
+	yuanzhengBaoMing_Info()
+	{
+		aid = 0;
+		state = 0;
+	}
+	uint32_t           aid;
+	uint32_t           state;
+
+};
+
 struct user_info {
     user_info()
     {

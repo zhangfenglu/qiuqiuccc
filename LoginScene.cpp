@@ -574,7 +574,7 @@ void LoginLayer::NextScene(cocos2d::Ref *pSender)
 		return;
 
 	m_isLogin = true;
-	schedule(schedule_selector(LoginLayer::delayEnter), 0.1f);
+	schedule(schedule_selector(LoginLayer::delayEnter), 1.0f);
 }
 
 void LoginLayer::setNetKey(int key)
