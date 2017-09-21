@@ -387,7 +387,7 @@
                             <PreSize X="0.6284" Y="0.4947" />
                             <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohao/reward/daojuicon1.png" Plist="" />
                           </AbstractNodeData>
-                          <AbstractNodeData Name="allawardsNum" ActionTag="-327200369" Tag="95" IconVisible="False" LeftMargin="86.2376" RightMargin="13.7625" TopMargin="114.7559" BottomMargin="49.2441" FontSize="24" LabelText="5000" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                          <AbstractNodeData Name="allawardsNum" ActionTag="-327200369" Tag="95" IconVisible="False" LeftMargin="86.2376" RightMargin="13.7624" TopMargin="114.7559" BottomMargin="49.2441" FontSize="24" LabelText="5000" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                             <Size X="48.0000" Y="24.0000" />
                             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                             <Position X="110.2376" Y="61.2441" />
@@ -544,7 +544,7 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="t_2" ActionTag="623702437" Tag="150" IconVisible="False" LeftMargin="160.2762" RightMargin="409.7238" TopMargin="568.5103" BottomMargin="55.4897" FontSize="20" LabelText="（比赛时间：13:01-13:10）" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="t_2" ActionTag="623702437" Tag="150" IconVisible="False" LeftMargin="160.2762" RightMargin="409.7238" TopMargin="568.5103" BottomMargin="55.4897" FontSize="20" LabelText="（比赛时间：17:01-17:10）" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="250.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="285.2762" Y="65.4897" />
@@ -555,7 +555,7 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="t_3" ActionTag="2122833298" Tag="151" IconVisible="False" LeftMargin="408.1183" RightMargin="161.8817" TopMargin="503.6010" BottomMargin="120.3990" FontSize="20" LabelText="（比赛时间：13:01-13:10）" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="t_3" ActionTag="2122833298" Tag="151" IconVisible="False" LeftMargin="408.1183" RightMargin="161.8817" TopMargin="503.6010" BottomMargin="120.3990" FontSize="20" LabelText="（比赛时间：21:01-21:10）" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="250.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="533.1183" Y="130.3990" />
@@ -566,7 +566,7 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="t_4" ActionTag="-1075403544" Tag="152" IconVisible="False" LeftMargin="413.6443" RightMargin="156.3557" TopMargin="568.8278" BottomMargin="55.1722" FontSize="20" LabelText="（比赛时间：13:01-13:10）" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="t_4" ActionTag="-1075403544" Tag="152" IconVisible="False" LeftMargin="413.6443" RightMargin="156.3557" TopMargin="568.8278" BottomMargin="55.1722" FontSize="20" LabelText="（比赛时间：23:01-23:10）" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="250.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="538.6443" Y="65.1722" />
