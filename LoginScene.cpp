@@ -1055,7 +1055,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			log("wangjiyonghu huo mima huoqu yanzhengma");
 			//获取验证码
 			std::string emailInput = zhaohuimimaEmailedbox->getText();
-			std::string data = "mail=" + emailInput + "@qq.com";
+			std::string data = "";
+			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+			{
+				data = "mail=" + emailInput + "@qq.com";
+			}else
+				data = "mail=" + emailInput;
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
@@ -1107,7 +1112,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		{
 			log("zhaohuimima tijiao xinxi");
 			std::string emailInput = zhaohuimimaEmailedbox->getText();
-			std::string data = "&mail=" + emailInput + "qq.com" + "&password=" + zhaohuimimaNewPasswordedbox->getText() + "&code=" + zhaohuimimaYanZhengMaedbox->getText();
+			std::string data = "";
+			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+			{
+				data = "&mail=" + emailInput + "qq.com" + "&password=" + zhaohuimimaNewPasswordedbox->getText() + "&code=" + zhaohuimimaYanZhengMaedbox->getText();
+			}else
+				data = "&mail=" + emailInput + "&password=" + zhaohuimimaNewPasswordedbox->getText() + "&code=" + zhaohuimimaYanZhengMaedbox->getText();
 			//yanZhengMaedbox->getText();
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/forgetpwd";
@@ -1236,7 +1246,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			//获取验证码
-			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "@qq.com";
+			std::string data = "";
+			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+			{
+				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "@qq.com";
+			}else
+				 data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText();
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
@@ -1298,8 +1313,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			log("bangdingyouxiang tijiao xinxi");
-			
-			std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "qq.com" + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
+			std::string data = "";
+			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+			{
+				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "qq.com" + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
+			}else
+				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
 				//yanZhengMaedbox->getText();
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/bindmail";
