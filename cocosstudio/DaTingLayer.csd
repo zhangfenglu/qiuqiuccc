@@ -148,11 +148,11 @@
               </AbstractNodeData>
               <AbstractNodeData Name="playerName" ActionTag="-1095754776" Tag="16" IconVisible="False" LeftMargin="126.0320" RightMargin="-157.0320" TopMargin="27.5794" BottomMargin="54.4206" IsCustomSize="True" FontSize="26" LabelText="一口吃成大胖子" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="380.0000" Y="36.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="316.0320" Y="72.4206" />
+                <AnchorPoint ScaleY="0.5000" />
+                <Position X="126.0320" Y="72.4206" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9055" Y="0.6137" />
+                <PrePosition X="0.3611" Y="0.6137" />
                 <PreSize X="1.0888" Y="0.3051" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
@@ -312,6 +312,21 @@
                 <CColor A="255" R="128" G="0" B="128" />
                 <PrePosition X="1.0388" Y="0.2862" />
                 <PreSize X="0.0573" Y="0.1695" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="headButton" ActionTag="-1785639510" Tag="48" IconVisible="False" LeftMargin="-1.1149" RightMargin="230.1149" TopMargin="-0.7675" BottomMargin="-1.2325" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="4" Scale9Height="4" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                <Size X="120.0000" Y="120.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="58.8851" Y="58.7675" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.1687" Y="0.4980" />
+                <PreSize X="0.3438" Y="1.0169" />
+                <TextColor A="255" R="65" G="65" B="70" />
+                <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                <PressedFileData Type="Normal" Path="DaTingLayer/touxiang/headButton.png" Plist="" />
+                <NormalFileData Type="Normal" Path="DaTingLayer/touxiang/headButton.png" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>

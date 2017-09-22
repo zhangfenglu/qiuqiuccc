@@ -58,6 +58,9 @@ void LoginLayer::initUI1()
 {
 	rootNode = CSLoader::createNode("DaTingLayer.csb");
 	addChild(rootNode);
+
+	//根据网络请求过来的段位接口 初始化头像信息
+	getDuanWeiInfoByIndex(6);
 	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg");
 	zuduidengdaiBg->setVisible(false);
 	CEditBoxTool* edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -1654,6 +1657,87 @@ void LoginLayer::hideWaitBox()
 	this->unschedule(schedule_selector(LoginLayer::timeUpdate));
 	upFenTime = 0;
 	upMiaoTime = 0;
+}
+
+void LoginLayer::getDuanWeiInfoByIndex(int index)
+{
+	Json* root = ReadJson("duanwei.json");
+
+	Json* jsonChild = root->child;
+	int i = -1;
+	while (jsonChild)
+	{
+		i++;
+		switch (jsonChild->type)
+		{
+		case Json_NULL:
+			break;
+		case Json_Number:
+			break;
+		case Json_Object:
+		{
+
+							if ((index - 1) == i)
+							{
+								Json* duanweiName = Json_getItem(jsonChild, "duanweiName");
+								//CCLog("<<<<<<%s", title->valuestring);
+								Json *duanweiDesc = Json_getItem(jsonChild, "duanweiDesc");
+								Json * duanweiIcon = Json_getItem(jsonChild, "duanweiIcon");
+								log("段位描述==========================%s", duanweiDesc->valueString);
+								log("段位名称==========================%s", duanweiName->valueString);
+								log("段位图标==========================%s", duanweiIcon->valueString);
+								auto biankuangAll = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangAll");
+								auto biankuangAllnian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "nian");
+								auto biankuangAllyue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "yue");
+								auto biankuangNian = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangNian");
+								auto biankuangNianNian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangNian, "nian");
+								auto biankuangYue = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangYue");
+								auto biankuangYueYue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangYue, "yue");
+								auto duanwei = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "duanwei");
+								auto duanweiNameText = (cocos2d::ui::Text*)seekNodeByName(rootNode, "duanweiName");
+								std::string duanName = duanweiName->valueString;
+								duanweiNameText->setText(duanName);
+								std::string iconStr = duanweiIcon->valueString;
+								std::string iconPath = "DaTingLayer/touxiang/" + iconStr;
+								duanwei->loadTexture(iconPath.c_str());
+								auto xing1 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing1");
+								auto xing2 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing2");
+								auto xing3 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing3");
+								auto xing4 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing4");
+								auto xing5 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing5");
+								auto xingNum = (cocos2d::ui::Text*)seekNodeByName(rootNode, "xingNum");
+								auto headButton = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "headButton");
+								if (index == 1)//段位索引
+								{
+									biankuangAll->setVisible(false);
+									biankuangNian->setVisible(false);
+									biankuangYue->setVisible(false);
+								}
+								else
+								{
+									biankuangAll->setVisible(true);
+									biankuangNian->setVisible(true);
+									biankuangYue->setVisible(true);
+								}
+
+
+							}					
+		}
+			break;
+		case Json_String:
+			log("<<<<<<%s", jsonChild->valueString);
+
+			break;
+		case Json_True:
+			break;
+		case Json_Array:
+			break;
+		default:
+			break;
+		}
+
+		jsonChild = jsonChild->next;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////
