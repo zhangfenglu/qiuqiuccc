@@ -1,0 +1,853 @@
+{
+    "1": 
+        {
+        "duanweiName": "青铜",
+        "duanweiDesc": "青铜1星",
+        "duanweiIcon": "duan1.png"
+        },
+     "2": 
+        {
+        "duanweiName": "青铜",
+        "duanweiDesc": "青铜2星",
+        "duanweiIcon": "duan1.png"
+        },
+    "3": 
+         {
+        "duanweiName": "青铜",
+        "duanweiDesc": "青铜2星",
+        "duanweiIcon": "duan1.png"
+        },
+    "4": 
+         {
+        "duanweiName": "白银",
+        "duanweiDesc": "白银1星",
+        "duanweiIcon": "duan2.png"
+        },
+    "5": 
+        {
+        "duanweiName": "白银",
+        "duanweiDesc": "白银2星",
+        "duanweiIcon": "duan2.png"
+        },
+     "6": 
+         {
+        "duanweiName": "白银",
+        "duanweiDesc": "白银3星",
+        "duanweiIcon": "duan2.png"
+        },
+     "7": 
+        {
+        "duanweiName": "白银",
+        "duanweiDesc": "白银4星",
+        "duanweiIcon": "duan2.png"
+        },
+     "8": 
+        {
+        "duanweiName": "白银",
+        "duanweiDesc": "白银5星",
+        "duanweiIcon": "duan2.png"
+        },
+     "9": 
+         {
+        "duanweiName": "黄金",
+        "duanweiDesc": "黄金1星",
+        "duanweiIcon": "duan3.png"
+        },
+    "10": 
+         {
+        "duanweiName": "黄金",
+        "duanweiDesc": "黄金2星",
+        "duanweiIcon": "duan3.png"
+        },
+    "11": 
+        {
+        "duanweiName": "黄金",
+        "duanweiDesc": "黄金3星",
+        "duanweiIcon": "duan3.png"
+        },
+    "12": 
+         {
+        "duanweiName": "黄金",
+        "duanweiDesc": "黄金4星",
+        "duanweiIcon": "duan3.png"
+        },
+    "13": 
+        {
+        "duanweiName": "黄金",
+        "duanweiDesc": "黄金5星",
+        "duanweiIcon": "duan3.png"
+        },
+    "14": 
+        {
+        "duanweiName": "白金",
+        "duanweiDesc": "白金1星",
+        "duanweiIcon": "duan4.png"
+        },
+    "15": 
+        {
+        "duanweiName": "白金",
+        "duanweiDesc": "白金2星",
+        "duanweiIcon": "duan4.png"
+        },
+     "16": 
+        {
+        "duanweiName": "白金",
+        "duanweiDesc": "白金3星",
+        "duanweiIcon": "duan4.png"
+        },
+    "17": 
+        {
+        "duanweiName": "白金",
+        "duanweiDesc": "白金4星",
+        "duanweiIcon": "duan4.png"
+        },
+    "18": 
+        {
+        "duanweiName": "白金",
+        "duanweiDesc": "白金5星",
+        "duanweiIcon": "duan4.png"
+        },
+    "19": 
+        {
+        "duanweiName": "砖石",
+        "duanweiDesc": "砖石1星",
+        "duanweiIcon": "duan5.png"
+        },
+    "20": 
+        {
+        "duanweiName": "砖石",
+        "duanweiDesc": "砖石2星",
+        "duanweiIcon": "duan5.png"
+        },
+    "21": 
+        {
+        "duanweiName": "砖石",
+        "duanweiDesc": "砖石3星",
+        "duanweiIcon": "duan5.png"
+        },
+    "22": 
+        {
+        "duanweiName": "砖石",
+        "duanweiDesc": "砖石4星",
+        "duanweiIcon": "duan5.png"
+        },
+    "23": 
+        {
+        "duanweiName": "砖石",
+        "duanweiDesc": "砖石5星",
+        "duanweiIcon": "duan5.png"
+        },
+    "24": 
+        {
+        "duanweiName": "金砖",
+        "duanweiDesc": "金砖1星",
+        "duanweiIcon": "duan6.png"
+        },
+    "25": 
+        {
+        "duanweiName": "金砖",
+        "duanweiDesc": "金砖2星",
+        "duanweiIcon": "duan6.png"
+        },
+    "26": 
+        {
+        "duanweiName": "金砖",
+        "duanweiDesc": "金砖3星",
+        "duanweiIcon": "duan6.png"
+        },
+    "27": 
+        {
+        "duanweiName": "金砖",
+        "duanweiDesc": "金砖4星",
+        "duanweiIcon": "duan6.png"
+        },
+    "28": 
+        {
+        "duanweiName": "金砖",
+        "duanweiDesc": "金砖5星",
+        "duanweiIcon": "duan6.png"
+        },
+    "29": 
+        {
+        "duanweiName": "精英",
+        "duanweiDesc": "精英1星",
+        "duanweiIcon": "duan7.png"
+        },
+     "30": 
+        {
+        "duanweiName": "精英",
+        "duanweiDesc": "精英2星",
+        "duanweiIcon": "duan7.png"
+        },
+     "31": 
+        {
+        "duanweiName": "精英",
+        "duanweiDesc": "精英3星",
+        "duanweiIcon": "duan7.png"
+        },
+     "32": 
+        {
+        "duanweiName": "精英",
+        "duanweiDesc": "精英4星",
+        "duanweiIcon": "duan7.png"
+        },
+     "33": 
+        {
+        "duanweiName": "精英",
+        "duanweiDesc": "精英5星",
+        "duanweiIcon": "duan7.png"
+        },
+     "34": 
+        {
+        "duanweiName": "史诗",
+        "duanweiDesc": "史诗1星",
+        "duanweiIcon": "duan8.png"
+        },
+    "35": 
+        {
+        "duanweiName": "史诗",
+        "duanweiDesc": "史诗1星",
+        "duanweiIcon": "duan8.png"
+        },
+    "36": 
+        {
+        "duanweiName": "史诗",
+        "duanweiDesc": "史诗2星",
+        "duanweiIcon": "duan8.png"
+        },
+    "37": 
+        {
+        "duanweiName": "史诗",
+        "duanweiDesc": "史诗3星",
+        "duanweiIcon": "duan8.png"
+        },
+    "38": 
+        {
+        "duanweiName": "史诗",
+        "duanweiDesc": "史诗4星",
+        "duanweiIcon": "duan8.png"
+        },
+     "39": 
+        {
+        "duanweiName": "传说",
+        "duanweiDesc": "传说1星",
+        "duanweiIcon": "duan9.png"
+        },
+     "40": 
+        {
+        "duanweiName": "传说",
+        "duanweiDesc": "传说2星",
+        "duanweiIcon": "duan9.png"
+        },
+     "41": 
+        {
+        "duanweiName": "传说",
+        "duanweiDesc": "传说3星",
+        "duanweiIcon": "duan9.png"
+        },
+     "42": 
+        {
+        "duanweiName": "传说",
+        "duanweiDesc": "传说4星",
+        "duanweiIcon": "duan9.png"
+        },
+     "43": 
+        {
+        "duanweiName": "传说",
+        "duanweiDesc": "传说5星",
+        "duanweiIcon": "duan9.png"
+        },
+    "44": 
+        {
+        "duanweiName": "传说",
+        "duanweiDesc": "传说6星",
+        "duanweiIcon": "duan9.png"
+        },
+    "45": 
+        {
+        "duanweiName": "传说",
+        "duanweiDesc": "传说7星",
+        "duanweiIcon": "duan9.png"
+        },
+     "46": 
+        {
+        "duanweiName": "大师",
+        "duanweiDesc": "大师1星",
+        "duanweiIcon": "duan10.png"
+        },
+     "47": 
+        {
+        "duanweiName": "大师",
+        "duanweiDesc": "大师2星",
+        "duanweiIcon": "duan10.png"
+        },
+    "48": 
+        {
+        "duanweiName": "大师",
+        "duanweiDesc": "大师3星",
+        "duanweiIcon": "duan10.png"
+        },
+    "49": 
+        {
+        "duanweiName": "大师",
+        "duanweiDesc": "大师4星",
+        "duanweiIcon": "duan10.png"
+        },
+    "50": 
+        {
+        "duanweiName": "大师",
+        "duanweiDesc": "大师5星",
+        "duanweiIcon": "duan10.png"
+        },
+    "51": 
+        {
+        "duanweiName": "大师",
+        "duanweiDesc": "大师6星",
+        "duanweiIcon": "duan10.png"
+        },
+    "52": 
+        {
+        "duanweiName": "大师",
+        "duanweiDesc": "大师7星",
+        "duanweiIcon": "duan10.png"
+        },
+    "53": 
+        {
+        "duanweiName": "王者",
+        "duanweiDesc": "王者1星",
+        "duanweiIcon": "duan11.png"
+        },
+     "54": 
+        {
+        "duanweiName": "王者",
+        "duanweiDesc": "王者2星",
+        "duanweiIcon": "duan11.png"
+        },
+     "55": 
+        {
+        "duanweiName": "王者",
+        "duanweiDesc": "王者3星",
+        "duanweiIcon": "duan11.png"
+        },
+     "56": 
+        {
+        "duanweiName": "王者",
+        "duanweiDesc": "王者4星",
+        "duanweiIcon": "duan11.png"
+        },
+     "57": 
+        {
+        "duanweiName": "王者",
+        "duanweiDesc": "王者5星",
+        "duanweiIcon": "duan11.png"
+        },
+     "58": 
+        {
+        "duanweiName": "王者",
+        "duanweiDesc": "王者6星",
+        "duanweiIcon": "duan11.png"
+        },
+     "59": 
+        {
+        "duanweiName": "王者",
+        "duanweiDesc": "王者7星",
+        "duanweiIcon": "duan11.png"
+        },
+    "60": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神1星",
+        "duanweiIcon": "duan12.png"
+        },
+    "61": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神2星",
+        "duanweiIcon": "duan12.png"
+        },
+    "62": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神3星",
+        "duanweiIcon": "duan12.png"
+        },
+     "63": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神4星",
+        "duanweiIcon": "duan12.png"
+        },
+     "64": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神5星",
+        "duanweiIcon": "duan12.png"
+        },
+     "65": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神6星",
+        "duanweiIcon": "duan12.png"
+        },
+     "66": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神7星",
+        "duanweiIcon": "duan12.png"
+        },
+     "67": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神8星",
+        "duanweiIcon": "duan12.png"
+        },
+     "68": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神9星",
+        "duanweiIcon": "duan12.png"
+        },
+     "69": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神10星",
+        "duanweiIcon": "duan12.png"
+        },
+     "70": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神11星",
+        "duanweiIcon": "duan12.png"
+        },
+     "71": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神12星",
+        "duanweiIcon": "duan12.png"
+        },
+     "72": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神13星",
+        "duanweiIcon": "duan12.png"
+        },
+     "73": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神14星",
+        "duanweiIcon": "duan12.png"
+        },
+     "74": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神15星",
+        "duanweiIcon": "duan12.png"
+        },
+     "75": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神16星",
+        "duanweiIcon": "duan12.png"
+        },
+     "76": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神17星",
+        "duanweiIcon": "duan12.png"
+        },
+     "77": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神18星",
+        "duanweiIcon": "duan12.png"
+        },
+     "78": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神19星",
+        "duanweiIcon": "duan12.png"
+        },
+     "79": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神20星",
+        "duanweiIcon": "duan12.png"
+        },
+     "80": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神21星",
+        "duanweiIcon": "duan12.png"
+        },
+     "81": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神22星",
+        "duanweiIcon": "duan12.png"
+        },
+     "82": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神23星",
+        "duanweiIcon": "duan12.png"
+        },
+     "83": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神24星",
+        "duanweiIcon": "duan12.png"
+        },
+     "84": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神25星",
+        "duanweiIcon": "duan12.png"
+        },
+     "85": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神26星",
+        "duanweiIcon": "duan12.png"
+        },
+     "86": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神27星",
+        "duanweiIcon": "duan12.png"
+        },
+     "87": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神28星",
+        "duanweiIcon": "duan12.png"
+        },
+     "88": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神29星",
+        "duanweiIcon": "duan12.png"
+        },
+     "89": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神30星",
+        "duanweiIcon": "duan12.png"
+        },
+     "90": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神31星",
+        "duanweiIcon": "duan12.png"
+        },
+     "91": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神32星",
+        "duanweiIcon": "duan12.png"
+        },
+     "92": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神33星",
+        "duanweiIcon": "duan12.png"
+        },
+     "93": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神34星",
+        "duanweiIcon": "duan12.png"
+        },
+     "94": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神35星",
+        "duanweiIcon": "duan12.png"
+        },
+     "95": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神36星",
+        "duanweiIcon": "duan12.png"
+        },
+     "96": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神37星",
+        "duanweiIcon": "duan12.png"
+        },
+     "97": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神38星",
+        "duanweiIcon": "duan12.png"
+        },
+     "98": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神39星",
+        "duanweiIcon": "duan12.png"
+        },
+     "99": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神40星",
+        "duanweiIcon": "duan12.png"
+        },
+     "100": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神41星",
+        "duanweiIcon": "duan12.png"
+        },
+     "101": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神42星",
+        "duanweiIcon": "duan12.png"
+        },
+     "102": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神43星",
+        "duanweiIcon": "duan12.png"
+        },
+     "103": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神44星",
+        "duanweiIcon": "duan12.png"
+        },
+     "104": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神45星",
+        "duanweiIcon": "duan12.png"
+        },
+     "105": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神46星",
+        "duanweiIcon": "duan12.png"
+        },
+     "106": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神47星",
+        "duanweiIcon": "duan12.png"
+        },
+     "107": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神48星",
+        "duanweiIcon": "duan12.png"
+        },
+     "108": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神49星",
+        "duanweiIcon": "duan12.png"
+        },
+     "109": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神50星",
+        "duanweiIcon": "duan12.png"
+        },
+     "110": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神51星",
+        "duanweiIcon": "duan12.png"
+        },
+     "111": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神52星",
+        "duanweiIcon": "duan12.png"
+        },
+     "112": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神53星",
+        "duanweiIcon": "duan12.png"
+        },
+     "113": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神54星",
+        "duanweiIcon": "duan12.png"
+        },
+     "114": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神55星",
+        "duanweiIcon": "duan12.png"
+        },
+     "115": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神56星",
+        "duanweiIcon": "duan12.png"
+        },
+     "116": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神57星",
+        "duanweiIcon": "duan12.png"
+        },
+     "117": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神58星",
+        "duanweiIcon": "duan12.png"
+        },
+     "118": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神59星",
+        "duanweiIcon": "duan12.png"
+        },
+     "119": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神60星",
+        "duanweiIcon": "duan12.png"
+        },
+     "120": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神61星",
+        "duanweiIcon": "duan12.png"
+        },
+     "121": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神62星",
+        "duanweiIcon": "duan12.png"
+        },
+     "122": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神63星",
+        "duanweiIcon": "duan12.png"
+        },
+     "123": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神64星",
+        "duanweiIcon": "duan12.png"
+        },
+     "124": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神65星",
+        "duanweiIcon": "duan12.png"
+        },
+     "125": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神66星",
+        "duanweiIcon": "duan12.png"
+        },
+     "126": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神67星",
+        "duanweiIcon": "duan12.png"
+        },
+     "127": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神68星",
+        "duanweiIcon": "duan12.png"
+        },
+     "128": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神69星",
+        "duanweiIcon": "duan12.png"
+        },
+     "129": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神70星",
+        "duanweiIcon": "duan12.png"
+        },
+     "130": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神71星",
+        "duanweiIcon": "duan12.png"
+        },
+     "131": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神72星",
+        "duanweiIcon": "duan12.png"
+        },
+     "132": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神73星",
+        "duanweiIcon": "duan12.png"
+        },
+     "133": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神74星",
+        "duanweiIcon": "duan12.png"
+        },
+     "134": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神75星",
+        "duanweiIcon": "duan12.png"
+        },
+     "135": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神76星",
+        "duanweiIcon": "duan12.png"
+        },
+     "136": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神77星",
+        "duanweiIcon": "duan12.png"
+        },
+     "137": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神78星",
+        "duanweiIcon": "duan12.png"
+        },
+      "138": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神79星",
+        "duanweiIcon": "duan12.png"
+        },
+     "139": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神80星",
+        "duanweiIcon": "duan12.png"
+        },
+     "140": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神81星",
+        "duanweiIcon": "duan12.png"
+        },
+     "141": 
+        {
+        "duanweiName": "超神",
+        "duanweiDesc": "超神82星",
+        "duanweiIcon": "duan12.png"
+        }
+    
+
+
+
+
+}

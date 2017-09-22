@@ -136,7 +136,17 @@
           <AbstractNodeData Name="headBg" ActionTag="1251156486" Tag="15" IconVisible="False" HorizontalEdge="LeftEdge" VerticalEdge="TopEdge" LeftMargin="22.9266" RightMargin="908.0734" TopMargin="10.6381" BottomMargin="591.3619" LeftEage="115" RightEage="115" TopEage="38" BottomEage="38" Scale9OriginX="115" Scale9OriginY="38" Scale9Width="119" Scale9Height="42" ctype="ImageViewObjectData">
             <Size X="349.0000" Y="118.0000" />
             <Children>
-              <AbstractNodeData Name="playerName" ActionTag="-1095754776" Tag="16" IconVisible="False" LeftMargin="126.0320" RightMargin="-157.0320" TopMargin="27.5794" BottomMargin="54.4206" IsCustomSize="True" FontSize="32" LabelText="一口吃成大胖子" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="head" ActionTag="228586707" Tag="35" IconVisible="False" LeftMargin="-43.6900" RightMargin="192.6900" TopMargin="-41.3800" BottomMargin="-40.6200" LeftEage="66" RightEage="66" TopEage="66" BottomEage="66" Scale9OriginX="66" Scale9OriginY="66" Scale9Width="68" Scale9Height="68" ctype="ImageViewObjectData">
+                <Size X="200.0000" Y="200.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="56.3100" Y="59.3800" />
+                <Scale ScaleX="0.6000" ScaleY="0.6000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.1613" Y="0.5032" />
+                <PreSize X="0.5731" Y="1.6949" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/tx1.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="playerName" ActionTag="-1095754776" Tag="16" IconVisible="False" LeftMargin="126.0320" RightMargin="-157.0320" TopMargin="27.5794" BottomMargin="54.4206" IsCustomSize="True" FontSize="26" LabelText="一口吃成大胖子" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="380.0000" Y="36.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="316.0320" Y="72.4206" />
@@ -144,6 +154,164 @@
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9055" Y="0.6137" />
                 <PreSize X="1.0888" Y="0.3051" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="biankuangAll" ActionTag="-110319657" Tag="32" IconVisible="False" LeftMargin="-48.5000" RightMargin="184.5000" TopMargin="-53.5000" BottomMargin="-55.5000" LeftEage="70" RightEage="70" TopEage="74" BottomEage="74" Scale9OriginX="70" Scale9OriginY="74" Scale9Width="73" Scale9Height="79" ctype="ImageViewObjectData">
+                <Size X="213.0000" Y="227.0000" />
+                <Children>
+                  <AbstractNodeData Name="yue" ActionTag="-170135366" Tag="44" IconVisible="False" LeftMargin="89.1342" RightMargin="85.8658" TopMargin="0.6597" BottomMargin="191.3403" LeftEage="12" RightEage="12" TopEage="11" BottomEage="11" Scale9OriginX="12" Scale9OriginY="11" Scale9Width="14" Scale9Height="13" ctype="ImageViewObjectData">
+                    <Size X="38.0000" Y="35.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="108.1342" Y="208.8403" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5077" Y="0.9200" />
+                    <PreSize X="0.1784" Y="0.1542" />
+                    <FileData Type="Normal" Path="DaTingLayer/touxiang/yue1.png" Plist="" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="nian" ActionTag="-1624369115" Tag="45" IconVisible="False" LeftMargin="89.2297" RightMargin="85.7703" TopMargin="192.9500" BottomMargin="0.0500" LeftEage="12" RightEage="12" TopEage="11" BottomEage="11" Scale9OriginX="12" Scale9OriginY="11" Scale9Width="14" Scale9Height="12" ctype="ImageViewObjectData">
+                    <Size X="38.0000" Y="34.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="108.2297" Y="17.0500" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5081" Y="0.0751" />
+                    <PreSize X="0.1784" Y="0.1498" />
+                    <FileData Type="Normal" Path="DaTingLayer/touxiang/nian1.png" Plist="" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="58.0000" Y="58.0000" />
+                <Scale ScaleX="0.6000" ScaleY="0.6000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.1662" Y="0.4915" />
+                <PreSize X="0.6103" Y="1.9237" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/allnianyue.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="biankuangNian" ActionTag="1151051972" Tag="33" IconVisible="False" LeftMargin="-48.5000" RightMargin="184.5000" TopMargin="-53.5000" BottomMargin="-55.5000" LeftEage="70" RightEage="70" TopEage="74" BottomEage="74" Scale9OriginX="70" Scale9OriginY="74" Scale9Width="73" Scale9Height="79" ctype="ImageViewObjectData">
+                <Size X="213.0000" Y="227.0000" />
+                <Children>
+                  <AbstractNodeData Name="nian" ActionTag="-1143564583" Tag="46" IconVisible="False" LeftMargin="87.7363" RightMargin="87.2637" TopMargin="192.2818" BottomMargin="0.7182" LeftEage="12" RightEage="12" TopEage="11" BottomEage="11" Scale9OriginX="12" Scale9OriginY="11" Scale9Width="14" Scale9Height="12" ctype="ImageViewObjectData">
+                    <Size X="38.0000" Y="34.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="106.7363" Y="17.7182" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5011" Y="0.0781" />
+                    <PreSize X="0.1784" Y="0.1498" />
+                    <FileData Type="Normal" Path="DaTingLayer/touxiang/nian1.png" Plist="" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="58.0000" Y="58.0000" />
+                <Scale ScaleX="0.6000" ScaleY="0.6000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.1662" Y="0.4915" />
+                <PreSize X="0.6103" Y="1.9237" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/nian.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="biankuangYue" ActionTag="2056664321" Tag="34" IconVisible="False" LeftMargin="-48.5000" RightMargin="184.5000" TopMargin="-53.5000" BottomMargin="-55.5000" LeftEage="70" RightEage="70" TopEage="74" BottomEage="74" Scale9OriginX="70" Scale9OriginY="74" Scale9Width="73" Scale9Height="79" ctype="ImageViewObjectData">
+                <Size X="213.0000" Y="227.0000" />
+                <Children>
+                  <AbstractNodeData Name="yue" ActionTag="-1640769555" Tag="47" IconVisible="False" LeftMargin="87.6406" RightMargin="87.3594" TopMargin="190.6716" BottomMargin="1.3284" LeftEage="12" RightEage="12" TopEage="11" BottomEage="11" Scale9OriginX="12" Scale9OriginY="11" Scale9Width="14" Scale9Height="13" ctype="ImageViewObjectData">
+                    <Size X="38.0000" Y="35.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="106.6406" Y="18.8284" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.5007" Y="0.0829" />
+                    <PreSize X="0.1784" Y="0.1542" />
+                    <FileData Type="Normal" Path="DaTingLayer/touxiang/yue1.png" Plist="" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="58.0000" Y="58.0000" />
+                <Scale ScaleX="0.6000" ScaleY="0.6000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.1662" Y="0.4915" />
+                <PreSize X="0.6103" Y="1.9237" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/yue.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="duanwei" ActionTag="-591040899" Tag="36" IconVisible="False" LeftMargin="111.7295" RightMargin="189.2705" TopMargin="55.3655" BottomMargin="15.6345" LeftEage="15" RightEage="15" TopEage="15" BottomEage="15" Scale9OriginX="15" Scale9OriginY="15" Scale9Width="18" Scale9Height="17" ctype="ImageViewObjectData">
+                <Size X="48.0000" Y="47.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="135.7295" Y="39.1345" />
+                <Scale ScaleX="0.6000" ScaleY="0.6000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.3889" Y="0.3316" />
+                <PreSize X="0.1375" Y="0.3983" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/duan1.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="duanweiName" ActionTag="-1378836675" Tag="37" IconVisible="False" LeftMargin="151.1947" RightMargin="149.8053" TopMargin="67.2900" BottomMargin="26.7100" FontSize="24" LabelText="青铜" ShadowOffsetX="0.5000" ShadowOffsetY="0.5000" ShadowEnabled="True" ctype="TextObjectData">
+                <Size X="48.0000" Y="24.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="175.1947" Y="38.7100" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5020" Y="0.3281" />
+                <PreSize X="0.1375" Y="0.2034" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="255" G="255" B="255" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="xing1" ActionTag="-1107172267" Tag="38" IconVisible="False" LeftMargin="201.8221" RightMargin="119.1779" TopMargin="63.9452" BottomMargin="24.0548" LeftEage="9" RightEage="9" TopEage="9" BottomEage="9" Scale9OriginX="9" Scale9OriginY="9" Scale9Width="10" Scale9Height="12" ctype="ImageViewObjectData">
+                <Size X="28.0000" Y="30.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="215.8221" Y="39.0548" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.6184" Y="0.3310" />
+                <PreSize X="0.0802" Y="0.2542" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/liangxing.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="xing2" ActionTag="1839336695" Tag="39" IconVisible="False" LeftMargin="231.5489" RightMargin="89.4511" TopMargin="63.9452" BottomMargin="24.0548" LeftEage="9" RightEage="9" TopEage="9" BottomEage="9" Scale9OriginX="9" Scale9OriginY="9" Scale9Width="10" Scale9Height="12" ctype="ImageViewObjectData">
+                <Size X="28.0000" Y="30.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="245.5489" Y="39.0548" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.7036" Y="0.3310" />
+                <PreSize X="0.0802" Y="0.2542" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/liangxing.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="xing3" ActionTag="-1803670614" Tag="40" IconVisible="False" LeftMargin="261.2756" RightMargin="59.7244" TopMargin="63.9452" BottomMargin="24.0548" LeftEage="9" RightEage="9" TopEage="9" BottomEage="9" Scale9OriginX="9" Scale9OriginY="9" Scale9Width="10" Scale9Height="12" ctype="ImageViewObjectData">
+                <Size X="28.0000" Y="30.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="275.2756" Y="39.0548" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.7888" Y="0.3310" />
+                <PreSize X="0.0802" Y="0.2542" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/liangxing.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="xing4" ActionTag="-1313898826" Tag="41" IconVisible="False" LeftMargin="291.0023" RightMargin="29.9977" TopMargin="63.9452" BottomMargin="24.0548" LeftEage="9" RightEage="9" TopEage="9" BottomEage="9" Scale9OriginX="9" Scale9OriginY="9" Scale9Width="10" Scale9Height="12" ctype="ImageViewObjectData">
+                <Size X="28.0000" Y="30.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="305.0023" Y="39.0548" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.8739" Y="0.3310" />
+                <PreSize X="0.0802" Y="0.2542" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/liangxing.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="xing5" ActionTag="-950258108" Tag="42" IconVisible="False" LeftMargin="320.7291" RightMargin="0.2709" TopMargin="63.9452" BottomMargin="24.0548" LeftEage="9" RightEage="9" TopEage="9" BottomEage="9" Scale9OriginX="9" Scale9OriginY="9" Scale9Width="10" Scale9Height="12" ctype="ImageViewObjectData">
+                <Size X="28.0000" Y="30.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="334.7291" Y="39.0548" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.9591" Y="0.3310" />
+                <PreSize X="0.0802" Y="0.2542" />
+                <FileData Type="Normal" Path="DaTingLayer/touxiang/liangxing.png" Plist="" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="xingNum" ActionTag="-750753508" Tag="43" IconVisible="False" LeftMargin="352.5343" RightMargin="-23.5343" TopMargin="74.2298" BottomMargin="23.7702" FontSize="20" LabelText="20" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="20.0000" Y="20.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="362.5343" Y="33.7702" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="128" G="0" B="128" />
+                <PrePosition X="1.0388" Y="0.2862" />
+                <PreSize X="0.0573" Y="0.1695" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
