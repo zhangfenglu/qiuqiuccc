@@ -82,6 +82,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
 												btn_yibaoming1->setVisible(true);
 							   }
+								   break;
 							   case 1800101:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -90,6 +91,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
 											   btn_yibaoming2->setVisible(true);
 							   }
+								   break;
 							   case 2000101:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -98,6 +100,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
 											   btn_yibaoming3->setVisible(true);
 							   }
+								   break;
 							   case 2200101:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -129,6 +132,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
 												btn_yibaoming1->setVisible(true);
 							   }
+								   break;
 							   case 1800102:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -137,6 +141,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
 											   btn_yibaoming2->setVisible(true);
 							   }
+								   break;
 							   case 2000102:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -145,6 +150,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
 											   btn_yibaoming3->setVisible(true);
 							   }
+								   break;
 							   case 2200102:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -175,6 +181,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
 												btn_yibaoming1->setVisible(true);
 							   }
+								   break;
 							   case 1800103:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -183,6 +190,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
 											   btn_yibaoming2->setVisible(true);
 							   }
+								   break;
 							   case 2000103:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -191,6 +199,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
 											   btn_yibaoming3->setVisible(true);
 							   }
+								   break;
 							   case 2200103:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -222,6 +231,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
 												btn_yibaoming1->setVisible(true);
 							   }
+								   break;
 							   case 1800104:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -230,6 +240,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
 											   btn_yibaoming2->setVisible(true);
 							   }
+								   break;
 							   case 2000104:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -238,6 +249,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
 											   btn_yibaoming3->setVisible(true);
 							   }
+								   break;
 							   case 2200104:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -269,6 +281,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
 												btn_yibaoming1->setVisible(true);
 							   }
+								   break;
 							   case 1800105:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -277,6 +290,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
 											   btn_yibaoming2->setVisible(true);
 							   }
+								   break;
 							   case 2000105:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -285,6 +299,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
 											   btn_yibaoming3->setVisible(true);
 							   }
+								   break;
 							   case 2200105:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -316,6 +331,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
 												btn_yibaoming1->setVisible(true);
 							   }
+								   break;
 							   case 1800106:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -324,6 +340,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
 											   btn_yibaoming2->setVisible(true);
 							   }
+								   break;
 							   case 2000106:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -332,6 +349,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
 											   btn_yibaoming3->setVisible(true);
 							   }
+								   break;
 							   case 2200106:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
@@ -443,31 +461,46 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 	auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
 	auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
 	auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
+
+	auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
+	auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
+	auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
+	auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
 	switch (tag)
 	{
 	case 0://1星
 	{
 			   if (cangKuInfo.diamonds < atoi(awards[tag].xiaohaoNum.c_str()))
 			   {
-				   bao1->setTouchEnabled(false);
-				   bao1->setColor(Color3B::GRAY);
-				   bao2->setTouchEnabled(false);
-				   bao2->setColor(Color3B::GRAY);
-				   bao3->setTouchEnabled(false);
-				   bao3->setColor(Color3B::GRAY);
+				   if (!btn_yibaoming1->isVisible())
+						 bao1->setTouchEnabled(false);
+				  // bao1->setColor(Color3B::GRAY);
+				   if (!btn_yibaoming2->isVisible())
+						 bao2->setTouchEnabled(false);
+				  // bao2->setColor(Color3B::GRAY);
+				   if (!btn_yibaoming3->isVisible())
+						 bao3->setTouchEnabled(false);
+				  // bao3->setColor(Color3B::GRAY);
+				   if (!btn_yibaoming4->isVisible())
 				   bao4->setTouchEnabled(false);
-				   bao4->setColor(Color3B::GRAY);
+				  // bao4->setColor(Color3B::GRAY);
+
 			   }
 			   else
 			   {
-				   bao1->setTouchEnabled(true);
-				   bao1->setColor(Color3B::WHITE);
-				   bao2->setTouchEnabled(true);
-				   bao2->setColor(Color3B::WHITE);
-				   bao3->setTouchEnabled(true);
-				   bao3->setColor(Color3B::WHITE);
-				   bao4->setTouchEnabled(true);
-				   bao4->setColor(Color3B::WHITE);
+					 if (!btn_yibaoming1->isVisible())
+						 bao1->setTouchEnabled(true);
+					 // bao1->setColor(Color3B::WHITE);
+					  if (!btn_yibaoming2->isVisible())
+						 bao2->setTouchEnabled(true);
+					  //bao2->setColor(Color3B::WHITE);
+					  if (!btn_yibaoming3->isVisible())
+						bao3->setTouchEnabled(true);
+					 // bao3->setColor(Color3B::WHITE);
+					  if (!btn_yibaoming4->isVisible())
+						bao4->setTouchEnabled(true);
+					  //bao4->setColor(Color3B::WHITE);
+				   
 			   }
 	}
 		break;
@@ -475,25 +508,33 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 	{
 			  if (cangKuInfo.juan2 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
-				  bao1->setTouchEnabled(false);
-				  bao1->setColor(Color3B::GRAY);
-				  bao2->setTouchEnabled(false);
-				  bao2->setColor(Color3B::GRAY);
-				  bao3->setTouchEnabled(false);
-				  bao3->setColor(Color3B::GRAY);
-				  bao4->setTouchEnabled(false);
-				  bao4->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(false);
+				  // bao1->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(false);
+				  // bao2->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(false);
+				  // bao3->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
-				  bao1->setTouchEnabled(true);
-				  bao1->setColor(Color3B::WHITE);
-				  bao2->setTouchEnabled(true);
-				  bao2->setColor(Color3B::WHITE);
-				  bao3->setTouchEnabled(true);
-				  bao3->setColor(Color3B::WHITE);
-				  bao4->setTouchEnabled(true);
-				  bao4->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(true);
+				  // bao1->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(true);
+				  //bao2->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(true);
+				  // bao3->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(true);
+				  //bao4->setColor(Color3B::WHITE);
 			  }
 	}
 		break;
@@ -501,25 +542,33 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 	{
 			  if (cangKuInfo.juan3 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
-				  bao1->setTouchEnabled(false);
-				  bao1->setColor(Color3B::GRAY);
-				  bao2->setTouchEnabled(false);
-				  bao2->setColor(Color3B::GRAY);
-				  bao3->setTouchEnabled(false);
-				  bao3->setColor(Color3B::GRAY);
-				  bao4->setTouchEnabled(false);
-				  bao4->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(false);
+				  // bao1->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(false);
+				  // bao2->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(false);
+				  // bao3->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
-				  bao1->setTouchEnabled(true);
-				  bao1->setColor(Color3B::WHITE);
-				  bao2->setTouchEnabled(true);
-				  bao2->setColor(Color3B::WHITE);
-				  bao3->setTouchEnabled(true);
-				  bao3->setColor(Color3B::WHITE);
-				  bao4->setTouchEnabled(true);
-				  bao4->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(true);
+				  // bao1->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(true);
+				  //bao2->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(true);
+				  // bao3->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(true);
+				  //bao4->setColor(Color3B::WHITE);
 			  }
 	}
 		break;
@@ -527,25 +576,33 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 	{
 			  if (cangKuInfo.juan4 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
-				  bao1->setTouchEnabled(false);
-				  bao1->setColor(Color3B::GRAY);
-				  bao2->setTouchEnabled(false);
-				  bao2->setColor(Color3B::GRAY);
-				  bao3->setTouchEnabled(false);
-				  bao3->setColor(Color3B::GRAY);
-				  bao4->setTouchEnabled(false);
-				  bao4->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(false);
+				  // bao1->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(false);
+				  // bao2->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(false);
+				  // bao3->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
-				  bao1->setTouchEnabled(true);
-				  bao1->setColor(Color3B::WHITE);
-				  bao2->setTouchEnabled(true);
-				  bao2->setColor(Color3B::WHITE);
-				  bao3->setTouchEnabled(true);
-				  bao3->setColor(Color3B::WHITE);
-				  bao4->setTouchEnabled(true);
-				  bao4->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(true);
+				  // bao1->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(true);
+				  //bao2->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(true);
+				  // bao3->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(true);
+				  //bao4->setColor(Color3B::WHITE);
 			  }
 	}
 		break;
@@ -553,25 +610,33 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 	{
 			  if (cangKuInfo.juan5 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
-				  bao1->setTouchEnabled(false);
-				  bao1->setColor(Color3B::GRAY);
-				  bao2->setTouchEnabled(false);
-				  bao2->setColor(Color3B::GRAY);
-				  bao3->setTouchEnabled(false);
-				  bao3->setColor(Color3B::GRAY);
-				  bao4->setTouchEnabled(false);
-				  bao4->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(false);
+				  // bao1->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(false);
+				  // bao2->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(false);
+				  // bao3->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
-				  bao1->setTouchEnabled(true);
-				  bao1->setColor(Color3B::WHITE);
-				  bao2->setTouchEnabled(true);
-				  bao2->setColor(Color3B::WHITE);
-				  bao3->setTouchEnabled(true);
-				  bao3->setColor(Color3B::WHITE);
-				  bao4->setTouchEnabled(true);
-				  bao4->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(true);
+				  // bao1->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(true);
+				  //bao2->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(true);
+				  // bao3->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(true);
+				  //bao4->setColor(Color3B::WHITE);
 			  }
 	}
 		break;
@@ -579,25 +644,33 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 	{
 			  if (cangKuInfo.juan6 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
-				  bao1->setTouchEnabled(false);
-				  bao1->setColor(Color3B::GRAY);
-				  bao2->setTouchEnabled(false);
-				  bao2->setColor(Color3B::GRAY);
-				  bao3->setTouchEnabled(false);
-				  bao3->setColor(Color3B::GRAY);
-				  bao4->setTouchEnabled(false);
-				  bao4->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(false);
+				  // bao1->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(false);
+				  // bao2->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(false);
+				  // bao3->setColor(Color3B::GRAY);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
-				  bao1->setTouchEnabled(true);
-				  bao1->setColor(Color3B::WHITE);
-				  bao2->setTouchEnabled(true);
-				  bao2->setColor(Color3B::WHITE);
-				  bao3->setTouchEnabled(true);
-				  bao3->setColor(Color3B::WHITE);
-				  bao4->setTouchEnabled(true);
-				  bao4->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming1->isVisible())
+					  bao1->setTouchEnabled(true);
+				  // bao1->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming2->isVisible())
+					  bao2->setTouchEnabled(true);
+				  //bao2->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming3->isVisible())
+					  bao3->setTouchEnabled(true);
+				  // bao3->setColor(Color3B::WHITE);
+				  if (!btn_yibaoming4->isVisible())
+					  bao4->setTouchEnabled(true);
+				  //bao4->setColor(Color3B::WHITE);
 			  }
 	}
 		break;
