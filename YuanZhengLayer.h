@@ -39,6 +39,9 @@ private:
 	std::vector<yuanzhengBaoMing_Info> baomingInfos;
 
 	Node* rootNode;
+	Node* tishiNode;
+	float tishiY;
+	float tishiX;
 
 	cocos2d::ui::Button* copy1;
 	cocos2d::ui::Button* copy2;

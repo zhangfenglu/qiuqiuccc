@@ -11,6 +11,7 @@ std::string ExchangeInfo::getIdentifier()
 	std::ostringstream ss;
 	ss << num << "";
 	return ss.str().c_str();
+	//return "1000000004";
 	//return "8282882";
 	//user: 1351258
 	//return "66666666-6666-6666-6666-666666666666";
