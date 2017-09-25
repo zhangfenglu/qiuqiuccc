@@ -30,7 +30,8 @@ bool LoginLayer::init()
 {
 	if (!Layer::init())
 		return false;
-
+	rootNode = CSLoader::createNode("DaTingLayer.csb");
+	addChild(rootNode);
 	rootGameSettingNode = nullptr;
 	//初始化登陆数据
 	initDengLuData();
@@ -56,11 +57,6 @@ bool LoginLayer::init()
 
 void LoginLayer::initUI1()
 {
-	rootNode = CSLoader::createNode("DaTingLayer.csb");
-	addChild(rootNode);
-
-	//根据网络请求过来的段位接口 初始化头像信息
-	getDuanWeiInfoByIndex(6);
 	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg");
 	zuduidengdaiBg->setVisible(false);
 	CEditBoxTool* edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -1520,6 +1516,7 @@ void LoginLayer::initDengLuData()
 				Json* account = Json_getItem(resultObj, "account");
 				Json* accout = Json_getItem(account, "accout");
 				Json* password = Json_getItem(account, "password");
+				Json* player = Json_getItem(resultObj, "player");
 				if (account->child != NULL)
 				{
 					if (accout->valueString != "" && password->valueString != "")
@@ -1547,6 +1544,88 @@ void LoginLayer::initDengLuData()
 							info.mail = mail->valueString;
 
 						Global::getInstance()->SetAccountInfo(info);
+
+
+						head_info headInfo;
+						Json* monthcard = Json_getItem(player, "monthcard");
+						Json* yearcard = Json_getItem(player, "yearcard");
+						Json* headid = Json_getItem(player, "headid");
+						Json* grade = Json_getItem(player, "grade");
+						Json* playername = Json_getItem(player, "playername");
+
+						headInfo.monthcard = monthcard->valueInt;
+						headInfo.yearcard = yearcard->valueInt;
+						headInfo.grade = grade->valueString;
+						headInfo.headid = headid->valueString;
+						headInfo.playername = playername->valueString;
+						Global::getInstance()->SetHeadInfo(headInfo);
+
+
+						auto biankuangAll = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangAll");
+						auto biankuangAllnian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "nian");
+						auto biankuangAllyue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "yue");
+						auto biankuangNian = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangNian");
+						auto biankuangNianNian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangNian, "nian");
+						auto biankuangYue = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangYue");
+						auto biankuangYueYue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangYue, "yue");
+
+						auto playerName = (cocos2d::ui::Text*)seekNodeByName(rootNode, "playerName");
+						auto head = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "head");
+
+						if (headInfo.monthcard == 0 && headInfo.yearcard == 0)
+						{
+							biankuangAll->setVisible(false);
+							biankuangNian->setVisible(false);
+							biankuangYue->setVisible(false);
+						}
+						else if (headInfo.monthcard > 0 && headInfo.yearcard > 0)
+						{
+							biankuangAll->setVisible(true);
+							biankuangNian->setVisible(false);
+							biankuangYue->setVisible(false);
+							std::ostringstream nianFlag;
+							nianFlag.clear();
+							nianFlag << "DaTingLayer\\touxiang\\nian" << headInfo.yearcard << ".png";
+							biankuangAllnian->loadTexture(nianFlag.str());
+							std::ostringstream yueFlag;
+							yueFlag.clear();
+							yueFlag << "DaTingLayer\\touxiang\\yue" << headInfo.monthcard << ".png";
+							biankuangAllyue->loadTexture(yueFlag.str());
+						}
+						else if (headInfo.monthcard > 0)
+						{
+							biankuangAll->setVisible(false);
+							biankuangNian->setVisible(false);
+							biankuangYue->setVisible(true);
+							std::ostringstream yueFlag;
+							yueFlag.clear();
+							yueFlag << "DaTingLayer\\touxiang\\yue" << headInfo.monthcard << ".png";
+							biankuangYueYue->loadTexture(yueFlag.str());
+						}
+						else if (headInfo.yearcard > 0)
+						{
+							biankuangAll->setVisible(false);
+							biankuangNian->setVisible(true);
+							biankuangYue->setVisible(false);
+							std::ostringstream nianFlag;
+							nianFlag.clear();
+							nianFlag << "DaTingLayer\\touxiang\\nian" << headInfo.yearcard << ".png";
+							biankuangNianNian->loadTexture(nianFlag.str());
+						}
+
+						playerName->setText(headInfo.playername.c_str());
+
+						std::string headImgPath = "Head\\" + headInfo.headid;
+						head->loadTexture(headImgPath.c_str());
+
+						//根据网络请求过来的段位接口 初始化头像信息
+						getDuanWeiInfoByIndex(atoi(headInfo.grade.c_str()));
+
+
+
+
+
+
 					}
 				}
 
@@ -1683,42 +1762,271 @@ void LoginLayer::getDuanWeiInfoByIndex(int index)
 								//CCLog("<<<<<<%s", title->valuestring);
 								Json *duanweiDesc = Json_getItem(jsonChild, "duanweiDesc");
 								Json * duanweiIcon = Json_getItem(jsonChild, "duanweiIcon");
+								Json* xingliang = Json_getItem(jsonChild, "xingliang");
+								Json* xingan = Json_getItem(jsonChild, "xingan");
+								Json* xingnum1 = Json_getItem(jsonChild, "xingnum");
 								log("段位描述==========================%s", duanweiDesc->valueString);
 								log("段位名称==========================%s", duanweiName->valueString);
 								log("段位图标==========================%s", duanweiIcon->valueString);
-								auto biankuangAll = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangAll");
-								auto biankuangAllnian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "nian");
-								auto biankuangAllyue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "yue");
-								auto biankuangNian = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangNian");
-								auto biankuangNianNian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangNian, "nian");
-								auto biankuangYue = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "biankuangYue");
-								auto biankuangYueYue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangYue, "yue");
+								log("亮星==========================%d", xingliang->valueInt);
+								log("暗星==========================%d", xingan->valueInt);
+								log("星数量==========================%d", xingnum1->valueInt);
+								
 								auto duanwei = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "duanwei");
 								auto duanweiNameText = (cocos2d::ui::Text*)seekNodeByName(rootNode, "duanweiName");
 								std::string duanName = duanweiName->valueString;
 								duanweiNameText->setText(duanName);
 								std::string iconStr = duanweiIcon->valueString;
-								std::string iconPath = "DaTingLayer/touxiang/" + iconStr;
+								std::string iconPath = "DaTingLayer\\touxiang\\" + iconStr;
 								duanwei->loadTexture(iconPath.c_str());
 								auto xing1 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing1");
 								auto xing2 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing2");
 								auto xing3 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing3");
 								auto xing4 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing4");
 								auto xing5 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing5");
-								auto xingNum = (cocos2d::ui::Text*)seekNodeByName(rootNode, "xingNum");
-								auto headButton = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "headButton");
-								if (index == 1)//段位索引
+								auto xing6 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing6");
+								auto xing7 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing7");
+
+
+								if (index-1 <= 3) //小于3个段位
 								{
-									biankuangAll->setVisible(false);
-									biankuangNian->setVisible(false);
-									biankuangYue->setVisible(false);
+									xing1->setVisible(true);
+									xing2->setVisible(true);
+									xing3->setVisible(true);
+									switch (xingan->valueInt)
+									{
+									case 1:
+									{
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 2:
+									{
+											  xing2->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 3:
+									{
+											  xing1->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing2->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									default:
+										break;
+									}
+								}
+								else if (index-1 <= 38)
+								{
+									xing1->setVisible(true);
+									xing2->setVisible(true);
+									xing3->setVisible(true);
+									xing4->setVisible(true);
+									xing5->setVisible(true);
+
+									switch (xingan->valueInt)
+									{
+									case 1:
+									{
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 2:
+									{
+											  xing4->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 3:
+									{
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing4->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 4:
+									{
+											  xing2->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing4->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 5:
+									{
+											  xing1->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing2->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing4->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									default:
+										break;
+									}
 								}
 								else
 								{
-									biankuangAll->setVisible(true);
-									biankuangNian->setVisible(true);
-									biankuangYue->setVisible(true);
+									xing1->setVisible(true);
+									xing2->setVisible(true);
+									xing3->setVisible(true);
+									xing4->setVisible(true);
+									xing5->setVisible(true);
+									xing6->setVisible(true);
+									xing7->setVisible(true);
+
+									switch (xingan->valueInt)
+									{
+									case 1:
+									{
+											  xing7->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 2:
+									{
+											  xing6->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing7->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 3:
+									{
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing6->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing7->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 4:
+									{
+											  xing4->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing6->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing7->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 5:
+									{
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing4->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing6->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing7->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 6:
+									{
+											  xing2->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing4->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing6->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing7->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+										break;
+									case 7:
+									{
+											  xing1->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing2->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing3->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing4->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing5->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing6->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+											  xing7->loadTexture("DaTingLayer\\touxiang\\anxing.png");
+									}
+									default:
+										break;
+									}
 								}
+
+								if (xingan->valueInt == 0)
+								{
+									xing1->setVisible(false);
+									xing2->setVisible(false);
+									xing3->setVisible(false);
+									xing4->setVisible(false);
+									xing5->setVisible(false);
+									xing6->setVisible(false);
+									xing7->setVisible(false);
+									switch (xingliang->valueInt)
+									{
+									case 1:
+									{
+											  xing1->setVisible(true);
+									}
+										break;
+									case 2:
+									{
+											  xing1->setVisible(true);
+											  xing2->setVisible(true);
+									}
+										break;
+									case 3:
+									{
+											  xing1->setVisible(true);
+											  xing2->setVisible(true);
+											  xing3->setVisible(true);
+											
+									}
+										break;
+									case 4:
+									{
+											  xing1->setVisible(true);
+											  xing2->setVisible(true);
+											  xing3->setVisible(true);  
+											  xing4->setVisible(true);
+											
+									}
+										break;
+									case 5:
+									{
+											  xing1->setVisible(true);
+											  xing2->setVisible(true);
+											  xing3->setVisible(true);
+											  xing4->setVisible(true);
+											  xing5->setVisible(true);
+											
+									}
+										break;
+									case 6:
+									{
+											  xing1->setVisible(true);
+											  xing2->setVisible(true);
+											  xing3->setVisible(true);
+											  xing4->setVisible(true);
+											  xing5->setVisible(true);
+											  xing6->setVisible(true);
+									}
+										break;
+									case 7:
+									{
+											  xing1->setVisible(true);
+											  xing2->setVisible(true);
+											  xing3->setVisible(true);
+											  xing4->setVisible(true);
+											  xing5->setVisible(true);
+											  xing6->setVisible(true);
+											  xing7->setVisible(true);
+									}
+										break;
+									default:
+										break;
+									}
+								}
+
+								auto xingNum = (cocos2d::ui::Text*)seekNodeByName(rootNode, "xingNum");
+								xingNum->setText("" + xingnum1->valueInt);
+								if (xingnum1->valueInt == 0)
+									xingNum->setVisible(false);
+
+								auto headButton = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "headButton");
+
+								headButton->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+								{
+									if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+									{
+										log("headButton clike=================");
+									}
+								});
 
 
 							}					

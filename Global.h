@@ -174,6 +174,8 @@ public:
 	//张锋露
 	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
 	account_info GetAccountInfo(){ return m_AccountInfo; }
+	void SetHeadInfo(head_info info){ m_HeadInfo = info; }
+	head_info GetHeadInfo(){ return m_HeadInfo; }
 	//倒计时
 	void SetZuDuiDaoJiShiInfo(zuduidaojishi_info info){ m_ZuDuiDaoJiShi = info; }
 	zuduidaojishi_info GetZuDuiDaoJiShiInfo(){ return m_ZuDuiDaoJiShi; }
@@ -275,6 +277,7 @@ private:
 	bool m_IsZuDui = false;
 	std::string m_Title;
 	account_info m_AccountInfo;
+	head_info m_HeadInfo;
     std::vector<nameMap> mComName;
     std::vector<shop_item>  shopItems;
     std::map<int,user_bag>  mUserBag;

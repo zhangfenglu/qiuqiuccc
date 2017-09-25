@@ -238,6 +238,24 @@ struct yuanzhengBaoMing_Info
 
 };
 
+//头像 段位 月卡 年卡等信息
+struct head_info
+{
+	head_info()
+	{
+		monthcard = 0;
+		yearcard = 0;
+		headid = "";
+		grade = "";
+		playername = "";
+	}
+	uint32_t           monthcard;
+	uint32_t           yearcard;
+	std::string		   headid;
+	std::string		   grade;
+	std::string		   playername;
+};
+
 struct user_info {
     user_info()
     {
