@@ -1,6 +1,7 @@
 #include "TimeYuanZhengLayer.h"
 #include "SimpleTools.h"
 #include "MainScene.h"
+#include "GameVoice.h"
 
 
 bool TimeYuanZhengLayer::init()
@@ -17,18 +18,21 @@ void TimeYuanZhengLayer::menuItem1Callback(cocos2d::Ref* pSender)
 {
 	log("btn1");
 	showZuDuiBox(0);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void TimeYuanZhengLayer::menuItem2Callback(cocos2d::Ref* pSender)
 {
 	log("btn2");
 	showZuDuiBox(1);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void TimeYuanZhengLayer::menuItem3Callback(cocos2d::Ref* pSender)
 {
 	log("btn3");
 	showZuDuiBox(2);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void TimeYuanZhengLayer::menuItem4Callback(cocos2d::Ref* pSender)
@@ -41,12 +45,14 @@ void TimeYuanZhengLayer::menuItem5Callback(cocos2d::Ref* pSender)
 {
 	log("btn5");
 	showZuDuiBox(4);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void TimeYuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
 {
 	log("btn6");
 	showZuDuiBox(5);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 void TimeYuanZhengLayer::hideAllSprite()
 {

@@ -865,10 +865,35 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	/*SheZhi* layer = SheZhi::create();
 
 	addChild(layer, 10, 131);*/
+	Json* root = ReadJson("tishi.json");
+	Json* yanzhengmayifasong = Json_getItem(root, "yanzhengmayifasong");//验证码已发送
+	Json* qingshurumima = Json_getItem(root, "qingshurumima");//请输入密码
+	Json* qingshuruyouxiangdizhi = Json_getItem(root, "qingshuruyouxiangdizhi");//请输入邮箱地址
+
+	Json* qingshuruyanzhengma = Json_getItem(root, "qingshuruyanzhengma");//请输入验证码
+	Json* yanzhengmabudui = Json_getItem(root, "yanzhengmabudui");//验证码不对
+	Json* mimacuowu = Json_getItem(root, "qingshuruyouxiangdizhi");//密码错误
+	Json* qingshuruxinmima = Json_getItem(root, "qingshuruyouxiangdizhi");//请输入新密码
+	Json* zhanghaohemimayifasongdaoyouxiang = Json_getItem(root, "zhanghaohemimayifasongdaoyouxiang");//账号和密码已发送到邮箱，请注意查收
+	Json* qingshuruzhanghao = Json_getItem(root, "qingshuruzhanghao");//请输入邮箱地址
+	Json* denglushibai = Json_getItem(root, "denglushibai");//登录失败
+	Json* qingshuruxinzhanghao = Json_getItem(root, "qingshuruxinzhanghao");//请输入新账号
+	Json* shurumimabuyizhi = Json_getItem(root, "shurumimabuyizhi");//输入密码不一致
+	Json* bangdingzhanghaochenggong = Json_getItem(root, "bangdingzhanghaochenggong");//绑定账号成功
+	Json* zhanghaoyibeizhanyong = Json_getItem(root, "zhanghaoyibeizhanyong");//账号已被占用
+	Json* bangdingyouxiangchenggong = Json_getItem(root, "bangdingyouxiangchenggong");//绑定邮箱成功
 
 	account_info info = Global::getInstance()->GetAccountInfo();
 
 	rootGameSettingNode = CSLoader::createNode("GameSetting.csb");
+
+	auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "tishi");
+	tishiY = piaoZi->getPositionY();
+	tishiX = piaoZi->getPositionX();
+
+	auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "Image_1");
+
+
 	setCanTouchOtherLayer(rootGameSettingNode, false, [=](Touch * touch, Event * event) {
 		if (rootGameSettingNode)
 		{
@@ -926,7 +951,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	zhanghaoedbox->setFontColor(Color3B::BLACK);
 	zhanghaobangding->addChild(zhanghaoedbox, 3, 101);
 
-	zhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input new account"));
+	//zhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input new account"));
 
 	mimaedbox->setPosition(Vec2(365, 320));
 	mimaedbox->setInputMode(EditBox::InputMode::ANY);
@@ -935,14 +960,14 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	mimaedbox->setFontColor(Color3B::BLACK);
 	zhanghaobangding->addChild(mimaedbox, 3, 101);
 
-	mimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	//mimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	mima1edbox->setPosition(Vec2(365, 200));
 	mima1edbox->setInputMode(EditBox::InputMode::ANY);
 	mima1edbox->setDelegate(this);
 	mima1edbox->setFontSize(28);
 	mima1edbox->setFontColor(Color3B::BLACK);
 	zhanghaobangding->addChild(mima1edbox, 3, 101);
-	mima1edbox->setPlaceHolder(Global::getInstance()->getString("please input password again"));
+	//mima1edbox->setPlaceHolder(Global::getInstance()->getString("please input password again"));
 
 
 	btnBangDing->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
@@ -972,6 +997,62 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
 			log("zhanghao===%s  mima===%s mima ==== %s,", zhanghaoedbox->getText(), mimaedbox->getText(), mima1edbox->getText());
+			std::string zhStr = zhanghaoedbox->getText();
+			std::string miMaStr = mimaedbox->getText();
+			std::string miMaStr1 = mima1edbox->getText();
+			if (zhStr == "")
+			{
+				piaoZi->setString(qingshuruxinzhanghao->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+			if (miMaStr == "")
+			{
+				piaoZi->setString(qingshurumima->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+
+			if (miMaStr1 == "" || strcmp(mimaedbox->getText(), mima1edbox->getText()) != 0)
+			{
+				piaoZi->setString(shurumimabuyizhi->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+
 			if (zhanghaoedbox->getText() != "" &&  strcmp(mimaedbox->getText(), mima1edbox->getText()) == 0 && mimaedbox->getText() != "")
 			{
 				log("submit bangding zhanghao xinxi");
@@ -1005,6 +1086,19 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 						if (result->valueInt == 1)
 						{
 							log("*******************************bangding success");
+							piaoZi->setString(bangdingzhanghaochenggong->valueString);
+							auto clonePiaoZi = piaoZi->clone();
+							Image_1->addChild(clonePiaoZi);
+							clonePiaoZi->setVisible(true);
+							auto action1 = FadeOut::create(1.8);
+							auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+							auto func = [=](){
+								clonePiaoZi->setPosition(Point(tishiX, tishiY));
+								clonePiaoZi->removeFromParentAndCleanup(true);
+							};
+							auto callBack = CallFunc::create(func);
+
+							clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 
 							Json * gmlevel = Json_getItem(resultObj, "gmlevel");
 							Json * id = Json_getItem(resultObj, "id");
@@ -1049,6 +1143,20 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 						else
 						{
 							log("*******************************bangding error");
+							piaoZi->setString(zhanghaoyibeizhanyong->valueString);
+							auto clonePiaoZi = piaoZi->clone();
+							Image_1->addChild(clonePiaoZi);
+							clonePiaoZi->setVisible(true);
+							auto action1 = FadeOut::create(1.8);
+							auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+							auto func = [=](){
+								clonePiaoZi->setPosition(Point(tishiX, tishiY));
+								clonePiaoZi->removeFromParentAndCleanup(true);
+							};
+							auto callBack = CallFunc::create(func);
+
+							clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+							return;
 						}
 					}
 					else
@@ -1100,7 +1208,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	qiehuanzhanghaoedbox->setFontSize(28);
 	qiehuanzhanghaoedbox->setFontColor(Color3B::BLACK);
 	qiehuanzhanghao->addChild(qiehuanzhanghaoedbox, 3, 101);
-	qiehuanzhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input account"));
+	//qiehuanzhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input account"));
 
 	qiehuanmimaedbox->setPosition(Vec2(330, 260));
 	qiehuanmimaedbox->setInputMode(EditBox::InputMode::ANY);
@@ -1108,7 +1216,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	qiehuanmimaedbox->setFontSize(28);
 	qiehuanmimaedbox->setFontColor(Color3B::BLACK);
 	qiehuanzhanghao->addChild(qiehuanmimaedbox, 3, 101);
-	qiehuanmimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	//qiehuanmimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	//�ϲ�������--0924--ע������� end===========================================================================
 	
 	
@@ -1129,6 +1237,42 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 			std::string url = "47.93.50.101:8080/QQWar/Qqwar/relogin";
 
+			if (zhanghao == "")
+			{
+				piaoZi->setString(qingshuruzhanghao->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+			std::string qiehuanmima = qiehuanmimaedbox->getText();
+			if (qiehuanmima == "")
+			{
+				piaoZi->setString(qingshurumima->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
 				if (response == nullptr || !response->isSucceed())
@@ -1147,6 +1291,21 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				Json* root = Json_create(responseStr.c_str());
 				Json* result = Json_getItem(root, "resultCode");
 				Json * resultObj = Json_getItem(root, "resultObj");
+				Json * message = Json_getItem(root, "message");
+
+				piaoZi->setString(message->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 
 				/*if (result->type == Json_Number)
 				{
@@ -1235,7 +1394,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	zhaohuimimaEmailedbox->setFontSize(28);
 	zhaohuimimaEmailedbox->setFontColor(Color3B::BLACK);
 	zhaohuimima->addChild(zhaohuimimaEmailedbox, 3, 101);
-	zhaohuimimaEmailedbox->setPlaceHolder(Global::getInstance()->getString("please input email"));
+	//zhaohuimimaEmailedbox->setPlaceHolder(Global::getInstance()->getString("please input email"));
 
 	zhaohuimimaYanZhengMaedbox->setPosition(Vec2(360, 340));
 	zhaohuimimaYanZhengMaedbox->setInputMode(EditBox::InputMode::ANY);
@@ -1243,7 +1402,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	zhaohuimimaYanZhengMaedbox->setFontSize(28);
 	zhaohuimimaYanZhengMaedbox->setFontColor(Color3B::BLACK);
 	zhaohuimima->addChild(zhaohuimimaYanZhengMaedbox, 3, 101);
-	zhaohuimimaYanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input yanzhengma"));
+	//zhaohuimimaYanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input yanzhengma"));
 
 	zhaohuimimaNewPasswordedbox->setPosition(Vec2(360, 230));
 	zhaohuimimaNewPasswordedbox->setInputMode(EditBox::InputMode::ANY);
@@ -1251,7 +1410,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	zhaohuimimaNewPasswordedbox->setFontSize(28);
 	zhaohuimimaNewPasswordedbox->setFontColor(Color3B::BLACK);
 	zhaohuimima->addChild(zhaohuimimaNewPasswordedbox, 3, 101);
-	zhaohuimimaNewPasswordedbox->setPlaceHolder(Global::getInstance()->getString("please input new password"));
+	//zhaohuimimaNewPasswordedbox->setPlaceHolder(Global::getInstance()->getString("please input new password"));
 
 
 	auto btnyanzhengma1 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnyanzhengma1");
@@ -1269,6 +1428,23 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			}else
 				data = "mail=" + emailInput;
 
+			if (emailInput == "")
+			{
+				piaoZi->setString(qingshuruyouxiangdizhi->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
@@ -1284,6 +1460,20 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 				std::string responseStr = std::string(buffer->begin(), buffer->end());
 				CCLOG("%s", responseStr.c_str());
+
+				piaoZi->setString(yanzhengmayifasong->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 
 				/*Json* root = Json_create(responseStr.c_str());
 				Json* result = Json_getItem(root, "resultCode");
@@ -1334,6 +1524,61 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/forgetpwd";
 
+			if (emailInput == "")
+			{
+				piaoZi->setString(qingshuruyouxiangdizhi->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+
+			std::string zhanghaoYanZheng = zhaohuimimaYanZhengMaedbox->getText();
+			if (zhanghaoYanZheng == "")
+			{
+				piaoZi->setString(qingshuruyanzhengma->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+			std::string newZhangHao = zhaohuimimaNewPasswordedbox->getText();
+			if (newZhangHao == "")
+			{
+				piaoZi->setString(qingshuruxinmima->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
 				if (response == nullptr || !response->isSucceed())
@@ -1344,10 +1589,28 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 					return;
 				}
 
+
+
 				vector<char> *buffer = response->getResponseData();
 
 				std::string responseStr = std::string(buffer->begin(), buffer->end());
 				CCLOG("%s", responseStr.c_str());
+
+
+				piaoZi->setString(zhanghaohemimayifasongdaoyouxiang->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+
 
 				/*Json* root = Json_create(responseStr.c_str());
 				Json* result = Json_getItem(root, "resultCode");
@@ -1425,16 +1688,16 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	CEditBoxTool* yanZhengMaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 
 
-	inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	//inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	inputMiMadbox->setPosition(Vec2(365, 470));
 	inputMiMadbox->setInputMode(EditBox::InputMode::ANY);
 	inputMiMadbox->setDelegate(this);
 	inputMiMadbox->setFontSize(28);
 	inputMiMadbox->setFontColor(Color3B::BLACK);
 	bangdingyouxiang->addChild(inputMiMadbox, 3, 101);
-	inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	//inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 
-	emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	//emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	emaildbox->setPosition(Vec2(365, 350));
 	emaildbox->setInputMode(EditBox::InputMode::ANY);
 	emaildbox->setDelegate(this);
@@ -1442,16 +1705,16 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	emaildbox->setFontColor(Color3B::BLACK);
 
 	bangdingyouxiang->addChild(emaildbox, 3, 101);
-	emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	//emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 
-	yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	//yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	yanZhengMaedbox->setPosition(Vec2(365, 220));
 	yanZhengMaedbox->setInputMode(EditBox::InputMode::EMAIL_ADDRESS);
 	yanZhengMaedbox->setDelegate(this);
 	yanZhengMaedbox->setFontSize(28);
 	yanZhengMaedbox->setFontColor(Color3B::BLACK);
 	bangdingyouxiang->addChild(yanZhengMaedbox, 3, 101);
-	yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("input password"));
+	//yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("input password"));
 
 	btnyanzhengma->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -1471,7 +1734,26 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				 data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText();			
 			//�ϲ�������--0924--ע������� start======================================================================
 			
-			
+			std::string emailStr = emaildbox->getText();
+			if (emailStr == "")
+			{
+
+				piaoZi->setString(qingshuruyouxiangdizhi->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
@@ -1487,6 +1769,22 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 				std::string responseStr = std::string(buffer->begin(), buffer->end());
 				CCLOG("%s", responseStr.c_str());
+
+
+				piaoZi->setString(yanzhengmayifasong->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				
 
 				/*Json* root = Json_create(responseStr.c_str());
 				Json* result = Json_getItem(root, "resultCode");
@@ -1546,7 +1844,62 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
 			//�ϲ�������--0924--ע������� end======================================================================
 			
-			
+			std::string inputStr = inputMiMadbox->getText();
+			if (inputStr == "")
+			{
+				piaoZi->setString(qingshurumima->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+
+			std::string eStr = emaildbox->getText();
+			if (eStr == "")
+			{
+				piaoZi->setString(qingshuruyouxiangdizhi->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+			std::string yzmStr = yanZhengMaedbox->getText();
+			if (yzmStr == "")
+			{
+				piaoZi->setString(qingshuruyanzhengma->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
+
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/bindmail";
 
@@ -1574,6 +1927,20 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 					if (result->valueInt == 1)
 					{
 						log("*******************************bangdingyouxiang success");
+
+						piaoZi->setString(bangdingyouxiangchenggong->valueString);
+						auto clonePiaoZi = piaoZi->clone();
+						Image_1->addChild(clonePiaoZi);
+						clonePiaoZi->setVisible(true);
+						auto action1 = FadeOut::create(1.8);
+						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+						auto func = [=](){
+							clonePiaoZi->setPosition(Point(tishiX, tishiY));
+							clonePiaoZi->removeFromParentAndCleanup(true);
+						};
+						auto callBack = CallFunc::create(func);
+
+						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 
 						Json * gmlevel = Json_getItem(resultObj, "gmlevel");
 						Json * id = Json_getItem(resultObj, "id");
@@ -1605,6 +1972,19 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 					else
 					{
 						log("*******************************bangding error");
+						piaoZi->setString(yanzhengmabudui->valueString);
+						auto clonePiaoZi = piaoZi->clone();
+						Image_1->addChild(clonePiaoZi);
+						clonePiaoZi->setVisible(true);
+						auto action1 = FadeOut::create(1.8);
+						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+						auto func = [=](){
+							clonePiaoZi->setPosition(Point(tishiX, tishiY));
+							clonePiaoZi->removeFromParentAndCleanup(true);
+						};
+						auto callBack = CallFunc::create(func);
+
+						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 					}
 				}
 				else

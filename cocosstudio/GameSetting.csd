@@ -338,6 +338,29 @@
             <PreSize X="0.7219" Y="0.8889" />
             <FileData Type="Normal" Path="GameSetting/wangjimimaBg.png" Plist="" />
           </AbstractNodeData>
+          <AbstractNodeData Name="Image_1" ActionTag="86906218" Tag="315" IconVisible="False" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="4" Scale9Height="4" ctype="ImageViewObjectData">
+            <Size X="1280.0000" Y="720.0000" />
+            <Children>
+              <AbstractNodeData Name="tishi" ActionTag="-1653442061" VisibleForFrame="False" Tag="316" IconVisible="False" LeftMargin="-8.0000" RightMargin="-8.0000" TopMargin="704.0000" BottomMargin="-56.0000" FontSize="72" LabelText="账号消失了hahahahahahahhahahaahahhah" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="1296.0000" Y="72.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="640.0000" Y="-20.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="0" B="0" />
+                <PrePosition X="0.5000" Y="-0.0278" />
+                <PreSize X="1.0125" Y="0.1000" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+            </Children>
+            <AnchorPoint />
+            <Position />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition />
+            <PreSize X="1.0000" Y="1.0000" />
+            <FileData Type="Normal" Path="DaTingLayer/touxiang/headButton.png" Plist="" />
+          </AbstractNodeData>
         </Children>
       </ObjectData>
     </Content>

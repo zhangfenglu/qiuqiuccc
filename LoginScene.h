@@ -101,6 +101,9 @@ private:
 	Node* rootNode; //大厅                  //合并代码用--0924--注册与组队 start=========================
 	Node* rootGameSettingNode;
 
+	float tishiY;
+	float tishiX;
+
 private:
 	//DropDownListLayer* dropLayer ;
 	bool m_isLogin;
