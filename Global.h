@@ -7,6 +7,9 @@
 #include "cocos-ext.h"
 #include "spine/Json.h"
 
+#include "UI/CocosGUI.h"                               //ս������cgy����0908
+#include "editor-support/cocostudio/CocoStudio.h"		//ս������cgy����0908
+
 USING_NS_CC;
 USING_NS_CC_EXT;
 #define PormBoxTag  1000
@@ -19,7 +22,7 @@ using namespace com::suyin::proto;
 
 
 #include "Common.h"
-//客户端测试算法控制宏
+//�ͻ��˲����㷨���ƺ�
 //#define EditEXE
 
 #define PRI _pri(this)
@@ -168,28 +171,34 @@ public:
     void SetUserInfo(user_info info){m_UserInfo=info;}
     user_info GetUserInfo(){return m_UserInfo;}
 
-	//张锋露
+
+	PlayerInfo& getMyInfo() { return m_myInfo; }
+
+	//�ŷ�¶
 	void SetplayerDengLuInfo(player_info info){ m_PlayerDengLuInfo = info; }
 	player_info GetPlayerDengLuInfo(){ return m_PlayerDengLuInfo; }
-	//张锋露
-	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
-	account_info GetAccountInfo(){ return m_AccountInfo; }
 	void SetHeadInfo(head_info info){ m_HeadInfo = info; }
 	head_info GetHeadInfo(){ return m_HeadInfo; }
-	//倒计时
+	//�ŷ�¶
+	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
+	account_info GetAccountInfo(){ return m_AccountInfo; }
+	
+	
+	//�ϲ�������--0924--ע������� start======================================================================
+	//����ʱ
 	void SetZuDuiDaoJiShiInfo(zuduidaojishi_info info){ m_ZuDuiDaoJiShi = info; }
 	zuduidaojishi_info GetZuDuiDaoJiShiInfo(){ return m_ZuDuiDaoJiShi; }
 
-	//燃烧远征组队 对应的消耗及其奖励信息
+	//ȼ��Զ����� ��Ӧ�����ļ��佱����Ϣ
 	void SetAwardInfo(AwardInfo info){ m_AwardInfo = info; }
 	AwardInfo GetAwardInfo(){ return m_AwardInfo; }
 
-	//以 某个符号标记 分割字符串数组
+	//�� ĳ�����ű�� �ָ��ַ�������
 	std::vector<std::string> split(std::string str, std::string pattern)
 	{
 		std::string::size_type pos;
 		std::vector<std::string> result;
-		str += pattern;//扩展字符串以方便操作
+		str += pattern;//��չ�ַ����Է������
 		int size = str.size();
 
 		for (int i = 0; i < size; i++)
@@ -208,23 +217,26 @@ public:
 
 	void SetCangKuObj(timeyuanzheng_cangku_info info){ m_CangKuObj = info; }
 	timeyuanzheng_cangku_info GetCangKuObj(){ return m_CangKuObj; }
-	//是否申请了组队
+	//�Ƿ����������
 	void SetIsZuDui(bool isZuDui){ m_IsZuDui = isZuDui; }
 	bool GetIsZuDui(){ return m_IsZuDui; }
 
-	//保存 设置 大厅 组队等待时间框 哪种燃烧远征标题
+	//���� ���� ���� ��ӵȴ�ʱ��� ����ȼ��Զ������
 	void SetWaitTimeBoxTitleStr(std::string title){ 
 		m_Title = title;
 	}
 	std::string GetWaitTimeBoxTitleStr(){
 		return m_Title; 
 	}
-
+	//�ϲ�������--0924--ע�������end=============================================================================
+	
+	
+	
     void EquipUpdate(int type,int iteID);
     void HeroLeveUp(int heroID,int heroLeve);
     
     void SetplayerInfo(user_info info){m_PlayerInfo=info;}
-    user_info GetPlayerInfo(){return m_PlayerInfo;}
+    user_info& GetPlayerInfo(){return m_PlayerInfo;}
     
     std::string ComPlayerName(std::string mName);
     
@@ -259,25 +271,30 @@ private:
     nodeInfo  mainNodeInfo;
     int  mainPicIndex;
     std::vector<uint32_t> m_mainIDs;
-    
+	PlayerInfo m_myInfo;
     int  m_imageHeadSize;
     int  m_perUpCamera;
     float  m_perUpCameraScale;
     
     bool m_isConnecting;
+	head_info m_HeadInfo;
     
     std::vector<netInfo> m_nets;
     user_info m_UserInfo;
     
     user_info m_PlayerInfo;
 	player_info m_PlayerDengLuInfo;
+	
+	//�ϲ�������--0924--ע������� start======================================================================
 	zuduidaojishi_info m_ZuDuiDaoJiShi;
 	AwardInfo m_AwardInfo;
 	timeyuanzheng_cangku_info m_CangKuObj;
 	bool m_IsZuDui = false;
 	std::string m_Title;
+	//�ϲ�������--0924--ע������� end======================================================================
+	
+	
 	account_info m_AccountInfo;
-	head_info m_HeadInfo;
     std::vector<nameMap> mComName;
     std::vector<shop_item>  shopItems;
     std::map<int,user_bag>  mUserBag;

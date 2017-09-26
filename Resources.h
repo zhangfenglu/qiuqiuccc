@@ -53,13 +53,27 @@ public:
     void writeDb();
    
     item getItemForID(int itemId);
+	nameMap getPiFuForID(int pifuId);
     void GetComName(std::vector<nameMap> &vec);
+	
     ChildItem GetShopItem(int itemID);
     
     void GetComposeItem(std::vector<itemInfo>& arr);
+
+	void GetDuanweiItem(std::vector<duanweiInfo>& arr);
     duanweiInfo GetDuanweiInfo(int mID);
     
     void GetNameColorList(std::vector<NameColor>& arr);
+
+	void getDiamondInfoAndroid(std::vector<DiamondInfo>& arr);
+	void getDiamondInfoIos(std::vector<DiamondInfo>& arr);
+
+	void getItemInfos(std::vector<ItemInfo>& arr);
+	void getGoodsInfos(std::vector<GoodsInfo>& arr);
+
+
+public:
+	ValueMap stringData;				// 本地数据
 private:
         
     Resource();

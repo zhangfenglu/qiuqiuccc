@@ -43,10 +43,13 @@ public:
 	void initDengLuData();
 	void initUI();
 	void initUI1();
+	
+	
+	//合并代码用--0924--注册与组队 start======================================================================
 	void initWaitBox();
 	void hideWaitBox();
 	void timeUpdate(float dt);
-
+	//合并代码用--0924--注册与组队 end======================================================================
 	//通过段位获取 段位名称 段位图标
 	void getDuanWeiInfoByIndex(int index);
 
@@ -61,6 +64,7 @@ public:
 	void HelpClick(Ref* pSender);      // 帮助
 	void FriendClick(Ref* pSender);    // 找朋友
 	void TeamClick(Ref* pSender);      // 团队模式
+	void TeamClickFriend(Ref* pSender); //个人中心添加
 	void LiveClick(Ref* pSender);      // 生产模式
 	void ShezhiClick(Ref* pSender);    // 设置
 	void HeadClick(cocos2d::Ref *pSender);   //头像
@@ -94,17 +98,20 @@ public:
 	void onTouchCancelled(Touch *touch, Event *unused_event) {}
 
 private:
-	Node* rootNode; //大厅
+	Node* rootNode; //大厅                  //合并代码用--0924--注册与组队 start=========================
 	Node* rootGameSettingNode;
 
 private:
 	//DropDownListLayer* dropLayer ;
 	bool m_isLogin;
 	int net_key;
-
+	
+	//合并代码用--0924--注册与组队 start=================================================================		
 	int upMiaoTime = 0;
 	int upFenTime = 0;
 	Vec2 waitBoxVec2;
+	//合并代码用--0924--注册与组队 end==================================================================
+	
 };
 
 //////

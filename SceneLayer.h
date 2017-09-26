@@ -73,6 +73,8 @@ private:
     CCLabelTTF* m_weight;
     
     int m_duration;
+
+	std::chrono::steady_clock::time_point m_tp;
 };
 
 class ZhanDouPaiMing : public Layer

@@ -338,6 +338,7 @@ void SceneLayer::updateFightRanking(std::vector<fight_rank> ranks)
 
 void SceneLayer::setDuration(int duration)
 {
+	m_tp = std::chrono::steady_clock::now();
     m_duration = duration;
     setDurationText(m_duration);
     schedule(schedule_selector(SceneLayer::updateDuration), 1);
@@ -345,10 +346,13 @@ void SceneLayer::setDuration(int duration)
 
 void SceneLayer::updateDuration(float ft)
 {
-    if(m_duration > 0)
+	auto now = std::chrono::steady_clock::now();
+	auto delataTime = std::chrono::duration_cast<std::chrono::seconds>(now - m_tp);
+	int leftTime = m_duration - delataTime.count();
+	
+	if (leftTime > 0)
     {
-        m_duration--;
-        setDurationText(m_duration);
+		setDurationText(leftTime);
     }
     else
     {

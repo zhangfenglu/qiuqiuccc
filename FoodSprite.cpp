@@ -9,11 +9,13 @@
 #include "FoodSprite.h"
 #include "Common.h"
 #include "GridLayer.h"
+#include "Resources.h"
 
 #define IMAGE_PRE "color_"
 #define BACK_IMG_FILE_PRE  "Big_color_"
 #define FRONT_IMG_FILE_PRE  "hero_"
 #define DURATION_TIMES  3
+#define NANME_SIZE  30
 
 FoodSprite::FoodSprite()
 {
@@ -53,11 +55,17 @@ void FoodSprite::createWithRGB(uint16_t index, bool isFood,int baozi,std::string
     }
     else if(name == "")
     {
+		// 如果狍子有皮肤
         if(baozi)
         {
-            Sprite* image = Sprite::create(icon.c_str());
-            //image->setAnchorPoint(Vec2(0, 0));
-            addChild(image, 1, 14);
+			auto node = CSLoader::createNode(icon);
+			auto action = CSLoader::createTimeline(icon);
+			if (action)
+			{
+				action->gotoFrameAndPlay(0, true);
+				node->runAction(action);
+			}
+			addChild(node, 1, 14);
         }else{
             sprintf(temp, "%s%d.png", BACK_IMG_FILE_PRE, 12);
             Sprite* image = Sprite::create(temp);
@@ -151,54 +159,32 @@ void FoodSprite::addPlayerImage(int hero,int guanghuan,int baozi,int canying,std
     if (heroID)
     {
         isShowIcon = true;
-        char imagName[128] = {0};
-        sprintf(imagName, "shenshou-%d-3.png",heroID);
-        Sprite* image = Sprite::create(imagName);
-        if(image)
-        {
-            getChildByTag(14)->setVisible(false);
-            
-            //image->setAnchorPoint(Vec2(0.5f, 0.5f));
-            //image->setPosition(Vec2(150,150));
-            addChild(image, 2, 11);
-            
-            
-            image->runAction(
-                             RepeatForever::create(
-                                                     Sequence::create(
-                                                                        RotateBy::create(0.1f, 5.0f),NULL)));
-            
-            sprintf(imagName, "shenshou-%d-2.png",heroID);
-            Sprite* texiao = Sprite::create(imagName);
-            //texiao->setAnchorPoint(Vec2(0.5f, 0.5f));
-            //texiao->setPosition(Vec2(150,150));
-            addChild(texiao, 3, 12);
-            
-            texiao->runAction(
-                              RepeatForever::create(
-                                                      Sequence::create(
-                                                                         RotateBy::create(0.1f, 5.0f),NULL)));
-            
-            sprintf(imagName, "shenshou-%d-1.png",heroID);
-            Sprite* qlong = Sprite::create(imagName);
-            qlong->setAnchorPoint(Vec2(0, 0));
-            addChild(qlong, 4, 13);
-        }
+		nameMap ite = Resource::sharedResource()->getPiFuForID(heroID);
+		auto node = CSLoader::createNode(ite.icon);
+		auto action = CSLoader::createTimeline(ite.icon);
+		if (action)
+		{
+			action->gotoFrameAndPlay(0, true);
+			node->runAction(action);
+		}
+		addChild(node, 2, 11);
+
+		getChildByTag(14)->setVisible(false);
     }
     
     if (mGuanghuan)
     {
         isShowIcon = true;
-        //item ite = Resource::sharedResource()->getItemForID(mGuanghuan);
-        Sprite* image = Sprite::create(icon.c_str());
-        
-        addChild(image, 2, 15);
-        
-        
-        image->runAction(
-                         RepeatForever::create(
-                                                 Sequence::create(
-                                                                    RotateBy::create(0.1f, 5.0f),NULL)));
+		auto node = CSLoader::createNode(icon);
+		auto action = CSLoader::createTimeline(icon);
+		if (action)
+		{
+			action->gotoFrameAndPlay(0, true);
+			node->runAction(action);
+		}
+		addChild(node, 2, 15);
+
+		getChildByTag(14)->setVisible(false);
     }
     
     if (isShowIcon == false) {
@@ -221,11 +207,17 @@ void FoodSprite::setName(const char* name)
     std::string nameColor = name;
     NameColor color = Global::getInstance()->GetNameColor(nameColor);
     std::string icon = Global::getInstance()->ComPlayerName(nameColor);
-    if (strcmp(icon.c_str(), "") != 0) {
-        removeChildByTag(14, true);
-        Sprite* image = Sprite::create(icon.c_str());
-        //image->setAnchorPoint(Vec2(0, 0));
-        addChild(image, 1, 14);
+	if (icon.size() > 0) {
+		removeChildByTag(14, true);
+
+		auto node = CSLoader::createNode(icon);
+		auto action = CSLoader::createTimeline(icon);
+		if (action)
+		{
+			action->gotoFrameAndPlay(0, true);
+			node->runAction(action);
+		}
+		addChild(node, 1, 14);
     }
     
     //Size size = getContentSize();
@@ -238,5 +230,51 @@ void FoodSprite::setName(const char* name)
     namelb->setColor(Color3B(color.colorR, color.colorG, color.colorB));
     //namelb->setPosition(Vec2(size.width * 0.5f, size.height * 0.5f));
     //namelb->setAnchorPoint(Vec2(0,-2));
-    addChild(namelb, 3);
+	addChild(namelb, 3, 38396);
+}
+
+
+void FoodSprite::setScale(float scale)
+{
+	auto sp = this->getChildByTag(14);
+	if (sp)
+	{
+		sp->setScale(scale);
+	}
+	updateNameSize();
+}
+
+void FoodSprite::updateNameSize()
+{
+	float scale = 1;
+	auto node = this->getChildByTag(14);
+	while (node)
+	{
+		float s = node->getScale();
+		scale = scale * s;
+		node = node->getParent();
+	}
+
+
+	auto namelb = (CCLabelTTF*)this->getChildByTag(38396);
+	if (namelb)
+	{
+		float s = 100 * scale;
+		if (s < NANME_SIZE)
+		{
+			s = NANME_SIZE;
+		}
+		namelb->setFontSize(s);
+		namelb->setPositionY((314 / 2 + 50)* scale);
+
+		if (heroID)
+		{
+			namelb->setPositionY((314 / 2 + 50)* scale);
+		}
+		else
+		{
+			namelb->setPositionY(0);
+		}
+
+	}
 }

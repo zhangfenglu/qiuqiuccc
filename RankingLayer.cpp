@@ -20,6 +20,7 @@
 
 #include "Resources.h"
 #include "CurCularNode.h"
+#include "GameVoice.h"
 
 /////////////////////////////////////////////////
 ///base
@@ -134,6 +135,7 @@ void RankingLayerBase::resetBtnState()
 
 void RankingLayerBase::JhdwClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_JHDW == m_rankTag)
         return;
     
@@ -150,6 +152,7 @@ void RankingLayerBase::JhdwClick(cocos2d::Ref *pSender)
 
 void RankingLayerBase::CbzClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_CBZ == m_rankTag)
         return;
     
@@ -166,6 +169,7 @@ void RankingLayerBase::CbzClick(cocos2d::Ref *pSender)
 
 void RankingLayerBase::YmzClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_YMZ == m_rankTag)
         return;
     
@@ -182,6 +186,7 @@ void RankingLayerBase::YmzClick(cocos2d::Ref *pSender)
 
 void RankingLayerBase::XzzClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     /*
     if(TAG_XZZ == m_rankTag)
         return;
@@ -200,6 +205,7 @@ void RankingLayerBase::XzzClick(cocos2d::Ref *pSender)
 
 void RankingLayerBase::JssClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_JSS == m_rankTag)
         return;
     
@@ -216,6 +222,7 @@ void RankingLayerBase::JssClick(cocos2d::Ref *pSender)
 
 void RankingLayerBase::BackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent());
     main->BackToLoginLayer(MainScene::TAG_LAYER_RANKING);
 }
@@ -736,6 +743,7 @@ void RankingLayerChild::resetBtnState()
 
 void RankingLayerChild::clickBtn1(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* btn = dynamic_cast<Button*>(pSender);
     int index = btn->getTag()-110;
     if(index == current_click_index)
@@ -777,6 +785,7 @@ void RankingLayerChild::clickBtn1(cocos2d::Ref *pSender)
 
 void RankingLayerChild::clickBtn2(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* btn = dynamic_cast<Button*>(pSender);
     int index = btn->getTag() - 110;
     if(index == current_click_index)
@@ -817,6 +826,7 @@ void RankingLayerChild::clickBtn2(cocos2d::Ref *pSender)
 
 void RankingLayerChild::clickBtn3(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* btn = dynamic_cast<Button*>(pSender);
     int index = btn->getTag() - 110;
     if(index == current_click_index)
@@ -951,12 +961,12 @@ void RankingLayerChild::createTableViewCell(cocos2d::Node *cell, cocos2d::extens
         {
             duanweiInfo duan = Resource::sharedResource()->GetDuanweiInfo(info.m_duanwei);
             
-            icon = Sprite::create(duan.icon.c_str());
+            icon = Sprite::create(duan.icon);
             icon->setPosition(Vec2(130, 30));
             icon->setScale(0.3f);
             cell->addChild(icon, 1);
             
-            CCLabelTTF* rank = CCLabelTTF::create(duan.name.c_str(), "STXingkai.ttf", 29);
+            CCLabelTTF* rank = CCLabelTTF::create(duan.name, "STXingkai.ttf", 29);
             rank->setColor(Color3B(255, 255, 255));
             rank->setAnchorPoint(Vec2(0,0));
             rank->setPosition(Vec2(150, 10));

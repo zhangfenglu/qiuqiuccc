@@ -27,6 +27,8 @@ public:
 		TAG_LAYER_PERSON,
 		TAG_LAYER_RELATION,
 		TAG_LAYER_RANKING,
+		TAG_LAYER_SHOPSYM,
+		TAG_LAYER_DIAMOND,
 		TAG_LAYER_SHOP,
 		TAG_LAYER_SCENE,
 		TAG_LAYER_TUANDUI,
@@ -178,10 +180,14 @@ public:
 
 	// 战斗重连逻辑
 	void reLogin(float ft);
+	
+	//合并代码用--0924--注册与组队 start======================================================================
 	//准备战斗倒计时
 	void readyFightDaoJiShi();
 	//隐藏战斗准备倒计时
 	void delteReadyFightDaoJiShi();
+	//合并代码用--0924--注册与组队 end======================================================================
+	
 	void reOpenSocket();
 	void reConnectFightServer(float ft);
 	void reSetNetKey(int netID, int netKey);
@@ -199,7 +205,7 @@ protected:
 	void resetUpdateCamera(float ft);
 
 private:
-	Node* daojishiNode;
+	Node* daojishiNode;        //合并代码用--0924--注册与组队 
 	cocos2d::Point m_diff;
 
 	bool m_isFirstEnter;

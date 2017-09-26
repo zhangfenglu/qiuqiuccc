@@ -1,5 +1,6 @@
 #include "GameSetting.h"
 #include "SimpleTools.h"
+#include "GameVoice.h"
 
 using namespace cocos2d::network;
 
@@ -24,6 +25,7 @@ bool GameSetting::init()
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
+			GameVoice::getInstance()->playClickBtnVoive();
 			clickBtnToLogin();
 		}
 	});
@@ -40,6 +42,7 @@ bool GameSetting::init()
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
+			GameVoice::getInstance()->playClickBtnVoive();
 			loginBg->setVisible(true);
 		}
 	});

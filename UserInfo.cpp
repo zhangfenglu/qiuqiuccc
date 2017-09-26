@@ -19,7 +19,7 @@
 #include "Resources.h"
 #include "GraySprite.h"
 #include "CurCularNode.h"
-
+#include "GameVoice.h"
 //////////////////////////////////////////////////////
 // base
 //////////////////////////////////////////////////////
@@ -115,6 +115,7 @@ void UserInfo::resetBtnState()
 
 void UserInfo::ShouyeClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_SHOUYE == m_currentTag)
         return;
     
@@ -131,6 +132,7 @@ void UserInfo::ShouyeClick(cocos2d::Ref *pSender)
 
 void UserInfo::ZhaopianClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_ZHAOPIAN == m_currentTag)
         return;
     
@@ -146,6 +148,7 @@ void UserInfo::ZhaopianClick(cocos2d::Ref *pSender)
 
 void UserInfo::YouxiClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_YOUXI == m_currentTag)
         return;
     
@@ -161,6 +164,7 @@ void UserInfo::YouxiClick(cocos2d::Ref *pSender)
 
 void UserInfo::ZhanduiClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_ZHANDUI == m_currentTag)
         return;
     
@@ -176,6 +180,7 @@ void UserInfo::ZhanduiClick(cocos2d::Ref *pSender)
 
 void UserInfo::LiuyanClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_LIUYAN == m_currentTag)
         return;
     
@@ -191,6 +196,7 @@ void UserInfo::LiuyanClick(cocos2d::Ref *pSender)
 
 void UserInfo::BackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent());
     main->BackToLoginLayer(MainScene::TAG_LAYER_USERINFO);
 }
@@ -781,6 +787,7 @@ void FirstPage::SetBtnToTouch()
 }
 void FirstPage::DiquClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* butn1 = (Button*)getChildByTag(TAG_DIQUBTN);
     butn1->setIsCanTouch(false);
     Button* butn2 = (Button*)getChildByTag(TAG_TOUXIANGBTN);
@@ -801,6 +808,7 @@ void FirstPage::ChangeHead(cocos2d::Ref *pSender)
 
 void FirstPage::HeadClick(cocos2d::Ref *pSender)   //Í·Ïñ
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     user_info myInfo = Global::getInstance()->GetUserInfo();
     user_info pInfo = Global::getInstance()->GetPlayerInfo();
     if (myInfo.roleID == pInfo.roleID) {
@@ -826,10 +834,11 @@ void FirstPage::resHeadImg(int count)
 }
 void FirstPage::LuyinClick(cocos2d::Ref *pSender)   //Â¼Òô
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 void FirstPage::XihuanClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((UserInfo*)getParent())->ShowXihuan(true);
 }
 
@@ -934,6 +943,7 @@ void HeadIconChose::InitZhuceUI()
 }
 void HeadIconChose::Back(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if (mParent == 1) {
         ((FirstPage*)getParent())->SetBtnToTouch();
     }
@@ -953,6 +963,7 @@ void HeadIconChose::resetBtnState()
 }
 void HeadIconChose::YouxiShezhi(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_SHEZHI == m_currentTag)
         return;
     
@@ -965,6 +976,7 @@ void HeadIconChose::YouxiShezhi(Ref* pSender)
 }
 void HeadIconChose::Yonghuxinxi(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_ZHUCE == m_currentTag)
         return;
     
@@ -1393,11 +1405,13 @@ void HeadRingInfo::InitItemInfo(item itemInfo)
 
 void HeadRingInfo::UseClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* scene = (MainScene*)getParent()->getParent()->getParent()->getParent()->getParent();
     scene->reqUseItem(mCurItem.itemID);
 }
 void HeadRingInfo::XiexiaClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* scene = (MainScene*)getParent()->getParent()->getParent()->getParent()->getParent();
     scene->reqUnequipItem(mCurItem.itemType);
 }
@@ -1649,6 +1663,7 @@ void XiHuan::InitInfo(std::vector<TestAtt> info)
 
 void XiHuan::XihuanClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((UserInfo*)getParent())->ShowXihuan(false);
 }
 
@@ -2027,12 +2042,12 @@ bool GameInfo::init()
     addChild(lab, 2);
     
 
-    youxi = Sprite::create(duan.icon.c_str());
+    youxi = Sprite::create(duan.icon);
     youxi->setPosition(Vec2(winSize.width * 0.5f+150, winSize.height * 0.5f+110));
     youxi->setScale(0.25f);
     addChild(youxi);
     
-    lab = LabelTTF::create(duan.name.c_str(), "STXingkai.ttf",35);
+    lab = LabelTTF::create(duan.name, "STXingkai.ttf",35);
     lab->setColor(Color3B(0, 0, 0));
     lab->setAnchorPoint(Vec2(0.0f, 0.5f));
     lab->setPosition(Vec2(winSize.width * 0.5f+170, winSize.height * 0.5f+110));
@@ -2192,14 +2207,17 @@ void GameInfo::setHeadIcon()
 }
 void GameInfo::GerenClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((UserInfo*)getParent())->ShowGame(2);
 }
 void GameInfo::BisaiClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((UserInfo*)getParent())->ShowGame(3);
 }
 void GameInfo::HeadClick(cocos2d::Ref *pSender)   //Í·Ïñ
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* gern = (Button*)getChildByTag(TAG_GERENRONGYUBTN);
     gern->setIsCanTouch(false);
     Button* bisai = (Button*)getChildByTag(TAG_BISAIJILUBTN);
@@ -2394,12 +2412,12 @@ void GerenRongYu::ShowUI(float fx,season_rank info)
     }
     
     
-    Sprite* xing = Sprite::create(duan.icon.c_str());
+    Sprite* xing = Sprite::create(duan.icon);
     xing->setScale(0.7f);
     xing->setPosition(Vec2(fx, winSize.height * 0.5f-20));
     addChild(xing, 2);
     
-    lab = LabelTTF::create(duan.name.c_str(), "STXingkai.ttf",35);
+    lab = LabelTTF::create(duan.name, "STXingkai.ttf",35);
     lab->setColor(Color3B(0, 0, 0));
     //lab->setAnchorPoint(Vec2(0.0f, 0.5f));
     lab->setPosition(Vec2(fx, winSize.height * 0.5f-100));
@@ -2438,10 +2456,12 @@ void GerenRongYu::InitRongyu(std::vector<season_rank> arr)
 }
 void GerenRongYu::GameClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((UserInfo*)getParent())->ShowGame(1);
 }
 void GerenRongYu::BisaiClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((UserInfo*)getParent())->ShowGame(3);
 }
 
@@ -2643,10 +2663,12 @@ void BisaiJilu::InitBisai(std::vector<bisaiInfo> arr)
 }
 void BisaiJilu::GameClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((UserInfo*)getParent())->ShowGame(1);
 }
 void BisaiJilu::GerenClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((UserInfo*)getParent())->ShowGame(2);
 }
 Size BisaiJilu::getTableSize()
@@ -2979,6 +3001,7 @@ void LiuYan::editBoxReturn(cocos2d::extension::EditBox* editBox)
 }
 void LiuYan::FasongClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     CEditBoxTool* input = dynamic_cast<CEditBoxTool*>(getChildByTag(101));
     std::string nick = input->getText();
     if(nick == "" || nick.size() == 0)
@@ -2991,6 +3014,7 @@ void LiuYan::FasongClick(cocos2d::Ref *pSender)
 }
 void LiuYan::ShuaxinClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     int num = (int)infos.size();
     if (num < 10) {
         return;
@@ -3090,6 +3114,7 @@ void LiuYan::createTableViewCell(cocos2d::Node *cell, cocos2d::extension::TableV
 }
 void LiuYan::HotZanClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* btn = (Button*)pSender;
     Layer* cell = (Layer*)(btn->getParent());
     int idx = cell->getTag();
@@ -3114,10 +3139,11 @@ void LiuYan::HotZanClick(cocos2d::Ref *pSender)
 }
 void LiuYan::HotJubaoClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 void LiuYan::ZanClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* btn = (Button*)pSender;
     TableViewCell* cell = (TableViewCell*)(btn->getParent());
     int idx = cell->getIdx();
@@ -3142,7 +3168,7 @@ void LiuYan::ZanClick(cocos2d::Ref *pSender)
 }
 void LiuYan::JubaoClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 Size LiuYan::tableCellSizeForIndex(cocos2d::extension::TableView *table,unsigned int idx)
 {

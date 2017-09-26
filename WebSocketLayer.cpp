@@ -223,7 +223,8 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
 				MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
 
 				layer->respZhanDouZhunBei(data);
-				layer->readyFightDaoJiShi();
+				layer->readyFightDaoJiShi();  //添加倒计时  //	//合并代码用--0924--注册与组队 ======================================================================
+				
 			}
 				break;
             case IDUM_SyncRole:
@@ -407,6 +408,13 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
                 
             }
                 break;
+				
+			case IDUM_BattleResult:  //服务器优化客户端单机增加
+			{
+
+			}
+				break;
+			
             default:
                 break;
         }

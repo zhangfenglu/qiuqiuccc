@@ -19,6 +19,8 @@
 #include "ExchangeInfo.h"
 #include "msg_error.pb.h"
 #include "CurCularNode.h"
+#include "GameVoice.h"
+
 /////////////////////////////////////////////////////
 ///base
 /////////////////////////////////////////////////////
@@ -97,7 +99,7 @@ void RelationShipBase::initUI()
 }
 void RelationShipBase::SenMSG(float ft)
 {
-    AttentionClick(m_attention);
+    AttentionClick(nullptr);
 }
 void RelationShipBase::resetBtnState()
 {
@@ -126,6 +128,7 @@ void RelationShipBase::resetBtnState()
 
 void RelationShipBase::AttentionClick(cocos2d::Ref *pSender)
 {
+	if (pSender) GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_ATTENTION == m_currentTag)
         return;
     
@@ -143,6 +146,7 @@ void RelationShipBase::AttentionClick(cocos2d::Ref *pSender)
 
 void RelationShipBase::FriendClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_FRIEND == m_currentTag)
         return;
     
@@ -160,6 +164,7 @@ void RelationShipBase::FriendClick(cocos2d::Ref *pSender)
 
 void RelationShipBase::EnemyClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_ENEMY == m_currentTag)
         return;
     
@@ -176,6 +181,7 @@ void RelationShipBase::EnemyClick(cocos2d::Ref *pSender)
 
 void RelationShipBase::BlackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_BLACK == m_currentTag)
         return;
     
@@ -202,6 +208,7 @@ void RelationShipBase::NextPageClick(cocos2d::Ref *pSender)
 
 void RelationShipBase::BackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent());
     main->BackToLoginLayer(MainScene::TAG_LAYER_RELATION);
 }

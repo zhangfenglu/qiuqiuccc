@@ -8,7 +8,7 @@
 #include "SimpleAudioEngine.h"
 #include "Resources.h"
 #include "RichLabel.h"
-
+#include "Config.h"
 
 using namespace rapidjson;
 
@@ -31,14 +31,14 @@ Global::Global(void)
 //    netInfo info1;
 //    info1.m_netID = 1;
 //    info1.m_netUrl = "60.174.233.70";
-//    info1.m_netName = "测试一区";
+//    info1.m_netName = "����һ��";
 //    info1.m_netPort = "1448";
 //    m_nets.push_back(info1);
 //    
 //    netInfo info2;
 //    info2.m_netID = 2;
 //    info2.m_netUrl = "60.174.233.70";
-//    info2.m_netName = "测试二区";
+//    info2.m_netName = "���Զ���";
 //    info2.m_netPort = "1449";
 //    m_nets.push_back(info2);
     
@@ -60,6 +60,8 @@ Global::Global(void)
     Resource::sharedResource()->open();
     Resource::sharedResource()->GetComName(mComName);
     Resource::sharedResource()->GetNameColorList(mNameColor);
+
+	Config::getInstance();
 }
 
 Global::~Global(void)
@@ -132,7 +134,7 @@ void Global::PlayBackMusci(const char* music)
 {
     if(CCUserDefault::sharedUserDefault()->getIntegerForKey("Syinyue", 0) == 1)
     {
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(
+        CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(
             music, true);
     }
 }
@@ -145,7 +147,7 @@ void Global::PlayEffect(const char* music)
 {
     if(CCUserDefault::sharedUserDefault()->getIntegerForKey("Syinxiao", 0) == 1)
     {
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(music);
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(music);
     }
 }
 
@@ -548,7 +550,7 @@ void CCPromMoveBox::SetTypeAndValue(std::vector<item> vec)
      addChild(smalllab,10);
      */
     
-    CCLabelTTF* tile = CCLabelTTF::create("获得物品","STXingkai.ttf",40.0f);
+    CCLabelTTF* tile = CCLabelTTF::create("�����Ʒ","STXingkai.ttf",40.0f);
     tile->setPosition(Vec2(winSize.width/2,winSize.height/2+220));
     tile->setColor(Color3B(255,255,255));
     addChild(tile,10);

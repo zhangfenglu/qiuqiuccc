@@ -42,6 +42,7 @@ using namespace std;
 
 
 static const char *ANTS_ITEMS_TBL_NAME =		"ants_item";
+static const char *ANTS_PIFU = "ants_pifu";
 static const char *ANTS_HEAD =		"ants_headitem";
 static const char *ANTS_SHOP = "ants_shop";
 static const char *ANTS_COMPOSE = "ants_compose";
@@ -63,6 +64,7 @@ Resource * Resource::sharedResource()
 Resource::Resource()
         : mDb(new SqLiteDataProvider())
 {
+	stringData = FileUtils::getInstance()->getValueMapFromFile("apply/string.plist");
 }
 
 /**
@@ -165,6 +167,36 @@ item Resource::getItemForID(int itemId)
 
 	return ite;
 }
+
+nameMap Resource::getPiFuForID(int pifuId)
+{
+	nameMap  ite;
+
+	try
+	{
+		std::ostringstream query;
+		query << "SELECT *" << " FROM " << ANTS_PIFU << " WHERE id = " << pifuId << ";";
+
+		const RecordSet &info = mDb->execSql(query.str());
+		if (!info.isEmpty())
+		{
+			string_to<int> toInt;
+			ite.mID = toInt(info(0, "id"));
+			ite.name = info(0, "name");
+			ite.icon = info(0, "icon");
+			return ite;
+		}
+	}
+	catch (const DbSqlQueryExecFailure &e)
+	{
+		std::ostringstream error;
+		error << "(Resource::getItemForID) SQL query failure: " << e.what();
+		CCLOGERROR(error.str().c_str());
+	}
+
+	return ite;
+}
+
 void Resource::GetComName(std::vector<nameMap> &vec)
 {
     try
@@ -224,6 +256,134 @@ void Resource::GetNameColorList(std::vector<NameColor>& arr)
         error << "(Resource::GetNameColorList) SQL query failure: " << e.what();
         CCLOGERROR(error.str().c_str());
     }
+}
+
+void Resource::getDiamondInfoAndroid(std::vector<DiamondInfo>& arr)
+{
+	try
+	{
+		std::ostringstream query;
+		query << "SELECT *" << " FROM " << "diamond_info_android" << ";";
+
+		const RecordSet &info = mDb->execSql(query.str());
+		if (!info.isEmpty())
+		{
+			string_to<int> toInt;
+
+			unsigned int len = info.rows();
+			for (int i = 0; i < len; i++) {
+				DiamondInfo vecInfo;
+				vecInfo.nId = toInt(info(i, "id"));
+				vecInfo.nPrice = toInt(info(i, "nPrice"));
+				vecInfo.nDiamond = toInt(info(i, "nDiamond"));
+				memcpy(vecInfo.strIcon, info(i, "strIcon").c_str(), info(i, "strIcon").size());
+				memcpy(vecInfo.strName, info(i, "strName").c_str(), info(i, "strName").size());
+				memcpy(vecInfo.strPlatform, info(i, "strPlatform").c_str(), info(i, "strPlatform").size());
+				arr.push_back(vecInfo);
+			}
+		}
+	}
+	catch (const DbSqlQueryExecFailure &e)
+	{
+		std::ostringstream error;
+		error << "(Resource::GetNameColorList) SQL query failure: " << e.what();
+		CCLOGERROR(error.str().c_str());
+	}
+}
+
+void Resource::getDiamondInfoIos(std::vector<DiamondInfo>& arr)
+{
+	try
+	{
+		std::ostringstream query;
+		query << "SELECT *" << " FROM " << "diamond_info_ios" << ";";
+
+		const RecordSet &info = mDb->execSql(query.str());
+		if (!info.isEmpty())
+		{
+			string_to<int> toInt;
+
+			unsigned int len = info.rows();
+			for (int i = 0; i < len; i++) {
+				DiamondInfo vecInfo;
+				vecInfo.nId = toInt(info(i, "id"));
+				vecInfo.nPrice = toInt(info(i, "nPrice"));
+				vecInfo.nDiamond = toInt(info(i, "nDiamond"));
+				memcpy(vecInfo.strIcon, info(i, "strIcon").c_str(), info(i, "strIcon").size());
+				memcpy(vecInfo.strName, info(i, "strName").c_str(), info(i, "strName").size());
+				memcpy(vecInfo.strPlatform, info(i, "strPlatform").c_str(), info(i, "strPlatform").size());
+				arr.push_back(vecInfo);
+			}
+		}
+	}
+	catch (const DbSqlQueryExecFailure &e)
+	{
+		std::ostringstream error;
+		error << "(Resource::GetNameColorList) SQL query failure: " << e.what();
+		CCLOGERROR(error.str().c_str());
+	}
+}
+
+void Resource::getItemInfos(std::vector<ItemInfo>& arr)
+{
+	try
+	{
+		std::ostringstream query;
+		query << "SELECT *" << " FROM " << "item_info" << ";";
+
+		const RecordSet &info = mDb->execSql(query.str());
+		if (!info.isEmpty())
+		{
+			string_to<int> toInt;
+
+			unsigned int len = info.rows();
+			for (int i = 0; i < len; i++) {
+				ItemInfo vecInfo;
+				vecInfo.nId = toInt(info(i, "nId"));
+				vecInfo.nType = toInt(info(i, "nType"));
+				vecInfo.nPrice = toInt(info(i, "nPrice"));
+				memcpy(vecInfo.strName, info(i, "strName").c_str(), info(i, "strName").size());
+				memcpy(vecInfo.strIcon, info(i, "strIcon").c_str(), info(i, "strIcon").size());
+				arr.push_back(vecInfo);
+			}
+		}
+	}
+	catch (const DbSqlQueryExecFailure &e)
+	{
+		std::ostringstream error;
+		error << "(Resource::GetNameColorList) SQL query failure: " << e.what();
+		CCLOGERROR(error.str().c_str());
+	}
+}
+
+void Resource::getGoodsInfos(std::vector<GoodsInfo>& arr)
+{
+	try
+	{
+		std::ostringstream query;
+		query << "SELECT *" << " FROM " << "shop_goods_info" << ";";
+
+		const RecordSet &info = mDb->execSql(query.str());
+		if (!info.isEmpty())
+		{
+			string_to<int> toInt;
+
+			unsigned int len = info.rows();
+			for (int i = 0; i < len; i++) {
+				GoodsInfo vecInfo;
+				vecInfo.nId = toInt(info(i, "nId"));
+				memcpy(vecInfo.strDescPath, info(i, "strDescPath").c_str(), info(i, "strDescPath").size());
+				memcpy(vecInfo.strIcon, info(i, "strIcon").c_str(), info(i, "strIcon").size());
+				arr.push_back(vecInfo);
+			}
+		}
+	}
+	catch (const DbSqlQueryExecFailure &e)
+	{
+		std::ostringstream error;
+		error << "(Resource::GetNameColorList) SQL query failure: " << e.what();
+		CCLOGERROR(error.str().c_str());
+	}
 }
 
 ChildItem Resource::GetShopItem(int itemID)
@@ -311,6 +471,38 @@ void Resource::GetComposeItem(std::vector<itemInfo>& arr)
     }
 }
 
+void Resource::GetDuanweiItem(std::vector<duanweiInfo>& arr)
+{
+	try
+	{
+		std::ostringstream query;
+		query << "SELECT *" << " FROM " << ANTS_DUANWEI << ";";
+
+		const RecordSet &info = mDb->execSql(query.str());
+		if (!info.isEmpty())
+		{
+			string_to<int> toInt;
+
+			unsigned int len = info.rows();
+			for (int i = 0; i < len; i++) {
+				duanweiInfo vecInfo;
+				vecInfo.mID = i;
+				memcpy(vecInfo.name, info(i, "name").c_str(), info(i, "name").size());
+				memcpy(vecInfo.icon, info(i, "icon").c_str(), info(i, "icon").size());
+				vecInfo.mStar = toInt(info(i, "star"));
+				vecInfo.saveGold = toInt(info(i, "saveGold"));
+				arr.push_back(vecInfo);
+			}
+		}
+	}
+	catch (const DbSqlQueryExecFailure &e)
+	{
+		std::ostringstream error;
+		error << "(Resource::GetNameColorList) SQL query failure: " << e.what();
+		CCLOGERROR(error.str().c_str());
+	}
+}
+
 duanweiInfo Resource::GetDuanweiInfo(int mID)
 {
     duanweiInfo vecInfo;
@@ -330,9 +522,10 @@ duanweiInfo Resource::GetDuanweiInfo(int mID)
             //log("shopidx:%d",id);
             
             vecInfo.mID = id;
-            vecInfo.name = info(0,"name");
-            vecInfo.icon = info(0,"icon");
+			memcpy(vecInfo.name, info(0, "name").c_str(), info(0, "name").size());
+			memcpy(vecInfo.icon, info(0, "icon").c_str(), info(0, "icon").size());
             vecInfo.mStar = toInt(info(0,"star"));
+			vecInfo.saveGold = toInt(info(0, "saveGold"));
             return vecInfo;
             
         }

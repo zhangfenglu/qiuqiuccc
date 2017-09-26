@@ -28,8 +28,14 @@
 #include "CurCularNode.h"
 #include "RichLabel.h"
 #include "TuanDui.h"
+#include "CEditBox.h"
 
 #include "SimpleTools.h"
+#include "StaticData.h"
+//#include "DiamondView.h"
+//#include "ShopSystem.h"
+#include "GameVoice.h"
+
 using namespace cocos2d::network;
 
 #define UPDATE_CAMERA_DURATION      0.4
@@ -166,6 +172,24 @@ void MainScene::CheckLayer(MainScene::tagDif tag)
 		addChild(relation, 3, TAG_LAYER_TUANDUI);
 
 		m_CurrTag = TAG_LAYER_TUANDUI;
+	}
+	else if (tag == TAG_LAYER_DIAMOND)
+	{
+		removeChildByTag(TAG_LAYER_DIAMOND);
+
+		//DiamondView* diamond = DiamondView::create();
+		//addChild(diamond, 3, TAG_LAYER_DIAMOND);
+
+		m_CurrTag = TAG_LAYER_DIAMOND;
+	}
+	else if (tag == TAG_LAYER_SHOPSYM)
+	{
+		removeChildByTag(TAG_LAYER_SHOPSYM);
+
+	//	ShopSystem* shopSym = ShopSystem::create();
+	//	addChild(shopSym, 3, TAG_LAYER_SHOPSYM);
+
+		m_CurrTag = TAG_LAYER_SHOPSYM;
 	}
 }
 
@@ -420,6 +444,13 @@ Point MainScene::calculateBorder(cocos2d::Point pos, uint32_t size)
 
 void MainScene::enterGame(const char *nick, int key)
 {
+	LoginLayer* login = dynamic_cast<LoginLayer*>(getChildByTag(TAG_LAYER_LOGIN));
+	CEditBoxTool* input = dynamic_cast<CEditBoxTool*>(login->getChildByTag(101));
+	std::string nickName = input->getText();
+
+	nick = nickName.c_str();
+
+
 	removeChildByTag(TAG_LAYER_LOGIN);
 
 	//user_info info = Global::getInstance()->GetUserInfo();
@@ -1085,6 +1116,9 @@ void MainScene::reqServerList()
 void MainScene::reqServerKey(int netID, int modeID, int ticket_count)
 {
 	UM_ReqLoginFight req;
+	account_info info;
+	info = Global::getInstance()->GetAccountInfo();
+	req.set_playerid(info.playerid);
 	req.set_serverid(netID);
 	req.set_mode(modeID);
 	req.set_ticket_count(ticket_count);
@@ -1528,7 +1562,6 @@ void MainScene::setPlayerInfo(const cocos2d::network::WebSocket::Data &data)
 		info.lastSignTime = userInfo.last_sign_time();
 		info.signTags = userInfo.sign_tags();
 		info.awardRefreshTime = userInfo.award_refresh_time();
-
 
 		std::vector<bool> gots;
 		int gotSize = userInfo.award_gots_size();
@@ -2484,17 +2517,20 @@ void MainScene::reqDuanXianChongLian()
 
 void MainScene::reqZuDui()
 {
-	static UM_ReqTeamFight req;
-	account_info info;
-	info = Global::getInstance()->GetAccountInfo();
-	
-	req.set_playerid(info.playerid);
-	req.set_serverid(0);
-	req.set_mode(10);
-	req.set_ticket_count(1);
-	std::string str = req.SerializeAsString();
+	//static UM_ReqTeamFight req;
+	//account_info info;
+	//info = Global::getInstance()->GetAccountInfo();
+	//
+	//req.set_playerid("100880");
+	//req.set_serverid(0);
+	//req.set_mode(10);
+	//req.set_ticket_count(1);
+	//std::string str = req.SerializeAsString();
 
-	reqSendUIMsg(IDUM_ReqTeamFight, str);
+	//reqSendUIMsg(IDUM_ReqTeamFight, str);
+
+	UM_ReqBattleResult result;
+	reqSendUIMsg(IDUM_ReqBattleResult, result.SerializeAsString());
 }
 
 void MainScene::respZuDui(const cocos2d::network::WebSocket::Data &data)
@@ -2507,11 +2543,15 @@ void MainScene::respZuDui(const cocos2d::network::WebSocket::Data &data)
 		log("zudui chenggong");
 		/*ReqOpenFight* layer = ReqOpenFight::create();
 		addChild(layer, 100);*/
-
+		
+		//显示组队中界面
+		//合并代码用--0924--注册与组队 start======================================================================
 		LoginLayer* layer = (LoginLayer*)getChildByTag(TAG_LAYER_LOGIN);
 		if (layer) {
 			layer->initWaitBox();
 		}
+		//合并代码用--0924--注册与组队 end======================================================================
+		
 	}
 	else
 	{
@@ -2557,11 +2597,15 @@ void MainScene::respZhanDouZhunBei(const cocos2d::network::WebSocket::Data &data
 		uint32_t time = resp.time();
 		/*ReqOpenFight* layer = ReqOpenFight::create();
 		addChild(layer, 100);*/
-
+		
+		
+		//显示倒计时
+		//合并代码用--0924--注册与组队 start======================================================================
 		LoginLayer* layer = (LoginLayer*)getChildByTag(TAG_LAYER_LOGIN);
 		if (layer) {
 			layer->hideWaitBox();
 		}
+		//合并代码用--0924--注册与组队 end======================================================================
 	}
 	else
 	{
@@ -2581,6 +2625,13 @@ void MainScene::reqServerList1(float f)
 
 	socket->onSendUIMsg(msgUI, headUISize);
 }
+
+
+
+
+
+
+//合并代码用--0924--注册与组队 start======================================================================
 
 void MainScene::readyFightDaoJiShi()
 {
@@ -2609,6 +2660,13 @@ void MainScene::delteReadyFightDaoJiShi()
 	daojishiNode->removeFromParent();
 	daojishiNode = nullptr;
 }
+//合并代码用--0924--注册与组队 end======================================================================
+
+
+
+
+
+
 
 /////////////////
 //战斗结束
@@ -3713,12 +3771,12 @@ bool UserLow::init()
 	addChild(lab, 2);
 
 
-	Sprite* youxi = Sprite::create(duan.icon.c_str());
+	Sprite* youxi = Sprite::create(duan.icon);
 	youxi->setPosition(Vec2(winSize.width * 0.5f - 25, winSize.height * 0.5f + 230));
 	youxi->setScale(0.25f);
 	addChild(youxi);
 
-	lab = CCLabelTTF::create(duan.name.c_str(), "STXingkai.ttf", 28);
+	lab = CCLabelTTF::create(duan.name, "STXingkai.ttf", 28);
 	lab->setColor(Color3B(0, 0, 0));
 	lab->setAnchorPoint(Vec2(0.0f, 0.5f));
 	lab->setPosition(Vec2(winSize.width * 0.5f - 10, winSize.height * 0.5f + 230));

@@ -121,11 +121,11 @@ void GridLayer::createMap()
     Size gridSize = Global::getInstance()->GetGridSize();
     
     Point posB = Vec2(content.width * 0.5, content.height * 0.5);
-    int xcount = gridSize.width / content.width + 1;
-    int ycount = gridSize.height / content.height + 1;
-    for (int i = 0; i < xcount; i++)
+    int xcount = gridSize.width / content.width + 3;
+    int ycount = gridSize.height / content.height + 3;
+    for (int i = -1; i < xcount; i++)
     {
-        for(int j = 0; j < xcount; j++)
+		for (int j = -1; j < ycount; j++)
         {
             Point chunkPos;
             chunkPos = Vec2(posB.x + content.width * i, posB.y + content.height * j);
@@ -282,7 +282,7 @@ void GridLayer::updateNodes(const cocos2d::network::WebSocket::Data &data)
         info.posx = posx;
         info.posy = posy;
         info.size = size;
-        info.indx = index;
+        info.indx = index;  //球球颜色id
         info.r = r;
         info.g = g;
         info.b = b;
@@ -290,10 +290,10 @@ void GridLayer::updateNodes(const cocos2d::network::WebSocket::Data &data)
         info.mass = mass;
         info.name_len = len;
         info.isPlayer = isPlayer;
-        info.heroid = heroid;
+        info.heroid = heroid;  //神兽id，现在的皮肤id
         info.heroleve = heroleve;
         info.guanghuan = guanghuan;
-        info.baozi = baozi;
+        info.baozi = baozi;   //孢子
         info.canying = canying;
         info.huahuan = huahuan;
         //log("pos:%d,%d",info.posx,info.posy);
@@ -551,7 +551,6 @@ void GridLayer::AddNode(CNodeInfo* node)
                 other->setScale(size);
                 addChild(other, info.size, info.nodeID);
                 //other->setWaiguan(info.heroid, info.guanghuan, info.baozi, info.canying);
-                other->setWaiguan(info.heroid, info.guanghuan, 29, info.canying);
                 //other->createWithRGB(info.indx, false,info.baozi);
                 item ite = Resource::sharedResource()->getItemForID(info.baozi);
                 //CCLOG("item:%s",ite.itemIcon.c_str());
@@ -767,7 +766,6 @@ void GridLayer::addMainNode(nodeInfo info)
         pMainPlayer->setSpSize(info.size);
         pMainPlayer->setName(info.name);
         //pMainPlayer->setWaiguan(info.heroid, info.guanghuan, info.baozi, info.canying);
-        pMainPlayer->setWaiguan(1, 41, 29, 0);
         addChild(pMainPlayer, 10, info.nodeID);
         
 //        scheduleOnce(schedule_selector(GridLayer::delayUpdateCameraSize), 0.2f);
@@ -787,7 +785,6 @@ void GridLayer::addMainNode(nodeInfo info)
         pPlayer->setSpSize(info.size);
         pPlayer->setName(info.name);
         //pPlayer->setWaiguan(info.heroid, info.guanghuan, info.baozi, info.canying);
-        pPlayer->setWaiguan(1, 41, 29, 0);
         addChild(pPlayer, 10, info.nodeID);
         
 //        scheduleOnce(schedule_selector(GridLayer::delayUpdateCameraSize), 0.2f);

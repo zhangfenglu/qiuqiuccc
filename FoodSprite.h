@@ -46,6 +46,10 @@ public:
 	{
 		return m_isFood;
 	}
+
+	virtual void setScale(float scale) override;
+
+	void updateNameSize();
 private:
     uint32_t m_spriteID;
     Point m_destPos;

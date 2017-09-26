@@ -9,6 +9,7 @@
 #include "PersonCenterLayer.h"
 //#include "InputLabel.h"
 #include "MainScene.h"
+#include "GameVoice.h"
 
 #define CHILD_OFFSET_X      50
 #define CHILD_OFFSET_Y      100
@@ -118,6 +119,7 @@ void PersonCenterBase::resetBtnState()
 
 void PersonCenterBase::XinxiClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_XINXI == m_currentTag)
         return;
     
@@ -133,6 +135,7 @@ void PersonCenterBase::XinxiClick(cocos2d::Ref *pSender)
 
 void PersonCenterBase::ZiliaoClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_ZILIAO == m_currentTag)
         return;
     
@@ -147,6 +150,7 @@ void PersonCenterBase::ZiliaoClick(cocos2d::Ref *pSender)
 
 void PersonCenterBase::RongyuClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_RONGYU == m_currentTag)
         return;
     
@@ -161,6 +165,7 @@ void PersonCenterBase::RongyuClick(cocos2d::Ref *pSender)
 
 void PersonCenterBase::BisaiClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_BISAI == m_currentTag)
         return;
     
@@ -175,11 +180,12 @@ void PersonCenterBase::BisaiClick(cocos2d::Ref *pSender)
 
 void PersonCenterBase::SetClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void PersonCenterBase::BackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent());
     main->BackToLoginLayer(MainScene::TAG_LAYER_PERSON);
 }
@@ -468,12 +474,12 @@ bool PersonXinxi::init()
 
 void PersonXinxi::ChangePlayer(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void PersonXinxi::RegisterClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 ////////////////////////////////////////////////////////

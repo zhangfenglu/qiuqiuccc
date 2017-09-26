@@ -12,6 +12,9 @@
 #include "Resources.h"
 #include "MainScene.h"
 
+#include "UI/CocosGUI.h"
+#include "editor-support/cocostudio/CocoStudio.h"
+
 #define BACK_IMG_FILE_PRE  "Big_color_"
 #define FRONT_IMG_FILE_PRE  "hero_"
 #define DURATION_TIMES  6
@@ -51,10 +54,16 @@ bool MainSprite::init()
     
 	this->scheduleUpdate();
     int index = Global::getInstance()->GetMainPicIndex();
+	
+	
+	
+	//合并代码用--0924--注册与组队 start======================================================================
 	if (index > 40)
 	{
 		index = Global::getInstance()->getRand(MAXIMUM_PICTURE_NUM);
 	}
+	//合并代码用--0924--注册与组队 end======================================================================
+	
     
     char temp[32];
     sprintf(temp, "%s%d.png", BACK_IMG_FILE_PRE, index);
@@ -185,54 +194,34 @@ void MainSprite::addPlayerImage(int hero,int guanghuan,int baozi,int canying)
     //Shenshou++;
     if (heroID) {
         isShowIcon = true;
-        char imagName[128] = {0};
-        sprintf(imagName, "shenshou-%d-3.png",heroID);
-        Sprite* image = Sprite::create(imagName);
-        if(image)
-        {
-            getChildByTag(14)->setVisible(false);
-            
-            //image->setAnchorPoint(Vec2(0.5f, 0.5f));
-            //image->setPosition(Vec2(150,150));
-            addChild(image, 2, 11);
-            
-            
-            image->runAction(
-                             RepeatForever::create(
-                                                     Sequence::create(
-                                                                        RotateBy::create(0.1f, 5.0f),NULL)));
-            
-            sprintf(imagName, "shenshou-%d-2.png",heroID);
-            Sprite* texiao = Sprite::create(imagName);
-            //texiao->setAnchorPoint(Vec2(0.5f, 0.5f));
-            //texiao->setPosition(Vec2(150,150));
-            addChild(texiao, 3, 12);
-            
-            texiao->runAction(
-                              RepeatForever::create(
-                                                      Sequence::create(
-                                                                         RotateBy::create(0.1f, 5.0f),NULL)));
-            
-            sprintf(imagName, "shenshou-%d-1.png",heroID);
-            Sprite* qlong = Sprite::create(imagName);
-            //qlong->setAnchorPoint(Vec2(0, 0));
-            addChild(qlong, 4, 13);
-        }
+		nameMap ite = Resource::sharedResource()->getPiFuForID(heroID);
+		auto node = CSLoader::createNode(ite.icon);
+		auto action = CSLoader::createTimeline(ite.icon);
+		if (action)
+		{
+			action->gotoFrameAndPlay(0, true);
+			node->runAction(action);
+		}
+		addChild(node, 2, 11);
+
+		getChildByTag(14)->setVisible(false);
     }
     
     if (mGuanghuan)
     {
         isShowIcon = true;
-        item ite = Resource::sharedResource()->getItemForID(mGuanghuan);
-        Sprite* image = Sprite::create(ite.itemIcon.c_str());
-        
-        addChild(image, 2, 15);
-        
-        
-        image->runAction(
-                         RepeatForever::create(
-                                                 Sequence::create(
-                                                                    RotateBy::create(0.1f, 5.0f),NULL)));
+
+		item ite = Resource::sharedResource()->getItemForID(mGuanghuan);
+		auto node = CSLoader::createNode(ite.itemIcon);
+		auto action = CSLoader::createTimeline(ite.itemIcon);
+		if (action)
+		{
+			action->gotoFrameAndPlay(0, true);
+			node->runAction(action);
+		}
+		addChild(node, 2, 15);
+
+		getChildByTag(14)->setVisible(false);
     }
     
     if(isShowIcon == false)
@@ -254,11 +243,17 @@ void MainSprite::setName(std::string name)
 {
     NameColor color = Global::getInstance()->GetNameColor(name);
     std::string icon = Global::getInstance()->ComPlayerName(name);
-    if (strcmp(icon.c_str(), "") != 0) {
+	if (icon.size() > 0) {
         removeChildByTag(14, true);
-        Sprite* image = Sprite::create(icon.c_str());
-        //image->setAnchorPoint(Vec2(0, 0));
-        addChild(image, 1, 14);
+
+		auto node = CSLoader::createNode(icon);
+		auto action = CSLoader::createTimeline(icon);
+		if (action)
+		{
+			action->gotoFrameAndPlay(0, true);
+			node->runAction(action);
+		}
+		addChild(node, 1, 14);
     }
     //Size size = getContentSize();
 
@@ -270,7 +265,6 @@ void MainSprite::setName(std::string name)
     //CCLOG("name:%s",name.c_str());
 	CCLabelTTF* namelb = CCLabelTTF::create(name, "STXingkai.ttf", NANME_SIZE);
     namelb->setColor(Color3B(color.colorR, color.colorG, color.colorB));
-    //namelb->setPosition(Vec2(size.width * 0.5f, size.height * 0.5f));
     //namelb->setAnchorPoint(Vec2(0,-2));
     addChild(namelb, 5, 38396);
     
@@ -332,5 +326,14 @@ void MainSprite::updateNameSize()
 			s = NANME_SIZE;
 		}
 		namelb->setFontSize(s);
+		if (heroID)
+		{
+			namelb->setPositionY((314 / 2 + 50)* scale);
+		}
+		else
+		{
+			namelb->setPositionY(0);
+		}
+		
 	}
 }

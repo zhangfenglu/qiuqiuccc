@@ -2,7 +2,7 @@
 //  Common.h
 //  qiuFight
 //
-//  Created by 张跃东 on 16/3/3.
+//  Created by ��Ծ�� on 16/3/3.
 //
 //
 
@@ -18,17 +18,17 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-#define  INITIAL_SPEED          10       //初始速度
-#define  ATTENUATION_SPEED      0.01     //衰减速度
-#define  MINIMUM_SPEED          1       //最小速度
+#define  INITIAL_SPEED          10       //��ʼ�ٶ�
+#define  ATTENUATION_SPEED      0.01     //˥���ٶ�
+#define  MINIMUM_SPEED          1       //��С�ٶ�
 
-#define R_LENGTH                60      //内圈圆的半径
+#define R_LENGTH                60      //��ȦԲ�İ뾶
 
-#define MINIMUM_SIZE            32      //最小时候体积
+#define MINIMUM_SIZE            32      //��Сʱ�����
 
-#define MAXIMUM_PICTURE_NUM     40       //图片的最大数量
+#define MAXIMUM_PICTURE_NUM     40       //ͼƬ���������
 
-#define MINMUN_PLAYER_SCALE_OR  0.05    //player初始化时候的缩放比
+#define MINMUN_PLAYER_SCALE_OR  0.05    //player��ʼ��ʱ������ű�
 
 #define PLAYER_PIX_SIZE         300 * 2
 #define CI_PIX_SIZE             155 * 2
@@ -36,16 +36,16 @@ USING_NS_CC_EXT;
 
 #define MASS_FORM_SIZE_PERCENT  0.01
 
-#define DISTANCE_PER_CIRCLE     2000    // 球与球之间的距离来进行缩放
+#define DISTANCE_PER_CIRCLE     2000    // ������֮��ľ�������������
 
-//质量和相机比例的关系
+//��������������Ĺ�ϵ
 #define MASS_PERCENT_1          100
 #define MASS_PERCENT_2          500
 #define MASS_PERCENT_3          1500
 #define MASS_PERCENT_4          5000
 #define MASS_PERCENT_5          10000
 #define MASS_PERCENT_6          22500
-//比例
+//����
 #define MAIN_CAMERA_SCALE_1     0.9
 #define MAIN_CAMERA_SCALE_2     0.8
 #define MAIN_CAMERA_SCALE_3     0.7
@@ -53,7 +53,7 @@ USING_NS_CC_EXT;
 #define MAIN_CAMERA_SCALE_5     0.5
 #define MAIN_CAMERA_SCALE_6     0.4
 
-//相机变化 公式曲线类型 ：y=ax^k+b
+//����仯 ��ʽ�������� ��y=ax^k+b
 #define K_VALUE                 -0.04
 #define A_VALUE                 2.47667
 #define B_VALUE                 -1.25875
@@ -80,7 +80,7 @@ struct eatInfo
     uint32_t eatedID;
 };
 
-
+//�ϲ�������--0924--ע������� start=======================
 struct AwardInfo
 {
 	AwardInfo()
@@ -98,20 +98,21 @@ struct AwardInfo
 		allawardsNum = "";
 		allawardsName = "";
 	}
-	std::string title; //box 标题
+	std::string title; //box ����
 	
-	std::string xiaohaoTitle;//消耗钻石 叙述文字
-	std::string zuanshi; //钻石icon 或星卷icon
-	std::string xiaohaoNum;//消耗 钻石或星卷的数量
+	std::string xiaohaoTitle;//������ʯ ��������
+	std::string zuanshi; //��ʯicon ���Ǿ�icon
+	std::string xiaohaoNum;//���� ��ʯ���Ǿ������
 
-	std::string allawardsBg;//奖励的道具背景
-	std::string allawards;//奖励的道具
-	std::string allawardsType;//标签图片
-	std::string allawardsTitle;//标签图片上的文字
-	std::string allawardsNum;//奖励的道具数量
-	std::string allawardsName;//奖励的道具的名字
+	std::string allawardsBg;//�����ĵ��߱���
+	std::string allawards;//�����ĵ���
+	std::string allawardsType;//��ǩͼƬ
+	std::string allawardsTitle;//��ǩͼƬ�ϵ�����
+	std::string allawardsNum;//�����ĵ�������
+	std::string allawardsName;//�����ĵ��ߵ�����
 
 };
+//�ϲ�������--0924--ע������� end=======================
 
 struct nodeInfo
 {
@@ -136,7 +137,29 @@ struct nodeInfo
 	uint8_t isPlayer;
 };
 
-//张锋露 新增加的登陆后的账号玩家信息
+//�ϲ�������--0924--�̳�ϵͳ���� start=======================
+struct PlayerInfo
+{
+	PlayerInfo()
+	{
+		_playerid = "";
+		_id = 0;
+		_diamond = 0;
+		_gold = 0;
+		_bean = 0;
+	}
+	const char* getPlayerID() { return _playerid.c_str(); }
+	std::string _playerid;
+	uint32_t _id;
+	uint32_t _diamond;
+	uint32_t _gold;
+	uint32_t _bean;
+};
+//�ϲ�������--0924--�̳�ϵͳ���� start=======================
+
+
+
+//�ŷ�¶ �����ӵĵ�½����˺������Ϣ
 struct player_info
 {
 	player_info()
@@ -158,6 +181,7 @@ struct player_info
 	std::string        headid;
 };
 
+//�ϲ�������--0924--ע������� start=======================
 struct timeyuanzheng_cangku_info
 {
 	timeyuanzheng_cangku_info()
@@ -178,8 +202,10 @@ struct timeyuanzheng_cangku_info
 	uint32_t           juan5;
 	uint32_t           juan6;
 };
+//�ϲ�������--0924--ע������� end=======================
 
-//张锋露 账号
+
+//�ŷ�¶ �˺�
 struct account_info
 {
 	account_info()
@@ -205,7 +231,9 @@ struct account_info
 	std::string        accout;
 };
 
-//倒计时
+
+//�ϲ�������--0924--ע������� start=======================
+//����ʱ
 struct zuduidaojishi_info
 {
 	zuduidaojishi_info()
@@ -226,19 +254,7 @@ struct zuduidaojishi_info
 	uint32_t           xing6time;
 };
 
-struct yuanzhengBaoMing_Info
-{
-	yuanzhengBaoMing_Info()
-	{
-		aid = 0;
-		state = 0;
-	}
-	uint32_t           aid;
-	uint32_t           state;
-
-};
-
-//头像 段位 月卡 年卡等信息
+//ͷ�� ��λ �¿� �꿨����Ϣ
 struct head_info
 {
 	head_info()
@@ -256,6 +272,19 @@ struct head_info
 	std::string		   playername;
 };
 
+struct yuanzhengBaoMing_Info
+{
+	yuanzhengBaoMing_Info()
+	{
+		aid = 0;
+		state = 0;
+	}
+	uint32_t           aid;
+	uint32_t           state;
+
+};
+//�ϲ�������--0924--ע������� end=======================
+
 struct user_info {
     user_info()
     {
@@ -267,6 +296,7 @@ struct user_info {
         level = 0;
         copper = 0;
         gold = 0;
+		diamond = 0;
         duanwei = 0;
         stars = 0;
         mvpCount = 0;
@@ -298,6 +328,7 @@ struct user_info {
     uint32_t        level;
     uint32_t        copper;
     uint32_t        gold;
+	uint32_t        diamond;
     uint32_t        duanwei;
     uint32_t        stars;
     uint32_t        mvpCount;
@@ -403,14 +434,14 @@ struct NameColor
 	int colorB;
 };
 
-// 战斗内排行
+// ս��������
 struct fight_rank
 {
     int             rankID;
     std::string     name;
 };
 
-//战斗结算
+//ս������
 struct EndGame
 {
     EndGame()
@@ -599,7 +630,7 @@ struct user_bag
     int count;
 };
 
-//测试
+//����
 struct TestAtt
 {
     int         m_id;
@@ -609,15 +640,22 @@ struct TestAtt
     std::string m_dest;
     std::string m_state;
     std::string m_times;
-    std::string m_iconStr;   //icon照片
+    std::string m_iconStr;   //icon��Ƭ
 };
+
 
 struct duanweiInfo
 {
+	duanweiInfo()
+	{
+		memset(name, 0, sizeof(name));
+		memset(icon, 0, sizeof(icon));
+	}
     int mID;
-    std::string name;
-    std::string icon;
+	char name[100];
+	char icon[100];
     int mStar;
+	int saveGold;
 };
 
 struct QianDao
@@ -631,5 +669,54 @@ struct QianDaoUse
     int mType;
     int mDay;
 };
+
+
+struct DiamondInfo
+{
+	DiamondInfo()
+	{
+		memset(strName, 0, sizeof(strName));
+		memset(strIcon, 0, sizeof(strIcon));
+		memset(strPlatform, 0, sizeof(strPlatform));
+	}
+
+	int nId;
+	int nPrice;
+	int nDiamond;
+	char strName[100];
+	char strIcon[100];
+	char strPlatform[100];
+};
+
+struct GoodsInfo
+{
+	GoodsInfo()
+	{
+		memset(strIcon, 0, sizeof(strIcon));
+		memset(strDescPath, 0, sizeof(strDescPath));
+	}
+	int nId;
+	char strIcon[100];
+	char strDescPath[100];
+};
+
+struct ItemInfo
+{
+	ItemInfo()
+	{
+		char str[] = "��������β��������������";
+		memset(strIcon, 0, sizeof(strIcon));
+		memset(strName, 0, sizeof(strName));
+		memset(strDesc, 0, sizeof(strDesc));
+		memcpy(strDesc, str, strlen(str));
+	}
+	int nId;
+	int nType;
+	int nPrice;
+	char strIcon[100];
+	char strName[100];
+	char strDesc[100];
+};
+
 #endif /* Common_h */
 

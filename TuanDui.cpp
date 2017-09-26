@@ -19,6 +19,8 @@
 #include "ExchangeInfo.h"
 #include "msg_error.pb.h"
 #include "CurCularNode.h"
+#include "GameVoice.h"
+
 /////////////////////////////////////////////////////
 ///base
 /////////////////////////////////////////////////////
@@ -114,6 +116,7 @@ void TuanDui::initUI()
 
 void TuanDui::Yaoqing(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     ((TableView*)getChildByTag(101))->setTouchEnabled(false);
     ((Button*)getChildByTag(1))->setIsCanTouch(false);
     ((Button*)getChildByTag(2))->setIsCanTouch(false);
@@ -129,12 +132,13 @@ void TuanDui::SenMSG(float ft)
 
 void TuanDui::BackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent());
     main->BackToLoginLayer(MainScene::TAG_LAYER_TUANDUI);
 }
 void TuanDui::StartGame(Ref* pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 Size TuanDui::getTableSize()
@@ -369,6 +373,7 @@ void YaoqingList::resetBtnState()
 
 void YaoqingList::AttentionClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_ATTENTION == m_currentTag)
         return;
     
@@ -386,6 +391,7 @@ void YaoqingList::AttentionClick(cocos2d::Ref *pSender)
 
 void YaoqingList::FriendClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_FRIEND == m_currentTag)
         return;
     
@@ -403,6 +409,7 @@ void YaoqingList::FriendClick(cocos2d::Ref *pSender)
 
 void YaoqingList::EnemyClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_ENEMY == m_currentTag)
         return;
     
@@ -419,6 +426,7 @@ void YaoqingList::EnemyClick(cocos2d::Ref *pSender)
 
 void YaoqingList::BlackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_BLACK == m_currentTag)
         return;
     
@@ -435,16 +443,17 @@ void YaoqingList::BlackClick(cocos2d::Ref *pSender)
 
 void YaoqingList::PrePageClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YaoqingList::NextPageClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YaoqingList::BackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     TuanDui* tuandui = (TuanDui*)getParent();
     tuandui->ReSetTabelView();
     getParent()->removeChild(this, true);
@@ -535,6 +544,7 @@ bool TeamList::init()
 }
 void TeamList::XuanzeAll(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* btn = (Button*)pSender;
     TableView* view = (TableView*)getChildByTag(101);
     if(btn->getPressIconShow())
@@ -568,7 +578,7 @@ void TeamList::XuanzeAll(Ref* pSender)
 }
 void TeamList::SendYaoqing(Ref* pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 void TeamList::initTableView(std::vector<TestAtt> fanses)
 {
@@ -738,6 +748,7 @@ bool TeamList::onTouchBegan(Touch* pTouch,Event* pEvent)
 }
 void TeamList::Xuanze(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     Button* btn = (Button*)pSender;
     if(btn->getPressIconShow())
     {

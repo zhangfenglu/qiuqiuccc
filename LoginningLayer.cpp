@@ -1,7 +1,7 @@
 #include "LoginningLayer.h"
 #include "MainScene.h"
 #include "SimpleTools.h"
-
+#include "GameVoice.h"
 using namespace cocos2d::network;
 
 #include "spine/Json.h"

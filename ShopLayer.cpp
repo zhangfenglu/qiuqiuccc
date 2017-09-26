@@ -14,6 +14,7 @@
 
 #include "msg_client.pb.h"
 #include "msg_error.pb.h"
+#include "GameVoice.h"
 
 #define CHILD_OFFSET_X      20
 #define CHILD_OFFSET_Y      50
@@ -186,6 +187,7 @@ void ShopLayerBase::resetBtnState()
 
 void ShopLayerBase::WaiGuanClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_WAIGUAN == m_shopTag)
         return;
     
@@ -200,6 +202,7 @@ void ShopLayerBase::WaiGuanClick(cocos2d::Ref *pSender)
 
 void ShopLayerBase::HeroClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_HERO == m_shopTag)
         return;
     
@@ -214,6 +217,7 @@ void ShopLayerBase::HeroClick(cocos2d::Ref *pSender)
 
 void ShopLayerBase::JinheClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_JINHE == m_shopTag)
         return;
     
@@ -228,6 +232,7 @@ void ShopLayerBase::JinheClick(cocos2d::Ref *pSender)
 
 void ShopLayerBase::HdbsClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     if(TAG_HDBS == m_shopTag)
         return;
     
@@ -242,6 +247,7 @@ void ShopLayerBase::HdbsClick(cocos2d::Ref *pSender)
 
 void ShopLayerBase::BackClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent());
     main->BackToLoginLayer(MainScene::TAG_LAYER_SHOP);
 }
@@ -664,6 +670,7 @@ void ShopLayerWaiguan::scrollViewDidZoom(cocos2d::extension::ScrollView *view)
 
 void ShopLayerWaiguan::GuangHuanClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     m_tag = guanghuan_tag;
     
     if(getChildByTag(111))
@@ -688,6 +695,7 @@ void ShopLayerWaiguan::GuangHuanClick(cocos2d::Ref *pSender)
 
 void ShopLayerWaiguan::BaoziClick(cocos2d::Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     m_tag = baozi_tag;
     
     if(getChildByTag(111))
@@ -785,6 +793,7 @@ bool BuyItemLayer::init()
 
 void BuyItemLayer::BuyClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent()->getParent()->getParent());
     main->reqBuyItem(mItem.m_id);
     
@@ -792,6 +801,7 @@ void BuyItemLayer::BuyClick(Ref* pSender)
 }
 void BuyItemLayer::UseClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent()->getParent()->getParent());
     main->reqUseItem(mItem.m_id);
     
@@ -799,6 +809,7 @@ void BuyItemLayer::UseClick(Ref* pSender)
 }
 void BuyItemLayer::XiexiaClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     MainScene* main = dynamic_cast<MainScene*>(getParent()->getParent()->getParent());
     main->reqUnequipItem(mItem.m_itemType);
     
@@ -1149,13 +1160,14 @@ void ShopLayerHero::InitShenshou()
 }
 void ShopLayerHero::BagClick(Ref* pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
     CaiLiaoBag* hecheng = CaiLiaoBag::create();
     hecheng->setPosition(Vec2(-20,-50));
     addChild(hecheng, 100);
 }
 void ShopLayerHero::HechengClick(cocos2d::Ref *pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     HeCheng* hecheng = HeCheng::create();
     hecheng->setPosition(Vec2(-20,-50));
     addChild(hecheng, 15);
@@ -1388,10 +1400,12 @@ void HeCheng::InitItem()
 }
 void HeCheng::BackClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     getParent()->removeChild(this,true);
 }
 void HeCheng::HechengClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     bool isCanHeCheng = true;
     for (int i = 0; i<itemMax; i++) {
         user_bag bagIte = Global::getInstance()->GetBagItem(hInfo[i].id);
@@ -1643,6 +1657,7 @@ void ShopLayerJinhe::rushLab()
 }
 void ShopLayerJinhe::OpenMuClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     user_bag bag = Global::getInstance()->GetBagItem(701);
     if (bag.count <= 0) {
         Global::getInstance()->ShowPromBox(Global::getInstance()->getString("62"));
@@ -1653,6 +1668,7 @@ void ShopLayerJinhe::OpenMuClick(Ref* pSender)
 }
 void ShopLayerJinhe::OpenHaoClick(Ref* pSender)
 {
+	GameVoice::getInstance()->playClickBtnVoive();
     user_bag bag = Global::getInstance()->GetBagItem(702);
     if (bag.count <= 0) {
         Global::getInstance()->ShowPromBox(Global::getInstance()->getString("62"));
@@ -1790,17 +1806,17 @@ bool ShopLayerHuoqu::init()
 
 void ShopLayerHuoqu::LingquClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void ShopLayerHuoqu::saveClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void ShopLayerHuoqu::copyClick(cocos2d::Ref *pSender)
 {
-    
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 

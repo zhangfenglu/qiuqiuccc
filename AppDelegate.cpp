@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 //#include "MainScene.h"
 #include "LogoLayer.h"
+//
 
 USING_NS_CC;
 
@@ -25,7 +26,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	auto pDirector = Director::getInstance();
 	auto glview = pDirector->getOpenGLView();
 	if (!glview) {
-		glview = GLViewImpl::create("Ball Battle");
+		glview = GLViewImpl::createWithRect("Ball Battle", Rect(0, 0, 1280, 720));
 		pDirector->setOpenGLView(glview);
 	}
 
@@ -38,7 +39,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// set FPS. the default value is 1.0/60 if you don't call this
 	pDirector->setAnimationInterval(1.0 / 60);
 
-	glview->setFrameSize(1280, 720);
+	//glview->setFrameSize(1280, 720);
 	pDirector->getOpenGLView()->setDesignResolutionSize(1280, 720, ResolutionPolicy::SHOW_ALL);
 
 	//glview->setDesignResolutionSize(glview->getFrameSize().width, glview->getFrameSize().height, ResolutionPolicy::SHOW_ALL);
@@ -77,6 +78,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	// run
 	pDirector->runWithScene(pScene);
+
 
 	return true;
 }

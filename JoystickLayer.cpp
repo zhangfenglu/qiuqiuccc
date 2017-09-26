@@ -50,11 +50,11 @@ void JoystickLayer::updateJoystick(const Vec2& pos)
 {
 	Vec2 outPos = out->getPosition();
 	auto len = outPos.distance(pos);
-	if (len < R_LENGTH)
+	/*if (len < R_LENGTH)
 	{
 		in->setPosition(pos);
 	}
-	else
+	else*/
 	{
 		auto inpos = outPos + (pos - outPos) * (R_LENGTH / len);
 		in->setPosition(inpos);
