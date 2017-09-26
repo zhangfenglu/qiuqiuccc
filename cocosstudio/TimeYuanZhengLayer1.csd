@@ -646,6 +646,21 @@
                 <PreSize X="4.1000" Y="3.2200" />
                 <FileData Type="Normal" Path="TimeYuanZhengLayer/xiaohaoTime/bg.png" Plist="" />
               </AbstractNodeData>
+              <AbstractNodeData Name="btn_zuduiClose" ActionTag="1109742693" Tag="214" IconVisible="False" LeftMargin="970.3341" RightMargin="-836.3341" TopMargin="-425.2434" BottomMargin="558.2434" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="36" Scale9Height="45" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                <Size X="66.0000" Y="67.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="1003.3341" Y="591.7434" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="5.0167" Y="2.9587" />
+                <PreSize X="0.3300" Y="0.3350" />
+                <TextColor A="255" R="65" G="65" B="70" />
+                <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                <PressedFileData Type="Normal" Path="TimeYuanZhengLayer/mian/close.png" Plist="" />
+                <NormalFileData Type="Normal" Path="TimeYuanZhengLayer/mian/close.png" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
             </Children>
             <AnchorPoint />
             <Position />

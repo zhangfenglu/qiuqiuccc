@@ -1,6 +1,6 @@
 ﻿#include "YuanZhengLayer.h"
 #include "SimpleTools.h"
-
+#include "GameVoice.h"
 
 
 bool YuanZhengLayer::init()
@@ -22,6 +22,7 @@ void YuanZhengLayer::menuItem1Callback(cocos2d::Ref* pSender)
 	log("btn1");
 	star_level = 1;
 	showZuDuiBox(star_level - 1);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem2Callback(cocos2d::Ref* pSender)
@@ -29,6 +30,7 @@ void YuanZhengLayer::menuItem2Callback(cocos2d::Ref* pSender)
 	log("btn2");
 	star_level = 2;
 	showZuDuiBox(star_level - 1);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem3Callback(cocos2d::Ref* pSender)
@@ -36,6 +38,7 @@ void YuanZhengLayer::menuItem3Callback(cocos2d::Ref* pSender)
 	log("btn3");
 	star_level = 3;
 	showZuDuiBox(star_level - 1);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem4Callback(cocos2d::Ref* pSender)
@@ -43,6 +46,7 @@ void YuanZhengLayer::menuItem4Callback(cocos2d::Ref* pSender)
 	log("btn4");
 	star_level = 4;
 	showZuDuiBox(star_level - 1);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem5Callback(cocos2d::Ref* pSender)
@@ -50,6 +54,7 @@ void YuanZhengLayer::menuItem5Callback(cocos2d::Ref* pSender)
 	log("btn5");
 	star_level = 5;
 	showZuDuiBox(star_level - 1);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
@@ -57,6 +62,7 @@ void YuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
 	log("btn6");
 	star_level = 6;
 	showZuDuiBox(star_level - 1);
+	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 
@@ -78,6 +84,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200101://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -87,6 +94,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800101:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -96,6 +104,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000101:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -105,6 +114,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200101:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -128,6 +138,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200102://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -137,6 +148,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800102:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -146,6 +158,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000102:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -155,6 +168,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200102:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -177,6 +191,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200103://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -186,6 +201,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800103:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -195,6 +211,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000103:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -204,6 +221,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200103:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -227,6 +245,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200104://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -236,6 +255,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800104:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -245,6 +265,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000104:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -254,6 +275,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200104:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -277,6 +299,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200105://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -286,6 +309,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800105:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -295,6 +319,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000105:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -304,6 +329,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200105:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -327,6 +353,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200106://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -336,6 +363,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800106:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -345,6 +373,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000106:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -354,6 +383,7 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200106:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -1183,6 +1213,15 @@ void YuanZhengLayer::initUI()
 
 	baomingBox = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
 
+	auto btn_zuduiClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_zuduiClose");
+	btn_zuduiClose->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			GameVoice::getInstance()->playClickBtnVoive();
+			baomingBox->setVisible(false);
+		}
+	});
 
 	
 	
@@ -1315,7 +1354,7 @@ void YuanZhengLayer::initUI()
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			this->removeFromParent();
-
+			GameVoice::getInstance()->playClickBtnVoive();
 		}
 	});
 
@@ -1336,6 +1375,7 @@ void YuanZhengLayer::baoming1Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 {
 	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
 	{
+		GameVoice::getInstance()->playClickBtnVoive();
 		Json* root = ReadJson("tishi.json");
 		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
 		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
@@ -1610,6 +1650,7 @@ void YuanZhengLayer::baoming2Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 {
 	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
 	{
+		GameVoice::getInstance()->playClickBtnVoive();
 		Json* root = ReadJson("tishi.json");
 		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
 		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
@@ -1885,6 +1926,7 @@ void YuanZhengLayer::baoming3Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 {
 	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
 	{
+		GameVoice::getInstance()->playClickBtnVoive();
 		Json* root = ReadJson("tishi.json");
 		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
 		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
@@ -2157,6 +2199,7 @@ void YuanZhengLayer::baoming4Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 {
 	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
 	{
+		GameVoice::getInstance()->playClickBtnVoive();
 		Json* root = ReadJson("tishi.json");
 		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
 		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
