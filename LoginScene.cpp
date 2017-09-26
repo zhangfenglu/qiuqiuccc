@@ -873,7 +873,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	Json* qingshuruyanzhengma = Json_getItem(root, "qingshuruyanzhengma");//请输入验证码
 	Json* yanzhengmabudui = Json_getItem(root, "yanzhengmabudui");//验证码不对
 	Json* mimacuowu = Json_getItem(root, "qingshuruyouxiangdizhi");//密码错误
-	Json* qingshuruxinmima = Json_getItem(root, "qingshuruyouxiangdizhi");//请输入新密码
+	Json* qingshuruxinmima = Json_getItem(root, "qingshuruxinmima");//请输入新密码
 	Json* zhanghaohemimayifasongdaoyouxiang = Json_getItem(root, "zhanghaohemimayifasongdaoyouxiang");//账号和密码已发送到邮箱，请注意查收
 	Json* qingshuruzhanghao = Json_getItem(root, "qingshuruzhanghao");//请输入邮箱地址
 	Json* denglushibai = Json_getItem(root, "denglushibai");//登录失败
@@ -1596,8 +1596,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				std::string responseStr = std::string(buffer->begin(), buffer->end());
 				CCLOG("%s", responseStr.c_str());
 
+				Json* root = Json_create(responseStr.c_str());
+				Json* result = Json_getItem(root, "resultCode");
+				Json * resultObj = Json_getItem(root, "resultObj");
+				Json * message = Json_getItem(root, "message");
 
-				piaoZi->setString(zhanghaohemimayifasongdaoyouxiang->valueString);
+				piaoZi->setString(message->valueString);
 				auto clonePiaoZi = piaoZi->clone();
 				Image_1->addChild(clonePiaoZi);
 				clonePiaoZi->setVisible(true);
