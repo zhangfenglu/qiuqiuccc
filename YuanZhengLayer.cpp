@@ -1336,6 +1336,11 @@ void YuanZhengLayer::baoming1Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 {
 	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
 	{
+		Json* root = ReadJson("tishi.json");
+		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
+		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
+		Json* yibaoming = Json_getItem(root, "yibaoming");
+
 		std::string aid = "";
 		switch (star_level)
 		{
@@ -1382,9 +1387,9 @@ void YuanZhengLayer::baoming1Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 
 		auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootNode, "Image_1");
 		auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-		std::string tishiStr = "购物券不足！！！";
-		std::string tishiStr1 = "钻石不足！！！";
-		piaoZi->setString(tishiStr.c_str());
+		/*std::string tishiStr = "购物券不足！！！";
+		std::string tishiStr1 = "钻石不足！！！";*/
+		piaoZi->setString(ziyuanbuzu->valueString);
 
 
 		if (star_level - 1 == 0 && cangKuInfo.diamonds < atoi(awards[star_level-1].xiaohaoNum.c_str()))
@@ -1393,7 +1398,7 @@ void YuanZhengLayer::baoming1Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 			{
 				if (star_level -1 == 0)
 				{
-					piaoZi->setString(tishiStr.c_str());
+					//piaoZi->setString(tishiStr.c_str());
 				}
 				auto clonePiaoZi = piaoZi->clone();
 				Image_1->addChild(clonePiaoZi);
@@ -1587,6 +1592,10 @@ void YuanZhengLayer::baoming2Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 {
 	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
 	{
+		Json* root = ReadJson("tishi.json");
+		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
+		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
+		Json* yibaoming = Json_getItem(root, "yibaoming");
 		std::string aid = "";
 		switch (star_level)
 		{
@@ -1628,9 +1637,9 @@ void YuanZhengLayer::baoming2Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 		auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
 
 		auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-		std::string tishiStr = "购物券不足！！！";
-		std::string tishiStr1 = "钻石不足！！！";
-		piaoZi->setString(tishiStr.c_str());
+		/*std::string tishiStr = "购物券不足！！！";
+		std::string tishiStr1 = "钻石不足！！！";*/
+		piaoZi->setString(ziyuanbuzu->valueString);
 		auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootNode, "Image_1");
 		if (star_level -1 == 0 && cangKuInfo.diamonds < atoi(awards[star_level-1].xiaohaoNum.c_str()))
 		{
@@ -1638,7 +1647,7 @@ void YuanZhengLayer::baoming2Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 			{
 				if (star_level -1 == 0)
 				{
-					piaoZi->setString(tishiStr1.c_str());
+					//piaoZi->setString(tishiStr1.c_str());
 				}
 				if (piaoZi)
 				{
@@ -1840,6 +1849,10 @@ void YuanZhengLayer::baoming3Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 {
 	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
 	{
+		Json* root = ReadJson("tishi.json");
+		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
+		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
+		Json* yibaoming = Json_getItem(root, "yibaoming");
 		std::string aid = "";
 		switch (star_level)
 		{
@@ -1880,9 +1893,9 @@ void YuanZhengLayer::baoming3Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 		auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
 
 		auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-		std::string tishiStr = "购物券不足！！！";
-		std::string tishiStr1 = "钻石不足！！！";
-		piaoZi->setString(tishiStr.c_str());
+		/*std::string tishiStr = "购物券不足！！！";
+		std::string tishiStr1 = "钻石不足！！！";*/
+		piaoZi->setString(ziyuanbuzu->valueString);
 		auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootNode, "Image_1");
 		if (star_level -1 == 0 && cangKuInfo.diamonds < atoi(awards[star_level-1].xiaohaoNum.c_str()))
 		{
@@ -1890,7 +1903,7 @@ void YuanZhengLayer::baoming3Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 			{
 				if (star_level -1 == 0)
 				{
-					piaoZi->setString(tishiStr1.c_str());
+					//piaoZi->setString(tishiStr1.c_str());
 				}
 				if (piaoZi)
 				{
@@ -2090,6 +2103,10 @@ void YuanZhengLayer::baoming4Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 {
 	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
 	{
+		Json* root = ReadJson("tishi.json");
+		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
+		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
+		Json* yibaoming = Json_getItem(root, "yibaoming");
 		std::string aid = "";
 		switch (star_level)
 		{
@@ -2128,9 +2145,9 @@ void YuanZhengLayer::baoming4Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 		auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
 
 		auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-		std::string tishiStr = "购物券不足！！！";
-		std::string tishiStr1 = "钻石不足！！！";
-		piaoZi->setString(tishiStr.c_str());
+		/*std::string tishiStr = "购物券不足！！！";
+		std::string tishiStr1 = "钻石不足！！！";*/
+		piaoZi->setString(ziyuanbuzu->valueString);
 		auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootNode, "Image_1");
 		if (star_level -1 == 0 && cangKuInfo.diamonds < atoi(awards[star_level -1].xiaohaoNum.c_str()))
 		{
@@ -2138,7 +2155,7 @@ void YuanZhengLayer::baoming4Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 			{
 				if (star_level -1 == 0)
 				{
-					piaoZi->setString(tishiStr1.c_str());
+					//piaoZi->setString(tishiStr1.c_str());
 				}
 				if (piaoZi)
 				{
