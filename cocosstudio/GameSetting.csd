@@ -41,11 +41,11 @@
               </AbstractNodeData>
               <AbstractNodeData Name="Text_2" ActionTag="-1031884298" Tag="14" IconVisible="False" LeftMargin="107.4033" RightMargin="269.5967" TopMargin="157.9394" BottomMargin="384.0606" FontSize="36" LabelText="提示：您当前为游客账号，请尽快绑定。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="648.0000" Y="36.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="431.4033" Y="402.0606" />
+                <AnchorPoint ScaleY="0.5000" />
+                <Position X="107.4033" Y="402.0606" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="0" B="0" />
-                <PrePosition X="0.4209" Y="0.6956" />
+                <PrePosition X="0.1048" Y="0.6956" />
                 <PreSize X="0.6322" Y="0.0623" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
