@@ -1570,6 +1570,24 @@ void YuanZhengLayer::baoming1Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 					btn_bao1->setVisible(false);
 					auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
 					btn_yibaoming1->setVisible(true);
+					if (piaoZi)
+					{
+						piaoZi->setString(baomingchenggong->valueString);
+						auto clonePiaoZi = piaoZi->clone();
+						Image_1->addChild(clonePiaoZi);;
+						clonePiaoZi->setVisible(true);
+						auto action1 = FadeOut::create(1.8);
+						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+						auto func = [=](){
+							clonePiaoZi->setPosition(Point(tishiX, tishiY));
+							if (clonePiaoZi)
+								clonePiaoZi->removeFromParentAndCleanup(true);
+
+						};
+						auto callBack = CallFunc::create(func);
+
+						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+					}
 				}
 				else
 				{
@@ -1828,6 +1846,24 @@ void YuanZhengLayer::baoming2Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 					btn_bao2->setVisible(false);
 					auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming2");
 					btn_yibaoming2->setVisible(true);
+					if (piaoZi)
+					{
+						piaoZi->setString(baomingchenggong->valueString);
+						auto clonePiaoZi = piaoZi->clone();
+						Image_1->addChild(clonePiaoZi);
+						clonePiaoZi->setVisible(true);
+						auto action1 = FadeOut::create(1.8);
+						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+						auto func = [=](){
+							clonePiaoZi->setPosition(Point(tishiX, tishiY));
+							if (clonePiaoZi)
+								clonePiaoZi->removeFromParentAndCleanup(true);
+
+						};
+						auto callBack = CallFunc::create(func);
+
+						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+					}
 				}
 				else
 				{
@@ -2082,6 +2118,24 @@ void YuanZhengLayer::baoming3Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 					btn_bao3->setVisible(false);
 					auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming3");
 					btn_yibaoming3->setVisible(true);
+					if (piaoZi)
+					{
+						piaoZi->setString(baomingchenggong->valueString);
+						auto clonePiaoZi = piaoZi->clone();
+						Image_1->addChild(clonePiaoZi);;
+						clonePiaoZi->setVisible(true);
+						auto action1 = FadeOut::create(1.8);
+						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+						auto func = [=](){
+							clonePiaoZi->setPosition(Point(tishiX, tishiY));
+							if (clonePiaoZi)
+								clonePiaoZi->removeFromParentAndCleanup(true);
+
+						};
+						auto callBack = CallFunc::create(func);
+
+						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+					}
 				}
 				else
 				{
@@ -2336,6 +2390,24 @@ void YuanZhengLayer::baoming4Click(Ref*, cocos2d::ui::Widget::TouchEventType typ
 					btn_bao4->setVisible(false);
 					auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming4");
 					btn_yibaoming4->setVisible(true);
+					if (piaoZi)
+					{
+						piaoZi->setString(baomingchenggong->valueString);
+						auto clonePiaoZi = piaoZi->clone();
+						Image_1->addChild(clonePiaoZi);;
+						clonePiaoZi->setVisible(true);
+						auto action1 = FadeOut::create(1.8);
+						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+						auto func = [=](){
+							clonePiaoZi->setPosition(Point(tishiX, tishiY));
+							if (clonePiaoZi)
+								clonePiaoZi->removeFromParentAndCleanup(true);
+
+						};
+						auto callBack = CallFunc::create(func);
+
+						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+					}
 				}
 				else
 				{
