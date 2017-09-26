@@ -68,7 +68,26 @@ void YuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
 
 void YuanZhengLayer::showZuDuiBox(int tag)
 {
+	initPlayerBaoMingState();
+	//四个按钮
+	auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
+	auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
+	auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
+	auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
 
+	auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
+	auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
+	auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
+	auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
+
+	bao1->setVisible(true);
+	bao2->setVisible(true);
+	bao3->setVisible(true);
+	bao4->setVisible(true);
+	btn_yibaoming1->setVisible(false);
+	btn_yibaoming2->setVisible(false);
+	btn_yibaoming3->setVisible(false);
+	btn_yibaoming4->setVisible(false);
 	if (baomingInfos.size() > 0)
 	{
 		
@@ -487,16 +506,16 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 
 	//报名按钮 是否 可点击 是否制灰色 当仓库物品 无法满足消耗时候 制灰色 且不可点击
 	timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
-	//四个按钮
-	auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
-	auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
-	auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
-	auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
+	////四个按钮
+	//auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
+	//auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
+	//auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
+	//auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
 
-	auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
-	auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
-	auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
-	auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
+	//auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
+	//auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
+	//auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
+	//auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
 
 	//auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
 	//piaoZi->setText("购物券不足！！！");
@@ -2505,7 +2524,7 @@ void YuanZhengLayer::initPlayerBaoMingState()
 						Json* child = resultObj->child;
 						//if (child)
 						{
-
+							baomingInfos.clear();
 							for (int i = 0; i < resultObj->size; i++)
 							{
 								//Json* child = resultObj->child;
