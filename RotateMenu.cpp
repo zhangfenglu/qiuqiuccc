@@ -54,7 +54,7 @@ void RotateMenu::updatePosition(){
 
 		_items.at(i)->setZOrder(-(int)y);
 		//Opacity  129~255  
-		_items.at(i)->setOpacity(192 + 63 * cos(i*_unitAngle + getAngle()));
+		//_items.at(i)->setOpacity(192 + 63 * cos(i*_unitAngle + getAngle()));
 		_items.at(i)->setColor(Color3B(192 + 62 * cos(i*_unitAngle + getAngle()), 192 + 62 * cos(i*_unitAngle + getAngle()), 192 + 62 * cos(i*_unitAngle + getAngle())));
 		//_items.at(i)->setScale(0.75 + 0.25*cos(i*_unitAngle + getAngle()));
 	}
