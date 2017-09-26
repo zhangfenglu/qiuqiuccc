@@ -19,5 +19,6 @@
     "zhanghaoyibeizhanyong":"账号已被占用",
     "youketishi":"提示：您当前为游客账号，请尽快绑定。",
     "zhangshizhanghao":"提示：您当前为正式账号，请尽快绑定邮箱。",
-    "anquanzhanghao":"提示：您当前为正式账号，已绑定邮箱请,你的账号级别为安全。"
+    "anquanzhanghao":"提示：您当前为正式账号，已绑定邮箱请,你的账号级别为安全。",
+    "yibangdingzhanghao":"不能重复绑定邮箱"
 }
