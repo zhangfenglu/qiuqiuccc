@@ -38,6 +38,7 @@
 //#include "StaticData.h"  //��������ϵͳ����
 //#include "paul/PersonalUI.h"  //��������ϵͳ����
 #include "GameVoice.h"
+#include "LoginningLayer.h"
 
 //#include "DaTingLayer.h"
 using namespace cocos2d::network;
@@ -445,6 +446,7 @@ void LoginLayer::initUI1()
 							tupian->setAnchorPoint(Point(0,0));
 							if (ScrollView_1)
 							{
+								tupian->setPositionY(tupian->getPositionY() + 100);
 								ScrollView_1->addChild(tupian);
 							}
 						}	
@@ -882,10 +884,28 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	Json* bangdingzhanghaochenggong = Json_getItem(root, "bangdingzhanghaochenggong");//绑定账号成功
 	Json* zhanghaoyibeizhanyong = Json_getItem(root, "zhanghaoyibeizhanyong");//账号已被占用
 	Json* bangdingyouxiangchenggong = Json_getItem(root, "bangdingyouxiangchenggong");//绑定邮箱成功
-
+	Json* yibangdingzhanghao = Json_getItem(root, "yibangdingzhanghao");//不能重复绑定邮箱
 	account_info info = Global::getInstance()->GetAccountInfo();
 
 	rootGameSettingNode = CSLoader::createNode("GameSetting.csb");
+
+	Json* youketishi = Json_getItem(root, "youketishi");//游客账号
+	Json* zhangshizhanghao = Json_getItem(root, "zhangshizhanghao");//正式账号 未绑定邮箱
+	Json* anquanzhanghao = Json_getItem(root, "anquanzhanghao");//安全账号
+
+	account_info infos = Global::getInstance()->GetAccountInfo();
+	//账号设置盒子
+	cocos2d::ui::ImageView* setBox = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "setBox");
+	auto Text_2 = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "Text_2");
+	Text_2->setString(youketishi->valueString);
+	if (infos.isbinded)
+	{
+		Text_2->setString(zhangshizhanghao->valueString);
+	}
+	if (infos.mail != "")
+	{
+		Text_2->setString(anquanzhanghao->valueString);
+	}
 
 	auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "tishi");
 	tishiY = piaoZi->getPositionY();
@@ -1086,6 +1106,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 						if (result->valueInt == 1)
 						{
 							log("*******************************bangding success");
+							Text_2->setString(zhangshizhanghao->valueString);
 							piaoZi->setString(bangdingzhanghaochenggong->valueString);
 							auto clonePiaoZi = piaoZi->clone();
 							Image_1->addChild(clonePiaoZi);
@@ -1307,6 +1328,24 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 
+				if (result->valueInt == 1)
+				{
+					Json* account = Json_getItem(resultObj, "account");
+					Json* accout = Json_getItem(account, "accout");
+					Json* password = Json_getItem(account, "password");
+
+					if (accout->valueString != "" && password->valueString != "")
+					{
+						UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
+						UserDefault::getInstance()->setStringForKey("password", password->valueString);
+					}
+					//切换账号成功
+					//SceneReader::getInstance()->destroyInstance();
+					auto scene = Scene::create();
+					auto loginingLayer = LoginingLayer::create();
+					scene->addChild(loginingLayer);
+					Director::getInstance()->replaceScene(scene);
+				}
 				/*if (result->type == Json_Number)
 				{
 				if (result->valueInt == 1)
@@ -1681,6 +1720,23 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
+			if (btnYiBangDing->isVisible())
+			{
+				piaoZi->setString(yibangdingzhanghao->valueString);
+				auto clonePiaoZi = piaoZi->clone();
+				Image_1->addChild(clonePiaoZi);
+				clonePiaoZi->setVisible(true);
+				auto action1 = FadeOut::create(1.8);
+				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+				auto func = [=](){
+					clonePiaoZi->setPosition(Point(tishiX, tishiY));
+					clonePiaoZi->removeFromParentAndCleanup(true);
+				};
+				auto callBack = CallFunc::create(func);
+
+				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+				return;
+			}
 			GameVoice::getInstance()->playClickBtnVoive();
 			bangdingyouxiang->setVisible(true);
 		}
@@ -1931,7 +1987,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 					if (result->valueInt == 1)
 					{
 						log("*******************************bangdingyouxiang success");
-
+						Text_2->setString(anquanzhanghao->valueString);
 						piaoZi->setString(bangdingyouxiangchenggong->valueString);
 						auto clonePiaoZi = piaoZi->clone();
 						Image_1->addChild(clonePiaoZi);
