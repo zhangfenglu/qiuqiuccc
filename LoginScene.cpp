@@ -403,6 +403,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
+
 	std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/activity";
 	
 	requestFroGet(url, [=](HttpClient *sender, HttpResponse *response)
@@ -431,32 +432,62 @@ void LoginLayer::initUI1()
 				log("*******************************picPath success");
 
 				Json * id = Json_getItem(resultObj->child, "id");
+				Json * url1 = Json_getItem(resultObj->child, "url");
+				std::string u = url1->valueString;
+				std::string picUrl = "http://" + u;
 
 				if (id && id->valueInt == 1)
 				{
-					Json * url1 = Json_getItem(resultObj->child, "url");
-					std::string u = url1->valueString;
-					std::string picUrl = "http://" + u;
-			
+
+					std::string path = FileUtils::getInstance()->getWritablePath();
+					path += "download_image.png";
+					if (FileUtils::getInstance()->isFileExist(path))
+					{
+						auto tupian1 = Sprite::create(path);
+						tupian1->setAnchorPoint(Point(0, 0));
+						tupian1->setPositionY(tupian1->getPositionY() + 100);
+						ScrollView_1->addChild(tupian1);
+						return;
+					}
+					else
+					{
+						HttpGetImg::GetHttpImg(picUrl, [=](Texture2D * texture)
+						{
+							if (texture)
+							{
+
+								auto tupian = Sprite::createWithTexture(texture);
+								tupian->setAnchorPoint(Point(0, 0));
+								if (ScrollView_1)
+								{
+									tupian->setPositionY(tupian->getPositionY() + 100);
+									ScrollView_1->addChild(tupian);
+								}
+							}
+						}
+						);
+					}
+
+					
+
+				}
+				else
+				{
 					HttpGetImg::GetHttpImg(picUrl, [=](Texture2D * texture)
 					{
 						if (texture)
 						{
+
 							auto tupian = Sprite::createWithTexture(texture);
-							tupian->setAnchorPoint(Point(0,0));
+							tupian->setAnchorPoint(Point(0, 0));
 							if (ScrollView_1)
 							{
 								tupian->setPositionY(tupian->getPositionY() + 100);
 								ScrollView_1->addChild(tupian);
 							}
-						}	
+						}
 					}
 					);
-
-				}
-				else
-				{
-
 				}
 		
 			}
