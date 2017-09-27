@@ -173,6 +173,8 @@ public:
 
 
 	PlayerInfo& getMyInfo() { return m_myInfo; }
+	void  SetIsJiaZai(bool jiazai){ m_isJiaZai = jiazai; }
+	bool  GetIsJiaZai(){ return m_isJiaZai; }
 
 	//�ŷ�¶
 	void SetplayerDengLuInfo(player_info info){ m_PlayerDengLuInfo = info; }
@@ -284,6 +286,7 @@ private:
     
     user_info m_PlayerInfo;
 	player_info m_PlayerDengLuInfo;
+	bool m_isJiaZai = false;
 	
 	//�ϲ�������--0924--ע������� start======================================================================
 	zuduidaojishi_info m_ZuDuiDaoJiShi;

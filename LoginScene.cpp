@@ -1288,7 +1288,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			std::string data = "account=" + zhanghao + "&password=" + qiehuanmimaedbox->getText();
 
 			std::string url = "47.93.50.101:8080/QQWar/Qqwar/relogin";
-
 			if (zhanghao == "")
 			{
 				piaoZi->setString(qingshuruzhanghao->valueString);
@@ -1371,11 +1370,20 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 						UserDefault::getInstance()->setStringForKey("password", password->valueString);
 					}
 					//切换账号成功
-					//SceneReader::getInstance()->destroyInstance();
+					Global::getInstance()->SetIsJiaZai(true);
+					rootGameSettingNode->setVisible(false);
+					qiehuanzhanghao->setVisible(false);
+					initDengLuData();
+					auto loginingLayer = LoginingLayer::create();
+					loginingLayer->setGlobalZOrder(20000000000);
+					rootNode->addChild(loginingLayer);
+
+				/*	MainScene* main = dynamic_cast<MainScene*>(getParent());
+					main->CloseWebNet();
 					auto scene = Scene::create();
 					auto loginingLayer = LoginingLayer::create();
 					scene->addChild(loginingLayer);
-					Director::getInstance()->replaceScene(scene);
+					Director::getInstance()->replaceScene(scene);*/
 				}
 				/*if (result->type == Json_Number)
 				{

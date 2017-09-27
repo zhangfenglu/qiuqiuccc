@@ -49,33 +49,42 @@ void LoginingLayer::update(float delta)
 	if (m_nCount >= 100)
 	{
 		unscheduleUpdate();
-        string url = "http://47.93.50.101:8080/QQWar/Qqwar/updateVersion?type=ios";
-        requestFroGet(url, [=](HttpClient *sender, HttpResponse *response)
-                      {
-                          if (response == nullptr || !response->isSucceed())
-                          {
-                              CCLOG("responese is null");
-                              CCLOG("responese not succeed");
-                              
-                              return;
-                          }
-                          
-                          vector<char> *buffer = response->getResponseData();
-                          
-                          std::string responseStr = std::string(buffer->begin(), buffer->end());
-                          CCLOG("%s", responseStr.c_str());
-                          
-                          
-                          
-                          auto pScene = Scene::create();
-                          WebSocketLayer* socket = WebSocketLayer::create();
-                          pScene->addChild(socket, 0, 1);
-                          
-                          MainScene* layer = MainScene::create();
-                          pScene->addChild(layer, 2 , 0);
-                          Director::getInstance()->replaceScene(pScene);                          
-                          
-                      }, "GetVersion");
+		bool isJiaZai = Global::getInstance()->GetIsJiaZai();
+		if (!isJiaZai)
+		{
+			string url = "http://47.93.50.101:8080/QQWar/Qqwar/updateVersion?type=ios";
+			requestFroGet(url, [=](HttpClient *sender, HttpResponse *response)
+			{
+				if (response == nullptr || !response->isSucceed())
+				{
+					CCLOG("responese is null");
+					CCLOG("responese not succeed");
+
+					return;
+				}
+
+				vector<char> *buffer = response->getResponseData();
+
+				std::string responseStr = std::string(buffer->begin(), buffer->end());
+				CCLOG("%s", responseStr.c_str());
+
+
+
+				auto pScene = Scene::create();
+				WebSocketLayer* socket = WebSocketLayer::create();
+				pScene->addChild(socket, 0, 1);
+
+				MainScene* layer = MainScene::create();
+				pScene->addChild(layer, 2, 0);
+				Director::getInstance()->replaceScene(pScene);
+
+			}, "GetVersion");
+
+		}
+		else
+		{
+			this->removeFromParentAndCleanup(true);
+		}
 
 	}
 	else
