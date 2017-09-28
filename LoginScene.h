@@ -52,6 +52,8 @@ public:
 	//合并代码用--0924--注册与组队 end======================================================================
 	//通过段位获取 段位名称 段位图标
 	void getDuanWeiInfoByIndex(int index);
+	//报名详情
+	void showBaoMingXiangQing();
 
 	void NextScene(Ref* pSender); //游戏开始
 	void ResetName(Ref* pSender);

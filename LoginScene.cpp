@@ -79,6 +79,18 @@ void LoginLayer::initUI1()
 	//rootNode = CSLoader::createNode("DaTingLayer.csb");   //�ϲ�������--0924--ע������� start====
 	//
 	//addChild(rootNode);
+
+	//报名远征详情按钮
+	auto btnLuoBo = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "btnLuoBo");
+	btnLuoBo->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			GameVoice::getInstance()->playClickBtnVoive();
+			log("baoming xiangqing click======================");
+			showBaoMingXiangQing();
+		}
+	});
 	
 	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg"); //�ϲ�������--0924--ע������� start
 	zuduidengdaiBg->setVisible(false); //�ϲ�������--0924--ע������� start====
@@ -2802,6 +2814,44 @@ void LoginLayer::hideWaitBox()
 	upFenTime = 0;
 	upMiaoTime = 0;
 }
+
+void LoginLayer::showBaoMingXiangQing()
+{
+	account_info info = Global::getInstance()->GetAccountInfo();
+	//std::string data = "playerid=" + info.playerid;
+	std::string data = "playerid=100916";//暂时写死
+	std::string url = "http://47.93.50.101:8080/QQWar/expedition/getAllEnrollInfo";
+	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+	{
+		if (response == nullptr || !response->isSucceed())
+		{
+			CCLOG("responese is null");
+			CCLOG("responese not succeed");
+			return;
+		}
+
+		vector<char> *buffer = response->getResponseData();
+
+		std::string responseStr = std::string(buffer->begin(), buffer->end());
+		CCLOG("%s", responseStr.c_str());
+
+		Json* root = Json_create(responseStr.c_str());
+		Json* resultCode = Json_getItem(root, "resultCode");
+		Json * resultObj = Json_getItem(root, "resultObj");
+
+		Json* melee = Json_getItem(resultObj, "melee");//代表玩家在大乱斗报名的数据
+		Json* expedition = Json_getItem(resultObj, "expedition");//代表远征的报名情况
+		Json* expeditionRank = Json_getItem(resultObj, "expeditionRank");//代表整个远征的报名总人数
+		Json* date = Json_getItem(resultObj, "date");//代表， 服务器的当前时间
+
+		if (resultCode->valueInt == 1)
+		{
+
+		}
+
+	}, "getBaoMingXiangQing");
+}
+
 //�ϲ�������--0924--ע������� end======================================================================
 
 
