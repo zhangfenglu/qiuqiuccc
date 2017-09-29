@@ -53,7 +53,9 @@ public:
 	//通过段位获取 段位名称 段位图标
 	void getDuanWeiInfoByIndex(int index);
 	//报名详情
-	void showBaoMingXiangQing();
+	void showBaoMingXiangQing(std::string aid);
+
+
 
 	void NextScene(Ref* pSender); //游戏开始
 	void ResetName(Ref* pSender);
@@ -100,11 +102,18 @@ public:
 	void onTouchCancelled(Touch *touch, Event *unused_event) {}
 
 private:
+	std::vector<yuanZhengBaoMingXiangQing_Info> baomingXiangQingInfos; //远征报名详情
+	std::vector<daLuanDouXiangQing_Info> daluandouXiangQingInfos;//大乱斗报名详情
+	std::vector<baomingYuanAndLuan_Info> yuanAndLuanInfos;//所有报名 数量信息
 	Node* rootNode; //大厅                  //合并代码用--0924--注册与组队 start=========================
 	Node* rootGameSettingNode;
 
 	float tishiY;
 	float tishiX;
+
+	float rongqiX;
+	float rongqiY;
+	float rongqiWidth;
 
 private:
 	//DropDownListLayer* dropLayer ;

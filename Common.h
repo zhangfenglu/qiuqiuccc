@@ -272,6 +272,49 @@ struct head_info
 	std::string		   playername;
 };
 
+//远征详情
+struct yuanZhengBaoMingXiangQing_Info
+{
+	yuanZhengBaoMingXiangQing_Info()
+	{
+		id = "0";
+		aid = 0;
+		state = 0;
+		rank = 0;
+	}
+	std::string     id;
+	uint32_t     aid;
+	uint32_t           state;
+	uint32_t           rank;
+
+};
+
+//大乱斗详情
+struct daLuanDouXiangQing_Info
+{
+	daLuanDouXiangQing_Info()
+	{
+		id = "0";
+		aid = 0;
+		state = 0;
+	}
+	std::string     id;
+	uint32_t     aid;
+	uint32_t           state;
+};
+
+//报名乱斗与远征 总人数
+struct baomingYuanAndLuan_Info
+{
+	baomingYuanAndLuan_Info()
+	{
+		id = 0;
+		ranks = 0;
+	}
+	uint32_t     id;
+	uint32_t           ranks;
+};
+
 struct yuanzhengBaoMing_Info
 {
 	yuanzhengBaoMing_Info()
@@ -283,6 +326,35 @@ struct yuanzhengBaoMing_Info
 	uint32_t           state;
 
 };
+
+
+//根据竞技场或大乱斗 aid 得到 详情界面的数据
+struct xiangQing_Info
+{
+	xiangQing_Info()
+	{
+		name = "";
+		desc = "";
+		icon = "";
+		wordsPic = "";
+		aid = "";
+		whatDay = 0;
+		playerNum = 0;
+		jiesuanTime = 0;
+		statGameTime = 0;
+	}
+	std::string			  name;
+	std::string			  desc;
+	std::string           icon;
+	std::string			  wordsPic;
+	std::string			  aid;
+	uint32_t			  whatDay;
+	uint32_t			  playerNum;
+	uint32_t			  jiesuanTime;//大乱斗没有此数据
+	uint32_t			  statGameTime;
+};
+
+
 //�ϲ�������--0924--ע������� end=======================
 
 struct user_info {

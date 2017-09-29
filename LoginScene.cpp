@@ -2817,6 +2817,9 @@ void LoginLayer::hideWaitBox()
 
 void LoginLayer::showBaoMingXiangQing()
 {
+	auto xiangqingNode = CSLoader::createNode("BaoMingShowLayer.csb");   //报名详情UI
+	this->addChild(xiangqingNode,20000000);
+
 	account_info info = Global::getInstance()->GetAccountInfo();
 	//std::string data = "playerid=" + info.playerid;
 	std::string data = "playerid=100916";//暂时写死
@@ -2844,12 +2847,129 @@ void LoginLayer::showBaoMingXiangQing()
 		Json* expeditionRank = Json_getItem(resultObj, "expeditionRank");//代表整个远征的报名总人数
 		Json* date = Json_getItem(resultObj, "date");//代表， 服务器的当前时间
 
+		auto ScrollView = (cocos2d::ui::ScrollView*)seekNodeByName(xiangqingNode, "ScrollView");
+		auto rongqi = (cocos2d::ui::Layout*)seekNodeByName(xiangqingNode, "rongqi");
+		rongqi->setVisible(false);
+		rongqiX = rongqi->getPositionX();
+		rongqiY = rongqi->getPositionY();
+		rongqiWidth = rongqi->getContentSize().height;
+
 		if (resultCode->valueInt == 1)
 		{
+			if (expedition)
+			{
+				Json* child = expedition->child;
+				{
+					baomingXiangQingInfos.clear();
+					for (int i = 0; i < expedition->size; i++)
+					{
+						{
+							if (child == NULL)
+							break;
+							uint32_t aid = Json_getItem(child, "aid")->valueInt;
+							uint32_t state = Json_getItem(child, "state")->valueInt;
+							std::string id = Json_getItem(child, "id")->valueString;
+							uint32_t rank = Json_getItem(child, "rank")->valueInt;
+							yuanZhengBaoMingXiangQing_Info yuanInfo;
+							yuanInfo.aid = aid;
+							yuanInfo.state = state;
+							yuanInfo.id = id;
+							yuanInfo.rank = rank;
+							baomingXiangQingInfos.push_back(yuanInfo);
+							child = child->next;
+						}
+
+					}
+				}
+			}
+			if (melee)
+			{
+				Json* child = melee->child;
+				{
+					daluandouXiangQingInfos.clear();
+					for (int i = 0; i < melee->size; i++)
+					{
+						{
+							if (child == NULL)
+							break;
+							uint32_t aid = Json_getItem(child, "aid")->valueInt;
+							uint32_t state = Json_getItem(child, "state")->valueInt;
+							std::string id = Json_getItem(child, "id")->valueString;
+							daLuanDouXiangQing_Info luanInfo;
+							luanInfo.aid = aid;
+							luanInfo.state = state;
+							luanInfo.id = id;
+							daluandouXiangQingInfos.push_back(luanInfo);
+							child = child->next;
+						}
+
+					}
+				}
+			}
+			if (expeditionRank)
+			{
+				Json* child = expeditionRank->child;
+				{
+					yuanAndLuanInfos.clear();
+					for (int i = 0; i < expeditionRank->size; i++)
+					{
+						{
+							if (child == NULL)
+							break;
+							
+							uint32_t id = Json_getItem(child, "id")->valueInt;
+							uint32_t ranks = Json_getItem(child, "ranks")->valueInt;
+							baomingYuanAndLuan_Info xiangqingInfo;
+						
+							xiangqingInfo.id = id;
+							xiangqingInfo.ranks = ranks;
+							yuanAndLuanInfos.push_back(xiangqingInfo);
+							child = child->next;
+						}
+
+					}
+				}
+			}
+		}
+
+		//加入到 滑动ui
+
+		for (int i = 0; i < baomingXiangQingInfos.size(); i++)
+		{
+			auto cloneList = rongqi->clone();
+			cloneList->setVisible(true);
+			ScrollView->addChild(cloneList);
+			cloneList->setPosition(ccp(rongqiX, rongqiY - rongqiWidth * i));
+
+			//auto icon = (cocos2d::ui::ImageView*)cloneList->getChildByName("icon");
+			//std::string iconPath = baomingXiangQingInfos.at(i)
+			//icon->loadTexture("");
 
 		}
 
+		for (int i = 0; i < daluandouXiangQingInfos.size(); i++)
+		{
+			auto cloneList = rongqi->clone();
+			cloneList->setVisible(true);
+			ScrollView->addChild(cloneList);
+			cloneList->setPosition(ccp(rongqiX, rongqiY - rongqiWidth * baomingXiangQingInfos.size() - rongqiWidth * i));
+
+			//auto icon = (cocos2d::ui::ImageView*)cloneList->getChildByName("icon");
+			//std::string iconPath = baomingXiangQingInfos.at(i)
+			//icon->loadTexture("");
+
+		}
+		ScrollView->setInnerContainerSize(Size(rongqi->getContentSize().width + 4, rongqi->getContentSize().height* (baomingXiangQingInfos.size() + daluandouXiangQingInfos.size() + 1)));
+
+
+
 	}, "getBaoMingXiangQing");
+}
+
+void LoginLayer::showBaoMingXiangQing(std::string aid)
+{
+	xiangQing_Info xiangQingInfo;
+
 }
 
 //�ϲ�������--0924--ע������� end======================================================================
