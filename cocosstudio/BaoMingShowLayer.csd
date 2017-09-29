@@ -36,7 +36,7 @@
                             <CColor A="255" R="255" G="255" B="255" />
                             <PrePosition X="0.1845" Y="0.5288" />
                             <PreSize X="0.2589" Y="0.7797" />
-                            <FileData Type="Normal" Path="BaoMingShowLayer/bigLuanDou.png" Plist="" />
+                            <FileData Type="Normal" Path="BaoMingShowLayer/yuanZheng.png" Plist="" />
                           </AbstractNodeData>
                           <AbstractNodeData Name="timeTiShi1" ActionTag="-1478259780" Tag="12" IconVisible="False" LeftMargin="224.6652" RightMargin="-3.6652" TopMargin="13.4145" BottomMargin="84.5855" FontSize="20" LabelText="123小时16分后开启   " ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                             <Size X="200.0000" Y="20.0000" />
