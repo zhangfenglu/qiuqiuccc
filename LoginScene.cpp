@@ -39,6 +39,7 @@
 //#include "paul/PersonalUI.h"  //��������ϵͳ����
 #include "GameVoice.h"
 #include "LoginningLayer.h"
+#include <time.h>  
 
 //#include "DaTingLayer.h"
 using namespace cocos2d::network;
@@ -2820,9 +2821,18 @@ void LoginLayer::showBaoMingXiangQing()
 	auto xiangqingNode = CSLoader::createNode("BaoMingShowLayer.csb");   //报名详情UI
 	this->addChild(xiangqingNode,20000000);
 
+	auto btnBaoMingClose = (cocos2d::ui::ImageView*)seekNodeByName(xiangqingNode, "btnBaoMingClose");
+	btnBaoMingClose->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			xiangqingNode->removeFromParentAndCleanup(true);
+		}
+	});
+
 	account_info info = Global::getInstance()->GetAccountInfo();
 	//std::string data = "playerid=" + info.playerid;
-	std::string data = "playerid=100916";//暂时写死
+	std::string data = "playerid=100263";//暂时写死
 	std::string url = "http://47.93.50.101:8080/QQWar/expedition/getAllEnrollInfo";
 	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 	{
@@ -2930,8 +2940,46 @@ void LoginLayer::showBaoMingXiangQing()
 					}
 				}
 			}
+
+			backTime = date->valueFloat;
 		}
 
+			struct tm *tm;
+			time_t timep = backTime;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+			time(&timep);
+#else
+			struct timeval tv;
+			gettimeofday(&tv, NULL);
+			timep = tv.tv_sec;
+#endif
+
+			tm = localtime(&timep);
+			int year = tm->tm_year + 1900;
+			int month = tm->tm_mon + 1;
+			int day = tm->tm_mday;
+			int hour = tm->tm_hour;
+			int minute = tm->tm_min;
+			int second = tm->tm_sec;
+			int xingqi = tm->tm_wday + 1;
+
+			log("year:%d month:%d day:%d xingqi:%d", year, month, day,xingqi);
+			log("hour:%d minute:%d second:%d", hour, minute, second);
+
+			Json* root1 = ReadJson("tishi.json");
+			Json* kaiqishijian = Json_getItem(root1, "kaiqishijian");
+			Json* meitian = Json_getItem(root1, "meitian");
+			Json* xingqiyi = Json_getItem(root1, "xingqiyi");
+			Json* xingqier = Json_getItem(root1, "xingqier");
+			Json* xingqisan = Json_getItem(root1, "xingqisan");
+			Json* xingqisi = Json_getItem(root1, "xingqisi");
+			Json* xingqiwu = Json_getItem(root1, "xingqiwu");
+			Json* xingqiliu = Json_getItem(root1, "xingqiliu");
+			Json* xingqiri = Json_getItem(root1, "xingqiri");
+			Json* xiaoshi = Json_getItem(root1, "xiaoshi");
+			Json* fenhoukaiqi = Json_getItem(root1, "fenhoukaiqi");
+			Json* kaiqihaicha = Json_getItem(root1, "kaiqihaicha");
+			Json* ren = Json_getItem(root1, "ren");
 		//加入到 滑动ui
 
 		for (int i = 0; i < baomingXiangQingInfos.size(); i++)
@@ -2941,9 +2989,172 @@ void LoginLayer::showBaoMingXiangQing()
 			ScrollView->addChild(cloneList);
 			cloneList->setPosition(ccp(rongqiX, rongqiY - rongqiWidth * i));
 
-			//auto icon = (cocos2d::ui::ImageView*)cloneList->getChildByName("icon");
-			//std::string iconPath = baomingXiangQingInfos.at(i)
-			//icon->loadTexture("");
+			//每一条数据
+			int aid = baomingXiangQingInfos.at(i).aid;
+			xiangQing_Info xiangInfo =  getXiangQingInfoByAid(aid);
+			std::string iconPath = "BaoMingShowLayer\\icon\\" + xiangInfo.icon;
+			std::string wordsPicPath = "BaoMingShowLayer\\wordsPic\\" + xiangInfo.wordsPic;
+			uint32_t startGameTime = xiangInfo.statGameTime;
+			uint32_t whatDay = xiangInfo.whatDay;
+
+			uint32_t shiTime = startGameTime / 60;
+			uint32_t fenTime = startGameTime % 60;
+
+			//结算时间
+			uint32_t jiesuanTime = xiangInfo.jiesuanTime;
+			uint32_t shiTime1 = jiesuanTime / 60;
+			uint32_t fenTime1 = jiesuanTime % 60;
+
+			std::string tishi2 = kaiqishijian->valueString;
+			if (whatDay == 0)
+			{
+				tishi2 += meitian->valueString;
+			}
+			else if (whatDay == 1)
+			{
+				tishi2 += xingqiyi->valueString;
+			}
+			else if (whatDay == 2)
+			{
+				tishi2 += xingqier->valueString;
+			}
+			else if (whatDay == 3)
+			{
+				tishi2 += xingqisan->valueString;
+			}
+			else if (whatDay == 4)
+			{
+				tishi2 += xingqisi->valueString;
+			}
+			else if (whatDay == 5)
+			{
+				tishi2 += xingqiwu->valueString;
+			}
+			else if (whatDay == 6)
+			{
+				tishi2 += xingqiliu->valueString;
+			}
+			else if (whatDay == 7)
+			{
+				tishi2 += xingqiri->valueString;
+			}
+			std::ostringstream shijian;
+			shijian.clear();
+			if (fenTime == 0)
+			{
+				shijian << shiTime << ":0" << fenTime;
+			}else
+				shijian << shiTime << ":" << fenTime;
+
+			tishi2 += shijian.str();
+			auto icon = (cocos2d::ui::ImageView*)cloneList->getChildByName("icon");
+			icon->loadTexture(iconPath.c_str());
+			auto words = (cocos2d::ui::ImageView*)cloneList->getChildByName("words");
+			words->loadTexture(wordsPicPath.c_str());
+
+			auto timeTiShi2 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi2");
+			timeTiShi2->setText(tishi2.c_str());
+
+
+			if (baomingXiangQingInfos.at(i).state == 1)
+			{
+
+				//求剩余开启时间
+				uint32_t shengTianTime = 0;
+				if (whatDay > 0)
+				{
+					if (whatDay > xingqi)
+						shengTianTime = whatDay - xingqi;
+					else
+						shengTianTime = whatDay + 7 - xingqi;
+				}
+				uint32_t shengShiTime = shiTime - hour;
+				uint32_t shengFenTime = 0;
+				if (shengTianTime > 0)
+				{
+					shengFenTime += 24 * shengTianTime;
+				}
+
+				if (fenTime < minute)
+				{
+					shengShiTime -= 1;
+					shengFenTime = fenTime + 60 - minute;
+				}
+				else
+				{
+					shengFenTime = fenTime - minute;
+				}
+				std::string xiaoshiStr = xiaoshi->valueString;
+				std::ostringstream shijian1;
+				shijian1.clear();
+				shijian1 << shengShiTime << xiaoshiStr.c_str() << shengFenTime << fenhoukaiqi->valueString;
+
+				auto timeTiShi1 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi1");
+				timeTiShi1->setText(shijian1.str().c_str());
+
+			}
+			else
+			{
+				baomingYuanAndLuan_Info info = LoginLayer::getBaoMingNumByAid(aid);
+				//报名总人数 
+				int num = info.ranks;
+				//报名排名
+				int rank = baomingXiangQingInfos.at(i).rank;
+				//需要开房人数
+				int kaiFangNum = xiangInfo.playerNum;
+				if ((num - floor(rank / kaiFangNum) * kaiFangNum) < kaiFangNum)
+				{
+					std::ostringstream xuyaoNumStr;
+					xuyaoNumStr.clear();
+					xuyaoNumStr << (kaiFangNum - (num - floor(rank / kaiFangNum) * kaiFangNum));
+
+					std::string str = kaiqihaicha->valueString + xuyaoNumStr.str() + ren->valueString;
+					auto timeTiShi1 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi1");
+					timeTiShi1->setText(str.c_str());
+				}
+				else
+				{
+					//求剩余开启时间
+					uint32_t shengTianTime = 0;
+					if (whatDay > 0)
+					{
+						if (whatDay > xingqi)
+							shengTianTime = whatDay - xingqi;
+						else
+							shengTianTime = whatDay + 7 - xingqi;
+					}
+					uint32_t shengShiTime = shiTime1 - hour;
+					uint32_t shengFenTime = 0;
+					if (shengTianTime > 0)
+					{
+						shengFenTime += 24 * shengTianTime;
+					}
+
+					if (fenTime1 < minute)
+					{
+						shengShiTime -= 1;
+						shengFenTime = fenTime1 + 60 - minute;
+					}
+					else
+					{
+						shengFenTime = fenTime1 - minute;
+					}
+					std::string xiaoshiStr = xiaoshi->valueString;
+					std::ostringstream shijian1;
+					shijian1.clear();
+					shijian1 << shengShiTime << xiaoshiStr.c_str() << shengFenTime << fenhoukaiqi->valueString;
+
+					auto timeTiShi1 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi1");
+					timeTiShi1->setText(shijian1.str().c_str());
+				}
+
+			}
+
+
+
+
+
+
 
 		}
 
@@ -2954,22 +3165,167 @@ void LoginLayer::showBaoMingXiangQing()
 			ScrollView->addChild(cloneList);
 			cloneList->setPosition(ccp(rongqiX, rongqiY - rongqiWidth * baomingXiangQingInfos.size() - rongqiWidth * i));
 
-			//auto icon = (cocos2d::ui::ImageView*)cloneList->getChildByName("icon");
-			//std::string iconPath = baomingXiangQingInfos.at(i)
-			//icon->loadTexture("");
+			int aid = daluandouXiangQingInfos.at(i).aid;
+			xiangQing_Info xiangInfo = getXiangQingInfoByAid(aid);
+			std::string iconPath = "BaoMingShowLayer\\icon\\" + xiangInfo.icon;
+			std::string wordsPicPath = "BaoMingShowLayer\\wordsPic\\" + xiangInfo.wordsPic;
+			uint32_t startGameTime = xiangInfo.statGameTime;
+			uint32_t whatDay = xiangInfo.whatDay;
+
+			uint32_t shiTime = startGameTime / 60;
+			uint32_t fenTime = startGameTime % 60;
+
+
+			/*int year = tm->tm_year + 1900;
+			int month = tm->tm_mon + 1;
+			int day = tm->tm_mday;
+			int hour = tm->tm_hour;
+			int minute = tm->tm_min;
+			int second = tm->tm_sec;
+			int xingqi = tm->tm_wday + 1;*/
+			//求剩余开启时间
+			uint32_t shengTianTime = 0;
+			if (whatDay > 0)
+			{
+				if (whatDay > xingqi)
+					shengTianTime = whatDay - xingqi;
+				else 
+					shengTianTime = whatDay + 7 - xingqi;
+			}
+			uint32_t shengShiTime = shiTime - hour;
+			uint32_t shengFenTime = 0;
+			if (shengTianTime > 0)
+			{
+				shengFenTime += 24 * shengTianTime;
+			}
+
+			if (fenTime < minute)
+			{
+				shengShiTime -= 1;
+				shengFenTime = fenTime + 60- minute;
+			}
+			else
+			{
+				shengFenTime = fenTime - minute;
+			}
+			std::string xiaoshiStr = xiaoshi->valueString;
+			std::ostringstream shijian1;
+			shijian1.clear();
+			shijian1 << shengShiTime << xiaoshiStr.c_str() << shengFenTime << fenhoukaiqi->valueString;
+			
+
+
+			std::string tishi2 = kaiqishijian->valueString;
+			if (whatDay == 0)
+			{
+				tishi2 += meitian->valueString;
+			}
+			else if (whatDay == 1)
+			{
+				tishi2 += xingqiyi->valueString;
+			}
+			else if (whatDay == 2)
+			{
+				tishi2 += xingqier->valueString;
+			}
+			else if (whatDay == 3)
+			{
+				tishi2 += xingqisan->valueString;
+			}
+			else if (whatDay == 4)
+			{
+				tishi2 += xingqisi->valueString;
+			}
+			else if (whatDay == 5)
+			{
+				tishi2 += xingqiwu->valueString;
+			}
+			else if (whatDay == 6)
+			{
+				tishi2 += xingqiliu->valueString;
+			}
+			else if (whatDay == 7)
+			{
+				tishi2 += xingqiri->valueString;
+			}
+			std::ostringstream shijian;
+			shijian.clear();
+			if (fenTime == 0)
+			{
+				shijian << shiTime << ":0" << fenTime;
+			}
+			else
+				shijian << shiTime << ":" << fenTime;
+
+			tishi2 += shijian.str();
+			auto icon = (cocos2d::ui::ImageView*)cloneList->getChildByName("icon");
+			icon->loadTexture(iconPath.c_str());
+			auto words = (cocos2d::ui::ImageView*)cloneList->getChildByName("words");
+			words->loadTexture(wordsPicPath.c_str());
+
+			auto timeTiShi2 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi2");
+			timeTiShi2->setText(tishi2.c_str());
+
+			auto timeTiShi1 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi1");
+			timeTiShi1->setText(shijian1.str().c_str());
 
 		}
-		ScrollView->setInnerContainerSize(Size(rongqi->getContentSize().width + 4, rongqi->getContentSize().height* (baomingXiangQingInfos.size() + daluandouXiangQingInfos.size() + 1)));
+		//ScrollView->setInnerContainerSize(Size(rongqi->getContentSize().width + 4, rongqi->getContentSize().height* (baomingXiangQingInfos.size() + daluandouXiangQingInfos.size() + 1)));
 
 
 
 	}, "getBaoMingXiangQing");
 }
 
-void LoginLayer::showBaoMingXiangQing(std::string aid)
+xiangQing_Info LoginLayer::getXiangQingInfoByAid(int aid)
 {
 	xiangQing_Info xiangQingInfo;
+	Json* root = ReadJson("baoming.json");
+	std::ostringstream ss;
+	ss.clear();
+	ss << aid;
+	//std::string aidStr = "" + aid;
+	Json* xiangQing = Json_getItem(root, ss.str().c_str());//每个详情数据库
 
+	Json* name = Json_getItem(xiangQing, "name");
+	Json* desc = Json_getItem(xiangQing, "desc");
+	Json* icon = Json_getItem(xiangQing, "icon");
+	Json* wordsPic = Json_getItem(xiangQing, "wordsPic");
+	Json* playerNum = Json_getItem(xiangQing, "playerNum");
+	Json* jiesuanTime = Json_getItem(xiangQing, "jiesuanTime");
+	Json* statGameTime = Json_getItem(xiangQing, "statGameTime");
+	Json* whatDay = Json_getItem(xiangQing, "whatDay");
+
+
+	xiangQingInfo.aid = aid;
+	xiangQingInfo.name = name->valueString;
+	xiangQingInfo.desc = desc->valueString;
+	xiangQingInfo.icon = icon->valueString;
+	xiangQingInfo.wordsPic = wordsPic->valueString;
+	xiangQingInfo.playerNum = playerNum->valueInt;
+	if (jiesuanTime)
+	{
+		xiangQingInfo.jiesuanTime = jiesuanTime->valueInt;
+	}
+	xiangQingInfo.statGameTime = statGameTime->valueInt;
+	xiangQingInfo.whatDay = whatDay->valueInt;
+
+	return xiangQingInfo;
+
+}
+
+baomingYuanAndLuan_Info LoginLayer::getBaoMingNumByAid(int aid)
+{
+	
+	baomingYuanAndLuan_Info info;
+	for (int i = 0; i < yuanAndLuanInfos.size();i++)
+	{
+		info = yuanAndLuanInfos.at(i);
+		if (info.id == aid)
+		{
+			return info;
+		}
+	}
 }
 
 //�ϲ�������--0924--ע������� end======================================================================

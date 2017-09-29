@@ -337,7 +337,7 @@ struct xiangQing_Info
 		desc = "";
 		icon = "";
 		wordsPic = "";
-		aid = "";
+		aid = 0;
 		whatDay = 0;
 		playerNum = 0;
 		jiesuanTime = 0;
@@ -347,7 +347,7 @@ struct xiangQing_Info
 	std::string			  desc;
 	std::string           icon;
 	std::string			  wordsPic;
-	std::string			  aid;
+	uint32_t			  aid;
 	uint32_t			  whatDay;
 	uint32_t			  playerNum;
 	uint32_t			  jiesuanTime;//大乱斗没有此数据

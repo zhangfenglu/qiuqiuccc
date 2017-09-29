@@ -53,8 +53,13 @@ public:
 	//通过段位获取 段位名称 段位图标
 	void getDuanWeiInfoByIndex(int index);
 	//报名详情
-	void showBaoMingXiangQing(std::string aid);
+	void showBaoMingXiangQing();
 
+	//根据竞技场或大乱斗 aid 得到 详情界面的数据
+	xiangQing_Info getXiangQingInfoByAid(int aid);
+
+	//根据 aid 获取该 赛场的 报名总数
+	baomingYuanAndLuan_Info getBaoMingNumByAid(int aid);
 
 
 	void NextScene(Ref* pSender); //游戏开始
@@ -105,6 +110,8 @@ private:
 	std::vector<yuanZhengBaoMingXiangQing_Info> baomingXiangQingInfos; //远征报名详情
 	std::vector<daLuanDouXiangQing_Info> daluandouXiangQingInfos;//大乱斗报名详情
 	std::vector<baomingYuanAndLuan_Info> yuanAndLuanInfos;//所有报名 数量信息
+	long long int backTime;
+
 	Node* rootNode; //大厅                  //合并代码用--0924--注册与组队 start=========================
 	Node* rootGameSettingNode;
 
