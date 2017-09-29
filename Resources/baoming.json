@@ -1,0 +1,506 @@
+{
+    "1200101": 
+        {
+        "name": "1星远征(12点)",
+        "desc": "报名的中午12点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 660,
+        "statGameTime": 720,
+        "whatDay": 0,        
+        "icon":"xing1.png",
+        "wordsPic":"xing1.png"   
+        },
+     "1200102": 
+        {
+        "name": "2星远征(12点)",
+        "desc": "报名的中午12点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 660,
+        "statGameTime": 730,
+        "whatDay": 0,        
+        "icon":"xing2.png",
+        "wordsPic":"xing2.png"   
+        },
+    "1200103": 
+        {
+       "name": "3星远征(12点)",
+        "desc": "报名的中午12点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 660,
+        "statGameTime": 740,
+        "whatDay": 0,        
+        "icon":"xing3.png",
+        "wordsPic":"xing3.png"   
+        },
+    "1200104": 
+        {
+       "name": "4星远征(12点)",
+        "desc": "报名的中午12点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 660,
+        "statGameTime": 750,
+        "whatDay": 0,        
+        "icon":"xing4.png",
+        "wordsPic":"xing4.png"   
+        },
+    "1200105": 
+        {
+        "name": "5星远征(12点)",
+        "desc": "报名的中午12点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 660,
+        "statGameTime": 760,
+        "whatDay": 0,        
+        "icon":"xing5.png",
+        "wordsPic":"xing5.png" 
+        },
+     "1200106": 
+        {
+        "name": "6星远征(12点)",
+        "desc": "报名的中午12点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 660,
+        "statGameTime": 770,
+        "whatDay": 0,        
+        "icon":"xing6.png",
+        "wordsPic":"xing6.png" 
+        },
+     "1800101": 
+        {
+        "name": "1星远征(18点)",
+        "desc": "报名的中午18点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1020,
+        "statGameTime": 1020,
+        "whatDay": 0,        
+        "icon":"xing1.png",
+        "wordsPic":"xing1.png"   
+        },
+     "1800102": 
+        {
+       "name": "2星远征(18点)",
+        "desc": "报名的中午18点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1020,
+        "statGameTime": 1030,
+        "whatDay": 0,        
+        "icon":"xing2.png",
+        "wordsPic":"xing2.png"   
+        },
+     "1800103": 
+        {
+        "name": "3星远征(18点)",
+        "desc": "报名的中午18点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1020,
+        "statGameTime": 1040,
+        "whatDay": 0,        
+        "icon":"xing3.png",
+        "wordsPic":"xing3.png"   
+        },
+    "1800104": 
+        {
+        "name": "4星远征(18点)",
+        "desc": "报名的中午18点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1020,
+        "statGameTime": 1050,
+        "whatDay": 0,        
+        "icon":"xing4.png",
+        "wordsPic":"xing4.png"   
+        }, 
+    "1800105": 
+        {
+        "name": "5星远征(18点)",
+        "desc": "报名的中午18点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1020,
+        "statGameTime": 1060,
+        "whatDay": 0,        
+        "icon":"xing5.png",
+        "wordsPic":"xing5.png"     
+        },  
+    "1800106": 
+        {
+        "name": "6星远征(18点)",
+        "desc": "报名的中午18点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1020,
+        "statGameTime": 1070,
+        "whatDay": 0,        
+        "icon":"xing6.png",
+        "wordsPic":"xing6.png"   
+        },  
+    "2000101": 
+        {
+        "name": "1星远征(20点)",
+        "desc": "报名的中午20点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1140,
+        "statGameTime": 1140,
+        "whatDay": 0,        
+        "icon":"xing1.png",
+        "wordsPic":"xing1.png"   
+        },  
+    "2000102": 
+        {
+        "name": "2星远征(20点)",
+        "desc": "报名的中午20点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1140,
+        "statGameTime": 1150,
+        "whatDay": 0,        
+        "icon":"xing2.png",
+        "wordsPic":"xing2.png"   
+        },  
+    "2000103": 
+        {
+        "name": "3星远征(20点)",
+        "desc": "报名的中午20点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1140,
+        "statGameTime": 1160,
+        "whatDay": 0,        
+        "icon":"xing3.png",
+        "wordsPic":"xing3.png"  
+        },
+    "2000104": 
+        {
+       "name": "4星远征(20点)",
+        "desc": "报名的中午20点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1140,
+        "statGameTime": 1170,
+        "whatDay": 0,        
+        "icon":"xing4.png",
+        "wordsPic":"xing4.png"  
+        },
+    "2000105": 
+        {
+       "name": "5星远征(20点)",
+        "desc": "报名的中午20点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1140,
+        "statGameTime": 1180,
+        "whatDay": 0,        
+        "icon":"xing5.png",
+        "wordsPic":"xing5.png"  
+        },
+    "2000106": 
+        {
+       "name": "6星远征(20点)",
+        "desc": "报名的中午20点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1140,
+        "statGameTime": 1190,
+        "whatDay": 0,        
+        "icon":"xing6.png",
+        "wordsPic":"xing6.png"  
+        },
+    "2200101": 
+        {
+       "name": "1星远征(22点)",
+        "desc": "报名的中午22点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1260,
+        "statGameTime": 1260,
+        "whatDay": 0,        
+        "icon":"xing1.png",
+        "wordsPic":"xing1.png"   
+        },
+    "2200102": 
+        {
+        "name": "2星远征(22点)",
+        "desc": "报名的中午22点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1260,
+        "statGameTime": 1270,
+        "whatDay": 0,        
+        "icon":"xing2.png",
+        "wordsPic":"xing2.png"   
+        },
+    "2200103": 
+        {
+        "name": "3星远征(22点)",
+        "desc": "报名的中午22点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1260,
+        "statGameTime": 1280,
+        "whatDay": 0,        
+        "icon":"xing3.png",
+        "wordsPic":"xing3.png"   
+        },
+    "2200104": 
+        {
+         "name": "4星远征(22点)",
+        "desc": "报名的中午22点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1260,
+        "statGameTime": 1290,
+        "whatDay": 0,        
+        "icon":"xing4.png",
+        "wordsPic":"xing4.png"   
+        },
+    "2200105": 
+        {
+        "name": "5星远征(22点)",
+        "desc": "报名的中午22点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1260,
+        "statGameTime": 1300,
+        "whatDay": 0,        
+        "icon":"xing5.png",
+        "wordsPic":"xing5.png"   
+        },
+    "2200106": 
+        {
+        "name": "6星远征(22点)",
+        "desc": "报名的中午22点段开启的竞技场",
+        "playerNum": 50,
+        "jiesuanTime": 1260,
+        "statGameTime": 1310,
+        "whatDay": 0,        
+        "icon":"xing6.png",
+        "wordsPic":"xing6.png"   
+        },
+     "881201": 
+        {
+        "name": "201级大乱斗（星期1开启）",
+        "desc": "星期1开启的",
+        "playerNum": 50,
+        "statGameTime": 780,
+        "whatDay": 1,        
+        "icon":"luan1.png",
+        "wordsPic":"luan1.png"   
+        },
+     "881202": 
+        {
+       "name": "202级大乱斗（星期1开启）",
+        "desc": "星期1开启的",
+        "playerNum": 50,
+        "statGameTime": 840,
+        "whatDay": 1,        
+        "icon":"luan2.png",
+        "wordsPic":"luan2.png"  
+        },
+      "881203": 
+        {
+        "name": "203级大乱斗（星期1开启）",
+        "desc": "星期1开启的",
+        "playerNum": 50,
+        "statGameTime": 900,
+        "whatDay": 1,        
+        "icon":"luan3.png",
+        "wordsPic":"luan3.png"   
+        },
+     "881204": 
+        {
+        "name": "204级大乱斗（星期1开启）",
+        "desc": "星期1开启的",
+        "playerNum": 50,
+        "statGameTime": 960,
+        "whatDay": 1,        
+        "icon":"luan4.png",
+        "wordsPic":"luan4.png"     
+        },
+     "881205": 
+        {
+        "name": "205级大乱斗（星期1开启）",
+        "desc": "星期1开启的",
+        "playerNum": 50,
+        "statGameTime": 1020,
+        "whatDay": 1,        
+        "icon":"luan5.png",
+        "wordsPic":"luan5.png"   
+        },
+     "882100": 
+        {
+        "name": "100级大乱斗（星期2开启）",
+        "desc": "星期2开启的",
+        "playerNum": 50,
+        "statGameTime": 810,
+        "whatDay": 2,        
+        "icon":"luan6.png",
+        "wordsPic":"luan6.png"    
+        },
+     "883201": 
+        {
+        "name": "201级大乱斗（星期3开启）",
+        "desc": "星期3开启的",
+        "playerNum": 50,
+        "statGameTime": 780,
+        "whatDay": 3,        
+        "icon":"luan1.png",
+        "wordsPic":"luan1.png" 
+        },
+     "883202": 
+        {
+        "name": "202级大乱斗（星期3开启）",
+        "desc": "星期3开启的",
+        "playerNum": 50,
+        "statGameTime": 840,
+        "whatDay": 3,        
+        "icon":"luan2.png",
+        "wordsPic":"luan2.png" 
+        },
+     "883203": 
+        {
+       "name": "203级大乱斗（星期3开启）",
+        "desc": "星期3开启的",
+        "playerNum": 50,
+        "statGameTime": 900,
+        "whatDay": 3,        
+        "icon":"luan3.png",
+        "wordsPic":"luan3.png"  
+        },
+     "883204": 
+        {
+        "name": "204级大乱斗（星期3开启）",
+        "desc": "星期3开启的",
+        "playerNum": 50,
+        "statGameTime": 960,
+        "whatDay": 3,        
+        "icon":"luan4.png",
+        "wordsPic":"luan4.png"  
+        },
+     "883205": 
+        {
+       "name": "205级大乱斗（星期3开启）",
+        "desc": "星期3开启的",
+        "playerNum": 50,
+        "statGameTime": 1020,
+        "whatDay": 3,        
+        "icon":"luan5.png",
+        "wordsPic":"luan5.png"  
+        },
+     "884100": 
+        {
+        "name": "100级大乱斗（星期4开启）",
+        "desc": "星期4开启的",
+        "playerNum": 50,
+        "statGameTime": 810,
+        "whatDay": 4,        
+        "icon":"luan6.png",
+        "wordsPic":"luan6.png"   
+        },
+     "885201": 
+        {
+        "name": "201级大乱斗（星期5开启）",
+        "desc": "星期5开启的",
+        "playerNum": 50,
+        "statGameTime": 780,
+        "whatDay": 5,        
+        "icon":"luan1.png",
+        "wordsPic":"luan1.png" 
+        },
+     "885202": 
+        {
+         "name": "202级大乱斗（星期5开启）",
+        "desc": "星期5开启的",
+        "playerNum": 50,
+        "statGameTime": 780,
+        "whatDay": 5,        
+        "icon":"luan2.png",
+        "wordsPic":"luan2.png" 
+        },
+     "885203": 
+        {
+         "name": "203级大乱斗（星期5开启）",
+        "desc": "星期5开启的",
+        "playerNum": 50,
+        "statGameTime": 840,
+        "whatDay": 5,        
+        "icon":"luan3.png",
+        "wordsPic":"luan3.png" 
+        },
+     "885204": 
+        {
+         "name": "204级大乱斗（星期5开启）",
+        "desc": "星期5开启的",
+        "playerNum": 50,
+        "statGameTime": 900,
+        "whatDay": 5,        
+        "icon":"luan4.png",
+        "wordsPic":"luan4.png" 
+        },
+     "885205": 
+        {
+        "name": "205级大乱斗（星期5开启）",
+        "desc": "星期5开启的",
+        "playerNum": 50,
+        "statGameTime": 960,
+        "whatDay": 5,        
+        "icon":"luan5.png",
+        "wordsPic":"luan5.png" 
+        },
+     "886100": 
+        {
+         "name": "100级大乱斗（星期6开启）",
+        "desc": "星期6开启的",
+        "playerNum": 50,
+        "statGameTime": 810,
+        "whatDay": 6,        
+        "icon":"luan6.png",
+        "wordsPic":"luan6.png"     
+        },
+     "887201": 
+        {
+        "name": "201级大乱斗（星期7开启）",
+        "desc": "星期7开启的",
+        "playerNum": 50,
+        "statGameTime": 780,
+        "whatDay": 7,        
+        "icon":"luan1.png",
+        "wordsPic":"luan1.png" 
+        },
+     "887202": 
+        {
+        "name": "202级大乱斗（星期7开启）",
+        "desc": "星期7开启的",
+        "playerNum": 50,
+        "statGameTime": 840,
+        "whatDay": 7,        
+        "icon":"luan2.png",
+        "wordsPic":"luan2.png" 
+        },
+     "887203": 
+        {
+        "name": "203级大乱斗（星期7开启）",
+        "desc": "星期7开启的",
+        "playerNum": 50,
+        "statGameTime": 900,
+        "whatDay": 7,        
+        "icon":"luan3.png",
+        "wordsPic":"luan3.png" 
+        },
+     "887204": 
+        {
+        "name": "204级大乱斗（星期7开启）",
+        "desc": "星期7开启的",
+        "playerNum": 50,
+        "statGameTime": 960,
+        "whatDay": 7,        
+        "icon":"luan4.png",
+        "wordsPic":"luan4.png" 
+        },
+     "887205": 
+        {
+         "name": "205级大乱斗（星期7开启）",
+        "desc": "星期7开启的",
+        "playerNum": 50,
+        "statGameTime": 1020,
+        "whatDay": 7,        
+        "icon":"luan5.png",
+        "wordsPic":"luan5.png" 
+        },
+     "887100": 
+        {
+        "name": "100级大乱斗（星期7开启）",
+        "desc": "星期4开启的",
+        "playerNum": 50,
+        "statGameTime": 810,
+        "whatDay": 7,        
+        "icon":"luan6.png",
+        "wordsPic":"luan6.png"   
+        }
+}
