@@ -22,19 +22,19 @@
               <AbstractNodeData Name="baomingBg" ActionTag="2038168009" Tag="3" IconVisible="False" LeftMargin="134.0585" RightMargin="579.9415" TopMargin="67.5696" BottomMargin="67.4304" LeftEage="186" RightEage="186" TopEage="193" BottomEage="193" Scale9OriginX="186" Scale9OriginY="193" Scale9Width="194" Scale9Height="199" ctype="ImageViewObjectData">
                 <Size X="566.0000" Y="585.0000" />
                 <Children>
-                  <AbstractNodeData Name="ScrollView" ActionTag="2114688808" Tag="9" IconVisible="False" LeftMargin="64.8376" RightMargin="61.1624" TopMargin="84.8927" BottomMargin="30.1073" TouchEnable="True" ClipAble="True" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
+                  <AbstractNodeData Name="ScrollView" ActionTag="2114688808" Tag="9" IconVisible="False" LeftMargin="64.8376" RightMargin="61.1624" TopMargin="84.8927" BottomMargin="30.1073" TouchEnable="True" ClipAble="True" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" IsBounceEnabled="True" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
                     <Size X="440.0000" Y="470.0000" />
                     <Children>
-                      <AbstractNodeData Name="rongqi" ActionTag="-1268986883" Tag="10" IconVisible="False" LeftMargin="8.5984" RightMargin="10.4016" TopMargin="5.5271" BottomMargin="876.4729" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" LeftEage="138" RightEage="138" TopEage="38" BottomEage="38" Scale9OriginX="138" Scale9OriginY="38" Scale9Width="145" Scale9Height="42" ctype="PanelObjectData">
+                      <AbstractNodeData Name="rongqi" ActionTag="-1268986883" Tag="10" IconVisible="False" LeftMargin="5.4176" RightMargin="13.5824" TopMargin="5.8464" BottomMargin="1676.1536" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" LeftEage="138" RightEage="138" TopEage="38" BottomEage="38" Scale9OriginX="138" Scale9OriginY="38" Scale9Width="145" Scale9Height="42" ctype="PanelObjectData">
                         <Size X="421.0000" Y="118.0000" />
                         <Children>
-                          <AbstractNodeData Name="icon" ActionTag="1490372528" Tag="11" IconVisible="False" LeftMargin="23.1548" RightMargin="288.8452" TopMargin="9.6062" BottomMargin="16.3938" LeftEage="35" RightEage="35" TopEage="30" BottomEage="30" Scale9OriginX="35" Scale9OriginY="30" Scale9Width="39" Scale9Height="32" ctype="ImageViewObjectData">
+                          <AbstractNodeData Name="icon" ActionTag="1490372528" Tag="11" IconVisible="False" LeftMargin="23.1548" RightMargin="288.8452" TopMargin="9.6100" BottomMargin="16.3900" LeftEage="35" RightEage="35" TopEage="30" BottomEage="30" Scale9OriginX="35" Scale9OriginY="30" Scale9Width="39" Scale9Height="32" ctype="ImageViewObjectData">
                             <Size X="109.0000" Y="92.0000" />
                             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                            <Position X="77.6548" Y="62.3938" />
+                            <Position X="77.6548" Y="62.3900" />
                             <Scale ScaleX="1.0000" ScaleY="1.0000" />
                             <CColor A="255" R="255" G="255" B="255" />
-                            <PrePosition X="0.1845" Y="0.5288" />
+                            <PrePosition X="0.1845" Y="0.5287" />
                             <PreSize X="0.2589" Y="0.7797" />
                             <FileData Type="Normal" Path="BaoMingShowLayer/yuanZheng.png" Plist="" />
                           </AbstractNodeData>
@@ -60,17 +60,6 @@
                             <OutlineColor A="255" R="255" G="0" B="0" />
                             <ShadowColor A="255" R="110" G="110" B="110" />
                           </AbstractNodeData>
-                          <AbstractNodeData Name="baomingTitle" ActionTag="-491427013" Tag="14" IconVisible="False" LeftMargin="156.0491" RightMargin="56.9509" TopMargin="38.9603" BottomMargin="46.0397" FontSize="32" LabelText="201级大乱斗  " ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                            <Size X="208.0000" Y="33.0000" />
-                            <AnchorPoint ScaleY="0.5000" />
-                            <Position X="156.0491" Y="62.5397" />
-                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                            <CColor A="255" R="165" G="42" B="42" />
-                            <PrePosition X="0.3707" Y="0.5300" />
-                            <PreSize X="0.4941" Y="0.2797" />
-                            <OutlineColor A="255" R="255" G="0" B="0" />
-                            <ShadowColor A="255" R="110" G="110" B="110" />
-                          </AbstractNodeData>
                           <AbstractNodeData Name="baomingBtn" ActionTag="-2000734847" Tag="12" IconVisible="False" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="3" RightEage="3" TopEage="3" BottomEage="3" Scale9OriginX="3" Scale9OriginY="3" Scale9Width="4" Scale9Height="4" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                             <Size X="421.0000" Y="118.0000" />
                             <AnchorPoint />
@@ -86,12 +75,22 @@
                             <OutlineColor A="255" R="255" G="0" B="0" />
                             <ShadowColor A="255" R="110" G="110" B="110" />
                           </AbstractNodeData>
+                          <AbstractNodeData Name="words" ActionTag="293749704" Tag="13" IconVisible="False" LeftMargin="153.9933" RightMargin="121.0067" TopMargin="41.3848" BottomMargin="47.6152" LeftEage="35" RightEage="35" TopEage="9" BottomEage="9" Scale9OriginX="35" Scale9OriginY="9" Scale9Width="76" Scale9Height="11" ctype="ImageViewObjectData">
+                            <Size X="146.0000" Y="29.0000" />
+                            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                            <Position X="226.9933" Y="62.1152" />
+                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                            <CColor A="255" R="255" G="255" B="255" />
+                            <PrePosition X="0.5392" Y="0.5264" />
+                            <PreSize X="0.3468" Y="0.2458" />
+                            <FileData Type="Normal" Path="BaoMingShowLayer/luan1.png" Plist="" />
+                          </AbstractNodeData>
                         </Children>
                         <AnchorPoint />
-                        <Position X="8.5984" Y="876.4729" />
+                        <Position X="5.4176" Y="1676.1536" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.0195" Y="0.8765" />
+                        <PrePosition X="0.0123" Y="0.9312" />
                         <PreSize X="0.9568" Y="0.1180" />
                         <FileData Type="Normal" Path="BaoMingShowLayer/biaoTiBg.png" Plist="" />
                         <SingleColor A="255" R="150" G="200" B="255" />
@@ -110,7 +109,7 @@
                     <FirstColor A="255" R="255" G="150" B="100" />
                     <EndColor A="255" R="255" G="255" B="255" />
                     <ColorVector ScaleY="1.0000" />
-                    <InnerNodeSize Width="440" Height="1000" />
+                    <InnerNodeSize Width="440" Height="1800" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

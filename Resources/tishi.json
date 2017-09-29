@@ -20,5 +20,18 @@
     "youketishi":"提示：您当前为游客账号，请尽快绑定。",
     "zhangshizhanghao":"提示：您当前为正式账号，请尽快绑定邮箱。",
     "anquanzhanghao":"提示：您当前为正式账号，已绑定邮箱请,你的账号级别为安全。",
-    "yibangdingzhanghao":"不能重复绑定邮箱"
+    "yibangdingzhanghao":"不能重复绑定邮箱",
+    "meitian":"每天",
+    "xingqiyi":"星期一",
+    "xingqier":"星期二",
+    "xingqisan":"星期三",
+    "xingqisi":"星期四",
+    "xingqiwu":"星期五",
+    "xingqiliu":"星期六",
+    "xingqiri":"星期日",
+    "kaiqishijian":"开启时间:",
+    "xiaoshi":"小时",
+    "fenhoukaiqi":"分后开启",
+    "kaiqihaicha":"开启还差",
+    "ren":"人"
 }
