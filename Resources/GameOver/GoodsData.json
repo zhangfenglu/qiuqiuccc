@@ -1,0 +1,17 @@
+{
+    "GoodsData":
+    [
+        {"id":1,"name":"金豆","count":10,"Image":"GameOver/tubiao_jindou.png"},
+        {"id":2,"name":"金币","count":10,"Image":"GameOver/tubiao_jinbi.png"},
+        {"id":3,"name":"砖石","count":10,"Image":"GameOver/tubiao_zhuanshi.png"},
+        {"id":11,"name":"1星卷","count":10,"Image":"GameOver/tubiao_1xingjuan.png"},
+        {"id":12,"name":"2星卷","count":10,"Image":"GameOver/tubiao_2xingjuan.png"},
+        {"id":13,"name":"3星卷","count":10,"Image":"GameOver/tubiao_3xingjuan.png"},
+        {"id":14,"name":"4星卷","count":10,"Image":"GameOver/tubiao_4xingjuan.png"},
+        {"id":15,"name":"5星卷","count":10,"Image":"GameOver/tubiao_5xingjuan.png"},
+        {"id":16,"name":"6星卷","count":10,"Image":"GameOver/tubiao_6xingjuan.png"},
+        {"id":17,"name":"7星卷","count":10,"Image":"GameOver/tubiao_7xingjuan.png"},
+		{"id":101,"name":"黄金圣杯","count":10,"Image":"GameOver/tubiao_shengbei.png"},
+		{"id":102,"name":"黄金金球","count":10,"Image":"GameOver/tubiao_jinqiu.png"}
+    ]
+}

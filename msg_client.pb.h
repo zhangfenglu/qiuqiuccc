@@ -1777,20 +1777,30 @@ class UM_Item : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 num() const;
   inline void set_num(::google::protobuf::uint32 value);
 
+  // optional uint32 type = 3;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 3;
+  inline ::google::protobuf::uint32 type() const;
+  inline void set_type(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_Item)
  private:
   inline void set_has_id();
   inline void clear_has_id();
   inline void set_has_num();
   inline void clear_has_num();
+  inline void set_has_type();
+  inline void clear_has_type();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 id_;
   ::google::protobuf::uint32 num_;
+  ::google::protobuf::uint32 type_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_msg_5fclient_2eproto();
   friend void protobuf_AssignDesc_msg_5fclient_2eproto();
@@ -8917,6 +8927,28 @@ inline ::google::protobuf::uint32 UM_Item::num() const {
 inline void UM_Item::set_num(::google::protobuf::uint32 value) {
   set_has_num();
   num_ = value;
+}
+
+// optional uint32 type = 3;
+inline bool UM_Item::has_type() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void UM_Item::set_has_type() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void UM_Item::clear_has_type() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void UM_Item::clear_type() {
+  type_ = 0u;
+  clear_has_type();
+}
+inline ::google::protobuf::uint32 UM_Item::type() const {
+  return type_;
+}
+inline void UM_Item::set_type(::google::protobuf::uint32 value) {
+  set_has_type();
+  type_ = value;
 }
 
 // -------------------------------------------------------------------

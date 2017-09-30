@@ -1,8 +1,8 @@
-ï»¿//
+//
 //  LoginScene.cpp
 //  qiuFight
 //
-//  Created by ï¿½ï¿½Ô¾ï¿½ï¿½ on 16/3/4.
+//  Created by ÕÅÔ¾¶« on 16/3/4.
 //
 //
 
@@ -20,26 +20,24 @@
 #include "Resources.h"
 #include "CurCularNode.h"
 #include "SimpleTools.h"
-//#include "SunNetPublic.h"  //ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½Í¶Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½
-//#include "ByRankLayer.h"  //ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ğ°ï¿½
-//#include "ByFeedback.h"   //ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ğ°ï¿½
-//#include "ByConvertHalo.h"  //ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ğ°ï¿½
-//#include "ByLoginReward.h"   //ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ğ°ï¿½
+//#include "SunNetPublic.h"  //´óÂÒ¶·ºÍ¶Ò»»ÂëÔö¼ÓµÄ
+//#include "ByRankLayer.h"  //ÆßÈÕµÄÅÅĞĞ°ñ
+//#include "ByFeedback.h"   //ÆßÈÕµÄÅÅĞĞ°ñ
+//#include "ByConvertHalo.h"  //ÆßÈÕµÄÅÅĞĞ°ñ
+//#include "ByLoginReward.h"   //ÆßÈÕµÄÅÅĞĞ°ñ
 
-//#include "FriendNetWork.h" //ï¿½ï¿½ÏµÏµÍ³ï¿½ï¿½ï¿½ï¿½
-//#include "json/document.h"  //ï¿½ï¿½ÏµÏµÍ³ï¿½ï¿½ï¿½ï¿½
-//#include "json/rapidjson.h"  //ï¿½ï¿½ÏµÏµÍ³ï¿½ï¿½ï¿½ï¿½
-//using namespace rapidjson; // ï¿½ï¿½ÏµÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½
+//#include "FriendNetWork.h" //¹ØÏµÏµÍ³Ôö¼Ó
+//#include "json/document.h"  //¹ØÏµÏµÍ³Ôö¼Ó
+//#include "json/rapidjson.h"  //¹ØÏµÏµÍ³Ôö¼Ó
+//using namespace rapidjson; // ¹ØÏµÏµÍ³µÄÃüÃû¿Õ¼ä
 
-#include "HttpGetImg.h"     //ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-#include "TimeYuanZhengLayer.h"     //ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-#include "YuanZhengLayer.h"     //ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#include "HttpGetImg.h"     //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó
+#include "TimeYuanZhengLayer.h"     //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó
+#include "YuanZhengLayer.h"     //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó
 
-//#include "StaticData.h"  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
-//#include "paul/PersonalUI.h"  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
+//#include "StaticData.h"  //¸öÈË×ÊÁÏÏµÍ³Ôö¼Ó
+//#include "paul/PersonalUI.h"  //¸öÈË×ÊÁÏÏµÍ³Ôö¼Ó
 #include "GameVoice.h"
-#include "LoginningLayer.h"
-#include <time.h>  
 
 //#include "DaTingLayer.h"
 using namespace cocos2d::network;
@@ -48,28 +46,28 @@ bool LoginLayer::init()
 {
 	if (!Layer::init())
 		return false;
-	rootNode = CSLoader::createNode("DaTingLayer.csb");   //ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start====
+	rootNode = CSLoader::createNode("DaTingLayer.csb");   //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
 
 	addChild(rootNode);
 	rootGameSettingNode = nullptr;
-	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½
+	//³õÊ¼»¯µÇÂ½Êı¾İ
 	initDengLuData();
 	//initUI();
 	initUI1();
 
-	//ï¿½ï¿½È¡ï¿½Â¼ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+	//»ñÈ¡ÊÂ¼ş·Ö·¢Æ÷
 	auto dispatcher = Director::getInstance()->getEventDispatcher();
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã´¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ EventListenerTouchOneByOne
+	//´´½¨µ¥µã´¥Ãş¼àÌıÆ÷ EventListenerTouchOneByOne
 	auto touchListener = EventListenerTouchOneByOne::create();
-	//ï¿½ï¿½ï¿½ã´¥ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Â¼ï¿½ï¿½ï¿½
+	//µ¥µã´¥ÃşÏìÓ¦ÊÂ¼ş°ó¶¨
 	touchListener->onTouchBegan = CC_CALLBACK_2(LoginLayer::onTouchBegan, this);
 	touchListener->onTouchMoved = CC_CALLBACK_2(LoginLayer::onTouchMoved, this);
 	touchListener->onTouchEnded = CC_CALLBACK_2(LoginLayer::onTouchEnded, this);
 	touchListener->onTouchCancelled = CC_CALLBACK_2(LoginLayer::onTouchCancelled, this);
 	touchListener->setSwallowTouches(true);
 
-	//ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ó¦Î¯ï¿½Ğ¸ï¿½ this ï¿½ï¿½ï¿½ï¿½
+	//ÔÚÊÂ¼ş·Ö·¢Æ÷ÖĞ£¬Ìí¼Ó´¥Ãş¼àÌıÆ÷£¬ÊÂ¼şÏìÓ¦Î¯ÍĞ¸ø this ´¦Àí
 	dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 	return true;
 }
@@ -77,24 +75,12 @@ bool LoginLayer::init()
 void LoginLayer::initUI1()
 {
 	//auto rootNode = CSLoader::createNode("DaTingLayer.csb");
-	//rootNode = CSLoader::createNode("DaTingLayer.csb");   //ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start====
+	//rootNode = CSLoader::createNode("DaTingLayer.csb");   //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
 	//
 	//addChild(rootNode);
-
-	//æŠ¥åè¿œå¾è¯¦æƒ…æŒ‰é’®
-	auto btnLuoBo = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "btnLuoBo");
-	btnLuoBo->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
-	{
-		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
-		{
-			GameVoice::getInstance()->playClickBtnVoive();
-			log("baoming xiangqing click======================");
-			showBaoMingXiangQing();
-		}
-	});
 	
-	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg"); //ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start
-	zuduidengdaiBg->setVisible(false); //ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start====
+	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg"); //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start
+	zuduidengdaiBg->setVisible(false); //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
 	
 	CEditBoxTool* edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	edbox->setPosition(Vec2(winSize.width * 0.5f, winSize.height * 0.67));
@@ -115,10 +101,10 @@ void LoginLayer::initUI1()
 		char randName[126] = { 0 };
 		sprintf(randName, "name_%d", nIdex);
 		edbox->setText(Global::getInstance()->getString(randName));
-		CCUserDefault::sharedUserDefault()->setStringForKey("UserName", name.c_str());//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start====
+		CCUserDefault::sharedUserDefault()->setStringForKey("UserName", name.c_str());//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
 	}
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ëæ»úÉú³ÉÃû×Ö
 	cocos2d::ui::Button* resetName = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnRandom");
 	resetName->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -129,7 +115,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ï¿½ï¿½Ï·ï¿½ï¿½Ê¼
+	//ÓÎÏ·¿ªÊ¼
 	cocos2d::ui::Button* loginBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnStatGame");
 	loginBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -160,9 +146,9 @@ void LoginLayer::initUI1()
 	addChild(teamBtn1, 2);
 
 
-	//ï¿½Å¶ï¿½
+	//ÍÅ¶Ó
 
-	//ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+	//Éú´æÄ£Ê½
 	/*Button* liveBtn = Button::createBtnWithSpriteFrameName("live_mode.png", false);
 	liveBtn->setPosition(Vec2(winSize.width * 0.5f + 320, winSize.height * 0.5f - 120));
 	liveBtn->setScale(0.45f);
@@ -170,7 +156,7 @@ void LoginLayer::initUI1()
 	addChild(liveBtn, 2);
 	liveBtn->setVisible(false);*/
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¸öÈËÖĞĞÄ
 	Button* personBtn = Button::createBtnWithSpriteFrameName("personcenter.png", false);
 	personBtn->setPosition(Vec2(270, 60));
 	personBtn->setScale(0.55f);
@@ -179,7 +165,7 @@ void LoginLayer::initUI1()
 	//personBtn->setVisible(false);
 
 
-	//ï¿½ï¿½Ïµ
+	//¹ØÏµ
 	cocos2d::ui::Button* relationBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnGuanXi");
 	relationBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -190,7 +176,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ï¿½Ìµï¿½
+	//ÉÌµê
 	cocos2d::ui::Button* btnHorse = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnHorse");
 	btnHorse->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -201,7 +187,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	// ï¿½ï¿½ï¿½Ğ°ï¿½
+	// ÅÅĞĞ°ñ
 	cocos2d::ui::Button* rankBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnPaiHangBang");
 	rankBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -212,7 +198,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ï¿½ï¿½ï¿½
+	//×é¶Ô
 	Button* magicBtn = Button::createBtnWithSpriteFrameName("magichouse.png", false);
 	magicBtn->setPosition(Vec2(900, 60));
 	magicBtn->setScale(0.55f);
@@ -220,7 +206,7 @@ void LoginLayer::initUI1()
 	addChild(magicBtn, 2);
 
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÕÒÅóÓÑ
 	cocos2d::ui::Button* friendBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnFindFriend");
 	friendBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -231,7 +217,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
+	//ÓÎÏ·ÉèÖÃ
 	cocos2d::ui::Button* setBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnSet");
 	setBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -242,22 +228,22 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//zjfï¿½Ô¼ï¿½ï¿½ï¿½ï¿½start=========================
-	//ï¿½ï¿½Å¥ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½7ï¿½Õµï¿½Â¼ï¿½ï¿½
+	//zjf×Ô¼ºÌí¼Óstart=========================
+	//°´Å¥£¨Ç©µ½£©£¨7ÈÕµÇÂ¼£©
 	cocos2d::ui::Button* btnQianDao = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnQianDao");
 	btnQianDao->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-//			Director::getInstance()->getRunningScene()->addChild(ByLoginReward::create(), 10000);//ï¿½ï¿½ï¿½Õµï¿½7ï¿½Õµï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//			Director::getInstance()->getRunningScene()->addChild(ByLoginReward::create(), 10000);//ÆßÈÕµÄ7ÈÕµÇÂ¼½±Àø½çÃæ
 
 
 		}
 	});
 
 
-	//ï¿½ï¿½Å¥ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò¿ª£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ë£©
+	//°´Å¥£¨ÓÊ¼ş£©£¬ÔİÊ±´ò¿ª£¨ÊäÈë¶Ò»»Âë£©
 	cocos2d::ui::Button* btnYouJian = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnYouJian");
 	btnYouJian->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -267,56 +253,56 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ï¿½ï¿½Å¥ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò¿ª£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ë£©
+	//°´Å¥£¨¿Í·ş£©£¬ÔİÊ±´ò¿ª£¨ÊäÈë¶Ò»»Âë£©
 	cocos2d::ui::Button* BtnKeFu = (cocos2d::ui::Button*)seekNodeByName(rootNode, "BtnKeFu");
 	BtnKeFu->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-//			SunNetPublic::getInstance()->addExchangeLayer(this);//ï¿½ò¿ª¶Ò»ï¿½ï¿½ï¿½ï¿½ï¿½æ¡£
+//			SunNetPublic::getInstance()->addExchangeLayer(this);//´ò¿ª¶Ò»»Âë½çÃæ¡£
 		}
 	});
 
-	//ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½æ£©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//°´Å¥£¨¹«¸æ£©£¨Òâ¼û·´À¡£©£¬
 	cocos2d::ui::Button* btnNotice = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnNotice");
 	btnNotice->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-//			Director::getInstance()->getRunningScene()->addChild(ByFeedback::create(), 10000);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//			Director::getInstance()->getRunningScene()->addChild(ByFeedback::create(), 10000);//Òâ¼û·´À¡½çÃæ
 		}
 	});
 
-	//Õ½ï¿½Ó£ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Õ½¶Ó£¨¶Ò»»½±Àø£©
 	cocos2d::ui::Button* btnZhanDui = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnZhanDui");
 	btnZhanDui->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-//			Director::getInstance()->getRunningScene()->addChild(ByConvertHalo::create(), 10000);//ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//			Director::getInstance()->getRunningScene()->addChild(ByConvertHalo::create(), 10000);//¶Ò»»½±Àø½çÃæ
 		}
 	});
 
 
 
-	//zjfï¿½Ô¼ï¿½ï¿½ï¿½ï¿½end=========================		
+	//zjf×Ô¼ºÌí¼Óend=========================		
 
 
 
-	//ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½à£©ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ë£©ï¿½ÄµØ·ï¿½
+	//°´Å¥£¨¸ü¶à£©£¬ÏÖÔÚ´ú±íÒâË¼£¨ÊäÈë¶Ò»»Âë£©µÄµØ·½
 	cocos2d::ui::Button* btnMore = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnMore");
 	btnMore->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-//			SunNetPublic::getInstance()->addExchangeLayer(this);//ï¿½ò¿ª¶Ò»ï¿½ï¿½ï¿½ï¿½ï¿½æ¡£
+//			SunNetPublic::getInstance()->addExchangeLayer(this);//´ò¿ª¶Ò»»Âë½çÃæ¡£
 		}
 	});
 
-	//Ò»ï¿½Å°ï¿½Å¥Èº
+	//Ò»ÅÅ°´Å¥Èº
 	auto btnOpen = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnOpen");
 	btnOpen->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -330,7 +316,7 @@ void LoginLayer::initUI1()
 			float x1 = x - bg->getContentSize().width;
 
 			auto moveTo = MoveTo::create(0.2, Vec2(x1, y));
-			//bg->runAction(Sequence::create(moveToï¿½ï¿½NULL));
+			//bg->runAction(Sequence::create(moveTo£¬NULL));
 			bg->runAction(moveTo);
 
 			auto btnClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnClose");
@@ -354,7 +340,7 @@ void LoginLayer::initUI1()
 	if (info.roleID)
 	{
 		InitHeadInfo();
-		updateNetInfos();//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		updateNetInfos();//»ñÈ¡·şÎñÆ÷
 	}
 	else {
 		scheduleOnce(schedule_selector(LoginLayer::initLogin), 0.15f);
@@ -376,7 +362,7 @@ void LoginLayer::initUI1()
 	//friendBtn->setOnClickCallback(callfuncO_selector(LoginLayer::ShowGM), this);
 	//addChild(friendBtn, 2);
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¾º¼¼³¡
 	auto btnJingJiChang = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnJingJiChang");
 	btnJingJiChang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -387,7 +373,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//Ê¥ï¿½ï¿½  ï¿½ï¿½Ê¥ï¿½Â°ï¿½Å¥ï¿½ï¿½ï¿½Ç´ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½Å¥ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½Çµï¿½ï¿½ï¿½ï¿½Å¥ï¿½ó£¬»á´¥ï¿½ï¿½Ê²Ã´ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½Ë¼ï¿½ï¿½
+	//Ê¥ÒÂ  £¨Ê¥ÒÂ°´Å¥¾ÍÊÇ´óÂÒ¶·°´Å¥ÒâË¼£¬Õâ¶ùÒâË¼ÊÇµã»÷°´Å¥ºó£¬»á´¥·¢Ê²Ã´¹¦ÄÜµÄÒâË¼£©
 	auto btnShengYi = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnShengYi");
 	btnShengYi->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -401,8 +387,8 @@ void LoginLayer::initUI1()
 	
 	
 	
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start================================================================================
-	//ï¿½ï¿½È¡ï¿½î¶¯Í¼Æ¬ï¿½ï¿½Ô´
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start================================================================================
+	//»ñÈ¡»î¶¯Í¼Æ¬×ÊÔ´
 	auto rootNode1 = CSLoader::createNode("ActiveLayer.csb");
 	addChild(rootNode1,100000);
 
@@ -415,7 +401,7 @@ void LoginLayer::initUI1()
 			rootNode1->setVisible(false);
 		}
 	});
-
+    rootNode1->setVisible(false);
 
 	std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/activity";
 	
@@ -445,62 +431,31 @@ void LoginLayer::initUI1()
 				log("*******************************picPath success");
 
 				Json * id = Json_getItem(resultObj->child, "id");
-				Json * url1 = Json_getItem(resultObj->child, "url");
-				std::string u = url1->valueString;
-				std::string picUrl = "http://" + u;
 
 				if (id && id->valueInt == 1)
 				{
-
-					std::string path = FileUtils::getInstance()->getWritablePath();
-					path += "download_image.png";
-					if (FileUtils::getInstance()->isFileExist(path))
-					{
-						auto tupian1 = Sprite::create(path);
-						tupian1->setAnchorPoint(Point(0, 0));
-						tupian1->setPositionY(tupian1->getPositionY() + 100);
-						ScrollView_1->addChild(tupian1);
-						return;
-					}
-					else
-					{
-						HttpGetImg::GetHttpImg(picUrl, [=](Texture2D * texture)
-						{
-							if (texture)
-							{
-
-								auto tupian = Sprite::createWithTexture(texture);
-								tupian->setAnchorPoint(Point(0, 0));
-								if (ScrollView_1)
-								{
-									tupian->setPositionY(tupian->getPositionY() + 100);
-									ScrollView_1->addChild(tupian);
-								}
-							}
-						}
-						);
-					}
-
-					
-
-				}
-				else
-				{
+					Json * url1 = Json_getItem(resultObj->child, "url");
+					std::string u = url1->valueString;
+					std::string picUrl = "http://" + u;
+			
 					HttpGetImg::GetHttpImg(picUrl, [=](Texture2D * texture)
 					{
 						if (texture)
 						{
-
 							auto tupian = Sprite::createWithTexture(texture);
-							tupian->setAnchorPoint(Point(0, 0));
+							tupian->setAnchorPoint(Point(0,0));
 							if (ScrollView_1)
 							{
-								tupian->setPositionY(tupian->getPositionY() + 100);
 								ScrollView_1->addChild(tupian);
 							}
-						}
+						}	
 					}
 					);
+
+				}
+				else
+				{
+
 				}
 		
 			}
@@ -516,7 +471,7 @@ void LoginLayer::initUI1()
 
 	}, "GetImgPath");
 
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end================================================================================
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end================================================================================
 	
 	
 	
@@ -547,7 +502,7 @@ void LoginLayer::ShowGM(Ref* pSender)
 	std::vector<item> arr;
 	for (int i = 0; i<5; i++) {
 	item ite;
-	ite.itemName = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+	ite.itemName = "²âÊÔÃû×Ö";
 	ite.maxCount = i+2;
 	arr.push_back(ite);
 	}
@@ -561,11 +516,11 @@ void LoginLayer::ResetName(Ref* pSender)
 	sprintf(randName, "name_%d", nIdex);
 	CEditBoxTool* edbox = (CEditBoxTool*)getChildByTag(101);
 	edbox->setText(Global::getInstance()->getString(randName));
-	CCUserDefault::sharedUserDefault()->setStringForKey("UserName", Global::getInstance()->getString(randName));//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	CCUserDefault::sharedUserDefault()->setStringForKey("UserName", Global::getInstance()->getString(randName));//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó 
 }
 void LoginLayer::updateNetInfos()
 {
-	// ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
+	// »ñµÃ·şÎñÆ÷ÁĞ±í
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
 
 	if (nets.size() == 0)
@@ -583,7 +538,7 @@ void LoginLayer::updateNetInfos()
 		CCLabelTTF* netname = CCLabelTTF::create(nets[0].m_netName.c_str(), "STXingkai.ttf", 29);
 		netname->setColor(Color3B(0, 0, 0));
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ÖÆ×÷ÏÂÀ­
 		//Size size = Size(200, 30);
 		//dropLayer = DropDownListLayer::create(netname, size);
 
@@ -740,13 +695,13 @@ void LoginLayer::setNetKey(int key)
 	std::string nick = input->getText();
 	if (nick == "" || nick.size() == 0)
 		
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start====
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
 		//return;
 	{
 		input->setText(CCUserDefault::sharedUserDefault()->getStringForKey("UserName").c_str());
 		nick = input->getText();
 	}		
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end====
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end====
 	
 	
 	
@@ -772,7 +727,7 @@ void LoginLayer::delayEnter(float ft)
 	//DropDownListLayer* dropLayer = dynamic_cast<DropDownListLayer*>(getChildByTag(121));
 	//int selectIdx = dropLayer->getSelectedIndex();
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
-	// ï¿½ï¿½È¡Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿
+	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
 	main->reqServerKey(nets[0].m_netID, 0, 0);
 	Global::getInstance()->SetFightType(0);
 }
@@ -782,7 +737,7 @@ netInfo LoginLayer::getNetInfo()
 	//DropDownListLayer* dropLayer = dynamic_cast<DropDownListLayer*>(getChildByTag(121));
 	//int selectIdx = dropLayer->getSelectedIndex();
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
-	// ï¿½ï¿½È¡Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿
+	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
 	return nets[0];
 }
 
@@ -797,14 +752,14 @@ void LoginLayer::PersonCenter(cocos2d::Ref *pSender)
 }
 
 
-void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //ï¿½ò¿ª¹ï¿½Ïµï¿½ï¿½ï¿½ï¿½
+void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //´ò¿ª¹ØÏµ½çÃæ
 {
 	//MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//main->CheckLayer(MainScene::TAG_LAYER_RELATION);
 	
 
-// 11  0922zjfï¿½ï¿½ï¿½ï¿½
-		// ========================2017-0826 ï¿½Ô£Ò£ï¿½ï¿½Âµï¿½ï¿½ï¿½Ï·ï¿½ï¿½Ò¹ï¿½Ïµï¿½ï¿½ï¿½æ¡¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// 11  0922zjfÆÁ±Î
+		// ========================2017-0826 £Ô£Ò£¬ĞÂµÄÓÎÏ·Íæ¼Ò¹ØÏµ½çÃæ¡¡¡¡¡¡£­£­¡¡£â£å£ä£é£î
 //		FriendNetWork* relation = FriendNetWork::create();
 		//addChild(relation, 3, MainScene::TAG_LAYER_RELATION);
 //		addChild(relation, 3);
@@ -812,12 +767,12 @@ void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //ï¿½ò¿ª¹ï¿½Ïµï¿½ï¿½ï¿½ï
 
 		std::string ownPlayerId = CCUserDefault::sharedUserDefault()->getStringForKey("PlayerId");
 		
-		// ï¿½ï¿½ï¿½ï¿½ç½»ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ getsocialListCount
+		// »ñµÃÉç½»¹ØÏµÊıÁ¿ getsocialListCount
 		std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/getsocialListCount?socialtype=%E7%B2%89%E4%B8%9D&playerid=" + ownPlayerId;
 		std::string url2 = "http://47.93.50.101:8080/QQWar/Qqwar/getsocialListCount?socialtype=%E5%A5%BD%E5%8F%8B&playerid=" + ownPlayerId;
 		std::string url3 = "http://47.93.50.101:8080/QQWar/Qqwar/getsocialListCount?socialtype=%E5%85%B3%E6%B3%A8&playerid=" + ownPlayerId;
 
-		std::string data = "";//"socialtype=ï¿½ï¿½Ë¿&playerid=" + ownPlayerId;
+		std::string data = "";//"socialtype=·ÛË¿&playerid=" + ownPlayerId;
 		requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 		{
 			if (response == nullptr || !response->isSucceed())
@@ -830,7 +785,7 @@ void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //ï¿½ò¿ª¹ï¿½Ïµï¿½ï¿½ï¿½ï
 //			relation->showPlayerInfo(responseStr, 0);
 		}, "Friend");
 		
-		//data = "socialtype=ï¿½ï¿½ï¿½ï¿½&playerid=" + ownPlayerId;
+		//data = "socialtype=ºÃÓÑ&playerid=" + ownPlayerId;
 		requestForPost(url2, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 		{
 			if (response == nullptr || !response->isSucceed())
@@ -843,7 +798,7 @@ void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //ï¿½ò¿ª¹ï¿½Ïµï¿½ï¿½ï¿½ï
 //			relation->showPlayerInfo(responseStr, 1);
 		}, "Friend");
 
-		//data = "socialtype=ï¿½ï¿½×¢&playerid=" + ownPlayerId;
+		//data = "socialtype=¹Ø×¢&playerid=" + ownPlayerId;
 		requestForPost(url3, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 		{
 			if (response == nullptr || !response->isSucceed())
@@ -856,8 +811,8 @@ void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //ï¿½ò¿ª¹ï¿½Ïµï¿½ï¿½ï¿½ï
 //			relation->showPlayerInfo(responseStr, 2);
 //			relation->setVisible(true);
 		}, "Friend");
-		// ========================2017-0826 ï¿½Ô£Ò£ï¿½ï¿½Âµï¿½ï¿½ï¿½Ï·ï¿½ï¿½Ò¹ï¿½Ïµï¿½ï¿½ï¿½æ¡¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- // 0922zjfï¿½ï¿½ï¿½ï¿½
+		// ========================2017-0826 £Ô£Ò£¬ĞÂµÄÓÎÏ·Íæ¼Ò¹ØÏµ½çÃæ¡¡¡¡¡¡£­£­¡¡£å£î£ä
+ // 0922zjfÆÁ±Î
 	
 	
 }
@@ -866,13 +821,13 @@ void LoginLayer::RankClick(cocos2d::Ref *pSender)
 {
 	//MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//main->CheckLayer(MainScene::TAG_LAYER_RANKING);
-//	Director::getInstance()->getRunningScene()->addChild(ByRankLayer::create(), 100000);  //ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ğ°ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½æ¡£
+//	Director::getInstance()->getRunningScene()->addChild(ByRankLayer::create(), 100000);  //ÆßÈÕµÄÅÅĞĞ°ñµÄÕıÊ½½çÃæ¡£
 }
 
 void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 {
 	
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start====
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
 	//MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//main->CheckLayer(MainScene::TAG_LAYER_SHOPSYM);
 	
@@ -881,7 +836,7 @@ void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 
 	/*auto YuanZhengLayer = YuanZhengLayer::create();
 	addChild(YuanZhengLayer, 100000);*/
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end====
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end====
 	
 }
 
@@ -901,8 +856,8 @@ void LoginLayer::FriendClick(cocos2d::Ref *pSender)
 {
 	//FindFriend* layer = FindFriend::create();
 	//addChild(layer, 10);
-	//	Director::getInstance()->getRunningScene()->addChild(ByLoginReward::create(), 10000);//ï¿½ï¿½ï¿½Õµï¿½7ï¿½Õµï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	//Director::getInstance()->getRunningScene()->addChild(ByConvertHalo::create(), 10000);//ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//	Director::getInstance()->getRunningScene()->addChild(ByLoginReward::create(), 10000);//ÆßÈÕµÄ7ÈÕµÇÂ¼½±Àø½çÃæ
+	//Director::getInstance()->getRunningScene()->addChild(ByConvertHalo::create(), 10000);//¶Ò»»½±Àø½çÃæ
 
 
 }
@@ -911,53 +866,10 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	/*SheZhi* layer = SheZhi::create();
 
 	addChild(layer, 10, 131);*/
-	Json* root = ReadJson("tishi.json");
-	Json* yanzhengmayifasong = Json_getItem(root, "yanzhengmayifasong");//éªŒè¯ç å·²å‘é€
-	Json* qingshurumima = Json_getItem(root, "qingshurumima");//è¯·è¾“å…¥å¯†ç 
-	Json* qingshuruyouxiangdizhi = Json_getItem(root, "qingshuruyouxiangdizhi");//è¯·è¾“å…¥é‚®ç®±åœ°å€
 
-	Json* qingshuruyanzhengma = Json_getItem(root, "qingshuruyanzhengma");//è¯·è¾“å…¥éªŒè¯ç 
-	Json* yanzhengmabudui = Json_getItem(root, "yanzhengmabudui");//éªŒè¯ç ä¸å¯¹
-	Json* mimacuowu = Json_getItem(root, "qingshuruyouxiangdizhi");//å¯†ç é”™è¯¯
-	Json* qingshuruxinmima = Json_getItem(root, "qingshuruxinmima");//è¯·è¾“å…¥æ–°å¯†ç 
-	Json* zhanghaohemimayifasongdaoyouxiang = Json_getItem(root, "zhanghaohemimayifasongdaoyouxiang");//è´¦å·å’Œå¯†ç å·²å‘é€åˆ°é‚®ç®±ï¼Œè¯·æ³¨æ„æŸ¥æ”¶
-	Json* qingshuruzhanghao = Json_getItem(root, "qingshuruzhanghao");//è¯·è¾“å…¥é‚®ç®±åœ°å€
-	Json* denglushibai = Json_getItem(root, "denglushibai");//ç™»å½•å¤±è´¥
-	Json* qingshuruxinzhanghao = Json_getItem(root, "qingshuruxinzhanghao");//è¯·è¾“å…¥æ–°è´¦å·
-	Json* shurumimabuyizhi = Json_getItem(root, "shurumimabuyizhi");//è¾“å…¥å¯†ç ä¸ä¸€è‡´
-	Json* bangdingzhanghaochenggong = Json_getItem(root, "bangdingzhanghaochenggong");//ç»‘å®šè´¦å·æˆåŠŸ
-	Json* zhanghaoyibeizhanyong = Json_getItem(root, "zhanghaoyibeizhanyong");//è´¦å·å·²è¢«å ç”¨
-	Json* bangdingyouxiangchenggong = Json_getItem(root, "bangdingyouxiangchenggong");//ç»‘å®šé‚®ç®±æˆåŠŸ
-	Json* yibangdingzhanghao = Json_getItem(root, "yibangdingzhanghao");//ä¸èƒ½é‡å¤ç»‘å®šé‚®ç®±
 	account_info info = Global::getInstance()->GetAccountInfo();
 
 	rootGameSettingNode = CSLoader::createNode("GameSetting.csb");
-
-	Json* youketishi = Json_getItem(root, "youketishi");//æ¸¸å®¢è´¦å·
-	Json* zhangshizhanghao = Json_getItem(root, "zhangshizhanghao");//æ­£å¼è´¦å· æœªç»‘å®šé‚®ç®±
-	Json* anquanzhanghao = Json_getItem(root, "anquanzhanghao");//å®‰å…¨è´¦å·
-
-	account_info infos = Global::getInstance()->GetAccountInfo();
-	//è´¦å·è®¾ç½®ç›’å­
-	cocos2d::ui::ImageView* setBox = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "setBox");
-	auto Text_2 = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "Text_2");
-	Text_2->setString(youketishi->valueString);
-	if (infos.isbinded)
-	{
-		Text_2->setString(zhangshizhanghao->valueString);
-	}
-	if (infos.mail != "")
-	{
-		Text_2->setString(anquanzhanghao->valueString);
-	}
-
-	auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "tishi");
-	tishiY = piaoZi->getPositionY();
-	tishiX = piaoZi->getPositionX();
-
-	auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "Image_1");
-
-
 	setCanTouchOtherLayer(rootGameSettingNode, false, [=](Touch * touch, Event * event) {
 		if (rootGameSettingNode)
 		{
@@ -981,12 +893,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//ï¿½ËºÅ°ó¶¨½ï¿½ï¿½ï¿½
+	//ÕËºÅ°ó¶¨½çÃæ
 	auto btnBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangDing");
 	auto btnYiBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnYiBangDing");
 	auto zhanghaobangding = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "zhanghaobangding");
 
-	//ï¿½Ëºï¿½ï¿½ï¿½Ê¾
+	//ÕËºÅÏÔÊ¾
 	auto zhanghao = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "zhanghao");
 	zhanghao->setText(info.accout);
 
@@ -1003,7 +915,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		btnBangDing->setTouchEnabled(true);
 	}
 
-	//ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//°ó¶¨ÕËºÅÊäÈë¿ò
 	CEditBoxTool* zhanghaoedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* mimaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* mima1edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -1015,7 +927,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	zhanghaoedbox->setFontColor(Color3B::BLACK);
 	zhanghaobangding->addChild(zhanghaoedbox, 3, 101);
 
-	//zhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input new account"));
+	zhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input new account"));
 
 	mimaedbox->setPosition(Vec2(365, 320));
 	mimaedbox->setInputMode(EditBox::InputMode::ANY);
@@ -1024,14 +936,14 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	mimaedbox->setFontColor(Color3B::BLACK);
 	zhanghaobangding->addChild(mimaedbox, 3, 101);
 
-	//mimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	mimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	mima1edbox->setPosition(Vec2(365, 200));
 	mima1edbox->setInputMode(EditBox::InputMode::ANY);
 	mima1edbox->setDelegate(this);
 	mima1edbox->setFontSize(28);
 	mima1edbox->setFontColor(Color3B::BLACK);
 	zhanghaobangding->addChild(mima1edbox, 3, 101);
-	//mima1edbox->setPlaceHolder(Global::getInstance()->getString("please input password again"));
+	mima1edbox->setPlaceHolder(Global::getInstance()->getString("please input password again"));
 
 
 	btnBangDing->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
@@ -1039,7 +951,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-			//ï¿½ËºÅ°ó¶¨½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+			//ÕËºÅ°ó¶¨½çÃæÏÔÊ¾
 			zhanghaobangding->setVisible(true);
 		}
 	});
@@ -1061,62 +973,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
 			log("zhanghao===%s  mima===%s mima ==== %s,", zhanghaoedbox->getText(), mimaedbox->getText(), mima1edbox->getText());
-			std::string zhStr = zhanghaoedbox->getText();
-			std::string miMaStr = mimaedbox->getText();
-			std::string miMaStr1 = mima1edbox->getText();
-			if (zhStr == "")
-			{
-				piaoZi->setString(qingshuruxinzhanghao->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-			if (miMaStr == "")
-			{
-				piaoZi->setString(qingshurumima->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-
-			if (miMaStr1 == "" || strcmp(mimaedbox->getText(), mima1edbox->getText()) != 0)
-			{
-				piaoZi->setString(shurumimabuyizhi->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-
 			if (zhanghaoedbox->getText() != "" &&  strcmp(mimaedbox->getText(), mima1edbox->getText()) == 0 && mimaedbox->getText() != "")
 			{
 				log("submit bangding zhanghao xinxi");
@@ -1150,20 +1006,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 						if (result->valueInt == 1)
 						{
 							log("*******************************bangding success");
-							Text_2->setString(zhangshizhanghao->valueString);
-							piaoZi->setString(bangdingzhanghaochenggong->valueString);
-							auto clonePiaoZi = piaoZi->clone();
-							Image_1->addChild(clonePiaoZi);
-							clonePiaoZi->setVisible(true);
-							auto action1 = FadeOut::create(1.8);
-							auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-							auto func = [=](){
-								clonePiaoZi->setPosition(Point(tishiX, tishiY));
-								clonePiaoZi->removeFromParentAndCleanup(true);
-							};
-							auto callBack = CallFunc::create(func);
-
-							clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 
 							Json * gmlevel = Json_getItem(resultObj, "gmlevel");
 							Json * id = Json_getItem(resultObj, "id");
@@ -1208,20 +1050,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 						else
 						{
 							log("*******************************bangding error");
-							piaoZi->setString(zhanghaoyibeizhanyong->valueString);
-							auto clonePiaoZi = piaoZi->clone();
-							Image_1->addChild(clonePiaoZi);
-							clonePiaoZi->setVisible(true);
-							auto action1 = FadeOut::create(1.8);
-							auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-							auto func = [=](){
-								clonePiaoZi->setPosition(Point(tishiX, tishiY));
-								clonePiaoZi->removeFromParentAndCleanup(true);
-							};
-							auto callBack = CallFunc::create(func);
-
-							clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-							return;
 						}
 					}
 					else
@@ -1238,7 +1066,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	});
 
 
-	//ï¿½Ğ»ï¿½ï¿½Ëºï¿½
+	//ÇĞ»»ÕËºÅ
 	auto btnChange = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnChange");
 	auto qiehuanzhanghao = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "qiehuanzhanghao");
 	btnChange->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
@@ -1262,8 +1090,8 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	
 	
 
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start============================================================================
-	//ï¿½Ğ»ï¿½ï¿½Ëºï¿½ ï¿½ÏµÄµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start============================================================================
+	//ÇĞ»»ÕËºÅ ÉÏµÄµ¯´° ÊäÈë¿ò
 	CEditBoxTool* qiehuanzhanghaoedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* qiehuanmimaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 
@@ -1273,7 +1101,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	qiehuanzhanghaoedbox->setFontSize(28);
 	qiehuanzhanghaoedbox->setFontColor(Color3B::BLACK);
 	qiehuanzhanghao->addChild(qiehuanzhanghaoedbox, 3, 101);
-	//qiehuanzhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input account"));
+	qiehuanzhanghaoedbox->setPlaceHolder(Global::getInstance()->getString("please input account"));
 
 	qiehuanmimaedbox->setPosition(Vec2(330, 260));
 	qiehuanmimaedbox->setInputMode(EditBox::InputMode::ANY);
@@ -1281,8 +1109,8 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	qiehuanmimaedbox->setFontSize(28);
 	qiehuanmimaedbox->setFontColor(Color3B::BLACK);
 	qiehuanzhanghao->addChild(qiehuanmimaedbox, 3, 101);
-	//qiehuanmimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end===========================================================================
+	qiehuanmimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end===========================================================================
 	
 	
 	
@@ -1296,46 +1124,11 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			GameVoice::getInstance()->playClickBtnVoive();
 			log("qiehuanzhanghao dengluyouxi xinxi");
 			
-			//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start========================================================================
+			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start========================================================================
 			std::string zhanghao = qiehuanzhanghaoedbox->getText();
 			std::string data = "account=" + zhanghao + "&password=" + qiehuanmimaedbox->getText();
 
 			std::string url = "47.93.50.101:8080/QQWar/Qqwar/relogin";
-			if (zhanghao == "")
-			{
-				piaoZi->setString(qingshuruzhanghao->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-			std::string qiehuanmima = qiehuanmimaedbox->getText();
-			if (qiehuanmima == "")
-			{
-				piaoZi->setString(qingshurumima->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
 
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
@@ -1355,49 +1148,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				Json* root = Json_create(responseStr.c_str());
 				Json* result = Json_getItem(root, "resultCode");
 				Json * resultObj = Json_getItem(root, "resultObj");
-				Json * message = Json_getItem(root, "message");
 
-				piaoZi->setString(message->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-
-				if (result->valueInt == 1)
-				{
-					Json* account = Json_getItem(resultObj, "account");
-					Json* accout = Json_getItem(account, "accout");
-					Json* password = Json_getItem(account, "password");
-
-					if (accout->valueString != "" && password->valueString != "")
-					{
-						UserDefault::getInstance()->setStringForKey("accout", accout->valueString);
-						UserDefault::getInstance()->setStringForKey("password", password->valueString);
-					}
-					//åˆ‡æ¢è´¦å·æˆåŠŸ
-					Global::getInstance()->SetIsJiaZai(true);
-					rootGameSettingNode->setVisible(false);
-					qiehuanzhanghao->setVisible(false);
-					initDengLuData();
-					auto loginingLayer = LoginingLayer::create();
-					loginingLayer->setGlobalZOrder(20000000000);
-					rootNode->addChild(loginingLayer);
-
-				/*	MainScene* main = dynamic_cast<MainScene*>(getParent());
-					main->CloseWebNet();
-					auto scene = Scene::create();
-					auto loginingLayer = LoginingLayer::create();
-					scene->addChild(loginingLayer);
-					Director::getInstance()->replaceScene(scene);*/
-				}
 				/*if (result->type == Json_Number)
 				{
 				if (result->valueInt == 1)
@@ -1443,7 +1194,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 			}, "qieHuanZhangHao");
 			
-			//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end========================================================================
+			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end========================================================================
 			
 			
 			
@@ -1462,7 +1213,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Íü¼ÇÃÜÂë ÕÒ»ØÃÜÂë
 	auto close5 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close5");
 	close5->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -1473,8 +1224,8 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start========================================================================
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÏµÄµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start========================================================================
+		//Íü¼ÇÓÃ»§»òÃÜÂë ÉÏµÄµ¯´° ÊäÈë¿ò
 	CEditBoxTool* zhaohuimimaEmailedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* zhaohuimimaYanZhengMaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* zhaohuimimaNewPasswordedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -1485,7 +1236,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	zhaohuimimaEmailedbox->setFontSize(28);
 	zhaohuimimaEmailedbox->setFontColor(Color3B::BLACK);
 	zhaohuimima->addChild(zhaohuimimaEmailedbox, 3, 101);
-	//zhaohuimimaEmailedbox->setPlaceHolder(Global::getInstance()->getString("please input email"));
+	zhaohuimimaEmailedbox->setPlaceHolder(Global::getInstance()->getString("please input email"));
 
 	zhaohuimimaYanZhengMaedbox->setPosition(Vec2(360, 340));
 	zhaohuimimaYanZhengMaedbox->setInputMode(EditBox::InputMode::ANY);
@@ -1493,7 +1244,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	zhaohuimimaYanZhengMaedbox->setFontSize(28);
 	zhaohuimimaYanZhengMaedbox->setFontColor(Color3B::BLACK);
 	zhaohuimima->addChild(zhaohuimimaYanZhengMaedbox, 3, 101);
-	//zhaohuimimaYanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input yanzhengma"));
+	zhaohuimimaYanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input yanzhengma"));
 
 	zhaohuimimaNewPasswordedbox->setPosition(Vec2(360, 230));
 	zhaohuimimaNewPasswordedbox->setInputMode(EditBox::InputMode::ANY);
@@ -1501,7 +1252,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	zhaohuimimaNewPasswordedbox->setFontSize(28);
 	zhaohuimimaNewPasswordedbox->setFontColor(Color3B::BLACK);
 	zhaohuimima->addChild(zhaohuimimaNewPasswordedbox, 3, 101);
-	//zhaohuimimaNewPasswordedbox->setPlaceHolder(Global::getInstance()->getString("please input new password"));
+	zhaohuimimaNewPasswordedbox->setPlaceHolder(Global::getInstance()->getString("please input new password"));
 
 
 	auto btnyanzhengma1 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnyanzhengma1");
@@ -1510,7 +1261,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			log("wangjiyonghu huo mima huoqu yanzhengma");
-			//ï¿½ï¿½È¡ï¿½ï¿½Ö¤ï¿½ï¿½
+			//»ñÈ¡ÑéÖ¤Âë
 			std::string emailInput = zhaohuimimaEmailedbox->getText();
 			std::string data = "";
 			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -1519,23 +1270,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			}else
 				data = "mail=" + emailInput;
 
-			if (emailInput == "")
-			{
-				piaoZi->setString(qingshuruyouxiangdizhi->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
@@ -1551,20 +1285,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 				std::string responseStr = std::string(buffer->begin(), buffer->end());
 				CCLOG("%s", responseStr.c_str());
-
-				piaoZi->setString(yanzhengmayifasong->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 
 				/*Json* root = Json_create(responseStr.c_str());
 				Json* result = Json_getItem(root, "resultCode");
@@ -1592,7 +1312,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			}, "getYanZhengMa1");
 		}
 	});
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end========================================================================
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end========================================================================
 	
 	
 	auto btntijiao0 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btntijiao0");
@@ -1603,7 +1323,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			GameVoice::getInstance()->playClickBtnVoive();
 			log("zhaohuimima tijiao xinxi");
 			
-		//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ staer========================================================================
+		//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó staer========================================================================
 		std::string emailInput = zhaohuimimaEmailedbox->getText();
 			std::string data = "";
 			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -1615,61 +1335,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/forgetpwd";
 
-			if (emailInput == "")
-			{
-				piaoZi->setString(qingshuruyouxiangdizhi->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-
-			std::string zhanghaoYanZheng = zhaohuimimaYanZhengMaedbox->getText();
-			if (zhanghaoYanZheng == "")
-			{
-				piaoZi->setString(qingshuruyanzhengma->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-			std::string newZhangHao = zhaohuimimaNewPasswordedbox->getText();
-			if (newZhangHao == "")
-			{
-				piaoZi->setString(qingshuruxinmima->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
 				if (response == nullptr || !response->isSucceed())
@@ -1680,32 +1345,10 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 					return;
 				}
 
-
-
 				vector<char> *buffer = response->getResponseData();
 
 				std::string responseStr = std::string(buffer->begin(), buffer->end());
 				CCLOG("%s", responseStr.c_str());
-
-				Json* root = Json_create(responseStr.c_str());
-				Json* result = Json_getItem(root, "resultCode");
-				Json * resultObj = Json_getItem(root, "resultObj");
-				Json * message = Json_getItem(root, "message");
-
-				piaoZi->setString(message->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-
 
 				/*Json* root = Json_create(responseStr.c_str());
 				Json* result = Json_getItem(root, "resultCode");
@@ -1756,12 +1399,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 			}, "xinMiMa");
 		
-		//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end========================================================================		
+		//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end========================================================================		
 			
 		}
 	});
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//°ó¶¨ÓÊÏä
 	auto bangdingyouxiang = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "bangdingyouxiang");
 	auto btnBangYouXiang = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangYouXiang");
 	auto btnyanzhengma = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnyanzhengma");
@@ -1772,44 +1415,27 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-			if (btnYiBangDing->isVisible())
-			{
-				piaoZi->setString(yibangdingzhanghao->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
 			GameVoice::getInstance()->playClickBtnVoive();
 			bangdingyouxiang->setVisible(true);
 		}
 	});
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//°ó¶¨ÓÊÏäÊäÈë¿ò
 	CEditBoxTool* inputMiMadbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* emaildbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* yanZhengMaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 
 
-	//inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	inputMiMadbox->setPosition(Vec2(365, 470));
 	inputMiMadbox->setInputMode(EditBox::InputMode::ANY);
 	inputMiMadbox->setDelegate(this);
 	inputMiMadbox->setFontSize(28);
 	inputMiMadbox->setFontColor(Color3B::BLACK);
 	bangdingyouxiang->addChild(inputMiMadbox, 3, 101);
-	//inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	inputMiMadbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 
-	//emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	emaildbox->setPosition(Vec2(365, 350));
 	emaildbox->setInputMode(EditBox::InputMode::ANY);
 	emaildbox->setDelegate(this);
@@ -1817,26 +1443,26 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	emaildbox->setFontColor(Color3B::BLACK);
 
 	bangdingyouxiang->addChild(emaildbox, 3, 101);
-	//emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	emaildbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 
-	//yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
+	yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
 	yanZhengMaedbox->setPosition(Vec2(365, 220));
 	yanZhengMaedbox->setInputMode(EditBox::InputMode::EMAIL_ADDRESS);
 	yanZhengMaedbox->setDelegate(this);
 	yanZhengMaedbox->setFontSize(28);
 	yanZhengMaedbox->setFontColor(Color3B::BLACK);
 	bangdingyouxiang->addChild(yanZhengMaedbox, 3, 101);
-	//yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("input password"));
+	yanZhengMaedbox->setPlaceHolder(Global::getInstance()->getString("input password"));
 
 	btnyanzhengma->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-			//ï¿½ï¿½È¡ï¿½ï¿½Ö¤ï¿½ï¿½
+			//»ñÈ¡ÑéÖ¤Âë
 			
 			
-			//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
+			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
 			//std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "@qq.com";
 			std::string data = "";
 			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -1844,28 +1470,9 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "@qq.com";
 			}else
 				 data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText();			
-			//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
+			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
 			
-			std::string emailStr = emaildbox->getText();
-			if (emailStr == "")
-			{
-
-				piaoZi->setString(qingshuruyouxiangdizhi->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-
+			
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
 			requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 			{
@@ -1881,22 +1488,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 				std::string responseStr = std::string(buffer->begin(), buffer->end());
 				CCLOG("%s", responseStr.c_str());
-
-
-				piaoZi->setString(yanzhengmayifasong->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				
 
 				/*Json* root = Json_create(responseStr.c_str());
 				Json* result = Json_getItem(root, "resultCode");
@@ -1945,7 +1536,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			GameVoice::getInstance()->playClickBtnVoive();
 			log("bangdingyouxiang tijiao xinxi");
 
-			//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
+			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
 			//std::string data = "playerid=" + info.playerid + "&mail=383905358@qq.com" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + "yip9";
 			//yanZhengMaedbox->getText();
 			std::string data = "";
@@ -1954,64 +1545,9 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "qq.com" + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
 			}else
 				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
-			//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end======================================================================
+			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end======================================================================
 			
-			std::string inputStr = inputMiMadbox->getText();
-			if (inputStr == "")
-			{
-				piaoZi->setString(qingshurumima->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-
-			std::string eStr = emaildbox->getText();
-			if (eStr == "")
-			{
-				piaoZi->setString(qingshuruyouxiangdizhi->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-			std::string yzmStr = yanZhengMaedbox->getText();
-			if (yzmStr == "")
-			{
-				piaoZi->setString(qingshuruyanzhengma->valueString);
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				return;
-			}
-
+			
 
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/bindmail";
 
@@ -2039,20 +1575,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 					if (result->valueInt == 1)
 					{
 						log("*******************************bangdingyouxiang success");
-						Text_2->setString(anquanzhanghao->valueString);
-						piaoZi->setString(bangdingyouxiangchenggong->valueString);
-						auto clonePiaoZi = piaoZi->clone();
-						Image_1->addChild(clonePiaoZi);
-						clonePiaoZi->setVisible(true);
-						auto action1 = FadeOut::create(1.8);
-						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-						auto func = [=](){
-							clonePiaoZi->setPosition(Point(tishiX, tishiY));
-							clonePiaoZi->removeFromParentAndCleanup(true);
-						};
-						auto callBack = CallFunc::create(func);
-
-						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 
 						Json * gmlevel = Json_getItem(resultObj, "gmlevel");
 						Json * id = Json_getItem(resultObj, "id");
@@ -2084,19 +1606,6 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 					else
 					{
 						log("*******************************bangding error");
-						piaoZi->setString(yanzhengmabudui->valueString);
-						auto clonePiaoZi = piaoZi->clone();
-						Image_1->addChild(clonePiaoZi);
-						clonePiaoZi->setVisible(true);
-						auto action1 = FadeOut::create(1.8);
-						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-						auto func = [=](){
-							clonePiaoZi->setPosition(Point(tishiX, tishiY));
-							clonePiaoZi->removeFromParentAndCleanup(true);
-						};
-						auto callBack = CallFunc::create(func);
-
-						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
 					}
 				}
 				else
@@ -2120,7 +1629,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 }
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²é¿´ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//¸öÈËÖĞĞÄ²é¿´×Ô¼ºµÄÊı¾İ
 void LoginLayer::TeamClick(cocos2d::Ref *pSender)
 {
 	// 	MainScene* main = dynamic_cast<MainScene*>(getParent());
@@ -2130,7 +1639,7 @@ void LoginLayer::TeamClick(cocos2d::Ref *pSender)
 //	widget->getServerData();
 }
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//¸öÈËÖĞĞÄ²é¿´ºÃÓÑÊı¾İ
 void LoginLayer::TeamClickFriend(Ref* pSender)
 {
 //	auto widget = PersonalUI::create();
@@ -2147,7 +1656,7 @@ void LoginLayer::LiveClick(cocos2d::Ref *pSender)
 {
 	ShengCun* layer = ShengCun::create();
 	addChild(layer, 10, TAG_SHENGCUN);
-	//Global::getInstance()->ShowPromBox("ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ²ï¿½");
+	//Global::getInstance()->ShowPromBox("²âÊÔ¿´¿´Õâ¸öµÂĞĞ²»");
 }
 
 void LoginLayer::editBoxReturn(cocos2d::extension::EditBox *editBox)
@@ -2166,23 +1675,23 @@ void LoginLayer::rushmenpiao()
 		layer->rushmenpiao();
 	}
 }
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½
+//µã»÷¾º¼¼³¡°´Å¥´¥·¢
 void LoginLayer::JingJiChangClick(Ref* pSender)
 {
 	log("===================================jingjichang");
 	
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
 	auto YuanZhengLayer = YuanZhengLayer::create();
 	addChild(YuanZhengLayer, 100000);
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end======================================================================
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end======================================================================
 }
 
-//ï¿½ï¿½ï¿½Ê¥ï¿½Â°ï¿½Å¥ï¿½ò¿ªµÄ½ï¿½ï¿½ï¿½
+//µã»÷Ê¥ÒÂ°´Å¥´ò¿ªµÄ½çÃæ
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½
+//µã»÷´óÂÒ¶·°´Å¥´¥·¢
 void LoginLayer::ShengYiClick(Ref* pSender)
 {
-	//SunNetPublic::getInstance()->addApplyLayer(this);  //ï¿½ï¿½ï¿½Ê¥ï¿½Â°ï¿½Å¥ï¿½ï¿½ï¿½ò¿ª´ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	//SunNetPublic::getInstance()->addApplyLayer(this);  //µã»÷Ê¥ÒÂ°´Å¥£¬´ò¿ª´óÂÒ¶·½çÃæ
 	log("===================================shengyi");
 	auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
 	addChild(timeYuanZhengLayer, 100000);
@@ -2280,14 +1789,14 @@ void LoginLayer::initDengLuData()
 						Json* mail = Json_getItem(account, "mail");
 
 
-						//ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
-//						CCUserDefault::getInstance()->setStringForKey("playerid", playerid->valueString);//ï¿½ï¿½ï¿½Õ¸ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						//¼Óµ½ÕâÀï
+//						CCUserDefault::getInstance()->setStringForKey("playerid", playerid->valueString);//ÆßÈÕ¸çÒªÇó¼ÓÔØÕâ¶ùµÄ
 
-//						StaticData::getInstance()->setPlayId(playerid->valueString);//zjfï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ÓµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³Îªï¿½Ë»ï¿½È¡ï¿½ï¿½ï¿½id
+//						StaticData::getInstance()->setPlayId(playerid->valueString);//zjf×Ô¼ºÔö¼ÓµÄ£¬¸öÈË×ÊÁÏÏµÍ³ÎªÁË»ñÈ¡Íæ¼Òid
 
 
-						//  0922zjfï¿½ï¿½ï¿½ï¿½						
-/*						// 2017-08-31					ï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Òµï¿½playeridï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						//  0922zjfÆÁ±Î						
+/*						// 2017-08-31					µÇÂ½³É¹¦ºó´æ´¢Íæ¼ÒµÄplayerid£¬ÔÚÇëÇóÍæ¼ÒºÃÓÑÊı¾İµÄÊ±ºò»áµ÷ÓÃ
 						rapidjson::Document docJson;
 						docJson.Parse<rapidjson::kParseDefaultFlags>(responseStr.c_str());
 						rapidjson::Value& object_1 = docJson["resultObj"]["player"]["playerid"];
@@ -2299,7 +1808,7 @@ void LoginLayer::initDengLuData()
 
 						rapidjson::Value& object_3 = docJson["resultObj"]["player"]["playername"];
 						CCUserDefault::sharedUserDefault()->setStringForKey("playername", object_3.GetString());
-						// 2017-08-31					ï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Òµï¿½playeridï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  end
+						// 2017-08-31					µÇÂ½³É¹¦ºó´æ´¢Íæ¼ÒµÄplayerid£¬ÔÚÇëÇóÍæ¼ÒºÃÓÑÊı¾İµÄÊ±ºò»áµ÷ÓÃ  end
 */
 						
 						account_info info;
@@ -2388,7 +1897,7 @@ void LoginLayer::initDengLuData()
 						std::string headImgPath = "Head\\" + headInfo.headid;
 						head->loadTexture(headImgPath.c_str());
 
-						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Î»ï¿½Ó¿ï¿½ ï¿½ï¿½Ê¼ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ï¢
+						//¸ù¾İÍøÂçÇëÇó¹ıÀ´µÄ¶ÎÎ»½Ó¿Ú ³õÊ¼»¯Í·ÏñĞÅÏ¢
 						getDuanWeiInfoByIndex(atoi(headInfo.grade.c_str()));
 					}
 				}
@@ -2446,12 +1955,12 @@ void LoginLayer::getDuanWeiInfoByIndex(int index)
 				Json* xingliang = Json_getItem(jsonChild, "xingliang");
 				Json* xingan = Json_getItem(jsonChild, "xingan");
 				Json* xingnum1 = Json_getItem(jsonChild, "xingnum");
-				log("ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½==========================%s", duanweiDesc->valueString);
-				log("ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½==========================%s", duanweiName->valueString);
-				log("ï¿½ï¿½Î»Í¼ï¿½ï¿½==========================%s", duanweiIcon->valueString);
-				log("ï¿½ï¿½ï¿½ï¿½==========================%d", xingliang->valueInt);
-				log("ï¿½ï¿½ï¿½ï¿½==========================%d", xingan->valueInt);
-				log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½==========================%d", xingnum1->valueInt);
+				log("¶ÎÎ»ÃèÊö==========================%s", duanweiDesc->valueString);
+				log("¶ÎÎ»Ãû³Æ==========================%s", duanweiName->valueString);
+				log("¶ÎÎ»Í¼±ê==========================%s", duanweiIcon->valueString);
+				log("ÁÁĞÇ==========================%d", xingliang->valueInt);
+				log("°µĞÇ==========================%d", xingan->valueInt);
+				log("ĞÇÊıÁ¿==========================%d", xingnum1->valueInt);
 
 				auto duanwei = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "duanwei");
 				auto duanweiNameText = (cocos2d::ui::Text*)seekNodeByName(rootNode, "duanweiName");
@@ -2469,7 +1978,7 @@ void LoginLayer::getDuanWeiInfoByIndex(int index)
 				auto xing7 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing7");
 
 
-				if (index - 1 <= 3) //Ğ¡ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½Î»
+				if (index - 1 <= 3) //Ğ¡ÓÚ3¸ö¶ÎÎ»
 				{
 					xing1->setVisible(true);
 					xing2->setVisible(true);
@@ -2730,7 +2239,7 @@ void LoginLayer::getDuanWeiInfoByIndex(int index)
 }
 
 
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
+//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
 void LoginLayer::initWaitBox()
 {
 	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg");
@@ -2815,527 +2324,14 @@ void LoginLayer::hideWaitBox()
 	upFenTime = 0;
 	upMiaoTime = 0;
 }
-
-void LoginLayer::showBaoMingXiangQing()
-{
-	auto xiangqingNode = CSLoader::createNode("BaoMingShowLayer.csb");   //æŠ¥åè¯¦æƒ…UI
-	this->addChild(xiangqingNode,20000000);
-
-	auto btnBaoMingClose = (cocos2d::ui::ImageView*)seekNodeByName(xiangqingNode, "btnBaoMingClose");
-	btnBaoMingClose->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
-	{
-		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
-		{
-			xiangqingNode->removeFromParentAndCleanup(true);
-		}
-	});
-
-	account_info info = Global::getInstance()->GetAccountInfo();
-	//std::string data = "playerid=" + info.playerid;
-	std::string data = "playerid=100263";//æš‚æ—¶å†™æ­»
-	std::string url = "http://47.93.50.101:8080/QQWar/expedition/getAllEnrollInfo";
-	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
-	{
-		if (response == nullptr || !response->isSucceed())
-		{
-			CCLOG("responese is null");
-			CCLOG("responese not succeed");
-			return;
-		}
-
-		vector<char> *buffer = response->getResponseData();
-
-		std::string responseStr = std::string(buffer->begin(), buffer->end());
-		CCLOG("%s", responseStr.c_str());
-
-		Json* root = Json_create(responseStr.c_str());
-		Json* resultCode = Json_getItem(root, "resultCode");
-		Json * resultObj = Json_getItem(root, "resultObj");
-
-		Json* melee = Json_getItem(resultObj, "melee");//ä»£è¡¨ç©å®¶åœ¨å¤§ä¹±æ–—æŠ¥åçš„æ•°æ®
-		Json* expedition = Json_getItem(resultObj, "expedition");//ä»£è¡¨è¿œå¾çš„æŠ¥åæƒ…å†µ
-		Json* expeditionRank = Json_getItem(resultObj, "expeditionRank");//ä»£è¡¨æ•´ä¸ªè¿œå¾çš„æŠ¥åæ€»äººæ•°
-		Json* date = Json_getItem(resultObj, "date");//ä»£è¡¨ï¼Œ æœåŠ¡å™¨çš„å½“å‰æ—¶é—´
-
-		auto ScrollView = (cocos2d::ui::ScrollView*)seekNodeByName(xiangqingNode, "ScrollView");
-		auto rongqi = (cocos2d::ui::Layout*)seekNodeByName(xiangqingNode, "rongqi");
-		rongqi->setVisible(false);
-		rongqiX = rongqi->getPositionX();
-		rongqiY = rongqi->getPositionY();
-		rongqiWidth = rongqi->getContentSize().height;
-
-		if (resultCode->valueInt == 1)
-		{
-			if (expedition)
-			{
-				Json* child = expedition->child;
-				{
-					baomingXiangQingInfos.clear();
-					for (int i = 0; i < expedition->size; i++)
-					{
-						{
-							if (child == NULL)
-							break;
-							uint32_t aid = Json_getItem(child, "aid")->valueInt;
-							uint32_t state = Json_getItem(child, "state")->valueInt;
-							std::string id = Json_getItem(child, "id")->valueString;
-							uint32_t rank = Json_getItem(child, "rank")->valueInt;
-							yuanZhengBaoMingXiangQing_Info yuanInfo;
-							yuanInfo.aid = aid;
-							yuanInfo.state = state;
-							yuanInfo.id = id;
-							yuanInfo.rank = rank;
-							baomingXiangQingInfos.push_back(yuanInfo);
-							child = child->next;
-						}
-
-					}
-				}
-			}
-			if (melee)
-			{
-				Json* child = melee->child;
-				{
-					daluandouXiangQingInfos.clear();
-					for (int i = 0; i < melee->size; i++)
-					{
-						{
-							if (child == NULL)
-							break;
-							uint32_t aid = Json_getItem(child, "aid")->valueInt;
-							uint32_t state = Json_getItem(child, "state")->valueInt;
-							std::string id = Json_getItem(child, "id")->valueString;
-							daLuanDouXiangQing_Info luanInfo;
-							luanInfo.aid = aid;
-							luanInfo.state = state;
-							luanInfo.id = id;
-							daluandouXiangQingInfos.push_back(luanInfo);
-							child = child->next;
-						}
-
-					}
-				}
-			}
-			if (expeditionRank)
-			{
-				Json* child = expeditionRank->child;
-				{
-					yuanAndLuanInfos.clear();
-					for (int i = 0; i < expeditionRank->size; i++)
-					{
-						{
-							if (child == NULL)
-							break;
-							
-							uint32_t id = Json_getItem(child, "id")->valueInt;
-							uint32_t ranks = Json_getItem(child, "ranks")->valueInt;
-							baomingYuanAndLuan_Info xiangqingInfo;
-						
-							xiangqingInfo.id = id;
-							xiangqingInfo.ranks = ranks;
-							yuanAndLuanInfos.push_back(xiangqingInfo);
-							child = child->next;
-						}
-
-					}
-				}
-			}
-
-			backTime = date->valueFloat;
-		}
-
-			struct tm *tm;
-			time_t timep = backTime;
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-			time(&timep);
-#else
-			struct timeval tv;
-			gettimeofday(&tv, NULL);
-			timep = tv.tv_sec;
-#endif
-
-			tm = localtime(&timep);
-			int year = tm->tm_year + 1900;
-			int month = tm->tm_mon + 1;
-			int day = tm->tm_mday;
-			int hour = tm->tm_hour;
-			int minute = tm->tm_min;
-			int second = tm->tm_sec;
-			int xingqi = tm->tm_wday + 1;
-
-			log("year:%d month:%d day:%d xingqi:%d", year, month, day,xingqi);
-			log("hour:%d minute:%d second:%d", hour, minute, second);
-
-			Json* root1 = ReadJson("tishi.json");
-			Json* kaiqishijian = Json_getItem(root1, "kaiqishijian");
-			Json* meitian = Json_getItem(root1, "meitian");
-			Json* xingqiyi = Json_getItem(root1, "xingqiyi");
-			Json* xingqier = Json_getItem(root1, "xingqier");
-			Json* xingqisan = Json_getItem(root1, "xingqisan");
-			Json* xingqisi = Json_getItem(root1, "xingqisi");
-			Json* xingqiwu = Json_getItem(root1, "xingqiwu");
-			Json* xingqiliu = Json_getItem(root1, "xingqiliu");
-			Json* xingqiri = Json_getItem(root1, "xingqiri");
-			Json* xiaoshi = Json_getItem(root1, "xiaoshi");
-			Json* fenhoukaiqi = Json_getItem(root1, "fenhoukaiqi");
-			Json* kaiqihaicha = Json_getItem(root1, "kaiqihaicha");
-			Json* ren = Json_getItem(root1, "ren");
-		//åŠ å…¥åˆ° æ»‘åŠ¨ui
-
-		for (int i = 0; i < baomingXiangQingInfos.size(); i++)
-		{
-			auto cloneList = rongqi->clone();
-			cloneList->setVisible(true);
-			ScrollView->addChild(cloneList);
-			cloneList->setPosition(ccp(rongqiX, rongqiY - rongqiWidth * i));
-
-			//æ¯ä¸€æ¡æ•°æ®
-			int aid = baomingXiangQingInfos.at(i).aid;
-			xiangQing_Info xiangInfo =  getXiangQingInfoByAid(aid);
-			std::string iconPath = "BaoMingShowLayer\\icon\\" + xiangInfo.icon;
-			std::string wordsPicPath = "BaoMingShowLayer\\wordsPic\\" + xiangInfo.wordsPic;
-			uint32_t startGameTime = xiangInfo.statGameTime;
-			uint32_t whatDay = xiangInfo.whatDay;
-
-			uint32_t shiTime = startGameTime / 60;
-			uint32_t fenTime = startGameTime % 60;
-
-			//ç»“ç®—æ—¶é—´
-			uint32_t jiesuanTime = xiangInfo.jiesuanTime;
-			uint32_t shiTime1 = jiesuanTime / 60;
-			uint32_t fenTime1 = jiesuanTime % 60;
-
-			std::string tishi2 = kaiqishijian->valueString;
-			if (whatDay == 0)
-			{
-				tishi2 += meitian->valueString;
-			}
-			else if (whatDay == 1)
-			{
-				tishi2 += xingqiyi->valueString;
-			}
-			else if (whatDay == 2)
-			{
-				tishi2 += xingqier->valueString;
-			}
-			else if (whatDay == 3)
-			{
-				tishi2 += xingqisan->valueString;
-			}
-			else if (whatDay == 4)
-			{
-				tishi2 += xingqisi->valueString;
-			}
-			else if (whatDay == 5)
-			{
-				tishi2 += xingqiwu->valueString;
-			}
-			else if (whatDay == 6)
-			{
-				tishi2 += xingqiliu->valueString;
-			}
-			else if (whatDay == 7)
-			{
-				tishi2 += xingqiri->valueString;
-			}
-			std::ostringstream shijian;
-			shijian.clear();
-			if (fenTime == 0)
-			{
-				shijian << shiTime << ":0" << fenTime;
-			}else
-				shijian << shiTime << ":" << fenTime;
-
-			tishi2 += shijian.str();
-			auto icon = (cocos2d::ui::ImageView*)cloneList->getChildByName("icon");
-			icon->loadTexture(iconPath.c_str());
-			auto words = (cocos2d::ui::ImageView*)cloneList->getChildByName("words");
-			words->loadTexture(wordsPicPath.c_str());
-
-			auto timeTiShi2 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi2");
-			timeTiShi2->setText(tishi2.c_str());
-
-
-			if (baomingXiangQingInfos.at(i).state == 1)
-			{
-
-				//æ±‚å‰©ä½™å¼€å¯æ—¶é—´
-				uint32_t shengTianTime = 0;
-				if (whatDay > 0)
-				{
-					if (whatDay > xingqi)
-						shengTianTime = whatDay - xingqi;
-					else
-						shengTianTime = whatDay + 7 - xingqi;
-				}
-				uint32_t shengShiTime = shiTime - hour;
-				uint32_t shengFenTime = 0;
-				if (shengTianTime > 0)
-				{
-					shengFenTime += 24 * shengTianTime;
-				}
-
-				if (fenTime < minute)
-				{
-					shengShiTime -= 1;
-					shengFenTime = fenTime + 60 - minute;
-				}
-				else
-				{
-					shengFenTime = fenTime - minute;
-				}
-				std::string xiaoshiStr = xiaoshi->valueString;
-				std::ostringstream shijian1;
-				shijian1.clear();
-				shijian1 << shengShiTime << xiaoshiStr.c_str() << shengFenTime << fenhoukaiqi->valueString;
-
-				auto timeTiShi1 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi1");
-				timeTiShi1->setText(shijian1.str().c_str());
-
-			}
-			else
-			{
-				baomingYuanAndLuan_Info info = LoginLayer::getBaoMingNumByAid(aid);
-				//æŠ¥åæ€»äººæ•° 
-				int num = info.ranks;
-				//æŠ¥åæ’å
-				int rank = baomingXiangQingInfos.at(i).rank;
-				//éœ€è¦å¼€æˆ¿äººæ•°
-				int kaiFangNum = xiangInfo.playerNum;
-				if ((num - floor(rank / kaiFangNum) * kaiFangNum) < kaiFangNum)
-				{
-					std::ostringstream xuyaoNumStr;
-					xuyaoNumStr.clear();
-					xuyaoNumStr << (kaiFangNum - (num - floor(rank / kaiFangNum) * kaiFangNum));
-
-					std::string str = kaiqihaicha->valueString + xuyaoNumStr.str() + ren->valueString;
-					auto timeTiShi1 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi1");
-					timeTiShi1->setText(str.c_str());
-				}
-				else
-				{
-					//æ±‚å‰©ä½™å¼€å¯æ—¶é—´
-					uint32_t shengTianTime = 0;
-					if (whatDay > 0)
-					{
-						if (whatDay > xingqi)
-							shengTianTime = whatDay - xingqi;
-						else
-							shengTianTime = whatDay + 7 - xingqi;
-					}
-					uint32_t shengShiTime = shiTime1 - hour;
-					uint32_t shengFenTime = 0;
-					if (shengTianTime > 0)
-					{
-						shengFenTime += 24 * shengTianTime;
-					}
-
-					if (fenTime1 < minute)
-					{
-						shengShiTime -= 1;
-						shengFenTime = fenTime1 + 60 - minute;
-					}
-					else
-					{
-						shengFenTime = fenTime1 - minute;
-					}
-					std::string xiaoshiStr = xiaoshi->valueString;
-					std::ostringstream shijian1;
-					shijian1.clear();
-					shijian1 << shengShiTime << xiaoshiStr.c_str() << shengFenTime << fenhoukaiqi->valueString;
-
-					auto timeTiShi1 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi1");
-					timeTiShi1->setText(shijian1.str().c_str());
-				}
-
-			}
-
-
-
-
-
-
-
-		}
-
-		for (int i = 0; i < daluandouXiangQingInfos.size(); i++)
-		{
-			auto cloneList = rongqi->clone();
-			cloneList->setVisible(true);
-			ScrollView->addChild(cloneList);
-			cloneList->setPosition(ccp(rongqiX, rongqiY - rongqiWidth * baomingXiangQingInfos.size() - rongqiWidth * i));
-
-			int aid = daluandouXiangQingInfos.at(i).aid;
-			xiangQing_Info xiangInfo = getXiangQingInfoByAid(aid);
-			std::string iconPath = "BaoMingShowLayer\\icon\\" + xiangInfo.icon;
-			std::string wordsPicPath = "BaoMingShowLayer\\wordsPic\\" + xiangInfo.wordsPic;
-			uint32_t startGameTime = xiangInfo.statGameTime;
-			uint32_t whatDay = xiangInfo.whatDay;
-
-			uint32_t shiTime = startGameTime / 60;
-			uint32_t fenTime = startGameTime % 60;
-
-
-			/*int year = tm->tm_year + 1900;
-			int month = tm->tm_mon + 1;
-			int day = tm->tm_mday;
-			int hour = tm->tm_hour;
-			int minute = tm->tm_min;
-			int second = tm->tm_sec;
-			int xingqi = tm->tm_wday + 1;*/
-			//æ±‚å‰©ä½™å¼€å¯æ—¶é—´
-			uint32_t shengTianTime = 0;
-			if (whatDay > 0)
-			{
-				if (whatDay > xingqi)
-					shengTianTime = whatDay - xingqi;
-				else 
-					shengTianTime = whatDay + 7 - xingqi;
-			}
-			uint32_t shengShiTime = shiTime - hour;
-			uint32_t shengFenTime = 0;
-			if (shengTianTime > 0)
-			{
-				shengFenTime += 24 * shengTianTime;
-			}
-
-			if (fenTime < minute)
-			{
-				shengShiTime -= 1;
-				shengFenTime = fenTime + 60- minute;
-			}
-			else
-			{
-				shengFenTime = fenTime - minute;
-			}
-			std::string xiaoshiStr = xiaoshi->valueString;
-			std::ostringstream shijian1;
-			shijian1.clear();
-			shijian1 << shengShiTime << xiaoshiStr.c_str() << shengFenTime << fenhoukaiqi->valueString;
-			
-
-
-			std::string tishi2 = kaiqishijian->valueString;
-			if (whatDay == 0)
-			{
-				tishi2 += meitian->valueString;
-			}
-			else if (whatDay == 1)
-			{
-				tishi2 += xingqiyi->valueString;
-			}
-			else if (whatDay == 2)
-			{
-				tishi2 += xingqier->valueString;
-			}
-			else if (whatDay == 3)
-			{
-				tishi2 += xingqisan->valueString;
-			}
-			else if (whatDay == 4)
-			{
-				tishi2 += xingqisi->valueString;
-			}
-			else if (whatDay == 5)
-			{
-				tishi2 += xingqiwu->valueString;
-			}
-			else if (whatDay == 6)
-			{
-				tishi2 += xingqiliu->valueString;
-			}
-			else if (whatDay == 7)
-			{
-				tishi2 += xingqiri->valueString;
-			}
-			std::ostringstream shijian;
-			shijian.clear();
-			if (fenTime == 0)
-			{
-				shijian << shiTime << ":0" << fenTime;
-			}
-			else
-				shijian << shiTime << ":" << fenTime;
-
-			tishi2 += shijian.str();
-			auto icon = (cocos2d::ui::ImageView*)cloneList->getChildByName("icon");
-			icon->loadTexture(iconPath.c_str());
-			auto words = (cocos2d::ui::ImageView*)cloneList->getChildByName("words");
-			words->loadTexture(wordsPicPath.c_str());
-
-			auto timeTiShi2 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi2");
-			timeTiShi2->setText(tishi2.c_str());
-
-			auto timeTiShi1 = (cocos2d::ui::Text*)cloneList->getChildByName("timeTiShi1");
-			timeTiShi1->setText(shijian1.str().c_str());
-
-		}
-		//ScrollView->setInnerContainerSize(Size(rongqi->getContentSize().width + 4, rongqi->getContentSize().height* (baomingXiangQingInfos.size() + daluandouXiangQingInfos.size() + 1)));
-
-
-
-	}, "getBaoMingXiangQing");
-}
-
-xiangQing_Info LoginLayer::getXiangQingInfoByAid(int aid)
-{
-	xiangQing_Info xiangQingInfo;
-	Json* root = ReadJson("baoming.json");
-	std::ostringstream ss;
-	ss.clear();
-	ss << aid;
-	//std::string aidStr = "" + aid;
-	Json* xiangQing = Json_getItem(root, ss.str().c_str());//æ¯ä¸ªè¯¦æƒ…æ•°æ®åº“
-
-	Json* name = Json_getItem(xiangQing, "name");
-	Json* desc = Json_getItem(xiangQing, "desc");
-	Json* icon = Json_getItem(xiangQing, "icon");
-	Json* wordsPic = Json_getItem(xiangQing, "wordsPic");
-	Json* playerNum = Json_getItem(xiangQing, "playerNum");
-	Json* jiesuanTime = Json_getItem(xiangQing, "jiesuanTime");
-	Json* statGameTime = Json_getItem(xiangQing, "statGameTime");
-	Json* whatDay = Json_getItem(xiangQing, "whatDay");
-
-
-	xiangQingInfo.aid = aid;
-	xiangQingInfo.name = name->valueString;
-	xiangQingInfo.desc = desc->valueString;
-	xiangQingInfo.icon = icon->valueString;
-	xiangQingInfo.wordsPic = wordsPic->valueString;
-	xiangQingInfo.playerNum = playerNum->valueInt;
-	if (jiesuanTime)
-	{
-		xiangQingInfo.jiesuanTime = jiesuanTime->valueInt;
-	}
-	xiangQingInfo.statGameTime = statGameTime->valueInt;
-	xiangQingInfo.whatDay = whatDay->valueInt;
-
-	return xiangQingInfo;
-
-}
-
-baomingYuanAndLuan_Info LoginLayer::getBaoMingNumByAid(int aid)
-{
-	
-	baomingYuanAndLuan_Info info;
-	for (int i = 0; i < yuanAndLuanInfos.size();i++)
-	{
-		info = yuanAndLuanInfos.at(i);
-		if (info.id == aid)
-		{
-			return info;
-		}
-	}
-}
-
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end======================================================================
+//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end======================================================================
 
 
 
 
 
 ////////////////////////////////////////////////////////////////////
-// ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+// Éú´æÄ£Ê½¿ªÊ¼½çÃæ
 ////////////////////////////////////////////////////////////////////
 ShengCun::ShengCun()
 {
@@ -3541,7 +2537,7 @@ void ShengCun::delayEnter(float ft)
 	LoginLayer* login = dynamic_cast<LoginLayer*>(getParent());
 	netInfo netID = login->getNetInfo();
 	MainScene* main = dynamic_cast<MainScene*>(login->getParent());
-	// ï¿½ï¿½È¡Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿
+	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
 	main->reqServerKey(netID.m_netID, 1, menpiaoxiaohao);
 	Global::getInstance()->SetFightType(1);
 }
@@ -3644,7 +2640,7 @@ void ShengCun::onTouchEnded(Touch* pTouch, Event* pEvent)
 }
 
 ////////////////////////////////////////////////////////////////////
-// ï¿½ï¿½È¡ï¿½ë³¡È¯ï¿½ï¿½ï¿½ï¿½
+// ÁìÈ¡Èë³¡È¯½çÃæ
 ////////////////////////////////////////////////////////////////////
 LingRuchangQuan::LingRuchangQuan()
 {
@@ -3808,7 +2804,7 @@ void LingRuchangQuan::rushmenpiao()
 	useName = (CCLabelTTF*)getChildByTag(TAG_MONEYLAB);
 	useName->setString(ton);
 
-	sprintf(ton, "ï¿½ï¿½ï¿½Õ¿É¶Ò»ï¿½ï¿½ï¿½%d/1", info.freeTicket);
+	sprintf(ton, "½ñÈÕ¿É¶Ò»»£º%d/1", info.freeTicket);
 	useName = (CCLabelTTF*)getChildByTag(TAG_LINQUCISHU);
 	useName->setString(ton);
 

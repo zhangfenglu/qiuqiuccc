@@ -525,9 +525,10 @@ void protobuf_AssignDesc_msg_5fclient_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UM_CancelFight));
   UM_Item_descriptor_ = file->message_type(16);
-  static const int UM_Item_offsets_[2] = {
+  static const int UM_Item_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UM_Item, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UM_Item, num_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UM_Item, type_),
   };
   UM_Item_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -1902,132 +1903,132 @@ void protobuf_AddDesc_msg_5fclient_2eproto() {
     "(\r\":\n\rUM_ReadyFight\022\014\n\004time\030\001 \001(\r\022\014\n\004mod"
     "e\030\002 \001(\r\022\r\n\005round\030\003 \001(\r\"\016\n\014UM_TeamFight\"%"
     "\n\021UM_ReqCancelFight\022\020\n\010playerid\030\001 \002(\t\"\020\n"
-    "\016UM_CancelFight\"\"\n\007UM_Item\022\n\n\002id\030\001 \002(\r\022\013"
-    "\n\003num\030\002 \002(\r\"\333\001\n\rUM_PlayerInfo\022\020\n\010playeri"
-    "d\030\001 \002(\t\022\014\n\004rank\030\002 \002(\r\022\014\n\004icon\030\003 \001(\r\022\022\n\nm"
-    "onthLevel\030\004 \001(\r\022\021\n\tyealLevel\030\005 \001(\r\022\014\n\004na"
-    "me\030\006 \001(\t\022\017\n\007account\030\007 \001(\t\022\016\n\006weight\030\010 \001("
-    "\r\022\'\n\005items\030\t \003(\0132\030.com.suyin.proto.UM_It"
-    "em\022\r\n\005grade\030\n \001(\005\022\016\n\006change\030\013 \001(\005\"\214\001\n\017UM"
-    "_BattleResult\022\013\n\003aid\030\001 \002(\r\022\014\n\004mode\030\002 \002(\r"
-    "\022\014\n\004rank\030\003 \002(\r\022\r\n\005round\030\004 \001(\r\022\020\n\010isWinne"
-    "r\030\005 \001(\010\022/\n\007players\030\006 \003(\0132\036.com.suyin.pro"
-    "to.UM_PlayerInfo\"\024\n\022UM_ReqBattleResult\"\030"
-    "\n\tUM_Logout\022\013\n\003err\030\001 \001(\005\"^\n\014UM_EnterGame"
-    "\022(\n\004info\030\001 \001(\0132\032.com.suyin.proto.role_in"
-    "fo\022\022\n\nservertime\030\002 \001(\r\022\020\n\010fighting\030\003 \001(\010"
-    "\"7\n\013UM_SyncRole\022(\n\004info\030\001 \001(\0132\032.com.suyi"
-    "n.proto.role_info\"\030\n\nUM_BuyItem\022\n\n\002id\030\001 "
-    "\001(\r\"\030\n\nUM_UseItem\022\n\n\002id\030\001 \001(\r\"G\n\rUM_Item"
-    "Update\022(\n\004list\030\001 \003(\0132\032.com.suyin.proto.i"
-    "tem_info\022\014\n\004type\030\002 \001(\005\"\"\n\016UM_UnequipItem"
-    "\022\020\n\010itemtype\030\001 \001(\005\".\n\016UM_EquipUpdate\022\020\n\010"
-    "itemtype\030\001 \001(\005\022\n\n\002id\030\002 \001(\r\"\014\n\nUM_ReqShop"
-    "\"3\n\007UM_Shop\022(\n\004list\030\001 \003(\0132\032.com.suyin.pr"
-    "oto.shop_item\"\020\n\016UM_HeroLevelup\",\n\007UM_He"
-    "ro\022\016\n\006heroid\030\001 \001(\r\022\021\n\therolevel\030\002 \001(\r\"\022\n"
-    "\020UM_ReqServerList\";\n\rUM_ServerList\022*\n\004li"
-    "st\030\001 \003(\0132\034.com.suyin.proto.server_info\"Z"
-    "\n\020UM_ReqLoginFight\022\020\n\010playerid\030\001 \002(\t\022\020\n\010"
-    "serverid\030\002 \001(\r\022\014\n\004mode\030\003 \001(\005\022\024\n\014ticket_c"
-    "ount\030\004 \001(\r\"A\n\020UM_LoginFightKey\022\020\n\010server"
-    "id\030\001 \001(\r\022\013\n\003key\030\002 \001(\r\022\016\n\006roomid\030\003 \001(\r\"\016\n"
-    "\014UM_ExitFight\"\030\n\005UM_Gm\022\017\n\007command\030\001 \001(\t\""
-    ")\n\013UM_Response\022\r\n\005msgid\030\001 \001(\r\022\013\n\003err\030\002 \001"
-    "(\005\"8\n\013UM_SetFocus\022\014\n\004type\030\001 \001(\r\022\013\n\003set\030\002"
-    " \001(\r\022\016\n\006roleid\030\003 \001(\r\"\034\n\nUM_ReqRole\022\016\n\006ro"
-    "leid\030\001 \001(\r\"7\n\013UM_RoleInfo\022(\n\004info\030\001 \001(\0132"
-    "\032.com.suyin.proto.role_info\"J\n\nUM_ReqFan"
-    "s\022\014\n\004type\030\001 \001(\005\022\016\n\006range1\030\002 \001(\r\022\016\n\006range"
-    "2\030\003 \001(\r\022\016\n\006roleid\030\004 \001(\r\"c\n\007UM_Fans\022(\n\004li"
-    "st\030\001 \003(\0132\032.com.suyin.proto.fans_info\022\016\n\006"
-    "range1\030\002 \001(\r\022\016\n\006range2\030\003 \001(\r\022\016\n\006roleid\030\004"
-    " \001(\r\",\n\013UM_ReqRanks\022\014\n\004type\030\001 \001(\005\022\017\n\007sub"
-    "type\030\002 \001(\005\"4\n\010UM_Ranks\022(\n\004list\030\001 \003(\0132\032.c"
-    "om.suyin.proto.rank_info\"A\n\rUM_FightLike"
-    "s\022\022\n\nattentions\030\001 \003(\010\022\r\n\005likes\030\002 \003(\010\022\r\n\005"
-    "roles\030\003 \003(\r\"\036\n\014UM_GetTopMsg\022\016\n\006roleid\030\001 "
-    "\001(\r\";\n\tUM_GetMsg\022\016\n\006roleid\030\001 \001(\r\022\016\n\006rang"
-    "e1\030\002 \001(\r\022\016\n\006range2\030\003 \001(\r\"-\n\nUM_SendMsg\022\016"
-    "\n\006roleid\030\001 \001(\r\022\017\n\007content\030\002 \001(\t\"8\n\nUM_Li"
-    "keMsg\022\016\n\006roleid\030\001 \001(\r\022\r\n\005msgid\030\002 \001(\r\022\013\n\003"
-    "set\030\003 \001(\005\"D\n\tUM_TopMsg\022\016\n\006roleid\030\001 \001(\r\022\'"
-    "\n\004list\030\002 \003(\0132\031.com.suyin.proto.msg_info\""
-    "e\n\nUM_MsgList\022\016\n\006roleid\030\001 \001(\r\022\016\n\006range1\030"
-    "\002 \001(\r\022\016\n\006range2\030\003 \001(\r\022\'\n\004list\030\004 \003(\0132\031.co"
-    "m.suyin.proto.msg_info\"\034\n\014UM_GetFriend\022\014"
-    "\n\004type\030\001 \001(\005\"F\n\nUM_Friends\022*\n\004list\030\001 \003(\013"
-    "2\034.com.suyin.proto.friend_info\022\014\n\004type\030\003"
-    " \001(\005\"/\n\021UM_ResponseInvite\022\n\n\002ok\030\001 \001(\005\022\016\n"
-    "\006roleid\030\002 \001(\r\"H\n\014UM_AddFriend\022\014\n\004type\030\001 "
-    "\001(\005\022*\n\004info\030\002 \001(\0132\034.com.suyin.proto.frie"
-    "nd_info\"/\n\017UM_InviteFriend\022\016\n\006roleid\030\001 \001"
-    "(\r\022\014\n\004name\030\002 \001(\t\"H\n\014UM_AddInvite\022\014\n\004type"
-    "\030\001 \001(\005\022*\n\004info\030\002 \001(\0132\034.com.suyin.proto.f"
-    "riend_info\"H\n\014UM_DelInvite\022\014\n\004type\030\001 \001(\005"
-    "\022*\n\004info\030\002 \001(\0132\034.com.suyin.proto.friend_"
-    "info\"\034\n\nUM_ToBlack\022\016\n\006roleid\030\001 \001(\r\"9\n\013UM"
-    "_AddBlack\022*\n\004info\030\001 \001(\0132\034.com.suyin.prot"
-    "o.friend_info\"\"\n\020UM_ReqSeasonRank\022\016\n\006rol"
-    "eid\030\001 \001(\r\";\n\rUM_SeasonRank\022*\n\004list\030\001 \003(\013"
-    "2\034.com.suyin.proto.season_rank\"\"\n\020UM_Req"
-    "GameRecord\022\016\n\006roleid\030\001 \001(\r\";\n\rUM_GameRec"
-    "ord\022*\n\004list\030\001 \003(\0132\034.com.suyin.proto.game"
-    "_record\"8\n\013UM_SetPhoto\022)\n\004data\030\001 \001(\0132\033.c"
-    "om.suyin.proto.photo_data\"\036\n\014UM_ReqPhoto"
-    "s\022\016\n\006roleid\030\001 \001(\r\"F\n\tUM_Photos\022)\n\004list\030\001"
-    " \003(\0132\033.com.suyin.proto.photo_data\022\016\n\006rol"
-    "eid\030\002 \001(\r\"7\n\nUM_SetName\022\014\n\004name\030\001 \001(\t\022\016\n"
-    "\006passwd\030\002 \001(\t\022\013\n\003sex\030\003 \001(\r\"\030\n\tUM_SetSex\022"
-    "\013\n\003sex\030\001 \001(\r\"\032\n\nUM_SetDesc\022\014\n\004desc\030\001 \001(\t"
-    "\"+\n\tUM_SetGeo\022\020\n\010province\030\001 \001(\r\022\014\n\004city\030"
-    "\002 \001(\r\"(\n\nUM_SetIcon\022\014\n\004icon\030\001 \001(\r\022\014\n\004dat"
-    "a\030\002 \001(\t\"\016\n\014UM_GetTicket\"\033\n\013UM_ReqIcons\022\014"
-    "\n\004list\030\001 \003(\r\"4\n\010UM_Icons\022(\n\004list\030\001 \003(\0132\032"
-    ".com.suyin.proto.icon_data\"\t\n\007UM_Sign\"\n\n"
-    "\010UM_Award\"9\n\014UM_AwardList\022)\n\004list\030\001 \003(\0132"
-    "\033.com.suyin.proto.award_info*\324\014\n\010IDUM_CL"
-    "I\022\016\n\nIDUM_GATEB\020\000\022\013\n\007IDUM_Gm\020\001\022\016\n\nIDUM_L"
-    "ogin\020\n\022\020\n\014IDUM_BuyItem\020\024\022\020\n\014IDUM_UseItem"
-    "\020\025\022\020\n\014IDUM_ReqShop\020\026\022\024\n\020IDUM_UnequipItem"
-    "\020\027\022\024\n\020IDUM_HeroLevelup\020\036\022\026\n\022IDUM_ReqServ"
-    "erList\0202\022\026\n\022IDUM_ReqLoginFight\0203\022\022\n\016IDUM"
-    "_ExitFight\0204\022\021\n\rIDUM_SetFocus\020<\022\020\n\014IDUM_"
-    "ReqRole\020>\022\020\n\014IDUM_ReqFans\020\?\022\021\n\rIDUM_ReqR"
-    "anks\020F\022\022\n\016IDUM_GetTopMsg\020P\022\017\n\013IDUM_GetMs"
-    "g\020Q\022\020\n\014IDUM_SendMsg\020R\022\020\n\014IDUM_LikeMsg\020S\022"
-    "\022\n\016IDUM_GetFriend\020Z\022\025\n\021IDUM_InviteFriend"
-    "\020[\022\027\n\023IDUM_ResponseInvite\020\\\022\020\n\014IDUM_ToBl"
-    "ack\020_\022\026\n\022IDUM_ReqSeasonRank\020d\022\026\n\022IDUM_Re"
-    "qGameRecord\020e\022\021\n\rIDUM_SetPhoto\020f\022\022\n\016IDUM"
-    "_ReqPhotos\020g\022\020\n\014IDUM_SetName\020n\022\017\n\013IDUM_S"
-    "etSex\020o\022\020\n\014IDUM_SetDesc\020p\022\017\n\013IDUM_SetGeo"
-    "\020q\022\020\n\014IDUM_SetIcon\020r\022\022\n\016IDUM_GetTicket\020s"
-    "\022\r\n\tIDUM_Sign\020t\022\016\n\nIDUM_Award\020u\022\021\n\rIDUM_"
-    "ReqIcons\020x\022\023\n\017IDUM_BindAccout\020y\022\023\n\017IDUM_"
-    "ReqVersion\020z\022\023\n\017IDUM_ReqShowMsg\020{\022\024\n\020IDU"
-    "M_ReqActivity\020|\022\026\n\021IDUM_ReqReconnect\020\202\001\022"
-    "\026\n\021IDUM_ReqTeamFight\020\203\001\022\030\n\023IDUM_ReqCance"
-    "lFight\020\204\001\022\031\n\024IDUM_ReqBattleResult\020\210\001\022\017\n\n"
-    "IDUM_GATEE\020\347\007\022\016\n\tIDUM_CLIB\020\350\007\022\022\n\rIDUM_Re"
-    "sponse\020\351\007\022\020\n\013IDUM_Logout\020\362\007\022\023\n\016IDUM_Ente"
-    "rGame\020\363\007\022\022\n\rIDUM_SyncRole\020\364\007\022\024\n\017IDUM_Ite"
-    "mUpdate\020\374\007\022\016\n\tIDUM_Shop\020\376\007\022\025\n\020IDUM_Equip"
-    "Update\020\377\007\022\016\n\tIDUM_Hero\020\206\010\022\024\n\017IDUM_Server"
-    "List\020\232\010\022\027\n\022IDUM_LoginFightKey\020\233\010\022\022\n\rIDUM"
-    "_RoleInfo\020\246\010\022\016\n\tIDUM_Fans\020\247\010\022\017\n\nIDUM_Ran"
-    "ks\020\256\010\022\024\n\017IDUM_FightLikes\020\257\010\022\020\n\013IDUM_TopM"
-    "sg\020\270\010\022\021\n\014IDUM_MsgList\020\271\010\022\021\n\014IDUM_Friends"
-    "\020\302\010\022\023\n\016IDUM_AddFriend\020\303\010\022\023\n\016IDUM_AddInvi"
-    "te\020\304\010\022\023\n\016IDUM_DelInvite\020\305\010\022\022\n\rIDUM_AddBl"
-    "ack\020\307\010\022\024\n\017IDUM_SeasonRank\020\314\010\022\024\n\017IDUM_Gam"
-    "eRecord\020\315\010\022\020\n\013IDUM_Photos\020\317\010\022\023\n\016IDUM_Awa"
-    "rdList\020\335\010\022\017\n\nIDUM_Icons\020\340\010\022\021\n\014IDUM_Versi"
-    "on\020\342\010\022\021\n\014IDUM_ShowMsg\020\343\010\022\022\n\rIDUM_Activit"
-    "y\020\344\010\022\023\n\016IDUM_Reconnect\020\352\010\022\023\n\016IDUM_TeamFi"
-    "ght\020\353\010\022\025\n\020IDUM_CancelFight\020\354\010\022\024\n\017IDUM_Re"
-    "adyFight\020\357\010\022\026\n\021IDUM_BattleResult\020\360\010\022\016\n\tI"
-    "DUM_CLIE\020\317\017", 5771);
+    "\016UM_CancelFight\"0\n\007UM_Item\022\n\n\002id\030\001 \002(\r\022\013"
+    "\n\003num\030\002 \002(\r\022\014\n\004type\030\003 \001(\r\"\333\001\n\rUM_PlayerI"
+    "nfo\022\020\n\010playerid\030\001 \002(\t\022\014\n\004rank\030\002 \002(\r\022\014\n\004i"
+    "con\030\003 \001(\r\022\022\n\nmonthLevel\030\004 \001(\r\022\021\n\tyealLev"
+    "el\030\005 \001(\r\022\014\n\004name\030\006 \001(\t\022\017\n\007account\030\007 \001(\t\022"
+    "\016\n\006weight\030\010 \001(\r\022\'\n\005items\030\t \003(\0132\030.com.suy"
+    "in.proto.UM_Item\022\r\n\005grade\030\n \001(\005\022\016\n\006chang"
+    "e\030\013 \001(\005\"\214\001\n\017UM_BattleResult\022\013\n\003aid\030\001 \002(\r"
+    "\022\014\n\004mode\030\002 \002(\r\022\014\n\004rank\030\003 \002(\r\022\r\n\005round\030\004 "
+    "\001(\r\022\020\n\010isWinner\030\005 \001(\010\022/\n\007players\030\006 \003(\0132\036"
+    ".com.suyin.proto.UM_PlayerInfo\"\024\n\022UM_Req"
+    "BattleResult\"\030\n\tUM_Logout\022\013\n\003err\030\001 \001(\005\"^"
+    "\n\014UM_EnterGame\022(\n\004info\030\001 \001(\0132\032.com.suyin"
+    ".proto.role_info\022\022\n\nservertime\030\002 \001(\r\022\020\n\010"
+    "fighting\030\003 \001(\010\"7\n\013UM_SyncRole\022(\n\004info\030\001 "
+    "\001(\0132\032.com.suyin.proto.role_info\"\030\n\nUM_Bu"
+    "yItem\022\n\n\002id\030\001 \001(\r\"\030\n\nUM_UseItem\022\n\n\002id\030\001 "
+    "\001(\r\"G\n\rUM_ItemUpdate\022(\n\004list\030\001 \003(\0132\032.com"
+    ".suyin.proto.item_info\022\014\n\004type\030\002 \001(\005\"\"\n\016"
+    "UM_UnequipItem\022\020\n\010itemtype\030\001 \001(\005\".\n\016UM_E"
+    "quipUpdate\022\020\n\010itemtype\030\001 \001(\005\022\n\n\002id\030\002 \001(\r"
+    "\"\014\n\nUM_ReqShop\"3\n\007UM_Shop\022(\n\004list\030\001 \003(\0132"
+    "\032.com.suyin.proto.shop_item\"\020\n\016UM_HeroLe"
+    "velup\",\n\007UM_Hero\022\016\n\006heroid\030\001 \001(\r\022\021\n\thero"
+    "level\030\002 \001(\r\"\022\n\020UM_ReqServerList\";\n\rUM_Se"
+    "rverList\022*\n\004list\030\001 \003(\0132\034.com.suyin.proto"
+    ".server_info\"Z\n\020UM_ReqLoginFight\022\020\n\010play"
+    "erid\030\001 \002(\t\022\020\n\010serverid\030\002 \001(\r\022\014\n\004mode\030\003 \001"
+    "(\005\022\024\n\014ticket_count\030\004 \001(\r\"A\n\020UM_LoginFigh"
+    "tKey\022\020\n\010serverid\030\001 \001(\r\022\013\n\003key\030\002 \001(\r\022\016\n\006r"
+    "oomid\030\003 \001(\r\"\016\n\014UM_ExitFight\"\030\n\005UM_Gm\022\017\n\007"
+    "command\030\001 \001(\t\")\n\013UM_Response\022\r\n\005msgid\030\001 "
+    "\001(\r\022\013\n\003err\030\002 \001(\005\"8\n\013UM_SetFocus\022\014\n\004type\030"
+    "\001 \001(\r\022\013\n\003set\030\002 \001(\r\022\016\n\006roleid\030\003 \001(\r\"\034\n\nUM"
+    "_ReqRole\022\016\n\006roleid\030\001 \001(\r\"7\n\013UM_RoleInfo\022"
+    "(\n\004info\030\001 \001(\0132\032.com.suyin.proto.role_inf"
+    "o\"J\n\nUM_ReqFans\022\014\n\004type\030\001 \001(\005\022\016\n\006range1\030"
+    "\002 \001(\r\022\016\n\006range2\030\003 \001(\r\022\016\n\006roleid\030\004 \001(\r\"c\n"
+    "\007UM_Fans\022(\n\004list\030\001 \003(\0132\032.com.suyin.proto"
+    ".fans_info\022\016\n\006range1\030\002 \001(\r\022\016\n\006range2\030\003 \001"
+    "(\r\022\016\n\006roleid\030\004 \001(\r\",\n\013UM_ReqRanks\022\014\n\004typ"
+    "e\030\001 \001(\005\022\017\n\007subtype\030\002 \001(\005\"4\n\010UM_Ranks\022(\n\004"
+    "list\030\001 \003(\0132\032.com.suyin.proto.rank_info\"A"
+    "\n\rUM_FightLikes\022\022\n\nattentions\030\001 \003(\010\022\r\n\005l"
+    "ikes\030\002 \003(\010\022\r\n\005roles\030\003 \003(\r\"\036\n\014UM_GetTopMs"
+    "g\022\016\n\006roleid\030\001 \001(\r\";\n\tUM_GetMsg\022\016\n\006roleid"
+    "\030\001 \001(\r\022\016\n\006range1\030\002 \001(\r\022\016\n\006range2\030\003 \001(\r\"-"
+    "\n\nUM_SendMsg\022\016\n\006roleid\030\001 \001(\r\022\017\n\007content\030"
+    "\002 \001(\t\"8\n\nUM_LikeMsg\022\016\n\006roleid\030\001 \001(\r\022\r\n\005m"
+    "sgid\030\002 \001(\r\022\013\n\003set\030\003 \001(\005\"D\n\tUM_TopMsg\022\016\n\006"
+    "roleid\030\001 \001(\r\022\'\n\004list\030\002 \003(\0132\031.com.suyin.p"
+    "roto.msg_info\"e\n\nUM_MsgList\022\016\n\006roleid\030\001 "
+    "\001(\r\022\016\n\006range1\030\002 \001(\r\022\016\n\006range2\030\003 \001(\r\022\'\n\004l"
+    "ist\030\004 \003(\0132\031.com.suyin.proto.msg_info\"\034\n\014"
+    "UM_GetFriend\022\014\n\004type\030\001 \001(\005\"F\n\nUM_Friends"
+    "\022*\n\004list\030\001 \003(\0132\034.com.suyin.proto.friend_"
+    "info\022\014\n\004type\030\003 \001(\005\"/\n\021UM_ResponseInvite\022"
+    "\n\n\002ok\030\001 \001(\005\022\016\n\006roleid\030\002 \001(\r\"H\n\014UM_AddFri"
+    "end\022\014\n\004type\030\001 \001(\005\022*\n\004info\030\002 \001(\0132\034.com.su"
+    "yin.proto.friend_info\"/\n\017UM_InviteFriend"
+    "\022\016\n\006roleid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\"H\n\014UM_Add"
+    "Invite\022\014\n\004type\030\001 \001(\005\022*\n\004info\030\002 \001(\0132\034.com"
+    ".suyin.proto.friend_info\"H\n\014UM_DelInvite"
+    "\022\014\n\004type\030\001 \001(\005\022*\n\004info\030\002 \001(\0132\034.com.suyin"
+    ".proto.friend_info\"\034\n\nUM_ToBlack\022\016\n\006role"
+    "id\030\001 \001(\r\"9\n\013UM_AddBlack\022*\n\004info\030\001 \001(\0132\034."
+    "com.suyin.proto.friend_info\"\"\n\020UM_ReqSea"
+    "sonRank\022\016\n\006roleid\030\001 \001(\r\";\n\rUM_SeasonRank"
+    "\022*\n\004list\030\001 \003(\0132\034.com.suyin.proto.season_"
+    "rank\"\"\n\020UM_ReqGameRecord\022\016\n\006roleid\030\001 \001(\r"
+    "\";\n\rUM_GameRecord\022*\n\004list\030\001 \003(\0132\034.com.su"
+    "yin.proto.game_record\"8\n\013UM_SetPhoto\022)\n\004"
+    "data\030\001 \001(\0132\033.com.suyin.proto.photo_data\""
+    "\036\n\014UM_ReqPhotos\022\016\n\006roleid\030\001 \001(\r\"F\n\tUM_Ph"
+    "otos\022)\n\004list\030\001 \003(\0132\033.com.suyin.proto.pho"
+    "to_data\022\016\n\006roleid\030\002 \001(\r\"7\n\nUM_SetName\022\014\n"
+    "\004name\030\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\022\013\n\003sex\030\003 \001(\r"
+    "\"\030\n\tUM_SetSex\022\013\n\003sex\030\001 \001(\r\"\032\n\nUM_SetDesc"
+    "\022\014\n\004desc\030\001 \001(\t\"+\n\tUM_SetGeo\022\020\n\010province\030"
+    "\001 \001(\r\022\014\n\004city\030\002 \001(\r\"(\n\nUM_SetIcon\022\014\n\004ico"
+    "n\030\001 \001(\r\022\014\n\004data\030\002 \001(\t\"\016\n\014UM_GetTicket\"\033\n"
+    "\013UM_ReqIcons\022\014\n\004list\030\001 \003(\r\"4\n\010UM_Icons\022("
+    "\n\004list\030\001 \003(\0132\032.com.suyin.proto.icon_data"
+    "\"\t\n\007UM_Sign\"\n\n\010UM_Award\"9\n\014UM_AwardList\022"
+    ")\n\004list\030\001 \003(\0132\033.com.suyin.proto.award_in"
+    "fo*\324\014\n\010IDUM_CLI\022\016\n\nIDUM_GATEB\020\000\022\013\n\007IDUM_"
+    "Gm\020\001\022\016\n\nIDUM_Login\020\n\022\020\n\014IDUM_BuyItem\020\024\022\020"
+    "\n\014IDUM_UseItem\020\025\022\020\n\014IDUM_ReqShop\020\026\022\024\n\020ID"
+    "UM_UnequipItem\020\027\022\024\n\020IDUM_HeroLevelup\020\036\022\026"
+    "\n\022IDUM_ReqServerList\0202\022\026\n\022IDUM_ReqLoginF"
+    "ight\0203\022\022\n\016IDUM_ExitFight\0204\022\021\n\rIDUM_SetFo"
+    "cus\020<\022\020\n\014IDUM_ReqRole\020>\022\020\n\014IDUM_ReqFans\020"
+    "\?\022\021\n\rIDUM_ReqRanks\020F\022\022\n\016IDUM_GetTopMsg\020P"
+    "\022\017\n\013IDUM_GetMsg\020Q\022\020\n\014IDUM_SendMsg\020R\022\020\n\014I"
+    "DUM_LikeMsg\020S\022\022\n\016IDUM_GetFriend\020Z\022\025\n\021IDU"
+    "M_InviteFriend\020[\022\027\n\023IDUM_ResponseInvite\020"
+    "\\\022\020\n\014IDUM_ToBlack\020_\022\026\n\022IDUM_ReqSeasonRan"
+    "k\020d\022\026\n\022IDUM_ReqGameRecord\020e\022\021\n\rIDUM_SetP"
+    "hoto\020f\022\022\n\016IDUM_ReqPhotos\020g\022\020\n\014IDUM_SetNa"
+    "me\020n\022\017\n\013IDUM_SetSex\020o\022\020\n\014IDUM_SetDesc\020p\022"
+    "\017\n\013IDUM_SetGeo\020q\022\020\n\014IDUM_SetIcon\020r\022\022\n\016ID"
+    "UM_GetTicket\020s\022\r\n\tIDUM_Sign\020t\022\016\n\nIDUM_Aw"
+    "ard\020u\022\021\n\rIDUM_ReqIcons\020x\022\023\n\017IDUM_BindAcc"
+    "out\020y\022\023\n\017IDUM_ReqVersion\020z\022\023\n\017IDUM_ReqSh"
+    "owMsg\020{\022\024\n\020IDUM_ReqActivity\020|\022\026\n\021IDUM_Re"
+    "qReconnect\020\202\001\022\026\n\021IDUM_ReqTeamFight\020\203\001\022\030\n"
+    "\023IDUM_ReqCancelFight\020\204\001\022\031\n\024IDUM_ReqBattl"
+    "eResult\020\210\001\022\017\n\nIDUM_GATEE\020\347\007\022\016\n\tIDUM_CLIB"
+    "\020\350\007\022\022\n\rIDUM_Response\020\351\007\022\020\n\013IDUM_Logout\020\362"
+    "\007\022\023\n\016IDUM_EnterGame\020\363\007\022\022\n\rIDUM_SyncRole\020"
+    "\364\007\022\024\n\017IDUM_ItemUpdate\020\374\007\022\016\n\tIDUM_Shop\020\376\007"
+    "\022\025\n\020IDUM_EquipUpdate\020\377\007\022\016\n\tIDUM_Hero\020\206\010\022"
+    "\024\n\017IDUM_ServerList\020\232\010\022\027\n\022IDUM_LoginFight"
+    "Key\020\233\010\022\022\n\rIDUM_RoleInfo\020\246\010\022\016\n\tIDUM_Fans\020"
+    "\247\010\022\017\n\nIDUM_Ranks\020\256\010\022\024\n\017IDUM_FightLikes\020\257"
+    "\010\022\020\n\013IDUM_TopMsg\020\270\010\022\021\n\014IDUM_MsgList\020\271\010\022\021"
+    "\n\014IDUM_Friends\020\302\010\022\023\n\016IDUM_AddFriend\020\303\010\022\023"
+    "\n\016IDUM_AddInvite\020\304\010\022\023\n\016IDUM_DelInvite\020\305\010"
+    "\022\022\n\rIDUM_AddBlack\020\307\010\022\024\n\017IDUM_SeasonRank\020"
+    "\314\010\022\024\n\017IDUM_GameRecord\020\315\010\022\020\n\013IDUM_Photos\020"
+    "\317\010\022\023\n\016IDUM_AwardList\020\335\010\022\017\n\nIDUM_Icons\020\340\010"
+    "\022\021\n\014IDUM_Version\020\342\010\022\021\n\014IDUM_ShowMsg\020\343\010\022\022"
+    "\n\rIDUM_Activity\020\344\010\022\023\n\016IDUM_Reconnect\020\352\010\022"
+    "\023\n\016IDUM_TeamFight\020\353\010\022\025\n\020IDUM_CancelFight"
+    "\020\354\010\022\024\n\017IDUM_ReadyFight\020\357\010\022\026\n\021IDUM_Battle"
+    "Result\020\360\010\022\016\n\tIDUM_CLIE\020\317\017", 5785);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "msg_client.proto", &protobuf_RegisterTypes);
   UM_Login::default_instance_ = new UM_Login();
@@ -6248,6 +6249,7 @@ void UM_CancelFight::Swap(UM_CancelFight* other) {
 #ifndef _MSC_VER
 const int UM_Item::kIdFieldNumber;
 const int UM_Item::kNumFieldNumber;
+const int UM_Item::kTypeFieldNumber;
 #endif  // !_MSC_VER
 
 UM_Item::UM_Item()
@@ -6268,6 +6270,7 @@ void UM_Item::SharedCtor() {
   _cached_size_ = 0;
   id_ = 0u;
   num_ = 0u;
+  type_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -6305,6 +6308,7 @@ void UM_Item::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     id_ = 0u;
     num_ = 0u;
+    type_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -6343,6 +6347,22 @@ bool UM_Item::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(24)) goto parse_type;
+        break;
+      }
+
+      // optional uint32 type = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_type:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &type_)));
+          set_has_type();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -6375,6 +6395,11 @@ void UM_Item::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->num(), output);
   }
 
+  // optional uint32 type = 3;
+  if (has_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->type(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -6391,6 +6416,11 @@ void UM_Item::SerializeWithCachedSizes(
   // required uint32 num = 2;
   if (has_num()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->num(), target);
+  }
+
+  // optional uint32 type = 3;
+  if (has_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->type(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -6416,6 +6446,13 @@ int UM_Item::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->num());
+    }
+
+    // optional uint32 type = 3;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->type());
     }
 
   }
@@ -6451,6 +6488,9 @@ void UM_Item::MergeFrom(const UM_Item& from) {
     if (from.has_num()) {
       set_num(from.num());
     }
+    if (from.has_type()) {
+      set_type(from.type());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -6477,6 +6517,7 @@ void UM_Item::Swap(UM_Item* other) {
   if (other != this) {
     std::swap(id_, other->id_);
     std::swap(num_, other->num_);
+    std::swap(type_, other->type_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

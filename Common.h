@@ -1,8 +1,8 @@
-ï»¿//
+//
 //  Common.h
 //  qiuFight
 //
-//  Created by ï¿½ï¿½Ô¾ï¿½ï¿½ on 16/3/3.
+//  Created by ÕÅÔ¾¶« on 16/3/3.
 //
 //
 
@@ -18,17 +18,17 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-#define  INITIAL_SPEED          10       //ï¿½ï¿½Ê¼ï¿½Ù¶ï¿½
-#define  ATTENUATION_SPEED      0.01     //Ë¥ï¿½ï¿½ï¿½Ù¶ï¿½
-#define  MINIMUM_SPEED          1       //ï¿½ï¿½Ğ¡ï¿½Ù¶ï¿½
+#define  INITIAL_SPEED          10       //³õÊ¼ËÙ¶È
+#define  ATTENUATION_SPEED      0.01     //Ë¥¼õËÙ¶È
+#define  MINIMUM_SPEED          1       //×îĞ¡ËÙ¶È
 
-#define R_LENGTH                60      //ï¿½ï¿½È¦Ô²ï¿½Ä°ë¾¶
+#define R_LENGTH                60      //ÄÚÈ¦Ô²µÄ°ë¾¶
 
-#define MINIMUM_SIZE            32      //ï¿½ï¿½Ğ¡Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+#define MINIMUM_SIZE            32      //×îĞ¡Ê±ºòÌå»ı
 
-#define MAXIMUM_PICTURE_NUM     40       //Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define MAXIMUM_PICTURE_NUM     40       //Í¼Æ¬µÄ×î´óÊıÁ¿
 
-#define MINMUN_PLAYER_SCALE_OR  0.05    //playerï¿½ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½
+#define MINMUN_PLAYER_SCALE_OR  0.05    //player³õÊ¼»¯Ê±ºòµÄËõ·Å±È
 
 #define PLAYER_PIX_SIZE         300 * 2
 #define CI_PIX_SIZE             155 * 2
@@ -36,16 +36,16 @@ USING_NS_CC_EXT;
 
 #define MASS_FORM_SIZE_PERCENT  0.01
 
-#define DISTANCE_PER_CIRCLE     2000    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define DISTANCE_PER_CIRCLE     2000    // ÇòÓëÇòÖ®¼äµÄ¾àÀëÀ´½øĞĞËõ·Å
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½Ïµ
+//ÖÊÁ¿ºÍÏà»ú±ÈÀıµÄ¹ØÏµ
 #define MASS_PERCENT_1          100
 #define MASS_PERCENT_2          500
 #define MASS_PERCENT_3          1500
 #define MASS_PERCENT_4          5000
 #define MASS_PERCENT_5          10000
 #define MASS_PERCENT_6          22500
-//ï¿½ï¿½ï¿½ï¿½
+//±ÈÀı
 #define MAIN_CAMERA_SCALE_1     0.9
 #define MAIN_CAMERA_SCALE_2     0.8
 #define MAIN_CAMERA_SCALE_3     0.7
@@ -53,7 +53,7 @@ USING_NS_CC_EXT;
 #define MAIN_CAMERA_SCALE_5     0.5
 #define MAIN_CAMERA_SCALE_6     0.4
 
-//ï¿½ï¿½ï¿½ï¿½ä»¯ ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½y=ax^k+b
+//Ïà»ú±ä»¯ ¹«Ê½ÇúÏßÀàĞÍ £ºy=ax^k+b
 #define K_VALUE                 -0.04
 #define A_VALUE                 2.47667
 #define B_VALUE                 -1.25875
@@ -80,7 +80,7 @@ struct eatInfo
     uint32_t eatedID;
 };
 
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start=======================
+//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start=======================
 struct AwardInfo
 {
 	AwardInfo()
@@ -98,21 +98,21 @@ struct AwardInfo
 		allawardsNum = "";
 		allawardsName = "";
 	}
-	std::string title; //box ï¿½ï¿½ï¿½ï¿½
+	std::string title; //box ±êÌâ
 	
-	std::string xiaohaoTitle;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¯ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	std::string zuanshi; //ï¿½ï¿½Ê¯icon ï¿½ï¿½ï¿½Ç¾ï¿½icon
-	std::string xiaohaoNum;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¯ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	std::string xiaohaoTitle;//ÏûºÄ×êÊ¯ ĞğÊöÎÄ×Ö
+	std::string zuanshi; //×êÊ¯icon »òĞÇ¾íicon
+	std::string xiaohaoNum;//ÏûºÄ ×êÊ¯»òĞÇ¾íµÄÊıÁ¿
 
-	std::string allawardsBg;//ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ß±ï¿½ï¿½ï¿½
-	std::string allawards;//ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½
-	std::string allawardsType;//ï¿½ï¿½Ç©Í¼Æ¬
-	std::string allawardsTitle;//ï¿½ï¿½Ç©Í¼Æ¬ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½
-	std::string allawardsNum;//ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	std::string allawardsName;//ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½
+	std::string allawardsBg;//½±ÀøµÄµÀ¾ß±³¾°
+	std::string allawards;//½±ÀøµÄµÀ¾ß
+	std::string allawardsType;//±êÇ©Í¼Æ¬
+	std::string allawardsTitle;//±êÇ©Í¼Æ¬ÉÏµÄÎÄ×Ö
+	std::string allawardsNum;//½±ÀøµÄµÀ¾ßÊıÁ¿
+	std::string allawardsName;//½±ÀøµÄµÀ¾ßµÄÃû×Ö
 
 };
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end=======================
+//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end=======================
 
 struct nodeInfo
 {
@@ -137,7 +137,7 @@ struct nodeInfo
 	uint8_t isPlayer;
 };
 
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--ï¿½Ì³ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ start=======================
+//ºÏ²¢´úÂëÓÃ--0924--ÉÌ³¡ÏµÍ³Ôö¼Ó start=======================
 struct PlayerInfo
 {
 	PlayerInfo()
@@ -155,11 +155,20 @@ struct PlayerInfo
 	uint32_t _gold;
 	uint32_t _bean;
 };
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--ï¿½Ì³ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ start=======================
+//ºÏ²¢´úÂëÓÃ--0924--ÉÌ³¡ÏµÍ³Ôö¼Ó start=======================
 
+struct Goods_infor
+{
+    Goods_infor()
+    {
+        memset(this, 0, sizeof(Goods_infor));
+    }
+    uint32_t    nID;
+    uint32_t    nCount;
+    uint32_t    nType;
+};
 
-
-//ï¿½Å·ï¿½Â¶ ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄµï¿½Â½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+//ÕÅ·æÂ¶ ĞÂÔö¼ÓµÄµÇÂ½ºóµÄÕËºÅÍæ¼ÒĞÅÏ¢
 struct player_info
 {
 	player_info()
@@ -179,9 +188,13 @@ struct player_info
 	uint32_t           age;
 	uint32_t           playerdes;
 	std::string        headid;
+    
+    uint32_t           monthLevel;
+    uint32_t           yearLevel;
+    Goods_infor        stGoodsInfor[20];
 };
 
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start=======================
+//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start=======================
 struct timeyuanzheng_cangku_info
 {
 	timeyuanzheng_cangku_info()
@@ -202,10 +215,10 @@ struct timeyuanzheng_cangku_info
 	uint32_t           juan5;
 	uint32_t           juan6;
 };
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end=======================
+//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end=======================
 
 
-//ï¿½Å·ï¿½Â¶ ï¿½Ëºï¿½
+//ÕÅ·æÂ¶ ÕËºÅ
 struct account_info
 {
 	account_info()
@@ -218,7 +231,7 @@ struct account_info
 		gmlevel = 0;
 		mail = "";
 		macip = "";
-		accout = "";
+	 	accout = "";
 	}
 	uint32_t           id;
 	std::string        playerid;
@@ -232,8 +245,8 @@ struct account_info
 };
 
 
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start=======================
-//ï¿½ï¿½ï¿½ï¿½Ê±
+//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start=======================
+//µ¹¼ÆÊ±
 struct zuduidaojishi_info
 {
 	zuduidaojishi_info()
@@ -254,7 +267,7 @@ struct zuduidaojishi_info
 	uint32_t           xing6time;
 };
 
-//Í·ï¿½ï¿½ ï¿½ï¿½Î» ï¿½Â¿ï¿½ ï¿½ê¿¨ï¿½ï¿½ï¿½ï¿½Ï¢
+//Í·Ïñ ¶ÎÎ» ÔÂ¿¨ Äê¿¨µÈĞÅÏ¢
 struct head_info
 {
 	head_info()
@@ -272,49 +285,6 @@ struct head_info
 	std::string		   playername;
 };
 
-//è¿œå¾è¯¦æƒ…
-struct yuanZhengBaoMingXiangQing_Info
-{
-	yuanZhengBaoMingXiangQing_Info()
-	{
-		id = "0";
-		aid = 0;
-		state = 0;
-		rank = 0;
-	}
-	std::string     id;
-	uint32_t     aid;
-	uint32_t           state;
-	uint32_t           rank;
-
-};
-
-//å¤§ä¹±æ–—è¯¦æƒ…
-struct daLuanDouXiangQing_Info
-{
-	daLuanDouXiangQing_Info()
-	{
-		id = "0";
-		aid = 0;
-		state = 0;
-	}
-	std::string     id;
-	uint32_t     aid;
-	uint32_t           state;
-};
-
-//æŠ¥åä¹±æ–—ä¸è¿œå¾ æ€»äººæ•°
-struct baomingYuanAndLuan_Info
-{
-	baomingYuanAndLuan_Info()
-	{
-		id = 0;
-		ranks = 0;
-	}
-	uint32_t     id;
-	uint32_t           ranks;
-};
-
 struct yuanzhengBaoMing_Info
 {
 	yuanzhengBaoMing_Info()
@@ -326,36 +296,7 @@ struct yuanzhengBaoMing_Info
 	uint32_t           state;
 
 };
-
-
-//æ ¹æ®ç«æŠ€åœºæˆ–å¤§ä¹±æ–— aid å¾—åˆ° è¯¦æƒ…ç•Œé¢çš„æ•°æ®
-struct xiangQing_Info
-{
-	xiangQing_Info()
-	{
-		name = "";
-		desc = "";
-		icon = "";
-		wordsPic = "";
-		aid = 0;
-		whatDay = 0;
-		playerNum = 0;
-		jiesuanTime = 0;
-		statGameTime = 0;
-	}
-	std::string			  name;
-	std::string			  desc;
-	std::string           icon;
-	std::string			  wordsPic;
-	uint32_t			  aid;
-	uint32_t			  whatDay;
-	uint32_t			  playerNum;
-	uint32_t			  jiesuanTime;//å¤§ä¹±æ–—æ²¡æœ‰æ­¤æ•°æ®
-	uint32_t			  statGameTime;
-};
-
-
-//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end=======================
+//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end=======================
 
 struct user_info {
     user_info()
@@ -506,14 +447,14 @@ struct NameColor
 	int colorB;
 };
 
-// Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// Õ½¶·ÄÚÅÅĞĞ
 struct fight_rank
 {
     int             rankID;
     std::string     name;
 };
 
-//Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//Õ½¶·½áËã
 struct EndGame
 {
     EndGame()
@@ -702,7 +643,7 @@ struct user_bag
     int count;
 };
 
-//ï¿½ï¿½ï¿½ï¿½
+//²âÊÔ
 struct TestAtt
 {
     int         m_id;
@@ -712,7 +653,7 @@ struct TestAtt
     std::string m_dest;
     std::string m_state;
     std::string m_times;
-    std::string m_iconStr;   //iconï¿½ï¿½Æ¬
+    std::string m_iconStr;   //iconÕÕÆ¬
 };
 
 
@@ -776,7 +717,7 @@ struct ItemInfo
 {
 	ItemInfo()
 	{
-		char str[] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+		char str[] = "ÃÀÀöµÄÍÏÎ²´ø¸øÄã¸ü¶àµÄĞÒÔË";
 		memset(strIcon, 0, sizeof(strIcon));
 		memset(strName, 0, sizeof(strName));
 		memset(strDesc, 0, sizeof(strDesc));
@@ -789,6 +730,25 @@ struct ItemInfo
 	char strName[100];
 	char strDesc[100];
 };
+
+struct BattleResault
+{
+    BattleResault()
+    {
+        aid =0;
+        mode =0;
+        rank =0;
+        round =0;
+        iswinner =false;
+    }
+    uint32_t aid;
+    uint32_t mode;
+    uint32_t rank;
+    uint32_t round;
+    bool iswinner;
+    struct player_info stPlayerInfor;
+};
+ 
 
 #endif /* Common_h */
 

@@ -1,4 +1,4 @@
-ï»¿#ifndef _GLOBAL_H_
+#ifndef _GLOBAL_H_
 #define _GLOBAL_H_
 #pragma once
 
@@ -7,8 +7,8 @@
 #include "cocos-ext.h"
 #include "spine/Json.h"
 
-#include "UI/CocosGUI.h"                               //Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cgyï¿½ï¿½ï¿½ï¿½0908
-#include "editor-support/cocostudio/CocoStudio.h"		//Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cgyï¿½ï¿½ï¿½ï¿½0908
+#include "UI/CocosGUI.h"                               //Õ½¶·ºËÐÄcgyÔö¼Ó0908
+#include "editor-support/cocostudio/CocoStudio.h"		//Õ½¶·ºËÐÄcgyÔö¼Ó0908
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -22,7 +22,7 @@ using namespace com::suyin::proto;
 
 
 #include "Common.h"
-//ï¿½Í»ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ã·¨ï¿½ï¿½ï¿½Æºï¿½
+//¿Í»§¶Ë²âÊÔËã·¨¿ØÖÆºê
 //#define EditEXE
 
 #define PRI _pri(this)
@@ -173,34 +173,32 @@ public:
 
 
 	PlayerInfo& getMyInfo() { return m_myInfo; }
-	void  SetIsJiaZai(bool jiazai){ m_isJiaZai = jiazai; }
-	bool  GetIsJiaZai(){ return m_isJiaZai; }
 
-	//ï¿½Å·ï¿½Â¶
+	//ÕÅ·æÂ¶
 	void SetplayerDengLuInfo(player_info info){ m_PlayerDengLuInfo = info; }
 	player_info GetPlayerDengLuInfo(){ return m_PlayerDengLuInfo; }
 	void SetHeadInfo(head_info info){ m_HeadInfo = info; }
 	head_info GetHeadInfo(){ return m_HeadInfo; }
-	//ï¿½Å·ï¿½Â¶
+	//ÕÅ·æÂ¶
 	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
 	account_info GetAccountInfo(){ return m_AccountInfo; }
 	
 	
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
-	//ï¿½ï¿½ï¿½ï¿½Ê±
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
+	//µ¹¼ÆÊ±
 	void SetZuDuiDaoJiShiInfo(zuduidaojishi_info info){ m_ZuDuiDaoJiShi = info; }
 	zuduidaojishi_info GetZuDuiDaoJiShiInfo(){ return m_ZuDuiDaoJiShi; }
 
-	//È¼ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ä½±ï¿½ï¿½ï¿½ï¿½Ï¢
+	//È¼ÉÕÔ¶Õ÷×é¶Ó ¶ÔÓ¦µÄÏûºÄ¼°Æä½±ÀøÐÅÏ¢
 	void SetAwardInfo(AwardInfo info){ m_AwardInfo = info; }
 	AwardInfo GetAwardInfo(){ return m_AwardInfo; }
 
-	//ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½ï¿½ ï¿½Ö¸ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÒÔ Ä³¸ö·ûºÅ±ê¼Ç ·Ö¸î×Ö·û´®Êý×é
 	std::vector<std::string> split(std::string str, std::string pattern)
 	{
 		std::string::size_type pos;
 		std::vector<std::string> result;
-		str += pattern;//ï¿½ï¿½Õ¹ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		str += pattern;//À©Õ¹×Ö·û´®ÒÔ·½±ã²Ù×÷
 		int size = str.size();
 
 		for (int i = 0; i < size; i++)
@@ -219,18 +217,18 @@ public:
 
 	void SetCangKuObj(timeyuanzheng_cangku_info info){ m_CangKuObj = info; }
 	timeyuanzheng_cangku_info GetCangKuObj(){ return m_CangKuObj; }
-	//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÊÇ·ñÉêÇëÁË×é¶Ó
 	void SetIsZuDui(bool isZuDui){ m_IsZuDui = isZuDui; }
 	bool GetIsZuDui(){ return m_IsZuDui; }
 
-	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ÓµÈ´ï¿½Ê±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//±£´æ ÉèÖÃ ´óÌü ×é¶ÓµÈ´ýÊ±¼ä¿ò ÄÄÖÖÈ¼ÉÕÔ¶Õ÷±êÌâ
 	void SetWaitTimeBoxTitleStr(std::string title){ 
 		m_Title = title;
 	}
 	std::string GetWaitTimeBoxTitleStr(){
 		return m_Title; 
 	}
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½end=============================================================================
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Óend=============================================================================
 	
 	
 	
@@ -286,15 +284,14 @@ private:
     
     user_info m_PlayerInfo;
 	player_info m_PlayerDengLuInfo;
-	bool m_isJiaZai = false;
 	
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
 	zuduidaojishi_info m_ZuDuiDaoJiShi;
 	AwardInfo m_AwardInfo;
 	timeyuanzheng_cangku_info m_CangKuObj;
 	bool m_IsZuDui = false;
 	std::string m_Title;
-	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end======================================================================
+	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end======================================================================
 	
 	
 	account_info m_AccountInfo;

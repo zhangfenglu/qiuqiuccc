@@ -37,12 +37,6 @@ void HttpGetImg::GetHttpImg(string imgurl, function<void(Texture2D * texture)>fu
 
 		//create image
 		Image* img = new Image;
-		std::string path = FileUtils::getInstance()->getWritablePath();
-		path += "download_image.png";
-
-		FILE *fp = fopen(path.c_str(), "wb+");
-		fwrite(buffer->data(), 1, buffer->size(), fp);
-		fclose(fp);
 		bool b = img->initWithImageData((unsigned char*)buffer->data(), buffer->size());
 
 		Texture2D * texture = nullptr;

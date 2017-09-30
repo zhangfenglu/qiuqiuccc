@@ -32,7 +32,7 @@ void RotateMenu::addMenuItem(cocos2d::MenuItem *item){
 void RotateMenu::updatePosition(){
 	auto menuSize = getContentSize();
 	auto disY = menuSize.height / 6;
-	auto disX = menuSize.width / 2.7;
+	auto disX = menuSize.width / 3;
 	for (int i = 0; i < _items.size(); i++){
 		float x = menuSize.width / 2 + disX*sin(i*_unitAngle + getAngle());
 		float y = menuSize.height / 2 - disY*cos(i*_unitAngle + getAngle());
@@ -54,7 +54,7 @@ void RotateMenu::updatePosition(){
 
 		_items.at(i)->setZOrder(-(int)y);
 		//Opacity  129~255  
-		//_items.at(i)->setOpacity(192 + 63 * cos(i*_unitAngle + getAngle()));
+		_items.at(i)->setOpacity(192 + 63 * cos(i*_unitAngle + getAngle()));
 		_items.at(i)->setColor(Color3B(192 + 62 * cos(i*_unitAngle + getAngle()), 192 + 62 * cos(i*_unitAngle + getAngle()), 192 + 62 * cos(i*_unitAngle + getAngle())));
 		//_items.at(i)->setScale(0.75 + 0.25*cos(i*_unitAngle + getAngle()));
 	}
@@ -66,7 +66,7 @@ void RotateMenu::updatePositionWithAnimation(){
 		_items.at(i)->stopAllActions();
 	auto menuSize = getContentSize();
 	auto disY = menuSize.height / 8;
-	auto disX = menuSize.width / 2.7;
+	auto disX = menuSize.width / 3;
 	for (int i = 0; i < _items.size(); i++){
 		float x = menuSize.width / 2 + disX*sin(i*_unitAngle + getAngle());
 		float y = menuSize.height / 2 - disY*cos(i*_unitAngle + getAngle());

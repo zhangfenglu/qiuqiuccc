@@ -1,6 +1,6 @@
 ﻿#include "YuanZhengLayer.h"
 #include "SimpleTools.h"
-#include "GameVoice.h"
+
 
 
 bool YuanZhengLayer::init()
@@ -9,7 +9,6 @@ bool YuanZhengLayer::init()
 	{
 		return false;
 	}
-	
 	initPlayerBaoMingState();
 	initCangKuObj();
 	//initUI();
@@ -22,7 +21,6 @@ void YuanZhengLayer::menuItem1Callback(cocos2d::Ref* pSender)
 	log("btn1");
 	star_level = 1;
 	showZuDuiBox(star_level - 1);
-	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem2Callback(cocos2d::Ref* pSender)
@@ -30,7 +28,6 @@ void YuanZhengLayer::menuItem2Callback(cocos2d::Ref* pSender)
 	log("btn2");
 	star_level = 2;
 	showZuDuiBox(star_level - 1);
-	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem3Callback(cocos2d::Ref* pSender)
@@ -38,7 +35,6 @@ void YuanZhengLayer::menuItem3Callback(cocos2d::Ref* pSender)
 	log("btn3");
 	star_level = 3;
 	showZuDuiBox(star_level - 1);
-	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem4Callback(cocos2d::Ref* pSender)
@@ -46,7 +42,6 @@ void YuanZhengLayer::menuItem4Callback(cocos2d::Ref* pSender)
 	log("btn4");
 	star_level = 4;
 	showZuDuiBox(star_level - 1);
-	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem5Callback(cocos2d::Ref* pSender)
@@ -54,7 +49,6 @@ void YuanZhengLayer::menuItem5Callback(cocos2d::Ref* pSender)
 	log("btn5");
 	star_level = 5;
 	showZuDuiBox(star_level - 1);
-	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 void YuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
@@ -62,32 +56,12 @@ void YuanZhengLayer::menuItem6Callback(cocos2d::Ref* pSender)
 	log("btn6");
 	star_level = 6;
 	showZuDuiBox(star_level - 1);
-	GameVoice::getInstance()->playClickBtnVoive();
 }
 
 
 void YuanZhengLayer::showZuDuiBox(int tag)
 {
-	initPlayerBaoMingState();
-	//四个按钮
-	auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
-	auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
-	auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
-	auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
 
-	auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
-	auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
-	auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
-	auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
-
-	bao1->setVisible(true);
-	bao2->setVisible(true);
-	bao3->setVisible(true);
-	bao4->setVisible(true);
-	btn_yibaoming1->setVisible(false);
-	btn_yibaoming2->setVisible(false);
-	btn_yibaoming3->setVisible(false);
-	btn_yibaoming4->setVisible(false);
 	if (baomingInfos.size() > 0)
 	{
 		
@@ -103,7 +77,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200101://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -113,7 +86,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800101:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -123,7 +95,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000101:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -133,7 +104,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200101:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -157,7 +127,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200102://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -167,7 +136,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800102:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -177,7 +145,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000102:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -187,7 +154,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200102:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -210,7 +176,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200103://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -220,7 +185,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800103:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -230,7 +194,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000103:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -240,7 +203,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200103:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -264,7 +226,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200104://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -274,7 +235,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800104:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -284,7 +244,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000104:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -294,7 +253,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200104:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -318,7 +276,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200105://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -328,7 +285,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800105:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -338,7 +294,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000105:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -348,7 +303,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200105:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -372,7 +326,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1200106://第一个按钮
 							   {
 												auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-												baomingBox1->setVisible(true);
 												auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
 												btn_bao1->setVisible(false);
 												auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
@@ -382,7 +335,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 1800106:
 							   {
 											   auto baomingBox2 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox2->setVisible(true);
 											   auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_baoming2");
 											   btn_bao2->setVisible(false);
 											   auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox2, "btn_yibaoming2");
@@ -392,7 +344,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2000106:
 							   {
 											   auto baomingBox3 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox3->setVisible(true);
 											   auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_baoming3");
 											   btn_bao3->setVisible(false);
 											   auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox3, "btn_yibaoming3");
@@ -402,7 +353,6 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 							   case 2200106:
 							   {
 											   auto baomingBox4 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-											   baomingBox4->setVisible(true);
 											   auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_baoming4");
 											   btn_bao4->setVisible(false);
 											   auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox4, "btn_yibaoming4");
@@ -506,19 +456,16 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 
 	//报名按钮 是否 可点击 是否制灰色 当仓库物品 无法满足消耗时候 制灰色 且不可点击
 	timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
-	////四个按钮
-	//auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
-	//auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
-	//auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
-	//auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
+	//四个按钮
+	auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
+	auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
+	auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
+	auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
 
-	//auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
-	//auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
-	//auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
-	//auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
-
-	//auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-	//piaoZi->setText("购物券不足！！！");
+	auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
+	auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
+	auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
+	auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
 	switch (tag)
 	{
 	case 0://1星
@@ -526,70 +473,16 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 			   if (cangKuInfo.diamonds < atoi(awards[tag].xiaohaoNum.c_str()))
 			   {
 				   if (!btn_yibaoming1->isVisible())
-				   {
-					  // bao1->setTouchEnabled(false);
-					   /*piaoZi->setText("钻石不足！！！");
-					   auto clonePiaoZi = piaoZi->clone();
-					   clonePiaoZi->setVisible(true);
-					   auto action1 = FadeOut::create(1.8);
-					   auto moveTo1 = MoveTo::create(0.3, Point(tishiX,tishiY));
-					   auto func = [&](){
-						   clonePiaoZi->removeFromParentAndCleanup(true);
-					   };
-					   auto callBack = CallFunc::create(func);
-
-					   clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL),callBack, NULL));*/
-					   
-				   }
-						
+						 bao1->setTouchEnabled(false);
 				  // bao1->setColor(Color3B::GRAY);
 				   if (!btn_yibaoming2->isVisible())
-				   {
-					  // bao2->setTouchEnabled(false);
-					  /* auto clonePiaoZi = piaoZi->clone();
-					   clonePiaoZi->setVisible(true);
-					   auto action1 = FadeOut::create(1.8);
-					   auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					   auto func = [&](){
-						   clonePiaoZi->removeFromParentAndCleanup(true);
-					   };
-					   auto callBack = CallFunc::create(func);
-
-					   clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				   }
-						 
+						 bao2->setTouchEnabled(false);
 				  // bao2->setColor(Color3B::GRAY);
 				   if (!btn_yibaoming3->isVisible())
-				   {
-					  // bao3->setTouchEnabled(false);
-					 /*  auto clonePiaoZi = piaoZi->clone();
-					   clonePiaoZi->setVisible(true);
-					   auto action1 = FadeOut::create(1.8);
-					   auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					   auto func = [&](){
-						   clonePiaoZi->removeFromParentAndCleanup(true);
-					   };
-					   auto callBack = CallFunc::create(func);
-
-					   clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				   }
-						
+						 bao3->setTouchEnabled(false);
 				  // bao3->setColor(Color3B::GRAY);
 				   if (!btn_yibaoming4->isVisible())
-				   {
-					  // bao4->setTouchEnabled(false);
-					  /* auto clonePiaoZi = piaoZi->clone();
-					   clonePiaoZi->setVisible(true);
-					   auto action1 = FadeOut::create(1.8);
-					   auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					   auto func = [&](){
-						   clonePiaoZi->removeFromParentAndCleanup(true);
-					   };
-					   auto callBack = CallFunc::create(func);
-
-					   clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				   }
-				 
+				   bao4->setTouchEnabled(false);
 				  // bao4->setColor(Color3B::GRAY);
 
 			   }
@@ -616,69 +509,17 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 			  if (cangKuInfo.juan2 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
 				  if (!btn_yibaoming1->isVisible())
-				  {
-					//  bao1->setTouchEnabled(false);
-					/*  piaoZi->setText("钻石不足！！！");
-					  auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-
-				  }
-
+					  bao1->setTouchEnabled(false);
 				  // bao1->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming2->isVisible())
-				  {
-					 // bao2->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao2->setTouchEnabled(false);
 				  // bao2->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming3->isVisible())
-				  {
-					 // bao3->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao3->setTouchEnabled(false);
 				  // bao3->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming4->isVisible())
-				  {
-					 // bao4->setTouchEnabled(false);
-					/*  auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
@@ -702,69 +543,17 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 			  if (cangKuInfo.juan3 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
 				  if (!btn_yibaoming1->isVisible())
-				  {
-					//  bao1->setTouchEnabled(false);
-					 /* piaoZi->setText("钻石不足！！！");
-					  auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-
-				  }
-
+					  bao1->setTouchEnabled(false);
 				  // bao1->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming2->isVisible())
-				  {
-					//  bao2->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao2->setTouchEnabled(false);
 				  // bao2->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming3->isVisible())
-				  {
-					//  bao3->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao3->setTouchEnabled(false);
 				  // bao3->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming4->isVisible())
-				  {
-					//  bao4->setTouchEnabled(false);
-					/*  auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
@@ -788,69 +577,17 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 			  if (cangKuInfo.juan4 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
 				  if (!btn_yibaoming1->isVisible())
-				  {
-					 // bao1->setTouchEnabled(false);
-					/*  piaoZi->setText("钻石不足！！！");
-					  auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-
-				  }
-
+					  bao1->setTouchEnabled(false);
 				  // bao1->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming2->isVisible())
-				  {
-					//  bao2->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao2->setTouchEnabled(false);
 				  // bao2->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming3->isVisible())
-				  {
-					//  bao3->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao3->setTouchEnabled(false);
 				  // bao3->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming4->isVisible())
-				  {
-					//  bao4->setTouchEnabled(false);
-					  //auto clonePiaoZi = piaoZi->clone();
-					 /* clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
@@ -874,69 +611,17 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 			  if (cangKuInfo.juan5 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
 				  if (!btn_yibaoming1->isVisible())
-				  {
-					//  bao1->setTouchEnabled(false);
-					 /* piaoZi->setText("钻石不足！！！");
-					  auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-
-				  }
-
+					  bao1->setTouchEnabled(false);
 				  // bao1->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming2->isVisible())
-				  {
-					//  bao2->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao2->setTouchEnabled(false);
 				  // bao2->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming3->isVisible())
-				  {
-					//  bao3->setTouchEnabled(false);
-					/*  auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao3->setTouchEnabled(false);
 				  // bao3->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming4->isVisible())
-				  {
-					//  bao4->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
@@ -960,70 +645,17 @@ void YuanZhengLayer::showZuDuiBox(int tag)
 			  if (cangKuInfo.juan6 < atoi(awards[tag].xiaohaoNum.c_str()))
 			  {
 				  if (!btn_yibaoming1->isVisible())
-				  {
-					//  bao1->setTouchEnabled(false);
-					 /* piaoZi->setText("钻石不足！！！");
-					  auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  clonePiaoZi->setZOrder(100000000);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-
-				  }
-
+					  bao1->setTouchEnabled(false);
 				  // bao1->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming2->isVisible())
-				  {
-					 // bao2->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao2->setTouchEnabled(false);
 				  // bao2->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming3->isVisible())
-				  {
-					 // bao3->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
-
+					  bao3->setTouchEnabled(false);
 				  // bao3->setColor(Color3B::GRAY);
 				  if (!btn_yibaoming4->isVisible())
-				  {
-					 // bao4->setTouchEnabled(false);
-					 /* auto clonePiaoZi = piaoZi->clone();
-					  clonePiaoZi->setVisible(true);
-					  auto action1 = FadeOut::create(1.8);
-					  auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY));
-					  auto func = [&](){
-						  clonePiaoZi->removeFromParentAndCleanup(true);
-					  };
-					  auto callBack = CallFunc::create(func);
-
-					  clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));*/
-				  }
+					  bao4->setTouchEnabled(false);
+				  // bao4->setColor(Color3B::GRAY);
 			  }
 			  else
 			  {
@@ -1216,42 +848,22 @@ void YuanZhengLayer::initUI()
 	rootNode = CSLoader::createNode("TimeYuanZhengLayer1.csb");
 
 	addChild(rootNode);
-
-	/*rootNode = CSLoader::createNode("PiaoZi.csb");
-	rootNode->addChild(rootNode, 1000000000000);
-	rootNode->setGlobalZOrder(10000000000);*/
-	//rootNode->setPosition(Point(640, 360));
-	auto tishi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-	//tishi->setVisible(false);
-	tishiY = tishi->getPositionY();
-	tishiX = tishi->getPositionX();
-
-
 	cocos2d::ui::Layout* rongqi = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "Panel_xuanzhuan");
 	Size visibleSize = rongqi->getContentSize();
 
 	baomingBox = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
 
-	auto btn_zuduiClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btn_zuduiClose");
-	btn_zuduiClose->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
-	{
-		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
-		{
-			GameVoice::getInstance()->playClickBtnVoive();
-			baomingBox->setVisible(false);
-		}
-	});
 
 	
 	
 	cocos2d::ui::Button* btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
-	btn_bao1->addTouchEventListener(CC_CALLBACK_2(YuanZhengLayer::baoming1Click, this));
+	btn_bao1->addTouchEventListener(CC_CALLBACK_0(YuanZhengLayer::baoming1Click, this));
 	cocos2d::ui::Button* btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
-	btn_bao2->addTouchEventListener(CC_CALLBACK_2(YuanZhengLayer::baoming2Click, this));
+	btn_bao2->addTouchEventListener(CC_CALLBACK_0(YuanZhengLayer::baoming2Click, this));
 	cocos2d::ui::Button* btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
-	btn_bao3->addTouchEventListener(CC_CALLBACK_2(YuanZhengLayer::baoming3Click, this));
+	btn_bao3->addTouchEventListener(CC_CALLBACK_0(YuanZhengLayer::baoming3Click, this));
 	cocos2d::ui::Button* btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
-	btn_bao4->addTouchEventListener(CC_CALLBACK_2(YuanZhengLayer::baoming4Click, this));
+	btn_bao4->addTouchEventListener(CC_CALLBACK_0(YuanZhengLayer::baoming4Click, this));
 
 
 
@@ -1373,7 +985,7 @@ void YuanZhengLayer::initUI()
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			this->removeFromParent();
-			GameVoice::getInstance()->playClickBtnVoive();
+
 		}
 	});
 
@@ -1390,1101 +1002,305 @@ void YuanZhengLayer::initUI()
 	initZuDuiAwardInfo();
 }
 
-void YuanZhengLayer::baoming1Click(Ref*, cocos2d::ui::Widget::TouchEventType type)
+void YuanZhengLayer::baoming1Click()
 {
-	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
+	std::string aid = "";
+	switch (star_level)
 	{
-		GameVoice::getInstance()->playClickBtnVoive();
-		Json* root = ReadJson("tishi.json");
-		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
-		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
-		Json* yibaoming = Json_getItem(root, "yibaoming");
+	case 1:
+		aid = "1200101";
+		break;
+	case 2:
+		aid = "1200102";
+		break;
+	case 3:
+		aid = "1200103";
+		break;
+	case 4:
+		aid = "1200104";
+		break;
+	case 5:
+		aid = "1200105";
+		break;
+	case 6:
+		aid = "1200106";
+		break;
+	default:
+		break;
+	}
+	std::string data = "id=" + infos.playerid + "&aid=" + aid;
 
-		std::string aid = "";
-		switch (star_level)
+	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
+
+
+
+	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+	{
+		if (response == nullptr || !response->isSucceed())
 		{
-		case 1:
-			aid = "1200101";
-			break;
-		case 2:
-			aid = "1200102";
-			break;
-		case 3:
-			aid = "1200103";
-			break;
-		case 4:
-			aid = "1200104";
-			break;
-		case 5:
-			aid = "1200105";
-			break;
-		case 6:
-			aid = "1200106";
-			break;
-		default:
-			break;
-		}
-		std::string data = "id=" + infos.playerid + "&aid=" + aid;
+			CCLOG("responese is null");
+			CCLOG("responese not succeed");
 
-		std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
-
-
-
-
-
-		timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
-		//四个按钮
-		auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
-		auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
-		auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
-		auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
-
-		auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
-		auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
-		auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
-		auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
-
-		auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootNode, "Image_1");
-		auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-		/*std::string tishiStr = "购物券不足！！！";
-		std::string tishiStr1 = "钻石不足！！！";*/
-		piaoZi->setString(ziyuanbuzu->valueString);
-
-
-		if (star_level - 1 == 0 && cangKuInfo.diamonds < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming1->isVisible())
-			{
-				if (star_level -1 == 0)
-				{
-					//piaoZi->setString(tishiStr.c_str());
-				}
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-
-				return;
-			}
-		}
-		else if (star_level - 1 == 1 && cangKuInfo.juan2 < atoi(awards[star_level -1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming1->isVisible())
-			{
-				auto clonePiaoZi = piaoZi->clone();
-				Image_1->addChild(clonePiaoZi);;
-				clonePiaoZi->setVisible(true);
-				auto action1 = FadeOut::create(1.8);
-				auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-				auto func = [=](){
-					clonePiaoZi->setPosition(Point(tishiX, tishiY));
-					clonePiaoZi->removeFromParentAndCleanup(true);
-				};
-				auto callBack = CallFunc::create(func);
-
-				clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-
-				return;
-			}
-		}
-		else if (star_level - 1 == 2 && cangKuInfo.juan3 < atoi(awards[star_level - 1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming1->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					//clonePiaoZi->setZOrder(1000000000000000);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-				return;
-			}
-		}
-		else if (star_level - 1 == 3 && cangKuInfo.juan4 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming1->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					//auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 50));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 4 && cangKuInfo.juan5 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming1->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1== 5 && cangKuInfo.juan6 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming1->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
+			return;
 		}
 
+		vector<char> *buffer = response->getResponseData();
 
+		std::string responseStr = std::string(buffer->begin(), buffer->end());
+		CCLOG("%s", responseStr.c_str());
 
+		Json* root = Json_create(responseStr.c_str());
+		Json* result = Json_getItem(root, "resultCode");
+		Json * ok = Json_getItem(root, "ok");
 
-		requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+		if (result->type == Json_Number && ok->type == Json_True)
 		{
-			if (response == nullptr || !response->isSucceed())
+			if (result->valueInt == 1)
 			{
-				CCLOG("responese is null");
-				CCLOG("responese not succeed");
-
-				return;
-			}
-
-			vector<char> *buffer = response->getResponseData();
-
-			std::string responseStr = std::string(buffer->begin(), buffer->end());
-			CCLOG("%s", responseStr.c_str());
-
-			Json* root = Json_create(responseStr.c_str());
-			Json* result = Json_getItem(root, "resultCode");
-			Json * ok = Json_getItem(root, "ok");
-
-			if (result->type == Json_Number && ok->type == Json_True)
-			{
-				if (result->valueInt == 1)
-				{
-					log("***************************************baoming1 success");
-					auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-					auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
-					btn_bao1->setVisible(false);
-					auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
-					btn_yibaoming1->setVisible(true);
-					if (piaoZi)
-					{
-						piaoZi->setString(baomingchenggong->valueString);
-						auto clonePiaoZi = piaoZi->clone();
-						Image_1->addChild(clonePiaoZi);;
-						clonePiaoZi->setVisible(true);
-						auto action1 = FadeOut::create(1.8);
-						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-						auto func = [=](){
-							clonePiaoZi->setPosition(Point(tishiX, tishiY));
-							if (clonePiaoZi)
-								clonePiaoZi->removeFromParentAndCleanup(true);
-
-						};
-						auto callBack = CallFunc::create(func);
-
-						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-					}
-				}
-				else
-				{
-					log("***************************************baoming1 error");
-				}
+				log("***************************************baoming1 success");
+				auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+				auto btn_bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming1");
+				btn_bao1->setVisible(false);
+				auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming1");
+				btn_yibaoming1->setVisible(true);
 			}
 			else
 			{
 				log("***************************************baoming1 error");
 			}
+		}
+		else
+		{
+			log("***************************************baoming1 error");
+		}
 
 
 
-		}, "getBaoMing1");
-	}
-
+	}, "getBaoMing1");
 }
 
-void YuanZhengLayer::baoming2Click(Ref*, cocos2d::ui::Widget::TouchEventType type)
+void YuanZhengLayer::baoming2Click()
 {
-	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
+	std::string aid = "";
+	switch (star_level)
 	{
-		GameVoice::getInstance()->playClickBtnVoive();
-		Json* root = ReadJson("tishi.json");
-		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
-		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
-		Json* yibaoming = Json_getItem(root, "yibaoming");
-		std::string aid = "";
-		switch (star_level)
+	case 1:
+		aid = "1800101";
+		break;
+	case 2:
+		aid = "1800102";
+		break;
+	case 3:
+		aid = "1800103";
+		break;
+	case 4:
+		aid = "1800104";
+		break;
+	case 5:
+		aid = "1800105";
+		break;
+	case 6:
+		aid = "1800106";
+		break;
+	default:
+		break;
+	}
+	std::string data = "id=" + infos.playerid + "&aid=" + aid;
+
+	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
+	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+	{
+		if (response == nullptr || !response->isSucceed())
 		{
-		case 1:
-			aid = "1800101";
-			break;
-		case 2:
-			aid = "1800102";
-			break;
-		case 3:
-			aid = "1800103";
-			break;
-		case 4:
-			aid = "1800104";
-			break;
-		case 5:
-			aid = "1800105";
-			break;
-		case 6:
-			aid = "1800106";
-			break;
-		default:
-			break;
+			CCLOG("responese is null");
+			CCLOG("responese not succeed");
+
+			return;
 		}
 
+		vector<char> *buffer = response->getResponseData();
 
+		std::string responseStr = std::string(buffer->begin(), buffer->end());
+		CCLOG("%s", responseStr.c_str());
 
+		Json* root = Json_create(responseStr.c_str());
+		Json* result = Json_getItem(root, "resultCode");
+		Json * ok = Json_getItem(root, "ok");
 
-		timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
-		//四个按钮
-		auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
-		auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
-		auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
-		auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
-
-		auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
-		auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
-		auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
-		auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
-
-		auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-		/*std::string tishiStr = "购物券不足！！！";
-		std::string tishiStr1 = "钻石不足！！！";*/
-		piaoZi->setString(ziyuanbuzu->valueString);
-		auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootNode, "Image_1");
-		if (star_level -1 == 0 && cangKuInfo.diamonds < atoi(awards[star_level-1].xiaohaoNum.c_str()))
+		if (result->type == Json_Number && ok->type == Json_True)
 		{
-			if (!btn_yibaoming2->isVisible())
+			if (result->valueInt == 1)
 			{
-				if (star_level -1 == 0)
-				{
-					//piaoZi->setString(tishiStr1.c_str());
-				}
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1  == 1 && cangKuInfo.juan2 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming2->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 2 && cangKuInfo.juan3 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming2->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level - 1 == 3 && cangKuInfo.juan4 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming2->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 4 && cangKuInfo.juan5 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming2->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 5 && cangKuInfo.juan6 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming2->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-
-		std::string data = "id=" + infos.playerid + "&aid=" + aid;
-
-		std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
-		requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
-		{
-			if (response == nullptr || !response->isSucceed())
-			{
-				CCLOG("responese is null");
-				CCLOG("responese not succeed");
-
-				return;
-			}
-
-			vector<char> *buffer = response->getResponseData();
-
-			std::string responseStr = std::string(buffer->begin(), buffer->end());
-			CCLOG("%s", responseStr.c_str());
-
-			Json* root = Json_create(responseStr.c_str());
-			Json* result = Json_getItem(root, "resultCode");
-			Json * ok = Json_getItem(root, "ok");
-
-			if (result->type == Json_Number && ok->type == Json_True)
-			{
-				if (result->valueInt == 1)
-				{
-					log("***************************************baoming2 success");
-					auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-					auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming2");
-					btn_bao2->setVisible(false);
-					auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming2");
-					btn_yibaoming2->setVisible(true);
-					if (piaoZi)
-					{
-						piaoZi->setString(baomingchenggong->valueString);
-						auto clonePiaoZi = piaoZi->clone();
-						Image_1->addChild(clonePiaoZi);
-						clonePiaoZi->setVisible(true);
-						auto action1 = FadeOut::create(1.8);
-						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-						auto func = [=](){
-							clonePiaoZi->setPosition(Point(tishiX, tishiY));
-							if (clonePiaoZi)
-								clonePiaoZi->removeFromParentAndCleanup(true);
-
-						};
-						auto callBack = CallFunc::create(func);
-
-						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-					}
-				}
-				else
-				{
-					log("***************************************baoming2 error");
-				}
+				log("***************************************baoming2 success");
+				auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+				auto btn_bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming2");
+				btn_bao2->setVisible(false);
+				auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming2");
+				btn_yibaoming2->setVisible(true);
 			}
 			else
 			{
 				log("***************************************baoming2 error");
 			}
+		}
+		else
+		{
+			log("***************************************baoming2 error");
+		}
 
 
 
-		}, "getBaoMing2");
-	}
+	}, "getBaoMing2");
 }
 
-void YuanZhengLayer::baoming3Click(Ref*, cocos2d::ui::Widget::TouchEventType type)
+void YuanZhengLayer::baoming3Click()
 {
-	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
+	
+	std::string aid = "";
+	switch (star_level)
 	{
-		GameVoice::getInstance()->playClickBtnVoive();
-		Json* root = ReadJson("tishi.json");
-		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
-		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
-		Json* yibaoming = Json_getItem(root, "yibaoming");
-		std::string aid = "";
-		switch (star_level)
+	case 1:
+		aid = "2000101";
+		break;
+	case 2:
+		aid = "2000102";
+		break;
+	case 3:
+		aid = "2000103";
+		break;
+	case 4:
+		aid = "2000104";
+		break;
+	case 5:
+		aid = "2000105";
+		break;
+	case 6:
+		aid = "2000106";
+		break;
+	default:
+		break;
+	}
+	std::string data = "id=" + infos.playerid + "&aid=" + aid;
+
+	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
+	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+	{
+		if (response == nullptr || !response->isSucceed())
 		{
-		case 1:
-			aid = "2000101";
-			break;
-		case 2:
-			aid = "2000102";
-			break;
-		case 3:
-			aid = "2000103";
-			break;
-		case 4:
-			aid = "2000104";
-			break;
-		case 5:
-			aid = "2000105";
-			break;
-		case 6:
-			aid = "2000106";
-			break;
-		default:
-			break;
+			CCLOG("responese is null");
+			CCLOG("responese not succeed");
+
+			return;
 		}
 
+		vector<char> *buffer = response->getResponseData();
 
+		std::string responseStr = std::string(buffer->begin(), buffer->end());
+		CCLOG("%s", responseStr.c_str());
 
-		timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
-		//四个按钮
-		auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
-		auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
-		auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
-		auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
+		Json* root = Json_create(responseStr.c_str());
+		Json* result = Json_getItem(root, "resultCode");
+		Json * ok = Json_getItem(root, "ok");
 
-		auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
-		auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
-		auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
-		auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
-
-		auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-		/*std::string tishiStr = "购物券不足！！！";
-		std::string tishiStr1 = "钻石不足！！！";*/
-		piaoZi->setString(ziyuanbuzu->valueString);
-		auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootNode, "Image_1");
-		if (star_level -1 == 0 && cangKuInfo.diamonds < atoi(awards[star_level-1].xiaohaoNum.c_str()))
+		if (result->type == Json_Number && ok->type == Json_True)
 		{
-			if (!btn_yibaoming3->isVisible())
+			if (result->valueInt == 1)
 			{
-				if (star_level -1 == 0)
-				{
-					//piaoZi->setString(tishiStr1.c_str());
-				}
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1  == 1 && cangKuInfo.juan2 < atoi(awards[star_level - 1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming3->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-				return;
-			}
-		}
-		else if (star_level -1 == 2 && cangKuInfo.juan3 < atoi(awards[star_level -1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming3->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-				return;
-			}
-		}
-		else if (star_level -1  == 3 && cangKuInfo.juan4 < atoi(awards[star_level-1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming3->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 4 && cangKuInfo.juan5 < atoi(awards[star_level -1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming3->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 5 && cangKuInfo.juan6 < atoi(awards[star_level - 1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming3->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-
-		std::string data = "id=" + infos.playerid + "&aid=" + aid;
-
-		std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
-		requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
-		{
-			if (response == nullptr || !response->isSucceed())
-			{
-				CCLOG("responese is null");
-				CCLOG("responese not succeed");
-
-				return;
-			}
-
-			vector<char> *buffer = response->getResponseData();
-
-			std::string responseStr = std::string(buffer->begin(), buffer->end());
-			CCLOG("%s", responseStr.c_str());
-
-			Json* root = Json_create(responseStr.c_str());
-			Json* result = Json_getItem(root, "resultCode");
-			Json * ok = Json_getItem(root, "ok");
-
-			if (result->type == Json_Number && ok->type == Json_True)
-			{
-				if (result->valueInt == 1)
-				{
-					log("***************************************baoming3 success");
-					auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-					auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming3");
-					btn_bao3->setVisible(false);
-					auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming3");
-					btn_yibaoming3->setVisible(true);
-					if (piaoZi)
-					{
-						piaoZi->setString(baomingchenggong->valueString);
-						auto clonePiaoZi = piaoZi->clone();
-						Image_1->addChild(clonePiaoZi);;
-						clonePiaoZi->setVisible(true);
-						auto action1 = FadeOut::create(1.8);
-						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-						auto func = [=](){
-							clonePiaoZi->setPosition(Point(tishiX, tishiY));
-							if (clonePiaoZi)
-								clonePiaoZi->removeFromParentAndCleanup(true);
-
-						};
-						auto callBack = CallFunc::create(func);
-
-						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-					}
-				}
-				else
-				{
-					log("***************************************baoming3 error");
-				}
+				log("***************************************baoming3 success");
+				auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+				auto btn_bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming3");
+				btn_bao3->setVisible(false);
+				auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming3");
+				btn_yibaoming3->setVisible(true);
 			}
 			else
 			{
 				log("***************************************baoming3 error");
 			}
+		}
+		else
+		{
+			log("***************************************baoming3 error");
+		}
 
 
 
-		}, "getBaoMing3");
-	}
+	}, "getBaoMing3");
 }
 
-void YuanZhengLayer::baoming4Click(Ref*, cocos2d::ui::Widget::TouchEventType type)
+void YuanZhengLayer::baoming4Click()
 {
-	if (type == cocos2d::ui::Widget::TouchEventType::BEGAN)
+	
+	std::string aid = "";
+	switch (star_level)
 	{
-		GameVoice::getInstance()->playClickBtnVoive();
-		Json* root = ReadJson("tishi.json");
-		Json* ziyuanbuzu = Json_getItem(root, "ziyuanbuzu");
-		Json* baomingchenggong = Json_getItem(root, "baomingchenggong");
-		Json* yibaoming = Json_getItem(root, "yibaoming");
-		std::string aid = "";
-		switch (star_level)
+	case 1:
+		aid = "2200101";
+		break;
+	case 2:
+		aid = "2200102";
+		break;
+	case 3:
+		aid = "2200103";
+		break;
+	case 4:
+		aid = "2200104";
+		break;
+	case 5:
+		aid = "2200105";
+		break;
+	case 6:
+		aid = "2200106";
+		break;
+	default:
+		break;
+	}
+	std::string data = "id=" + infos.playerid + "&aid=" + aid;
+
+	std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
+	requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+	{
+		if (response == nullptr || !response->isSucceed())
 		{
-		case 1:
-			aid = "2200101";
-			break;
-		case 2:
-			aid = "2200102";
-			break;
-		case 3:
-			aid = "2200103";
-			break;
-		case 4:
-			aid = "2200104";
-			break;
-		case 5:
-			aid = "2200105";
-			break;
-		case 6:
-			aid = "2200106";
-			break;
-		default:
-			break;
+			CCLOG("responese is null");
+			CCLOG("responese not succeed");
+
+			return;
 		}
 
-		timeyuanzheng_cangku_info cangKuInfo = Global::getInstance()->GetCangKuObj();
-		//四个按钮
-		auto bao1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming1");
-		auto bao2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming2");
-		auto bao3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming3");
-		auto bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_baoming4");
+		vector<char> *buffer = response->getResponseData();
 
-		auto btn_yibaoming1 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming1");
-		auto btn_yibaoming2 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming2");
-		auto btn_yibaoming3 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming3");
-		auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox, "btn_yibaoming4");
+		std::string responseStr = std::string(buffer->begin(), buffer->end());
+		CCLOG("%s", responseStr.c_str());
 
-		auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(rootNode, "tishi");
-		/*std::string tishiStr = "购物券不足！！！";
-		std::string tishiStr1 = "钻石不足！！！";*/
-		piaoZi->setString(ziyuanbuzu->valueString);
-		auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(rootNode, "Image_1");
-		if (star_level -1 == 0 && cangKuInfo.diamonds < atoi(awards[star_level -1].xiaohaoNum.c_str()))
+		Json* root = Json_create(responseStr.c_str());
+		Json* result = Json_getItem(root, "resultCode");
+		Json * ok = Json_getItem(root, "ok");
+
+		if (result->type == Json_Number && ok->type == Json_True)
 		{
-			if (!btn_yibaoming4->isVisible())
+			if (result->valueInt == 1)
 			{
-				if (star_level -1 == 0)
-				{
-					//piaoZi->setString(tishiStr1.c_str());
-				}
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 1 && cangKuInfo.juan2 < atoi(awards[star_level - 1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming4->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 2 && cangKuInfo.juan3 < atoi(awards[star_level - 1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming4->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 3 && cangKuInfo.juan4 < atoi(awards[star_level -1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming4->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 4 && cangKuInfo.juan5 < atoi(awards[star_level -1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming4->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-		else if (star_level -1 == 5 && cangKuInfo.juan6 < atoi(awards[star_level -1].xiaohaoNum.c_str()))
-		{
-			if (!btn_yibaoming4->isVisible())
-			{
-				if (piaoZi)
-				{
-					auto clonePiaoZi = piaoZi->clone();
-					Image_1->addChild(clonePiaoZi);;
-					clonePiaoZi->setVisible(true);
-					auto action1 = FadeOut::create(1.8);
-					auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-					auto func = [=](){
-						clonePiaoZi->setPosition(Point(tishiX, tishiY));
-						if (clonePiaoZi)
-							clonePiaoZi->removeFromParentAndCleanup(true);
-
-					};
-					auto callBack = CallFunc::create(func);
-
-					clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-				}
-
-				return;
-			}
-		}
-
-		std::string data = "id=" + infos.playerid + "&aid=" + aid;
-
-		std::string url = "http://47.93.50.101:8080/QQWar/expedition/enroll";
-		requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
-		{
-			if (response == nullptr || !response->isSucceed())
-			{
-				CCLOG("responese is null");
-				CCLOG("responese not succeed");
-
-				return;
-			}
-
-			vector<char> *buffer = response->getResponseData();
-
-			std::string responseStr = std::string(buffer->begin(), buffer->end());
-			CCLOG("%s", responseStr.c_str());
-
-			Json* root = Json_create(responseStr.c_str());
-			Json* result = Json_getItem(root, "resultCode");
-			Json * ok = Json_getItem(root, "ok");
-
-			if (result->type == Json_Number && ok->type == Json_True)
-			{
-				if (result->valueInt == 1)
-				{
-					log("***************************************baoming4 success");
-					auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
-					auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming4");
-					btn_bao4->setVisible(false);
-					auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming4");
-					btn_yibaoming4->setVisible(true);
-					if (piaoZi)
-					{
-						piaoZi->setString(baomingchenggong->valueString);
-						auto clonePiaoZi = piaoZi->clone();
-						Image_1->addChild(clonePiaoZi);;
-						clonePiaoZi->setVisible(true);
-						auto action1 = FadeOut::create(1.8);
-						auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
-						auto func = [=](){
-							clonePiaoZi->setPosition(Point(tishiX, tishiY));
-							if (clonePiaoZi)
-								clonePiaoZi->removeFromParentAndCleanup(true);
-
-						};
-						auto callBack = CallFunc::create(func);
-
-						clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
-					}
-				}
-				else
-				{
-					log("***************************************baoming4 error");
-				}
+				log("***************************************baoming4 success");
+				auto baomingBox1 = (cocos2d::ui::Layout*)seekNodeByName(rootNode, "zuduiBox");
+				auto btn_bao4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_baoming4");
+				btn_bao4->setVisible(false);
+				auto btn_yibaoming4 = (cocos2d::ui::Button*)seekNodeByName(baomingBox1, "btn_yibaoming4");
+				btn_yibaoming4->setVisible(true);
 			}
 			else
 			{
 				log("***************************************baoming4 error");
 			}
+		}
+		else
+		{
+			log("***************************************baoming4 error");
+		}
 
 
 
-		}, "getBaoMing4");
-	}
+	}, "getBaoMing4");
 }
 
 void YuanZhengLayer::initPlayerBaoMingState()
@@ -2524,7 +1340,7 @@ void YuanZhengLayer::initPlayerBaoMingState()
 						Json* child = resultObj->child;
 						//if (child)
 						{
-							baomingInfos.clear();
+
 							for (int i = 0; i < resultObj->size; i++)
 							{
 								//Json* child = resultObj->child;

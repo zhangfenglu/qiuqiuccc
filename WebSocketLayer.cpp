@@ -135,9 +135,10 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
                 
             case 18:    // 战斗结算
             {
-                CCScene* pScene = dynamic_cast<CCScene*>(getParent());
-                MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
-                layer->GameOverState(data);
+                log("---gameover!");
+//                CCScene* pScene = dynamic_cast<CCScene*>(getParent());
+//                MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
+//                layer->GameOverState(data);
             }
                 break;
                 
@@ -411,7 +412,10 @@ void WebSocketLayer::onMessage(cocos2d::network::WebSocket *ws, const cocos2d::n
 				
 			case IDUM_BattleResult:  //服务器优化客户端单机增加
 			{
-
+                log("--IDUM_BattleResult");
+                CCScene* pScene = dynamic_cast<CCScene*>(getParent());
+                MainScene* layer = dynamic_cast<MainScene*>(pScene->getChildByTag(0));
+                layer->GameOverState(data);
 			}
 				break;
 			

@@ -16,7 +16,6 @@
 USING_NS_CC;
 #include "WebSocketLayer.h"
 
-
 class MainScene : public Layer
 {
 public:
@@ -370,4 +369,39 @@ public:
 private:
 	bool isTouchIn;
 };
+
+struct Goods_Infors
+{
+    Goods_Infors()
+    {
+        strName = "";
+        strPath = "";
+    }
+    std::string  strName;
+    std::string  strPath;
+};
+class GameOverLayer : public cocos2d::Layer
+{
+public:
+    GameOverLayer();
+    static  GameOverLayer* createGameOver(const BattleResault& stRsault);
+    void    init(const BattleResault& stRsault);
+    //CREATE_FUNC(GameOverLayer);
+public:
+    void setOverData(const BattleResault& stRsault);
+private:
+    void ReturnBegan(Ref* pSender);
+    Goods_Infors  findGoodsInfor(int nID);
+    bool getPropConfig(const std::string& strPath);
+    void showRank(const BattleResault& stResault);
+    void showGoodsList(const BattleResault& stResault);
+    std::string  getResPath(const BattleResault& stResault);
+protected:
+    cocos2d::ui::Button*      m_textContineGame;
+    Node*                    m_nodeParent;
+    cocos2d::ui::ListView*      m_listGoods;
+    cocos2d::ui::Widget*   m_defaulttItem;
+    std::map<int, Goods_Infors> m_mapPropCfg;
+};
+
 #endif /* MainScene_h */

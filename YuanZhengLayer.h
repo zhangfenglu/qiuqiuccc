@@ -27,10 +27,10 @@ public:
 	void menuItem6Callback(cocos2d::Ref* pSender);
 
 
-	void baoming1Click(Ref*, cocos2d::ui::Widget::TouchEventType type);
-	void baoming2Click(Ref*, cocos2d::ui::Widget::TouchEventType type);
-	void baoming3Click(Ref*, cocos2d::ui::Widget::TouchEventType type);
-	void baoming4Click(Ref*, cocos2d::ui::Widget::TouchEventType type);
+	void baoming1Click();
+	void baoming2Click();
+	void baoming3Click();
+	void baoming4Click();
 private:
 	void initPlayerBaoMingState();
 	void initCangKuObj();
@@ -39,9 +39,6 @@ private:
 	std::vector<yuanzhengBaoMing_Info> baomingInfos;
 
 	Node* rootNode;
-	Node* tishiNode;
-	float tishiY;
-	float tishiX;
 
 	cocos2d::ui::Button* copy1;
 	cocos2d::ui::Button* copy2;

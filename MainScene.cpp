@@ -1,4 +1,4 @@
-//
+ //
 //  MainScene.cpp
 //  qiuFight
 //
@@ -35,8 +35,12 @@
 //#include "DiamondView.h"
 //#include "ShopSystem.h"
 #include "GameVoice.h"
-
 using namespace cocos2d::network;
+
+
+#include <editor-support/cocostudio/DictionaryHelper.h>
+#include <json/rapidjson.h>
+#include <json/document.h>
 
 #define UPDATE_CAMERA_DURATION      0.4
 #define NEED_TO_PER_CAMERA          0.08
@@ -895,7 +899,63 @@ void MainScene::updateRankeInFight(const cocos2d::network::WebSocket::Data &data
 
 void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
 {
-	int headSize = sizeof(uint8_t);
+    static  UM_BattleResult _rep;
+    bool _bGetData = _rep.ParseFromArray(data.bytes+2, data.len-2);
+    if(!_bGetData)
+        return;
+    BattleResault _stBattleResault;
+    _stBattleResault.aid = _rep.aid();
+    _stBattleResault.mode = _rep.mode();
+    _stBattleResault.rank = _rep.rank();
+    _stBattleResault.round = _rep.round();
+    _stBattleResault.iswinner = _rep.iswinner();
+    
+    std::string _str = _rep.players(0).playerid() ;
+    std::string _str2 = Global::getInstance()->getMyInfo().getPlayerID();
+    std::string _str3 = Global::getInstance()->GetAccountInfo().playerid;
+    for(int j=0; j<_rep.players_size(); j++)
+    {
+        if(_rep.players(j).playerid() == _str3)
+        {
+            _stBattleResault.stPlayerInfor.playerid = _rep.players(j).playerid();
+            _stBattleResault.stPlayerInfor.monthLevel = _rep.players(j).monthlevel();
+            _stBattleResault.stPlayerInfor.yearLevel = _rep.players(j).yeallevel();
+            for(int k=0;k<_rep.players(j).items_size(); k++)
+            {
+                if( _rep.players(j).items(k).id() != 0)
+                {
+                    _stBattleResault.stPlayerInfor.stGoodsInfor[k].nID = _rep.players(j).items(k).id();
+                    _stBattleResault.stPlayerInfor.stGoodsInfor[k].nCount = _rep.players(j).items(k).num();
+                    _stBattleResault.stPlayerInfor.stGoodsInfor[k].nType = _rep.players(j).items(k).type();
+                }
+            }
+            
+            break;
+        }
+    }
+    
+    if (getChildByTag(TAG_GAME_END) && (ZhanDouEnd*)getChildByTag(TAG_GAME_END))
+    {
+//        ZhanDouEnd* end = dynamic_cast<ZhanDouEnd*>(getChildByTag(TAG_GAME_END));
+//        end->setInfos(ranks, relations);
+//        //        if (idList.size() > 0)
+//        //            reqIcons(idList);
+        auto end = dynamic_cast<GameOverLayer*>(getChildByTag(TAG_GAME_END));
+        end->setOverData(_stBattleResault);
+    }
+    else
+    {
+        removeChildByTag(TAG_LAYER_SCENE, true);
+        auto gameEnd = GameOverLayer::createGameOver(_stBattleResault);
+        addChild(gameEnd, 2, TAG_GAME_END);
+        gameEnd->setOverData(_stBattleResault);
+        
+        Global::getInstance()->clearMainNodes();
+        removeChildByTag(TAG_GAME_COLOR_BG, true);
+        removeChildByTag(TAG_LAYER_GRID, true);
+        //CloseWebNet();
+    }
+	/*int headSize = sizeof(uint8_t);
 
 	uint16_t count;
 	memcpy(&count, data.bytes + headSize, sizeof(uint16_t));
@@ -1026,7 +1086,7 @@ void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
 		removeChildByTag(TAG_GAME_COLOR_BG, true);
 		removeChildByTag(TAG_LAYER_GRID, true);
 		//CloseWebNet();
-	}
+	}*/
 }
 void MainScene::CloseFight()
 {
@@ -4023,4 +4083,261 @@ void ReqOpenFight::onTouchEnded(Touch* pTouch, Event* pEvent)
 		scene->removeChild(this);
 
 	}
+}
+//----------new add
+GameOverLayer::GameOverLayer()
+{
+    m_mapPropCfg.clear();
+}
+
+GameOverLayer* GameOverLayer::createGameOver(const BattleResault& stRsault)
+{
+    auto _obj = new GameOverLayer();
+    if(_obj)
+    {
+        _obj->autorelease();
+        _obj->init(stRsault);
+    }
+    else
+    {
+        CC_SAFE_DELETE(_obj);
+        _obj = nullptr;
+    }
+    return _obj;
+}
+
+void   GameOverLayer::init(const BattleResault& stRsault)
+{
+    m_nodeParent = CSLoader::createNode(getResPath(stRsault));
+    addChild(m_nodeParent);
+    
+    
+    // Note: get the compent
+    m_listGoods = static_cast<cocos2d::ui::ListView *>(m_nodeParent->getChildByName("img_bg")->getChildByName("Panel_Goods")->getChildByName("List_Goods"));
+    m_defaulttItem = static_cast<cocos2d::ui::Widget *>(m_nodeParent->getChildByName("img_bg")->getChildByName("Panel_Item"));
+    
+    m_textContineGame = static_cast<cocos2d::ui::Button *>(m_nodeParent->getChildByName("img_bg")->getChildByName("text_continueGame"));
+    m_textContineGame->setTouchEnabled(true);
+    m_textContineGame->addClickEventListener(CC_CALLBACK_1(GameOverLayer::ReturnBegan, this));
+}
+
+void GameOverLayer::setOverData(const BattleResault& stResault)
+{
+    if(!getPropConfig("GameOver/GoodsData.json"))
+        return;
+    
+    auto  m_action = CSLoader::createTimeline(getResPath(stResault));
+    m_nodeParent->runAction(m_action);
+    m_action->gotoFrameAndPlay(0,8,false);
+    
+    showRank(stResault);
+//    showGoodsList(stResault);
+}
+
+void GameOverLayer::showRank(const BattleResault& stResault)
+{
+    auto _imgRankBg =  static_cast<cocos2d::ui::ImageView *>(m_nodeParent->getChildByName("img_bg")->getChildByName("Panel_rank")->getChildByName("img_rank_bg"));
+    auto _imgRankLevel =  static_cast<cocos2d::ui::ImageView *>(m_nodeParent->getChildByName("img_bg")->getChildByName("Panel_rank")->getChildByName("img_rank_num"));
+    uint32_t _nModle = stResault.mode;
+    uint32_t _nRank = stResault.rank;
+    bool _bWinner = stResault.iswinner;
+    
+   // _nRank = 6;  // Note: only be used to test Rank
+    std::string _strPath = "GameOver/img_rank_";
+    _strPath.append(StringUtils::toString(_nRank-1)+".png");
+    _imgRankLevel->loadTexture(_strPath);
+   if(_nModle != 12)
+   {
+       _imgRankBg->loadTexture("GameOver/img_tiltle_common.png");
+   }
+   else
+   {
+       if(_nRank != 1)
+       {
+           _imgRankBg->loadTexture("GameOver/img_tiltle_lost.png");
+       }
+       else
+       {
+           if(_bWinner)
+           {
+               _imgRankBg->loadTexture("GameOver/img_tiltle_succeed.png");
+           }
+           else
+           {
+                _imgRankBg->loadTexture("GameOver/img_tiltle_succeed.png");
+           }
+       }
+   }
+    
+    showGoodsList(stResault);
+}
+
+void GameOverLayer::showGoodsList(const BattleResault& stResault)
+{
+    int _nIndex = 0;
+    std::vector<Goods_infor> _vecInfor;
+    do
+    {
+        if(stResault.stPlayerInfor.stGoodsInfor[_nIndex].nID != 0)
+        {
+            Goods_infor stInfor;
+            stInfor.nID = stResault.stPlayerInfor.stGoodsInfor[_nIndex].nID;
+            stInfor.nType = stResault.stPlayerInfor.stGoodsInfor[_nIndex].nType;
+            stInfor.nCount = stResault.stPlayerInfor.stGoodsInfor[_nIndex++].nCount;
+            _vecInfor.push_back(stInfor);
+            //_nIndex++;
+        }
+        else
+            break;
+    }while(true);
+    
+    
+    if(_vecInfor.size() == 0)
+        return ;
+    cocos2d::ui::Widget*  _widgetItem = NULL;
+    m_listGoods->removeAllChildren();
+    for(int j=0; j<_vecInfor.size(); j++)
+    {
+        _widgetItem =  m_defaulttItem->clone();
+        auto _textNum = static_cast<cocos2d::ui::Text *>(_widgetItem->getChildByName("Image_Goods")->getChildByName("text_nums"));
+        auto _textName = static_cast<cocos2d::ui::Text *>(_widgetItem->getChildByName("Image_Goods")->getChildByName("text_name"));
+        auto _imgIcon = static_cast<cocos2d::ui::ImageView *>(_widgetItem->getChildByName("Image_Goods")->getChildByName("img_icon"));
+        auto _imgTitle = static_cast<cocos2d::ui::ImageView *>(_widgetItem->getChildByName("Image_Goods")->getChildByName("img_title"));
+        auto _textRank = static_cast<cocos2d::ui::Text *>(_imgTitle->getChildByName("textRank"));
+        auto _textRankNum = static_cast<cocos2d::ui::Text *>(_textRank->getChildByName("textRankNum"));
+        
+        if(findGoodsInfor(_vecInfor[j].nID).strName != "")  //Note: if the configure file is not exist
+        {
+            _textNum->setString( StringUtils::toString<int>(_vecInfor[j].nCount) );
+            _textName->setString(findGoodsInfor(_vecInfor[j].nID).strName );
+            _imgIcon->loadTexture( findGoodsInfor(_vecInfor[j].nID).strPath);
+            
+            std::string _strPath = "GameOver/";
+            if(_vecInfor[j].nType == 1)
+                _strPath.append("img_label_month.png");
+            else if(_vecInfor[j].nType == 2)
+                _strPath.append("img_label_year.png");
+            else if(_vecInfor[j].nType == 0)
+            {
+                _strPath.append("img_label_num_bg.png");
+                _textRankNum->setString(__String::createWithFormat("%d", stResault.rank)->getCString());
+                _textRank->setVisible(true);
+            }
+            _imgTitle->loadTexture(_strPath);
+        }
+        m_listGoods->pushBackCustomItem(_widgetItem);
+    }
+    
+    Size _size;
+    if(_vecInfor.size() <= 7)
+    {
+        _size = Size(m_defaulttItem->getContentSize().width*_vecInfor.size(), m_listGoods->getContentSize().height);
+    }
+    else
+    {
+        _size = Size(m_defaulttItem->getContentSize().width*7, m_listGoods->getContentSize().height);
+    }
+    m_listGoods->setContentSize(_size);
+    m_listGoods->jumpToLeft();
+    m_listGoods->refreshView();
+}
+
+Goods_Infors GameOverLayer::findGoodsInfor(int nID)
+{
+    std::map<int, Goods_Infors>::iterator _iter = m_mapPropCfg.find(nID);
+    if(_iter != m_mapPropCfg.end())
+    {
+        return _iter->second;
+    }
+    
+    Goods_Infors _stInfor;
+    return _stInfor;
+}
+
+bool GameOverLayer::getPropConfig(const std::string& strPath)
+{
+    const std::string contentStr = FileUtils::getInstance()->getStringFromFile(strPath);
+    if(contentStr.empty())
+    {
+        log("--- josn is error !");
+        return false;
+    }
+    
+    rapidjson::Document json;
+    rapidjson::StringStream stream(contentStr.c_str());
+    
+    if (contentStr.size() >= 3) {
+        // Skip BOM if exists
+        const unsigned char* c = (const unsigned char *)contentStr.c_str();
+        unsigned bom = c[0] | (c[1] << 8) | (c[2] << 16);
+        
+        if (bom == 0xBFBBEF)  // UTF8 BOM
+        {
+            stream.Take();
+            stream.Take();
+            stream.Take();
+        }
+    }//if
+    json.ParseStream<0>(stream);
+    if (json.HasParseError()) {
+        log("GetParseError %d\n", json.GetParseError());
+        return false;
+    }
+    
+    auto pDictionaryHelper = cocostudio::DictionaryHelper::getInstance();
+	int length = pDictionaryHelper->getArrayCount_json(json, "GoodsData");
+    Goods_Infors _strGoodsInfor;
+    for(int i=0; i<length; i++)
+    {
+        // pDictionaryHelper->getDictionaryFromArray_json(json, "GoodsData", i);
+        const rapidjson::Value& value = pDictionaryHelper->getSubDictionary_json(json, "GoodsData", i);
+
+        int id = pDictionaryHelper->getIntValue_json(value, "id");
+        _strGoodsInfor.strName = pDictionaryHelper->getStringValue_json(value, "name");
+        _strGoodsInfor.strPath = pDictionaryHelper->getStringValue_json(value, "Image");
+        m_mapPropCfg.insert(make_pair(id, _strGoodsInfor));
+    }
+    
+    return true;
+}
+
+void GameOverLayer::ReturnBegan(Ref* pSender)
+{
+	((MainScene*)getParent())->BackToLoginLayer(MainScene::TAG_GAME_END);
+}
+
+std::string  GameOverLayer::getResPath(const BattleResault& stResault)
+{
+    std::string _strPath = "";
+    uint32_t _nModle = stResault.mode;
+    uint32_t _nRank = stResault.rank;
+    bool _bWinner = stResault.iswinner;
+    
+    if(_nModle != 12)
+    {
+        //_imgRankBg->loadTexture("GameOver/img_tiltle_common.png");
+        _strPath.append("GameOver/OverLayerCommon.csb");
+    }
+    else
+    {
+        if(_nRank != 1)
+        {
+          //  _imgRankBg->loadTexture("GameOver/img_tiltle_lost.png");
+               _strPath.append("GameOver/OverLayerLost.csb");
+        }
+        else
+        {
+            if(_bWinner)
+            {
+                  _strPath.append("GameOver/OverLayerSucceed.csb");
+               // _imgRankBg->loadTexture("GameOver/img_tiltle_succeed.png");
+            }
+            else
+            {
+                _strPath.append("GameOver/OverLayerSucceed2.csb");
+               // _imgRankBg->loadTexture("GameOver/img_tiltle_succeed.png");
+            }
+        }
+    }
+    return _strPath;
 }
