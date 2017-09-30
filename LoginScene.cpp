@@ -1,8 +1,8 @@
-//
+ï»¿//
 //  LoginScene.cpp
 //  qiuFight
 //
-//  Created by ÕÅÔ¾¶« on 16/3/4.
+//  Created by å¼ è·ƒä¸œ on 16/3/4.
 //
 //
 
@@ -20,23 +20,23 @@
 #include "Resources.h"
 #include "CurCularNode.h"
 #include "SimpleTools.h"
-//#include "SunNetPublic.h"  //´óÂÒ¶·ºÍ¶Ò»»ÂëÔö¼ÓµÄ
-//#include "ByRankLayer.h"  //ÆßÈÕµÄÅÅĞĞ°ñ
-//#include "ByFeedback.h"   //ÆßÈÕµÄÅÅĞĞ°ñ
-//#include "ByConvertHalo.h"  //ÆßÈÕµÄÅÅĞĞ°ñ
-//#include "ByLoginReward.h"   //ÆßÈÕµÄÅÅĞĞ°ñ
+//#include "SunNetPublic.h"  //å¤§ä¹±æ–—å’Œå…‘æ¢ç å¢åŠ çš„
+//#include "ByRankLayer.h"  //ä¸ƒæ—¥çš„æ’è¡Œæ¦œ
+//#include "ByFeedback.h"   //ä¸ƒæ—¥çš„æ’è¡Œæ¦œ
+//#include "ByConvertHalo.h"  //ä¸ƒæ—¥çš„æ’è¡Œæ¦œ
+//#include "ByLoginReward.h"   //ä¸ƒæ—¥çš„æ’è¡Œæ¦œ
 
-//#include "FriendNetWork.h" //¹ØÏµÏµÍ³Ôö¼Ó
-//#include "json/document.h"  //¹ØÏµÏµÍ³Ôö¼Ó
-//#include "json/rapidjson.h"  //¹ØÏµÏµÍ³Ôö¼Ó
-//using namespace rapidjson; // ¹ØÏµÏµÍ³µÄÃüÃû¿Õ¼ä
+//#include "FriendNetWork.h" //å…³ç³»ç³»ç»Ÿå¢åŠ 
+//#include "json/document.h"  //å…³ç³»ç³»ç»Ÿå¢åŠ 
+//#include "json/rapidjson.h"  //å…³ç³»ç³»ç»Ÿå¢åŠ 
+//using namespace rapidjson; // å…³ç³»ç³»ç»Ÿçš„å‘½åç©ºé—´
 
-#include "HttpGetImg.h"     //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó
-#include "TimeYuanZhengLayer.h"     //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó
-#include "YuanZhengLayer.h"     //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó
+#include "HttpGetImg.h"     //åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ
+#include "TimeYuanZhengLayer.h"     //åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ
+#include "YuanZhengLayer.h"     //åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ
 
-//#include "StaticData.h"  //¸öÈË×ÊÁÏÏµÍ³Ôö¼Ó
-//#include "paul/PersonalUI.h"  //¸öÈË×ÊÁÏÏµÍ³Ôö¼Ó
+//#include "StaticData.h"  //ä¸ªäººèµ„æ–™ç³»ç»Ÿå¢åŠ 
+//#include "paul/PersonalUI.h"  //ä¸ªäººèµ„æ–™ç³»ç»Ÿå¢åŠ 
 #include "GameVoice.h"
 
 //#include "DaTingLayer.h"
@@ -46,28 +46,28 @@ bool LoginLayer::init()
 {
 	if (!Layer::init())
 		return false;
-	rootNode = CSLoader::createNode("DaTingLayer.csb");   //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
+	rootNode = CSLoader::createNode("DaTingLayer.csb");   //åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start====
 
 	addChild(rootNode);
 	rootGameSettingNode = nullptr;
-	//³õÊ¼»¯µÇÂ½Êı¾İ
+	//åˆå§‹åŒ–ç™»é™†æ•°æ®
 	initDengLuData();
 	//initUI();
 	initUI1();
 
-	//»ñÈ¡ÊÂ¼ş·Ö·¢Æ÷
+	//è·å–äº‹ä»¶åˆ†å‘å™¨
 	auto dispatcher = Director::getInstance()->getEventDispatcher();
 
-	//´´½¨µ¥µã´¥Ãş¼àÌıÆ÷ EventListenerTouchOneByOne
+	//åˆ›å»ºå•ç‚¹è§¦æ‘¸ç›‘å¬å™¨ EventListenerTouchOneByOne
 	auto touchListener = EventListenerTouchOneByOne::create();
-	//µ¥µã´¥ÃşÏìÓ¦ÊÂ¼ş°ó¶¨
+	//å•ç‚¹è§¦æ‘¸å“åº”äº‹ä»¶ç»‘å®š
 	touchListener->onTouchBegan = CC_CALLBACK_2(LoginLayer::onTouchBegan, this);
 	touchListener->onTouchMoved = CC_CALLBACK_2(LoginLayer::onTouchMoved, this);
 	touchListener->onTouchEnded = CC_CALLBACK_2(LoginLayer::onTouchEnded, this);
 	touchListener->onTouchCancelled = CC_CALLBACK_2(LoginLayer::onTouchCancelled, this);
 	touchListener->setSwallowTouches(true);
 
-	//ÔÚÊÂ¼ş·Ö·¢Æ÷ÖĞ£¬Ìí¼Ó´¥Ãş¼àÌıÆ÷£¬ÊÂ¼şÏìÓ¦Î¯ÍĞ¸ø this ´¦Àí
+	//åœ¨äº‹ä»¶åˆ†å‘å™¨ä¸­ï¼Œæ·»åŠ è§¦æ‘¸ç›‘å¬å™¨ï¼Œäº‹ä»¶å“åº”å§”æ‰˜ç»™ this å¤„ç†
 	dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 	return true;
 }
@@ -75,12 +75,12 @@ bool LoginLayer::init()
 void LoginLayer::initUI1()
 {
 	//auto rootNode = CSLoader::createNode("DaTingLayer.csb");
-	//rootNode = CSLoader::createNode("DaTingLayer.csb");   //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
+	//rootNode = CSLoader::createNode("DaTingLayer.csb");   //åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start====
 	//
 	//addChild(rootNode);
 	
-	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg"); //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start
-	zuduidengdaiBg->setVisible(false); //ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
+	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg"); //åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start
+	zuduidengdaiBg->setVisible(false); //åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start====
 	
 	CEditBoxTool* edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	edbox->setPosition(Vec2(winSize.width * 0.5f, winSize.height * 0.67));
@@ -101,10 +101,10 @@ void LoginLayer::initUI1()
 		char randName[126] = { 0 };
 		sprintf(randName, "name_%d", nIdex);
 		edbox->setText(Global::getInstance()->getString(randName));
-		CCUserDefault::sharedUserDefault()->setStringForKey("UserName", name.c_str());//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
+		CCUserDefault::sharedUserDefault()->setStringForKey("UserName", name.c_str());//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start====
 	}
 
-	//Ëæ»úÉú³ÉÃû×Ö
+	//éšæœºç”Ÿæˆåå­—
 	cocos2d::ui::Button* resetName = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnRandom");
 	resetName->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -115,7 +115,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ÓÎÏ·¿ªÊ¼
+	//æ¸¸æˆå¼€å§‹
 	cocos2d::ui::Button* loginBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnStatGame");
 	loginBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -146,9 +146,9 @@ void LoginLayer::initUI1()
 	addChild(teamBtn1, 2);
 
 
-	//ÍÅ¶Ó
+	//å›¢é˜Ÿ
 
-	//Éú´æÄ£Ê½
+	//ç”Ÿå­˜æ¨¡å¼
 	/*Button* liveBtn = Button::createBtnWithSpriteFrameName("live_mode.png", false);
 	liveBtn->setPosition(Vec2(winSize.width * 0.5f + 320, winSize.height * 0.5f - 120));
 	liveBtn->setScale(0.45f);
@@ -156,7 +156,7 @@ void LoginLayer::initUI1()
 	addChild(liveBtn, 2);
 	liveBtn->setVisible(false);*/
 
-	//¸öÈËÖĞĞÄ
+	//ä¸ªäººä¸­å¿ƒ
 	Button* personBtn = Button::createBtnWithSpriteFrameName("personcenter.png", false);
 	personBtn->setPosition(Vec2(270, 60));
 	personBtn->setScale(0.55f);
@@ -165,7 +165,7 @@ void LoginLayer::initUI1()
 	//personBtn->setVisible(false);
 
 
-	//¹ØÏµ
+	//å…³ç³»
 	cocos2d::ui::Button* relationBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnGuanXi");
 	relationBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -176,7 +176,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ÉÌµê
+	//å•†åº—
 	cocos2d::ui::Button* btnHorse = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnHorse");
 	btnHorse->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -187,7 +187,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	// ÅÅĞĞ°ñ
+	// æ’è¡Œæ¦œ
 	cocos2d::ui::Button* rankBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnPaiHangBang");
 	rankBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -198,7 +198,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//×é¶Ô
+	//ç»„å¯¹
 	Button* magicBtn = Button::createBtnWithSpriteFrameName("magichouse.png", false);
 	magicBtn->setPosition(Vec2(900, 60));
 	magicBtn->setScale(0.55f);
@@ -206,7 +206,7 @@ void LoginLayer::initUI1()
 	addChild(magicBtn, 2);
 
 
-	//ÕÒÅóÓÑ
+	//æ‰¾æœ‹å‹
 	cocos2d::ui::Button* friendBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnFindFriend");
 	friendBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -217,7 +217,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//ÓÎÏ·ÉèÖÃ
+	//æ¸¸æˆè®¾ç½®
 	cocos2d::ui::Button* setBtn = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnSet");
 	setBtn->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -228,22 +228,22 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//zjf×Ô¼ºÌí¼Óstart=========================
-	//°´Å¥£¨Ç©µ½£©£¨7ÈÕµÇÂ¼£©
+	//zjfè‡ªå·±æ·»åŠ start=========================
+	//æŒ‰é’®ï¼ˆç­¾åˆ°ï¼‰ï¼ˆ7æ—¥ç™»å½•ï¼‰
 	cocos2d::ui::Button* btnQianDao = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnQianDao");
 	btnQianDao->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-//			Director::getInstance()->getRunningScene()->addChild(ByLoginReward::create(), 10000);//ÆßÈÕµÄ7ÈÕµÇÂ¼½±Àø½çÃæ
+//			Director::getInstance()->getRunningScene()->addChild(ByLoginReward::create(), 10000);//ä¸ƒæ—¥çš„7æ—¥ç™»å½•å¥–åŠ±ç•Œé¢
 
 
 		}
 	});
 
 
-	//°´Å¥£¨ÓÊ¼ş£©£¬ÔİÊ±´ò¿ª£¨ÊäÈë¶Ò»»Âë£©
+	//æŒ‰é’®ï¼ˆé‚®ä»¶ï¼‰ï¼Œæš‚æ—¶æ‰“å¼€ï¼ˆè¾“å…¥å…‘æ¢ç ï¼‰
 	cocos2d::ui::Button* btnYouJian = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnYouJian");
 	btnYouJian->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -253,56 +253,56 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//°´Å¥£¨¿Í·ş£©£¬ÔİÊ±´ò¿ª£¨ÊäÈë¶Ò»»Âë£©
+	//æŒ‰é’®ï¼ˆå®¢æœï¼‰ï¼Œæš‚æ—¶æ‰“å¼€ï¼ˆè¾“å…¥å…‘æ¢ç ï¼‰
 	cocos2d::ui::Button* BtnKeFu = (cocos2d::ui::Button*)seekNodeByName(rootNode, "BtnKeFu");
 	BtnKeFu->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-//			SunNetPublic::getInstance()->addExchangeLayer(this);//´ò¿ª¶Ò»»Âë½çÃæ¡£
+//			SunNetPublic::getInstance()->addExchangeLayer(this);//æ‰“å¼€å…‘æ¢ç ç•Œé¢ã€‚
 		}
 	});
 
-	//°´Å¥£¨¹«¸æ£©£¨Òâ¼û·´À¡£©£¬
+	//æŒ‰é’®ï¼ˆå…¬å‘Šï¼‰ï¼ˆæ„è§åé¦ˆï¼‰ï¼Œ
 	cocos2d::ui::Button* btnNotice = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnNotice");
 	btnNotice->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-//			Director::getInstance()->getRunningScene()->addChild(ByFeedback::create(), 10000);//Òâ¼û·´À¡½çÃæ
+//			Director::getInstance()->getRunningScene()->addChild(ByFeedback::create(), 10000);//æ„è§åé¦ˆç•Œé¢
 		}
 	});
 
-	//Õ½¶Ó£¨¶Ò»»½±Àø£©
+	//æˆ˜é˜Ÿï¼ˆå…‘æ¢å¥–åŠ±ï¼‰
 	cocos2d::ui::Button* btnZhanDui = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnZhanDui");
 	btnZhanDui->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-//			Director::getInstance()->getRunningScene()->addChild(ByConvertHalo::create(), 10000);//¶Ò»»½±Àø½çÃæ
+//			Director::getInstance()->getRunningScene()->addChild(ByConvertHalo::create(), 10000);//å…‘æ¢å¥–åŠ±ç•Œé¢
 		}
 	});
 
 
 
-	//zjf×Ô¼ºÌí¼Óend=========================		
+	//zjfè‡ªå·±æ·»åŠ end=========================		
 
 
 
-	//°´Å¥£¨¸ü¶à£©£¬ÏÖÔÚ´ú±íÒâË¼£¨ÊäÈë¶Ò»»Âë£©µÄµØ·½
+	//æŒ‰é’®ï¼ˆæ›´å¤šï¼‰ï¼Œç°åœ¨ä»£è¡¨æ„æ€ï¼ˆè¾“å…¥å…‘æ¢ç ï¼‰çš„åœ°æ–¹
 	cocos2d::ui::Button* btnMore = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnMore");
 	btnMore->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-//			SunNetPublic::getInstance()->addExchangeLayer(this);//´ò¿ª¶Ò»»Âë½çÃæ¡£
+//			SunNetPublic::getInstance()->addExchangeLayer(this);//æ‰“å¼€å…‘æ¢ç ç•Œé¢ã€‚
 		}
 	});
 
-	//Ò»ÅÅ°´Å¥Èº
+	//ä¸€æ’æŒ‰é’®ç¾¤
 	auto btnOpen = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnOpen");
 	btnOpen->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -316,7 +316,7 @@ void LoginLayer::initUI1()
 			float x1 = x - bg->getContentSize().width;
 
 			auto moveTo = MoveTo::create(0.2, Vec2(x1, y));
-			//bg->runAction(Sequence::create(moveTo£¬NULL));
+			//bg->runAction(Sequence::create(moveToï¼ŒNULL));
 			bg->runAction(moveTo);
 
 			auto btnClose = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnClose");
@@ -340,7 +340,7 @@ void LoginLayer::initUI1()
 	if (info.roleID)
 	{
 		InitHeadInfo();
-		updateNetInfos();//»ñÈ¡·şÎñÆ÷
+		updateNetInfos();//è·å–æœåŠ¡å™¨
 	}
 	else {
 		scheduleOnce(schedule_selector(LoginLayer::initLogin), 0.15f);
@@ -362,7 +362,7 @@ void LoginLayer::initUI1()
 	//friendBtn->setOnClickCallback(callfuncO_selector(LoginLayer::ShowGM), this);
 	//addChild(friendBtn, 2);
 
-	//¾º¼¼³¡
+	//ç«æŠ€åœº
 	auto btnJingJiChang = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnJingJiChang");
 	btnJingJiChang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -373,7 +373,7 @@ void LoginLayer::initUI1()
 		}
 	});
 
-	//Ê¥ÒÂ  £¨Ê¥ÒÂ°´Å¥¾ÍÊÇ´óÂÒ¶·°´Å¥ÒâË¼£¬Õâ¶ùÒâË¼ÊÇµã»÷°´Å¥ºó£¬»á´¥·¢Ê²Ã´¹¦ÄÜµÄÒâË¼£©
+	//åœ£è¡£  ï¼ˆåœ£è¡£æŒ‰é’®å°±æ˜¯å¤§ä¹±æ–—æŒ‰é’®æ„æ€ï¼Œè¿™å„¿æ„æ€æ˜¯ç‚¹å‡»æŒ‰é’®åï¼Œä¼šè§¦å‘ä»€ä¹ˆåŠŸèƒ½çš„æ„æ€ï¼‰
 	auto btnShengYi = (cocos2d::ui::Button*)seekNodeByName(rootNode, "btnShengYi");
 	btnShengYi->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -387,8 +387,8 @@ void LoginLayer::initUI1()
 	
 	
 	
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start================================================================================
-	//»ñÈ¡»î¶¯Í¼Æ¬×ÊÔ´
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start================================================================================
+	//è·å–æ´»åŠ¨å›¾ç‰‡èµ„æº
 	auto rootNode1 = CSLoader::createNode("ActiveLayer.csb");
 	addChild(rootNode1,100000);
 
@@ -471,7 +471,7 @@ void LoginLayer::initUI1()
 
 	}, "GetImgPath");
 
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end================================================================================
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end================================================================================
 	
 	
 	
@@ -502,7 +502,7 @@ void LoginLayer::ShowGM(Ref* pSender)
 	std::vector<item> arr;
 	for (int i = 0; i<5; i++) {
 	item ite;
-	ite.itemName = "²âÊÔÃû×Ö";
+	ite.itemName = "æµ‹è¯•åå­—";
 	ite.maxCount = i+2;
 	arr.push_back(ite);
 	}
@@ -516,11 +516,11 @@ void LoginLayer::ResetName(Ref* pSender)
 	sprintf(randName, "name_%d", nIdex);
 	CEditBoxTool* edbox = (CEditBoxTool*)getChildByTag(101);
 	edbox->setText(Global::getInstance()->getString(randName));
-	CCUserDefault::sharedUserDefault()->setStringForKey("UserName", Global::getInstance()->getString(randName));//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó 
+	CCUserDefault::sharedUserDefault()->setStringForKey("UserName", Global::getInstance()->getString(randName));//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ 
 }
 void LoginLayer::updateNetInfos()
 {
-	// »ñµÃ·şÎñÆ÷ÁĞ±í
+	// è·å¾—æœåŠ¡å™¨åˆ—è¡¨
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
 
 	if (nets.size() == 0)
@@ -538,7 +538,7 @@ void LoginLayer::updateNetInfos()
 		CCLabelTTF* netname = CCLabelTTF::create(nets[0].m_netName.c_str(), "STXingkai.ttf", 29);
 		netname->setColor(Color3B(0, 0, 0));
 
-		// ÖÆ×÷ÏÂÀ­
+		// åˆ¶ä½œä¸‹æ‹‰
 		//Size size = Size(200, 30);
 		//dropLayer = DropDownListLayer::create(netname, size);
 
@@ -695,13 +695,13 @@ void LoginLayer::setNetKey(int key)
 	std::string nick = input->getText();
 	if (nick == "" || nick.size() == 0)
 		
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start====
 		//return;
 	{
 		input->setText(CCUserDefault::sharedUserDefault()->getStringForKey("UserName").c_str());
 		nick = input->getText();
 	}		
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end====
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end====
 	
 	
 	
@@ -727,7 +727,7 @@ void LoginLayer::delayEnter(float ft)
 	//DropDownListLayer* dropLayer = dynamic_cast<DropDownListLayer*>(getChildByTag(121));
 	//int selectIdx = dropLayer->getSelectedIndex();
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
-	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
+	// è·å–æˆ˜æ–—æœåŠ¡å™¨ç§˜é’¥
 	main->reqServerKey(nets[0].m_netID, 0, 0);
 	Global::getInstance()->SetFightType(0);
 }
@@ -737,7 +737,7 @@ netInfo LoginLayer::getNetInfo()
 	//DropDownListLayer* dropLayer = dynamic_cast<DropDownListLayer*>(getChildByTag(121));
 	//int selectIdx = dropLayer->getSelectedIndex();
 	std::vector<netInfo> nets = Global::getInstance()->getNetInfos();
-	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
+	// è·å–æˆ˜æ–—æœåŠ¡å™¨ç§˜é’¥
 	return nets[0];
 }
 
@@ -752,14 +752,14 @@ void LoginLayer::PersonCenter(cocos2d::Ref *pSender)
 }
 
 
-void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //´ò¿ª¹ØÏµ½çÃæ
+void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //æ‰“å¼€å…³ç³»ç•Œé¢
 {
 	//MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//main->CheckLayer(MainScene::TAG_LAYER_RELATION);
 	
 
-// 11  0922zjfÆÁ±Î
-		// ========================2017-0826 £Ô£Ò£¬ĞÂµÄÓÎÏ·Íæ¼Ò¹ØÏµ½çÃæ¡¡¡¡¡¡£­£­¡¡£â£å£ä£é£î
+// 11  0922zjfå±è”½
+		// ========================2017-0826 ï¼´ï¼²ï¼Œæ–°çš„æ¸¸æˆç©å®¶å…³ç³»ç•Œé¢ã€€ã€€ã€€ï¼ï¼ã€€ï½‚ï½…ï½„ï½‰ï½
 //		FriendNetWork* relation = FriendNetWork::create();
 		//addChild(relation, 3, MainScene::TAG_LAYER_RELATION);
 //		addChild(relation, 3);
@@ -767,12 +767,12 @@ void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //´ò¿ª¹ØÏµ½çÃæ
 
 		std::string ownPlayerId = CCUserDefault::sharedUserDefault()->getStringForKey("PlayerId");
 		
-		// »ñµÃÉç½»¹ØÏµÊıÁ¿ getsocialListCount
+		// è·å¾—ç¤¾äº¤å…³ç³»æ•°é‡ getsocialListCount
 		std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/getsocialListCount?socialtype=%E7%B2%89%E4%B8%9D&playerid=" + ownPlayerId;
 		std::string url2 = "http://47.93.50.101:8080/QQWar/Qqwar/getsocialListCount?socialtype=%E5%A5%BD%E5%8F%8B&playerid=" + ownPlayerId;
 		std::string url3 = "http://47.93.50.101:8080/QQWar/Qqwar/getsocialListCount?socialtype=%E5%85%B3%E6%B3%A8&playerid=" + ownPlayerId;
 
-		std::string data = "";//"socialtype=·ÛË¿&playerid=" + ownPlayerId;
+		std::string data = "";//"socialtype=ç²‰ä¸&playerid=" + ownPlayerId;
 		requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 		{
 			if (response == nullptr || !response->isSucceed())
@@ -785,7 +785,7 @@ void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //´ò¿ª¹ØÏµ½çÃæ
 //			relation->showPlayerInfo(responseStr, 0);
 		}, "Friend");
 		
-		//data = "socialtype=ºÃÓÑ&playerid=" + ownPlayerId;
+		//data = "socialtype=å¥½å‹&playerid=" + ownPlayerId;
 		requestForPost(url2, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 		{
 			if (response == nullptr || !response->isSucceed())
@@ -798,7 +798,7 @@ void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //´ò¿ª¹ØÏµ½çÃæ
 //			relation->showPlayerInfo(responseStr, 1);
 		}, "Friend");
 
-		//data = "socialtype=¹Ø×¢&playerid=" + ownPlayerId;
+		//data = "socialtype=å…³æ³¨&playerid=" + ownPlayerId;
 		requestForPost(url3, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
 		{
 			if (response == nullptr || !response->isSucceed())
@@ -811,8 +811,8 @@ void LoginLayer::RelationClick(cocos2d::Ref *pSender)   //´ò¿ª¹ØÏµ½çÃæ
 //			relation->showPlayerInfo(responseStr, 2);
 //			relation->setVisible(true);
 		}, "Friend");
-		// ========================2017-0826 £Ô£Ò£¬ĞÂµÄÓÎÏ·Íæ¼Ò¹ØÏµ½çÃæ¡¡¡¡¡¡£­£­¡¡£å£î£ä
- // 0922zjfÆÁ±Î
+		// ========================2017-0826 ï¼´ï¼²ï¼Œæ–°çš„æ¸¸æˆç©å®¶å…³ç³»ç•Œé¢ã€€ã€€ã€€ï¼ï¼ã€€ï½…ï½ï½„
+ // 0922zjfå±è”½
 	
 	
 }
@@ -821,13 +821,13 @@ void LoginLayer::RankClick(cocos2d::Ref *pSender)
 {
 	//MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//main->CheckLayer(MainScene::TAG_LAYER_RANKING);
-//	Director::getInstance()->getRunningScene()->addChild(ByRankLayer::create(), 100000);  //ÆßÈÕµÄÅÅĞĞ°ñµÄÕıÊ½½çÃæ¡£
+//	Director::getInstance()->getRunningScene()->addChild(ByRankLayer::create(), 100000);  //ä¸ƒæ—¥çš„æ’è¡Œæ¦œçš„æ­£å¼ç•Œé¢ã€‚
 }
 
 void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 {
 	
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start====
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start====
 	//MainScene* main = dynamic_cast<MainScene*>(getParent());
 	//main->CheckLayer(MainScene::TAG_LAYER_SHOPSYM);
 	
@@ -836,7 +836,7 @@ void LoginLayer::MagicClick(cocos2d::Ref *pSender)
 
 	/*auto YuanZhengLayer = YuanZhengLayer::create();
 	addChild(YuanZhengLayer, 100000);*/
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end====
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end====
 	
 }
 
@@ -856,8 +856,8 @@ void LoginLayer::FriendClick(cocos2d::Ref *pSender)
 {
 	//FindFriend* layer = FindFriend::create();
 	//addChild(layer, 10);
-	//	Director::getInstance()->getRunningScene()->addChild(ByLoginReward::create(), 10000);//ÆßÈÕµÄ7ÈÕµÇÂ¼½±Àø½çÃæ
-	//Director::getInstance()->getRunningScene()->addChild(ByConvertHalo::create(), 10000);//¶Ò»»½±Àø½çÃæ
+	//	Director::getInstance()->getRunningScene()->addChild(ByLoginReward::create(), 10000);//ä¸ƒæ—¥çš„7æ—¥ç™»å½•å¥–åŠ±ç•Œé¢
+	//Director::getInstance()->getRunningScene()->addChild(ByConvertHalo::create(), 10000);//å…‘æ¢å¥–åŠ±ç•Œé¢
 
 
 }
@@ -893,12 +893,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//ÕËºÅ°ó¶¨½çÃæ
+	//è´¦å·ç»‘å®šç•Œé¢
 	auto btnBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangDing");
 	auto btnYiBangDing = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnYiBangDing");
 	auto zhanghaobangding = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "zhanghaobangding");
 
-	//ÕËºÅÏÔÊ¾
+	//è´¦å·æ˜¾ç¤º
 	auto zhanghao = (cocos2d::ui::Text*)seekNodeByName(rootGameSettingNode, "zhanghao");
 	zhanghao->setText(info.accout);
 
@@ -915,7 +915,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		btnBangDing->setTouchEnabled(true);
 	}
 
-	//°ó¶¨ÕËºÅÊäÈë¿ò
+	//ç»‘å®šè´¦å·è¾“å…¥æ¡†
 	CEditBoxTool* zhanghaoedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* mimaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* mima1edbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -951,7 +951,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-			//ÕËºÅ°ó¶¨½çÃæÏÔÊ¾
+			//è´¦å·ç»‘å®šç•Œé¢æ˜¾ç¤º
 			zhanghaobangding->setVisible(true);
 		}
 	});
@@ -1066,7 +1066,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	});
 
 
-	//ÇĞ»»ÕËºÅ
+	//åˆ‡æ¢è´¦å·
 	auto btnChange = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnChange");
 	auto qiehuanzhanghao = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "qiehuanzhanghao");
 	btnChange->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
@@ -1090,8 +1090,8 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	
 	
 
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start============================================================================
-	//ÇĞ»»ÕËºÅ ÉÏµÄµ¯´° ÊäÈë¿ò
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start============================================================================
+	//åˆ‡æ¢è´¦å· ä¸Šçš„å¼¹çª— è¾“å…¥æ¡†
 	CEditBoxTool* qiehuanzhanghaoedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* qiehuanmimaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 
@@ -1110,7 +1110,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 	qiehuanmimaedbox->setFontColor(Color3B::BLACK);
 	qiehuanzhanghao->addChild(qiehuanmimaedbox, 3, 101);
 	qiehuanmimaedbox->setPlaceHolder(Global::getInstance()->getString("please input password"));
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end===========================================================================
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end===========================================================================
 	
 	
 	
@@ -1124,7 +1124,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			GameVoice::getInstance()->playClickBtnVoive();
 			log("qiehuanzhanghao dengluyouxi xinxi");
 			
-			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start========================================================================
+			//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start========================================================================
 			std::string zhanghao = qiehuanzhanghaoedbox->getText();
 			std::string data = "account=" + zhanghao + "&password=" + qiehuanmimaedbox->getText();
 
@@ -1194,7 +1194,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 			}, "qieHuanZhangHao");
 			
-			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end========================================================================
+			//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end========================================================================
 			
 			
 			
@@ -1213,7 +1213,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//Íü¼ÇÃÜÂë ÕÒ»ØÃÜÂë
+	//å¿˜è®°å¯†ç  æ‰¾å›å¯†ç 
 	auto close5 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "close5");
 	close5->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
 	{
@@ -1224,8 +1224,8 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start========================================================================
-		//Íü¼ÇÓÃ»§»òÃÜÂë ÉÏµÄµ¯´° ÊäÈë¿ò
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start========================================================================
+		//å¿˜è®°ç”¨æˆ·æˆ–å¯†ç  ä¸Šçš„å¼¹çª— è¾“å…¥æ¡†
 	CEditBoxTool* zhaohuimimaEmailedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* zhaohuimimaYanZhengMaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* zhaohuimimaNewPasswordedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -1261,7 +1261,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			log("wangjiyonghu huo mima huoqu yanzhengma");
-			//»ñÈ¡ÑéÖ¤Âë
+			//è·å–éªŒè¯ç 
 			std::string emailInput = zhaohuimimaEmailedbox->getText();
 			std::string data = "";
 			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -1312,7 +1312,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			}, "getYanZhengMa1");
 		}
 	});
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end========================================================================
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end========================================================================
 	
 	
 	auto btntijiao0 = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btntijiao0");
@@ -1323,7 +1323,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			GameVoice::getInstance()->playClickBtnVoive();
 			log("zhaohuimima tijiao xinxi");
 			
-		//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó staer========================================================================
+		//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ staer========================================================================
 		std::string emailInput = zhaohuimimaEmailedbox->getText();
 			std::string data = "";
 			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -1399,12 +1399,12 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 			}, "xinMiMa");
 		
-		//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end========================================================================		
+		//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end========================================================================		
 			
 		}
 	});
 
-	//°ó¶¨ÓÊÏä
+	//ç»‘å®šé‚®ç®±
 	auto bangdingyouxiang = (cocos2d::ui::ImageView*)seekNodeByName(rootGameSettingNode, "bangdingyouxiang");
 	auto btnBangYouXiang = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnBangYouXiang");
 	auto btnyanzhengma = (cocos2d::ui::Button*)seekNodeByName(rootGameSettingNode, "btnyanzhengma");
@@ -1420,7 +1420,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		}
 	});
 
-	//°ó¶¨ÓÊÏäÊäÈë¿ò
+	//ç»‘å®šé‚®ç®±è¾“å…¥æ¡†
 	CEditBoxTool* inputMiMadbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* emaildbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
 	CEditBoxTool* yanZhengMaedbox = CEditBoxTool::Create(Size(300, 80), Scale9Sprite::create("input.png"));
@@ -1459,10 +1459,10 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			GameVoice::getInstance()->playClickBtnVoive();
-			//»ñÈ¡ÑéÖ¤Âë
+			//è·å–éªŒè¯ç 
 			
 			
-			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
+			//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start======================================================================
 			//std::string data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "@qq.com";
 			std::string data = "";
 			if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -1470,7 +1470,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "@qq.com";
 			}else
 				 data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText();			
-			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
+			//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start======================================================================
 			
 			
 			std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/vaildcode";
@@ -1536,7 +1536,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 			GameVoice::getInstance()->playClickBtnVoive();
 			log("bangdingyouxiang tijiao xinxi");
 
-			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
+			//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start======================================================================
 			//std::string data = "playerid=" + info.playerid + "&mail=383905358@qq.com" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + "yip9";
 			//yanZhengMaedbox->getText();
 			std::string data = "";
@@ -1545,7 +1545,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "qq.com" + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
 			}else
 				data = "playerid=" + info.playerid + "&mail=" + emaildbox->getText() + "&password=" + inputMiMadbox->getText() + "&code=" + yanZhengMaedbox->getText();
-			//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end======================================================================
+			//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end======================================================================
 			
 			
 
@@ -1629,7 +1629,7 @@ void LoginLayer::ShezhiClick(Ref* pSender)
 
 }
 
-//¸öÈËÖĞĞÄ²é¿´×Ô¼ºµÄÊı¾İ
+//ä¸ªäººä¸­å¿ƒæŸ¥çœ‹è‡ªå·±çš„æ•°æ®
 void LoginLayer::TeamClick(cocos2d::Ref *pSender)
 {
 	// 	MainScene* main = dynamic_cast<MainScene*>(getParent());
@@ -1639,7 +1639,7 @@ void LoginLayer::TeamClick(cocos2d::Ref *pSender)
 //	widget->getServerData();
 }
 
-//¸öÈËÖĞĞÄ²é¿´ºÃÓÑÊı¾İ
+//ä¸ªäººä¸­å¿ƒæŸ¥çœ‹å¥½å‹æ•°æ®
 void LoginLayer::TeamClickFriend(Ref* pSender)
 {
 //	auto widget = PersonalUI::create();
@@ -1656,7 +1656,7 @@ void LoginLayer::LiveClick(cocos2d::Ref *pSender)
 {
 	ShengCun* layer = ShengCun::create();
 	addChild(layer, 10, TAG_SHENGCUN);
-	//Global::getInstance()->ShowPromBox("²âÊÔ¿´¿´Õâ¸öµÂĞĞ²»");
+	//Global::getInstance()->ShowPromBox("æµ‹è¯•çœ‹çœ‹è¿™ä¸ªå¾·è¡Œä¸");
 }
 
 void LoginLayer::editBoxReturn(cocos2d::extension::EditBox *editBox)
@@ -1675,23 +1675,23 @@ void LoginLayer::rushmenpiao()
 		layer->rushmenpiao();
 	}
 }
-//µã»÷¾º¼¼³¡°´Å¥´¥·¢
+//ç‚¹å‡»ç«æŠ€åœºæŒ‰é’®è§¦å‘
 void LoginLayer::JingJiChangClick(Ref* pSender)
 {
 	log("===================================jingjichang");
 	
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start======================================================================
 	auto YuanZhengLayer = YuanZhengLayer::create();
 	addChild(YuanZhengLayer, 100000);
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end======================================================================
+	//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end======================================================================
 }
 
-//µã»÷Ê¥ÒÂ°´Å¥´ò¿ªµÄ½çÃæ
+//ç‚¹å‡»åœ£è¡£æŒ‰é’®æ‰“å¼€çš„ç•Œé¢
 
-//µã»÷´óÂÒ¶·°´Å¥´¥·¢
+//ç‚¹å‡»å¤§ä¹±æ–—æŒ‰é’®è§¦å‘
 void LoginLayer::ShengYiClick(Ref* pSender)
 {
-	//SunNetPublic::getInstance()->addApplyLayer(this);  //µã»÷Ê¥ÒÂ°´Å¥£¬´ò¿ª´óÂÒ¶·½çÃæ
+	//SunNetPublic::getInstance()->addApplyLayer(this);  //ç‚¹å‡»åœ£è¡£æŒ‰é’®ï¼Œæ‰“å¼€å¤§ä¹±æ–—ç•Œé¢
 	log("===================================shengyi");
 	auto timeYuanZhengLayer = TimeYuanZhengLayer::create();
 	addChild(timeYuanZhengLayer, 100000);
@@ -1789,14 +1789,14 @@ void LoginLayer::initDengLuData()
 						Json* mail = Json_getItem(account, "mail");
 
 
-						//¼Óµ½ÕâÀï
-//						CCUserDefault::getInstance()->setStringForKey("playerid", playerid->valueString);//ÆßÈÕ¸çÒªÇó¼ÓÔØÕâ¶ùµÄ
+						//åŠ åˆ°è¿™é‡Œ
+//						CCUserDefault::getInstance()->setStringForKey("playerid", playerid->valueString);//ä¸ƒæ—¥å“¥è¦æ±‚åŠ è½½è¿™å„¿çš„
 
-//						StaticData::getInstance()->setPlayId(playerid->valueString);//zjf×Ô¼ºÔö¼ÓµÄ£¬¸öÈË×ÊÁÏÏµÍ³ÎªÁË»ñÈ¡Íæ¼Òid
+//						StaticData::getInstance()->setPlayId(playerid->valueString);//zjfè‡ªå·±å¢åŠ çš„ï¼Œä¸ªäººèµ„æ–™ç³»ç»Ÿä¸ºäº†è·å–ç©å®¶id
 
 
-						//  0922zjfÆÁ±Î						
-/*						// 2017-08-31					µÇÂ½³É¹¦ºó´æ´¢Íæ¼ÒµÄplayerid£¬ÔÚÇëÇóÍæ¼ÒºÃÓÑÊı¾İµÄÊ±ºò»áµ÷ÓÃ
+						//  0922zjfå±è”½						
+/*						// 2017-08-31					ç™»é™†æˆåŠŸåå­˜å‚¨ç©å®¶çš„playeridï¼Œåœ¨è¯·æ±‚ç©å®¶å¥½å‹æ•°æ®çš„æ—¶å€™ä¼šè°ƒç”¨
 						rapidjson::Document docJson;
 						docJson.Parse<rapidjson::kParseDefaultFlags>(responseStr.c_str());
 						rapidjson::Value& object_1 = docJson["resultObj"]["player"]["playerid"];
@@ -1808,7 +1808,7 @@ void LoginLayer::initDengLuData()
 
 						rapidjson::Value& object_3 = docJson["resultObj"]["player"]["playername"];
 						CCUserDefault::sharedUserDefault()->setStringForKey("playername", object_3.GetString());
-						// 2017-08-31					µÇÂ½³É¹¦ºó´æ´¢Íæ¼ÒµÄplayerid£¬ÔÚÇëÇóÍæ¼ÒºÃÓÑÊı¾İµÄÊ±ºò»áµ÷ÓÃ  end
+						// 2017-08-31					ç™»é™†æˆåŠŸåå­˜å‚¨ç©å®¶çš„playeridï¼Œåœ¨è¯·æ±‚ç©å®¶å¥½å‹æ•°æ®çš„æ—¶å€™ä¼šè°ƒç”¨  end
 */
 						
 						account_info info;
@@ -1897,7 +1897,7 @@ void LoginLayer::initDengLuData()
 						std::string headImgPath = "Head\\" + headInfo.headid;
 						head->loadTexture(headImgPath.c_str());
 
-						//¸ù¾İÍøÂçÇëÇó¹ıÀ´µÄ¶ÎÎ»½Ó¿Ú ³õÊ¼»¯Í·ÏñĞÅÏ¢
+						//æ ¹æ®ç½‘ç»œè¯·æ±‚è¿‡æ¥çš„æ®µä½æ¥å£ åˆå§‹åŒ–å¤´åƒä¿¡æ¯
 						getDuanWeiInfoByIndex(atoi(headInfo.grade.c_str()));
 					}
 				}
@@ -1955,12 +1955,12 @@ void LoginLayer::getDuanWeiInfoByIndex(int index)
 				Json* xingliang = Json_getItem(jsonChild, "xingliang");
 				Json* xingan = Json_getItem(jsonChild, "xingan");
 				Json* xingnum1 = Json_getItem(jsonChild, "xingnum");
-				log("¶ÎÎ»ÃèÊö==========================%s", duanweiDesc->valueString);
-				log("¶ÎÎ»Ãû³Æ==========================%s", duanweiName->valueString);
-				log("¶ÎÎ»Í¼±ê==========================%s", duanweiIcon->valueString);
-				log("ÁÁĞÇ==========================%d", xingliang->valueInt);
-				log("°µĞÇ==========================%d", xingan->valueInt);
-				log("ĞÇÊıÁ¿==========================%d", xingnum1->valueInt);
+				log("æ®µä½æè¿°==========================%s", duanweiDesc->valueString);
+				log("æ®µä½åç§°==========================%s", duanweiName->valueString);
+				log("æ®µä½å›¾æ ‡==========================%s", duanweiIcon->valueString);
+				log("äº®æ˜Ÿ==========================%d", xingliang->valueInt);
+				log("æš—æ˜Ÿ==========================%d", xingan->valueInt);
+				log("æ˜Ÿæ•°é‡==========================%d", xingnum1->valueInt);
 
 				auto duanwei = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "duanwei");
 				auto duanweiNameText = (cocos2d::ui::Text*)seekNodeByName(rootNode, "duanweiName");
@@ -1978,7 +1978,7 @@ void LoginLayer::getDuanWeiInfoByIndex(int index)
 				auto xing7 = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "xing7");
 
 
-				if (index - 1 <= 3) //Ğ¡ÓÚ3¸ö¶ÎÎ»
+				if (index - 1 <= 3) //å°äº3ä¸ªæ®µä½
 				{
 					xing1->setVisible(true);
 					xing2->setVisible(true);
@@ -2239,7 +2239,7 @@ void LoginLayer::getDuanWeiInfoByIndex(int index)
 }
 
 
-//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
+//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ start======================================================================
 void LoginLayer::initWaitBox()
 {
 	auto  zuduidengdaiBg = (cocos2d::ui::ImageView*)seekNodeByName(rootNode, "zuduidengdaiBg");
@@ -2324,14 +2324,14 @@ void LoginLayer::hideWaitBox()
 	upFenTime = 0;
 	upMiaoTime = 0;
 }
-//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end======================================================================
+//åˆå¹¶ä»£ç ç”¨--0924--æ³¨å†Œä¸ç»„é˜Ÿ end======================================================================
 
 
 
 
 
 ////////////////////////////////////////////////////////////////////
-// Éú´æÄ£Ê½¿ªÊ¼½çÃæ
+// ç”Ÿå­˜æ¨¡å¼å¼€å§‹ç•Œé¢
 ////////////////////////////////////////////////////////////////////
 ShengCun::ShengCun()
 {
@@ -2537,7 +2537,7 @@ void ShengCun::delayEnter(float ft)
 	LoginLayer* login = dynamic_cast<LoginLayer*>(getParent());
 	netInfo netID = login->getNetInfo();
 	MainScene* main = dynamic_cast<MainScene*>(login->getParent());
-	// »ñÈ¡Õ½¶··şÎñÆ÷ÃØÔ¿
+	// è·å–æˆ˜æ–—æœåŠ¡å™¨ç§˜é’¥
 	main->reqServerKey(netID.m_netID, 1, menpiaoxiaohao);
 	Global::getInstance()->SetFightType(1);
 }
@@ -2640,7 +2640,7 @@ void ShengCun::onTouchEnded(Touch* pTouch, Event* pEvent)
 }
 
 ////////////////////////////////////////////////////////////////////
-// ÁìÈ¡Èë³¡È¯½çÃæ
+// é¢†å–å…¥åœºåˆ¸ç•Œé¢
 ////////////////////////////////////////////////////////////////////
 LingRuchangQuan::LingRuchangQuan()
 {
@@ -2804,7 +2804,7 @@ void LingRuchangQuan::rushmenpiao()
 	useName = (CCLabelTTF*)getChildByTag(TAG_MONEYLAB);
 	useName->setString(ton);
 
-	sprintf(ton, "½ñÈÕ¿É¶Ò»»£º%d/1", info.freeTicket);
+	sprintf(ton, "ä»Šæ—¥å¯å…‘æ¢ï¼š%d/1", info.freeTicket);
 	useName = (CCLabelTTF*)getChildByTag(TAG_LINQUCISHU);
 	useName->setString(ton);
 

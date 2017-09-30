@@ -1884,12 +1884,17 @@ class UM_PlayerInfo : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 rank() const;
   inline void set_rank(::google::protobuf::uint32 value);
 
-  // optional uint32 icon = 3;
+  // optional string icon = 3;
   inline bool has_icon() const;
   inline void clear_icon();
   static const int kIconFieldNumber = 3;
-  inline ::google::protobuf::uint32 icon() const;
-  inline void set_icon(::google::protobuf::uint32 value);
+  inline const ::std::string& icon() const;
+  inline void set_icon(const ::std::string& value);
+  inline void set_icon(const char* value);
+  inline void set_icon(const char* value, size_t size);
+  inline ::std::string* mutable_icon();
+  inline ::std::string* release_icon();
+  inline void set_allocated_icon(::std::string* icon);
 
   // optional uint32 monthLevel = 4;
   inline bool has_monthlevel() const;
@@ -1962,6 +1967,13 @@ class UM_PlayerInfo : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 change() const;
   inline void set_change(::google::protobuf::int32 value);
 
+  // optional int32 sex = 12;
+  inline bool has_sex() const;
+  inline void clear_sex();
+  static const int kSexFieldNumber = 12;
+  inline ::google::protobuf::int32 sex() const;
+  inline void set_sex(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:com.suyin.proto.UM_PlayerInfo)
  private:
   inline void set_has_playerid();
@@ -1984,23 +1996,26 @@ class UM_PlayerInfo : public ::google::protobuf::Message {
   inline void clear_has_grade();
   inline void set_has_change();
   inline void clear_has_change();
+  inline void set_has_sex();
+  inline void clear_has_sex();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* playerid_;
+  ::std::string* icon_;
   ::google::protobuf::uint32 rank_;
-  ::google::protobuf::uint32 icon_;
   ::google::protobuf::uint32 monthlevel_;
-  ::google::protobuf::uint32 yeallevel_;
   ::std::string* name_;
+  ::google::protobuf::uint32 yeallevel_;
+  ::google::protobuf::uint32 weight_;
   ::std::string* account_;
   ::google::protobuf::RepeatedPtrField< ::com::suyin::proto::UM_Item > items_;
-  ::google::protobuf::uint32 weight_;
   ::google::protobuf::int32 grade_;
   ::google::protobuf::int32 change_;
+  ::google::protobuf::int32 sex_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
 
   friend void  protobuf_AddDesc_msg_5fclient_2eproto();
   friend void protobuf_AssignDesc_msg_5fclient_2eproto();
@@ -9047,7 +9062,7 @@ inline void UM_PlayerInfo::set_rank(::google::protobuf::uint32 value) {
   rank_ = value;
 }
 
-// optional uint32 icon = 3;
+// optional string icon = 3;
 inline bool UM_PlayerInfo::has_icon() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -9058,15 +9073,63 @@ inline void UM_PlayerInfo::clear_has_icon() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void UM_PlayerInfo::clear_icon() {
-  icon_ = 0u;
+  if (icon_ != &::google::protobuf::internal::kEmptyString) {
+    icon_->clear();
+  }
   clear_has_icon();
 }
-inline ::google::protobuf::uint32 UM_PlayerInfo::icon() const {
+inline const ::std::string& UM_PlayerInfo::icon() const {
+  return *icon_;
+}
+inline void UM_PlayerInfo::set_icon(const ::std::string& value) {
+  set_has_icon();
+  if (icon_ == &::google::protobuf::internal::kEmptyString) {
+    icon_ = new ::std::string;
+  }
+  icon_->assign(value);
+}
+inline void UM_PlayerInfo::set_icon(const char* value) {
+  set_has_icon();
+  if (icon_ == &::google::protobuf::internal::kEmptyString) {
+    icon_ = new ::std::string;
+  }
+  icon_->assign(value);
+}
+inline void UM_PlayerInfo::set_icon(const char* value, size_t size) {
+  set_has_icon();
+  if (icon_ == &::google::protobuf::internal::kEmptyString) {
+    icon_ = new ::std::string;
+  }
+  icon_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* UM_PlayerInfo::mutable_icon() {
+  set_has_icon();
+  if (icon_ == &::google::protobuf::internal::kEmptyString) {
+    icon_ = new ::std::string;
+  }
   return icon_;
 }
-inline void UM_PlayerInfo::set_icon(::google::protobuf::uint32 value) {
-  set_has_icon();
-  icon_ = value;
+inline ::std::string* UM_PlayerInfo::release_icon() {
+  clear_has_icon();
+  if (icon_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = icon_;
+    icon_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void UM_PlayerInfo::set_allocated_icon(::std::string* icon) {
+  if (icon_ != &::google::protobuf::internal::kEmptyString) {
+    delete icon_;
+  }
+  if (icon) {
+    set_has_icon();
+    icon_ = icon;
+  } else {
+    clear_has_icon();
+    icon_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // optional uint32 monthLevel = 4;
@@ -9342,6 +9405,28 @@ inline ::google::protobuf::int32 UM_PlayerInfo::change() const {
 inline void UM_PlayerInfo::set_change(::google::protobuf::int32 value) {
   set_has_change();
   change_ = value;
+}
+
+// optional int32 sex = 12;
+inline bool UM_PlayerInfo::has_sex() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void UM_PlayerInfo::set_has_sex() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void UM_PlayerInfo::clear_has_sex() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void UM_PlayerInfo::clear_sex() {
+  sex_ = 0;
+  clear_has_sex();
+}
+inline ::google::protobuf::int32 UM_PlayerInfo::sex() const {
+  return sex_;
+}
+inline void UM_PlayerInfo::set_sex(::google::protobuf::int32 value) {
+  set_has_sex();
+  sex_ = value;
 }
 
 // -------------------------------------------------------------------

@@ -54,7 +54,7 @@ CCScene* pScene = CCScene::create();
 return pScene;
 }
 */
-
+static UM_BattleResult _rep;
 MainScene::MainScene()
 {
 
@@ -899,75 +899,79 @@ void MainScene::updateRankeInFight(const cocos2d::network::WebSocket::Data &data
 
 void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
 {
-    static  UM_BattleResult _rep;
+    //static  UM_BattleResult _rep;
     bool _bGetData = _rep.ParseFromArray(data.bytes+2, data.len-2);
     if(!_bGetData)
         return;
-    BattleResault _stBattleResault;
-    _stBattleResault.aid = _rep.aid();
-    _stBattleResault.mode = _rep.mode();
-    _stBattleResault.rank = _rep.rank();
-    _stBattleResault.round = _rep.round();
-    _stBattleResault.iswinner = _rep.iswinner();
-    
-    std::string _str = _rep.players(0).playerid() ;
-    std::string _str2 = Global::getInstance()->getMyInfo().getPlayerID();
-    std::string _str3 = Global::getInstance()->GetAccountInfo().playerid;
-    for(int j=0; j<_rep.players_size(); j++)
-    {
-        if(_rep.players(j).playerid() == _str3)
-        {
-            _stBattleResault.stPlayerInfor.playerid = _rep.players(j).playerid();
-            _stBattleResault.stPlayerInfor.monthLevel = _rep.players(j).monthlevel();
-            _stBattleResault.stPlayerInfor.yearLevel = _rep.players(j).yeallevel();
-            for(int k=0;k<_rep.players(j).items_size(); k++)
-            {
-                if( _rep.players(j).items(k).id() != 0)
-                {
-                    _stBattleResault.stPlayerInfor.stGoodsInfor[k].nID = _rep.players(j).items(k).id();
-                    _stBattleResault.stPlayerInfor.stGoodsInfor[k].nCount = _rep.players(j).items(k).num();
-                    _stBattleResault.stPlayerInfor.stGoodsInfor[k].nType = _rep.players(j).items(k).type();
-                }
-            }
-            
-            break;
-        }
-    }
-    
-    if (getChildByTag(TAG_GAME_END) && (ZhanDouEnd*)getChildByTag(TAG_GAME_END))
-    {
-//        ZhanDouEnd* end = dynamic_cast<ZhanDouEnd*>(getChildByTag(TAG_GAME_END));
-//        end->setInfos(ranks, relations);
-//        //        if (idList.size() > 0)
-//        //            reqIcons(idList);
-        auto end = dynamic_cast<GameOverLayer*>(getChildByTag(TAG_GAME_END));
-        end->setOverData(_stBattleResault);
-    }
-    else
-    {
-        removeChildByTag(TAG_LAYER_SCENE, true);
-        auto gameEnd = GameOverLayer::createGameOver(_stBattleResault);
-        addChild(gameEnd, 2, TAG_GAME_END);
-        gameEnd->setOverData(_stBattleResault);
-        
-        Global::getInstance()->clearMainNodes();
-        removeChildByTag(TAG_GAME_COLOR_BG, true);
-        removeChildByTag(TAG_LAYER_GRID, true);
-        //CloseWebNet();
-    }
-	/*int headSize = sizeof(uint8_t);
-
-	uint16_t count;
-	memcpy(&count, data.bytes + headSize, sizeof(uint16_t));
-	//log("over state count is:%d", count);
-	headSize += sizeof(uint16_t);
-	std::vector<EndGame1> ranks;
-	std::vector<Relation2Me1> relations;
-
-	std::vector<int> idList;
-
-	for (int i = 0; i < count; i++)
+	//Global::getInstance()->SetGameOverServerData(_rep);
+	showFightOverPaiHangInfo();
+	return;
 	{
+		BattleResault _stBattleResault;
+		_stBattleResault.aid = _rep.aid();
+		_stBattleResault.mode = _rep.mode();
+		_stBattleResault.rank = _rep.rank();
+		_stBattleResault.round = _rep.round();
+		_stBattleResault.iswinner = _rep.iswinner();
+
+		std::string _str = _rep.players(0).playerid();
+		std::string _str2 = Global::getInstance()->getMyInfo().getPlayerID();
+		std::string _str3 = Global::getInstance()->GetAccountInfo().playerid;
+		for (int j = 0; j<_rep.players_size(); j++)
+		{
+			if (_rep.players(j).playerid() == _str3)
+			{
+				_stBattleResault.stPlayerInfor.playerid = _rep.players(j).playerid();
+				_stBattleResault.stPlayerInfor.monthLevel = _rep.players(j).monthlevel();
+				_stBattleResault.stPlayerInfor.yearLevel = _rep.players(j).yeallevel();
+				for (int k = 0; k<_rep.players(j).items_size(); k++)
+				{
+					if (_rep.players(j).items(k).id() != 0)
+					{
+						_stBattleResault.stPlayerInfor.stGoodsInfor[k].nID = _rep.players(j).items(k).id();
+						_stBattleResault.stPlayerInfor.stGoodsInfor[k].nCount = _rep.players(j).items(k).num();
+						_stBattleResault.stPlayerInfor.stGoodsInfor[k].nType = _rep.players(j).items(k).type();
+					}
+				}
+
+				break;
+			}
+		}
+
+		if (getChildByTag(TAG_GAME_END) && (ZhanDouEnd*)getChildByTag(TAG_GAME_END))
+		{
+			//        ZhanDouEnd* end = dynamic_cast<ZhanDouEnd*>(getChildByTag(TAG_GAME_END));
+			//        end->setInfos(ranks, relations);
+			//        //        if (idList.size() > 0)
+			//        //            reqIcons(idList);
+			auto end = dynamic_cast<GameOverLayer*>(getChildByTag(TAG_GAME_END));
+			end->setOverData(_stBattleResault);
+		}
+		else
+		{
+			removeChildByTag(TAG_LAYER_SCENE, true);
+			auto gameEnd = GameOverLayer::createGameOver(_stBattleResault);
+			addChild(gameEnd, 2, TAG_GAME_END);
+			gameEnd->setOverData(_stBattleResault);
+
+			Global::getInstance()->clearMainNodes();
+			removeChildByTag(TAG_GAME_COLOR_BG, true);
+			removeChildByTag(TAG_LAYER_GRID, true);
+			//CloseWebNet();
+		}
+		/*int headSize = sizeof(uint8_t);
+
+		uint16_t count;
+		memcpy(&count, data.bytes + headSize, sizeof(uint16_t));
+		//log("over state count is:%d", count);
+		headSize += sizeof(uint16_t);
+		std::vector<EndGame1> ranks;
+		std::vector<Relation2Me1> relations;
+
+		std::vector<int> idList;
+
+		for (int i = 0; i < count; i++)
+		{
 		int rank, roleID, sex, province, city, mass, eat, copper, exp, icon;
 		uint8_t recommend, len, roleNameLen;
 		std::string name, roleName;
@@ -999,84 +1003,84 @@ void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
 
 		if (icon < 101)
 		{
-			idList.push_back(roleID);
+		idList.push_back(roleID);
 		}
 
 		if (len > 0)
 		{
-			char* temp = new char[len + 1];
-			//char temp[len + 1];
-			memcpy(temp, data.bytes + headSize, len);
-			temp[len] = '\0';
-			headSize += len;
-			name = temp;
-			delete[] temp;
+		char* temp = new char[len + 1];
+		//char temp[len + 1];
+		memcpy(temp, data.bytes + headSize, len);
+		temp[len] = '\0';
+		headSize += len;
+		name = temp;
+		delete[] temp;
 		}
 
 		memcpy(&roleNameLen, data.bytes + headSize, sizeof(uint8_t));
 		headSize += sizeof(uint8_t);
 		if (roleNameLen > 0)
 		{
-			char* temp = new char[roleNameLen + 1];
-			//char temp[roleNameLen + 1];
-			memcpy(temp, data.bytes + headSize, roleNameLen);
-			temp[roleNameLen] = '\0';
-			headSize += roleNameLen;
-			roleName = temp;
-			delete[] temp;
+		char* temp = new char[roleNameLen + 1];
+		//char temp[roleNameLen + 1];
+		memcpy(temp, data.bytes + headSize, roleNameLen);
+		temp[roleNameLen] = '\0';
+		headSize += roleNameLen;
+		roleName = temp;
+		delete[] temp;
 		}
 		else
-			roleName = "";
+		roleName = "";
 
 
 		if (rank > 0)
 		{
-			EndGame1 info;
-			info.rank = rank;
-			info.roleid = roleID;
-			info.sex = sex;
-			info.province = province;
-			info.city = city;
-			info.mass = mass;
-			info.eat = eat;
-			info.copper = copper;
-			info.exp = exp;
-			info.icon = icon;
-			info.name = name;
-			info.roleName = roleName;
+		EndGame1 info;
+		info.rank = rank;
+		info.roleid = roleID;
+		info.sex = sex;
+		info.province = province;
+		info.city = city;
+		info.mass = mass;
+		info.eat = eat;
+		info.copper = copper;
+		info.exp = exp;
+		info.icon = icon;
+		info.name = name;
+		info.roleName = roleName;
 
-			ranks.push_back(info);
+		ranks.push_back(info);
 		}
 
 		if (recommend > 0)
 		{
-			Relation2Me1 info;
-			info.roleid = roleID;
-			info.sex = sex;
-			info.province = province;
-			info.city = city;
-			info.mass = mass;
-			info.eat = eat;
-			info.copper = copper;
-			info.exp = exp;
-			info.icon = icon;
-			info.name = name;
-			info.roleName = roleName;
-			info.recommend = recommend;
+		Relation2Me1 info;
+		info.roleid = roleID;
+		info.sex = sex;
+		info.province = province;
+		info.city = city;
+		info.mass = mass;
+		info.eat = eat;
+		info.copper = copper;
+		info.exp = exp;
+		info.icon = icon;
+		info.name = name;
+		info.roleName = roleName;
+		info.recommend = recommend;
 
-			relations.push_back(info);
+		relations.push_back(info);
 		}
-	}
+		}
 
-	if (getChildByTag(TAG_GAME_END) && (ZhanDouEnd*)getChildByTag(TAG_GAME_END))
-	{
+		if (getChildByTag(TAG_GAME_END) && (ZhanDouEnd*)getChildByTag(TAG_GAME_END))
+		{
 		ZhanDouEnd* end = dynamic_cast<ZhanDouEnd*>(getChildByTag(TAG_GAME_END));
 		end->setInfos(ranks, relations);
 		if (idList.size() > 0)
-			reqIcons(idList);
-	}
-	else
-	{
+		reqIcons(idList);
+		}
+		else
+		{
 		removeChildByTag(TAG_LAYER_SCENE, true);
 		ZhanDouEnd* gameEnd = ZhanDouEnd::create();
 		addChild(gameEnd, 2, TAG_GAME_END);
@@ -1086,7 +1090,9 @@ void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
 		removeChildByTag(TAG_GAME_COLOR_BG, true);
 		removeChildByTag(TAG_LAYER_GRID, true);
 		//CloseWebNet();
-	}*/
+		}*/
+	}
+   
 }
 void MainScene::CloseFight()
 {
@@ -2720,6 +2726,251 @@ void MainScene::delteReadyFightDaoJiShi()
 	daojishiNode->removeFromParent();
 	daojishiNode = nullptr;
 }
+
+void MainScene::showFightOverPaiHangInfo()
+{
+	removeChildByTag(TAG_LAYER_SCENE, true);
+	auto FightPaiHangNode = CSLoader::createNode("FightPaiMing.csb");
+	addChild(FightPaiHangNode, 3000000000);
+	auto paihangScroll = (cocos2d::ui::ScrollView*)seekNodeByName(FightPaiHangNode, "paihangScroll");
+	auto list = (cocos2d::ui::Layout*)seekNodeByName(FightPaiHangNode, "List");
+	list->setVisible(false);
+	listX = list->getPositionX();
+	listY = list->getPositionY();
+	listHeight = list->getContentSize().height;
+
+	auto btnbackhome = (cocos2d::ui::Button*)seekNodeByName(FightPaiHangNode, "btnbackhome");
+	btnbackhome->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("back home click========================");
+		}
+	});
+
+
+
+	//UM_BattleResult _rep = Global::getInstance()->GetGameOverServerData();
+	BattleResault _stBattleResault;
+	_stBattleResault.aid = _rep.aid();
+	_stBattleResault.mode = _rep.mode();
+	_stBattleResault.rank = _rep.rank();
+	_stBattleResault.round = _rep.round();
+	_stBattleResault.iswinner = _rep.iswinner();
+
+	paihangInfos.clear();
+
+	//std::string _str = _rep.players(0).playerid();
+	std::string _str2 = Global::getInstance()->getMyInfo().getPlayerID();
+	std::string _str3 = Global::getInstance()->GetAccountInfo().playerid;
+	for (int j = 0; j < _rep.players_size(); j++)
+	{
+		//if (_rep.players(j).playerid() == _str3)
+		
+			auto listClone = list->clone();
+			auto ListBg = (cocos2d::ui::ImageView*)listClone->getChildByName("ListBg");
+			auto btn_paihang = (cocos2d::ui::Button*)listClone->getChildByName("btn_paihang");
+			if (j % 2 == 0)
+			{
+				ListBg->loadTexture("FightPaiMing\\shen.png");
+			}
+			else
+			{
+				ListBg->loadTexture("FightPaiMing\\qian.png");
+			}
+			btn_paihang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+			{
+				if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+				{
+					for (int q = 0; q < _rep.players_size();q++)
+					{
+						auto btn_paihang = (cocos2d::ui::Button*)listClone->getChildByName("btn_paihang");
+						if (q % 2 == 0)
+						{
+							ListBg->loadTexture("FightPaiMing\\shen.png");
+						}
+						else
+						{
+							ListBg->loadTexture("FightPaiMing\\qian.png");
+						}
+					}
+
+
+					ListBg->loadTexture("FightPaiMing\\select.png");
+				}
+			});
+			auto name = (cocos2d::ui::Text*)listClone->getChildByName("name");
+			auto tizhong = (cocos2d::ui::Text*)listClone->getChildByName("tizhong");
+			auto sexImg = (cocos2d::ui::ImageView*)listClone->getChildByName("sexImg");
+			auto paimingTxt = (cocos2d::ui::Text*)listClone->getChildByName("paimingTxt");
+			auto paimingImg = (cocos2d::ui::ImageView*)paimingTxt->getChildByName("paimingImg");
+			auto jiang = (cocos2d::ui::ImageView*)listClone->getChildByName("jiang");
+			auto biankuangAll = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangAll");
+			auto biankuangAllnian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "nian");
+			auto biankuangAllyue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "yue");
+			auto biankuangNian = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangNian");
+			auto biankuangNianNian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangNian, "nian");
+			auto biankuangYue = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangYue");
+			auto biankuangYueYue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangYue, "yue");
+
+			jiangX = jiang->getPositionX();
+			jiangY = jiang->getPositionY();
+			jiangWidth = jiang->getBoundingBox().size.width;
+
+			listClone->setVisible(true);
+			listClone->setPosition(ccp(listX,listY - listHeight*j ));
+			paihangScroll->addChild(listClone);
+			paihangplayerInfo paiHangInfo;
+			paiHangInfo.playerid = _rep.players(j).playerid();
+			paiHangInfo.account = _rep.players(j).account();
+			paiHangInfo.sex = _rep.players(j).sex();
+			paiHangInfo.rank = _rep.players(j).rank();
+			paiHangInfo.name = _rep.players(j).name();
+
+			UserDefault::getInstance()->setStringForKey("paihangname", _rep.players(j).name().c_str());
+			paiHangInfo.grade = _rep.players(j).grade();
+			paiHangInfo.icon = _rep.players(j).icon();
+			paiHangInfo.weight = _rep.players(j).weight();
+			paiHangInfo.yealLevel = _rep.players(j).yeallevel();
+			paiHangInfo.change = _rep.players(j).change();
+			paiHangInfo.monthLevel = _rep.players(j).monthlevel();
+
+
+			if (paiHangInfo.monthLevel == 0 && paiHangInfo.yealLevel == 0)
+			{
+				biankuangAll->setVisible(false);
+				biankuangNian->setVisible(false);
+				biankuangYue->setVisible(false);
+			}
+			else if (paiHangInfo.monthLevel > 0 && paiHangInfo.yealLevel > 0)
+			{
+				biankuangAll->setVisible(true);
+				biankuangNian->setVisible(false);
+				biankuangYue->setVisible(false);
+				std::ostringstream nianFlag;
+				nianFlag.clear();
+				nianFlag << "DaTingLayer\\touxiang\\nian" << paiHangInfo.yealLevel << ".png";
+				biankuangAllnian->loadTexture(nianFlag.str());
+				std::ostringstream yueFlag;
+				yueFlag.clear();
+				yueFlag << "DaTingLayer\\touxiang\\yue" << paiHangInfo.monthLevel << ".png";
+				biankuangAllyue->loadTexture(yueFlag.str());
+			}
+			else if (paiHangInfo.monthLevel > 0)
+			{
+				biankuangAll->setVisible(false);
+				biankuangNian->setVisible(false);
+				biankuangYue->setVisible(true);
+				std::ostringstream yueFlag;
+				yueFlag.clear();
+				yueFlag << "DaTingLayer\\touxiang\\yue" << paiHangInfo.monthLevel << ".png";
+				biankuangYueYue->loadTexture(yueFlag.str());
+			}
+			else if (paiHangInfo.yealLevel > 0)
+			{
+				biankuangAll->setVisible(false);
+				biankuangNian->setVisible(true);
+				biankuangYue->setVisible(false);
+				std::ostringstream nianFlag;
+				nianFlag.clear();
+				nianFlag << "DaTingLayer\\touxiang\\nian" << paiHangInfo.yealLevel << ".png";
+				biankuangNianNian->loadTexture(nianFlag.str());
+			}
+
+
+			name->setText(paiHangInfo.name.c_str());
+			std::ostringstream tizhongStr;
+			tizhongStr.clear();
+			tizhongStr << paiHangInfo.weight;
+			tizhong->setText(tizhongStr.str());
+			if (paiHangInfo.sex == 0)
+			{
+				sexImg->loadTexture("FightPaiMing\\nv.png");
+			}
+			else
+			{
+				sexImg->loadTexture("FightPaiMing\\nan.png");
+			}
+			std::ostringstream rankStr;
+			rankStr.clear();
+			rankStr << paiHangInfo.rank;
+			paimingTxt->setText(rankStr.str());
+			if (paiHangInfo.rank == 1)
+			{
+				paimingImg->loadTexture("FightPaiMing\\one.png");
+			}
+			else if (paiHangInfo.rank == 2)
+			{
+				paimingImg->loadTexture("FightPaiMing\\two.png");
+			}
+			else if (paiHangInfo.rank == 3)
+			{
+				paimingImg->loadTexture("FightPaiMing\\three.png");
+			}
+			else
+			{
+				paimingImg->setVisible(false);
+			}
+
+
+			//_stBattleResault.stPlayerInfor.playerid = _rep.players(j).playerid();
+			//_stBattleResault.stPlayerInfor.monthLevel = _rep.players(j).monthlevel();
+			//_stBattleResault.stPlayerInfor.yearLevel = _rep.players(j).yeallevel();
+			if (_rep.players(j).items_size() == 0)
+			{
+				jiang->setVisible(false);
+			}
+			else
+			{
+				for (int k = 0; k < _rep.players(j).items_size(); k++)
+				{
+					if (_rep.players(j).items(k).id() != 0)
+					{
+						auto cloneAward = (cocos2d::ui::ImageView*)jiang->clone();
+						cloneAward->setVisible(true);
+						cloneAward->setPosition(ccp(jiangX - jiangWidth * k, jiangY));
+						listClone->addChild(cloneAward);
+						auto daojuNum = (cocos2d::ui::Text*)cloneAward->getChildByName("daojuNum");
+						paihangAward award = getPaiHangAwardById(_rep.players(j).items(k).id());
+						cloneAward->loadTexture(award.image.c_str());
+						std::ostringstream daojuNumStr;
+						daojuNumStr.clear();
+						daojuNumStr << award.count;
+						daojuNum->setText(daojuNumStr.str());
+					}
+				}
+			}
+		
+
+			//break;
+		
+	}
+
+	Global::getInstance()->clearMainNodes();
+	removeChildByTag(TAG_GAME_COLOR_BG, true);
+	removeChildByTag(TAG_LAYER_GRID, true);
+}
+
+paihangAward MainScene::getPaiHangAwardById(int id)
+{
+	Json* root = ReadJson("FightPaiHangAwards.json");
+	std::ostringstream ss;
+	ss.clear();
+	ss << id;
+	//std::string aidStr = "" + aid;
+	Json* awardList = Json_getItem(root, ss.str().c_str());//每个奖励
+
+	Json* name = Json_getItem(awardList,"name");
+	Json* count = Json_getItem(awardList, "count");
+	Json* Image = Json_getItem(awardList, "Image");
+	paihangAward info;
+	info.name = name->valueString;
+	info.count = count->valueInt;
+	info.image = Image->valueString;
+
+	return info;
+}
+
 //合并代码用--0924--注册与组队 end======================================================================
 
 

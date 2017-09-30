@@ -182,6 +182,13 @@ public:
 	//张锋露
 	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
 	account_info GetAccountInfo(){ return m_AccountInfo; }
+
+	//void SetGameOverServerData(UM_BattleResult info){ m_gameOverServerData = info; }
+	//UM_BattleResult GetGameOverServerData(){ return m_gameOverServerData; }
+
+	//战斗结束排行榜
+	void SetPaiHangBangInfo(paihangplayerInfo info){ m_paihangbangInfo = info; }
+	paihangplayerInfo GetPaiHangBangInfo(){ return m_paihangbangInfo; }
 	
 	
 	//合并代码用--0924--注册与组队 start======================================================================
@@ -292,7 +299,8 @@ private:
 	bool m_IsZuDui = false;
 	std::string m_Title;
 	//合并代码用--0924--注册与组队 end======================================================================
-	
+	//UM_BattleResult m_gameOverServerData;
+	paihangplayerInfo m_paihangbangInfo;
 	
 	account_info m_AccountInfo;
     std::vector<nameMap> mComName;

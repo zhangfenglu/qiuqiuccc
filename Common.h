@@ -114,6 +114,39 @@ struct AwardInfo
 };
 //合并代码用--0924--注册与组队 end=======================
 
+struct paihangplayerInfo
+{
+	paihangplayerInfo()
+	{
+		playerid = "";
+		icon = "";
+		name = "";
+		account = "";
+		awardsPath = "";
+		rank = 0;
+		monthLevel = 0;
+		yealLevel = 0;
+		weight = 0;
+		change = 0;
+		grade = 0;
+		sex = 0;
+	}
+	std::string playerid;
+	std::string icon;
+	std::string name;
+	std::string account;
+	std::string awardsPath;
+	uint32_t rank;
+	uint32_t monthLevel;
+	uint32_t yealLevel;
+	uint32_t weight;
+	uint32_t change;
+	uint32_t grade;
+	uint32_t sex;
+
+};
+
+
 struct nodeInfo
 {
 	std::string name;
@@ -297,6 +330,21 @@ struct yuanzhengBaoMing_Info
 
 };
 //合并代码用--0924--注册与组队 end=======================
+
+struct paihangAward
+{
+	paihangAward()
+	{
+		id = 0;
+		count = 0;
+		name = "";
+		image = "";
+	}
+	uint32_t id;
+	std::string name;
+	std::string image;
+	uint32_t count;
+};
 
 struct user_info {
     user_info()

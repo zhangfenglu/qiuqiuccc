@@ -138,6 +138,11 @@ public:
 	void reqSign();
 	void reqAward();
 
+	//显示战斗结束 排行界面信息
+	void showFightOverPaiHangInfo();
+	//static  UM_BattleResult _rep;
+	std::vector<paihangplayerInfo> paihangInfos;
+
 	// common
 	void reqSendUIMsg(uint16_t type, std::string str);
 
@@ -197,6 +202,11 @@ public:
 	void reRebirth();
 	cocos2d::Point getMoveDiff(){ return m_diff; }
 
+
+	//通过id 战斗结束 排行榜 根据id得到奖励
+	paihangAward getPaiHangAwardById(int id);
+	std::vector<paihangAward> paihangAwards;
+
 #ifdef EditEXE
 	void UpdataWeight(int weight);
 #endif
@@ -218,6 +228,14 @@ private:
 
 	float  m_tempScale;
 	float  m_minScale;          // json最小缩放比
+
+	float listX;
+	float listY;
+	float listHeight;
+
+	float jiangX;
+	float jiangY;
+	float jiangWidth;
 
 	cocos2d::Point  m_grid_off_pos;
 

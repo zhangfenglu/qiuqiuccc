@@ -91,7 +91,7 @@
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <PrePosition X="0.0123" Y="0.9312" />
-                        <PreSize X="0.9568" Y="0.1180" />
+                        <PreSize X="0.9568" Y="0.0656" />
                         <FileData Type="Normal" Path="BaoMingShowLayer/biaoTiBg.png" Plist="" />
                         <SingleColor A="255" R="150" G="200" B="255" />
                         <FirstColor A="255" R="150" G="200" B="255" />

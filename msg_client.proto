@@ -1,0 +1,490 @@
+package com.suyin.proto;
+
+import "enum.proto";
+import "struct.proto";
+
+// message id
+enum IDUM_CLI {
+//option allow_alias = true;
+//-----------------------------------------
+//c->s
+//-----------------------------------------
+
+IDUM_GATEB = 0; // client request begin
+
+IDUM_Gm = 1; // gm for test
+IDUM_Login = 10; // login
+IDUM_BuyItem = 20;
+IDUM_UseItem = 21;
+IDUM_ReqShop = 22; // 请求商城列表
+
+IDUM_UnequipItem = 23;//卸下装备
+//IDUM_OpenBox = 24; // 开宝箱(feiqi)
+
+IDUM_HeroLevelup = 30; // 神兽升级
+
+IDUM_ReqServerList = 50;// 请求战斗服务器列表
+IDUM_ReqLoginFight = 51; // 请求登录战斗服
+IDUM_ExitFight = 52; // 退出战斗
+
+IDUM_SetFocus = 60; 
+IDUM_ReqRole = 62; // 请求他人数据
+IDUM_ReqFans = 63; // 请求喜欢列表
+
+IDUM_ReqRanks = 70; // 排名列表
+IDUM_GetTopMsg = 80; //请求热门留言
+IDUM_GetMsg = 81;//请求留言
+IDUM_SendMsg =82;//发送留言
+IDUM_LikeMsg =83;//喜欢留言
+IDUM_GetFriend = 90; //请求好友列表
+IDUM_InviteFriend =91; //邀请好友
+IDUM_ResponseInvite =92; //应答好友邀请
+IDUM_ToBlack =95; // 请求拉入黑名单
+
+IDUM_ReqSeasonRank=100; //赛季排名
+IDUM_ReqGameRecord=101; //比赛记录
+IDUM_SetPhoto=102; //设置照片
+IDUM_ReqPhotos=103; //req照片
+
+IDUM_SetName=110; // 设置姓名(现在是注册)
+IDUM_SetSex=111; // 设置性别
+IDUM_SetDesc=112; // 设置个人说明
+IDUM_SetGeo=113; // 设置地理位置
+IDUM_SetIcon=114; // 设置地理位置
+IDUM_GetTicket=115; // 免费领票
+IDUM_Sign=116; //签到
+IDUM_Award=117; //领奖
+
+IDUM_ReqIcons=120; //批量请求照片icon数据
+
+IDUM_BindAccout = 121;//绑定账号
+IDUM_ReqVersion = 122;//请求版本
+IDUM_ReqShowMsg = 123;//请求显示信息
+IDUM_ReqActivity = 124;//请求活动  
+
+IDUM_ReqReconnect = 130;//请求重连
+IDUM_ReqTeamFight = 131;
+IDUM_ReqCancelFight = 132;
+IDUM_ReqBattleResult = 136;
+
+IDUM_GATEE = 999; // client request end
+
+//----------------------------------------
+//s->c
+//----------------------------------------
+
+IDUM_CLIB =1000; // to client begin 
+
+IDUM_Response = 1001; // 如果没有具体的反馈，用这条回复client（如错误提示，ok提示)
+
+IDUM_Logout = 1010;
+IDUM_EnterGame = 1011; // 进入游戏
+IDUM_SyncRole = 1012; // 同步角色属性
+
+IDUM_ItemUpdate = 1020; // 物品更新
+IDUM_Shop = 1022; // 反馈商城列表 
+IDUM_EquipUpdate = 1023; //装备更新
+
+IDUM_Hero = 1030; // 神兽升级反馈
+
+IDUM_ServerList = 1050; // 战斗服列表
+IDUM_LoginFightKey = 1051; // 战斗服钥匙
+
+IDUM_RoleInfo = 1062; // 他人数据
+IDUM_Fans = 1063; // 粉丝列表
+IDUM_Ranks = 1070; // 排名列表
+IDUM_FightLikes = 1071; // 战斗结束是否喜欢列表
+IDUM_TopMsg =1080; //热门留言
+IDUM_MsgList =1081;// 留言列表
+IDUM_Friends =1090; //好友列表
+IDUM_AddFriend=1091; //添加好友
+IDUM_AddInvite=1092; //添加邀请
+IDUM_DelInvite=1093; //删除邀请
+IDUM_AddBlack=1095; //添加黑名单
+
+IDUM_SeasonRank=1100; //赛季排名
+IDUM_GameRecord=1101; //比赛记录
+IDUM_Photos=1103;//照片列表
+
+IDUM_AwardList=1117; //当月奖励列表
+IDUM_Icons=1120; //照片icon数据列表
+
+IDUM_Version = 1122;//版本号
+IDUM_ShowMsg = 1123;//显示信息
+IDUM_Activity = 1124;//活动信息
+
+IDUM_Reconnect = 1130;//重连
+IDUM_TeamFight = 1131;//组队战斗
+IDUM_CancelFight = 1132;//取消组队战斗
+IDUM_ReadyFight = 1135;//战斗准备
+IDUM_BattleResult = 1136;//战斗结果
+
+IDUM_CLIE =1999; // to client end
+}
+
+// login
+message UM_Login {
+    optional string acc=1;
+    optional string passwd=2;
+}
+
+message UM_BindAccout {
+    required string acc =1;
+    required string passwd=2;
+    required string mail=3;
+}
+
+message UM_ReqVersion{
+    required string type=1;
+}
+
+message UM_Version{
+    required string version=1;
+    required string url=2;
+}
+
+message UM_ReqShowMsg{
+    required string version=1;
+}
+
+message UM_ShoMsg{
+    optional bool activity =1;
+    optional bool chat=2;
+    optional bool pvp=3;
+    optional bool sybtn=4;
+}
+
+message UM_ReqActivity{
+    
+}
+
+message UM_Activity{
+    required int32 id =1;
+    required string url=2;
+}
+
+message UM_Activities{
+    repeated UM_Activity activites=1;
+}
+
+message UM_ReqReconncet{
+    required string playerid=1;
+}
+
+message UM_Reconnect{
+    required bool connect=1;
+}
+
+message UM_ReqTeamFight{
+    required string playerid = 1;//角色ID
+    optional uint32 serverid=2; //服务器id
+    optional int32 mode=3; // 0: 自由模式; 1: 生存模式
+    optional uint32 ticket_count=4;//入场劵 
+    optional uint32 aid=5;//竞技场id
+}
+
+message UM_ReadyFight{
+    optional uint32 time=1;//等待时间
+    optional uint32 mode=2;//战斗模式
+    optional uint32 round=3;//大乱斗轮数
+}
+
+message UM_TeamFight{
+    
+}
+
+message UM_ReqCancelFight{
+    required string playerid = 1;
+}
+
+message UM_CancelFight{
+    
+}
+
+message UM_Item{
+    required uint32 id=1;
+    required uint32 num=2;
+    optional uint32 type=3;
+}
+
+message UM_PlayerInfo{
+    required string playerid=1;//玩家id
+    required uint32 rank=2;//排名
+    optional string icon=3;//头像id
+    optional uint32 monthLevel=4;//月卡等级
+    optional uint32 yealLevel=5;//年卡等级
+    optional string name=6;//昵称
+    optional string account=7;//玩家用户名
+    optional uint32 weight=8;//体重
+    repeated UM_Item items=9;//奖励物品
+    optional int32 grade=10;//段位
+    optional int32 change=11;//段位变化值
+    optional int32 sex=12;
+
+}
+
+message UM_BattleResult{
+    required uint32 aid=1;//战场id
+    required uint32 mode=2;//战场类型
+    required uint32 rank=3;//排名
+    optional uint32 round=4;//轮数
+    optional bool isWinner=5;//大乱斗胜利
+    repeated UM_PlayerInfo players=6;//玩家数据
+}
+
+message UM_ReqBattleResult{
+    
+}
+
+message UM_Logout {
+    optional int32 err=1; // see SERR for logout reason
+}
+message UM_EnterGame {
+    optional role_info info=1;
+    optional uint32 servertime=2; //服务器当前时间
+    optional bool fighting=3; //是否处于战斗中
+}
+
+message UM_SyncRole {
+    optional role_info info=1;
+}
+
+// item
+message UM_BuyItem {
+    optional uint32 id=1; // 物品的模版id
+}
+message UM_UseItem {
+    optional uint32 id=1; // 物品的模版id
+}
+message UM_ItemUpdate {
+    repeated item_info list=1; // item_info::stack == 0表示此物品删除，否则更新stack值
+    optional int32 type=2;
+    //1.开宝箱 2.gm获得 3.战斗奖励 4.进战斗花费 5. 购买 6. 使用物品 7.卸装备 8.英雄升级 9领取票 10花环 11领取宝箱
+
+}
+message UM_UnequipItem {
+  optional int32 itemtype=1;//物品类型(itemtype对应role_info中item字段)
+}
+message UM_EquipUpdate {
+  optional int32 itemtype=1;//物品类型(itemtype对应role_info中item字段)
+  optional uint32 id=2;//物品id, 0表示卸下了，其他为装备上的物品id
+}
+//message UM_OpenBox {
+//  optional int32 type=1;//1: 木宝箱 2:豪华宝箱
+//}
+
+// shop
+message UM_ReqShop {
+}
+message UM_Shop {
+    repeated shop_item list=1; // 商品列表
+}
+
+// hero
+message UM_HeroLevelup {
+}
+message UM_Hero {
+    optional uint32 heroid=1; // see role_info
+    optional uint32 herolevel=2;
+}
+
+// fight
+message UM_ReqServerList {
+}
+message UM_ServerList {
+    repeated server_info list=1; //战斗服务器列表
+}
+
+message UM_ReqLoginFight {
+    required string playerid = 1;//角色ID
+    optional uint32 serverid=2; //服务器id
+    optional int32 mode=3; // 0: 自由模式; 1: 生存模式
+    optional uint32 ticket_count=4;//入场劵 
+}
+message UM_LoginFightKey {
+    optional uint32 serverid=1; // 服务器id
+    optional uint32 key=2; //战斗服登录钥匙
+    optional uint32 roomid=3;
+}
+message UM_ExitFight {
+}
+
+
+// common
+message UM_Gm {
+    optional string command=1;
+}
+message UM_Response {
+    optional uint32 msgid=1;
+    optional int32 err=2; // see SERR for error id (in msg_error.proto)
+}
+
+// relation
+message UM_SetFocus { 
+    optional uint32 type=1; // 1:关注，2:喜欢
+    optional uint32 set=2; // 1: 是，0否
+    optional uint32 roleid=3; // focus的角色
+}
+
+message UM_ReqRole {
+    optional uint32 roleid=1;
+}
+message UM_RoleInfo {
+    optional role_info info=1;
+}
+
+message UM_ReqFans {
+    optional int32 type=1; // 1: 粉丝列表 2:喜欢我列表
+    optional uint32 range1=2; // 从第几个到第几个, 从0开始
+    optional uint32 range2=3;
+    optional uint32 roleid=4;
+}
+message UM_Fans {
+    repeated fans_info list=1; //列表
+    optional uint32 range1=2; // 从第几个到第几个, 从0开始
+    optional uint32 range2=3;
+    optional uint32 roleid=4;
+}
+
+// rank
+message UM_ReqRanks {
+    optional int32 type=1; // 1.地位 2.粉丝 3.喜欢 4.鲜花 5.吞噬
+    optional int32 subtype=2; // 1day 2week 3month 4total 5history
+}
+message UM_Ranks {
+    repeated rank_info list=1;
+}
+
+message UM_FightLikes {
+    repeated bool attentions=1; //是否关注列表(索引对应排名)
+    repeated bool likes=2;// 是否喜欢列表
+    repeated uint32 roles=3;// 角色列表
+}
+
+// msg
+message UM_GetTopMsg { 
+    optional uint32 roleid=1;
+}
+message UM_GetMsg {
+    optional uint32 roleid=1;
+    optional uint32 range1=2; //从第几到第几，从0开始
+    optional uint32 range2=3;
+}
+message UM_SendMsg {
+    optional uint32 roleid=1; // 谁的留言版
+    optional string content=2; // 38个字
+}
+message UM_LikeMsg {
+    optional uint32 roleid=1; // 谁的留言版
+    optional uint32 msgid=2; // 哪个留言
+    optional int32 set=3; //1是like, 0是取消like
+}
+message UM_TopMsg {
+    optional uint32 roleid=1;
+    repeated msg_info list=2;
+}
+message UM_MsgList {
+    optional uint32 roleid=1;
+    optional uint32 range1=2;//从第几到第几，从0开始
+    optional uint32 range2=3;
+    repeated msg_info list=4;
+}
+
+// friend
+message UM_GetFriend {
+    optional int32 type=1;//1:好友列表；2:好友邀请列表；3:黑名单；4对手
+}
+
+message UM_Friends {
+    repeated friend_info list=1; // 列表
+    optional int32 type=3;//see UM_GetFriend type字段
+}
+message UM_ResponseInvite {
+    optional int32 ok=1;// 1:答应 0:拒绝
+    optional uint32 roleid=2; // 对象
+}
+message UM_AddFriend {
+    optional int32 type=1; // 1:你同意添加info 2:info同意添加你
+    optional friend_info info=2; 
+}
+
+// 优先使用roleid，通过输入框的画使用name（可以是roleid）
+message UM_InviteFriend {
+    optional uint32 roleid=1; // 邀请谁
+    optional string name=2; // 邀请谁(roleid也可以作为输入名字使用)
+}
+message UM_AddInvite {
+    optional int32 type=1; // 1:邀请发出  2:收到邀请
+    optional friend_info info=2;
+}
+message UM_DelInvite {
+    optional int32 type=1; // 1:拒绝info的邀请  2:info拒绝你邀请
+    optional friend_info info=2;
+}
+message UM_ToBlack {
+    optional uint32 roleid=1; //
+}
+message UM_AddBlack {
+    optional friend_info info=1;
+}
+//
+message UM_ReqSeasonRank {
+    optional uint32 roleid=1; // 
+}
+message UM_SeasonRank {
+    repeated season_rank list=1; //之前所有赛季
+}
+
+message UM_ReqGameRecord {
+    optional uint32 roleid=1; // 
+}
+message UM_GameRecord {
+    repeated game_record list=1; // 记录list
+}
+
+message UM_SetPhoto {
+    optional photo_data data=1;
+}
+message UM_ReqPhotos {
+    optional uint32 roleid=1;
+}
+message UM_Photos {
+    repeated photo_data list=1;
+    optional uint32 roleid=2;
+}
+
+// 个人中心
+message UM_SetName {
+    optional string name=1; 
+    optional string passwd=2;
+    optional uint32 sex=3;
+}
+message UM_SetSex {
+    optional uint32 sex=1; // see SEX_T
+}
+message UM_SetDesc {
+    optional string desc=1;
+}
+message UM_SetGeo {
+    optional uint32 province=1;
+    optional uint32 city=2;
+}
+message UM_SetIcon {
+    optional uint32 icon=1;
+    optional string data=2; //照片icon数据
+}
+message UM_GetTicket {
+}
+message UM_ReqIcons {
+    repeated uint32 list = 1; //roleid list
+}
+message UM_Icons {
+    repeated icon_data list= 1;
+}
+message UM_Sign {
+}
+message UM_Award {
+}
+message UM_AwardList {
+    repeated award_info list=1;
+}

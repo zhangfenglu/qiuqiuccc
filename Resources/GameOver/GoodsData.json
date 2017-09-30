@@ -10,8 +10,21 @@
         {"id":14,"name":"4星卷","count":10,"Image":"GameOver/tubiao_4xingjuan.png"},
         {"id":15,"name":"5星卷","count":10,"Image":"GameOver/tubiao_5xingjuan.png"},
         {"id":16,"name":"6星卷","count":10,"Image":"GameOver/tubiao_6xingjuan.png"},
-        {"id":17,"name":"7星卷","count":10,"Image":"GameOver/tubiao_7xingjuan.png"},
-		{"id":101,"name":"黄金圣杯","count":10,"Image":"GameOver/tubiao_shengbei.png"},
+        {"id":17,"name":"7星卷","count":10,"Image":"GameOver/tubiao_7xingjuan.png"},		
+		{"id":18,"name":"8星卷","count":10,"Image":"GameOver/tubiao_8xingjuan.png"},
+        {"id":19,"name":"9星卷","count":10,"Image":"GameOver/tubiao_9xingjuan.png"},
+        {"id":20,"name":"10星卷","count":10,"Image":"GameOver/tubiao_10xingjuan.png"},
+        {"id":21,"name":"11星卷","count":10,"Image":"GameOver/tubiao_11xingjuan.png"},
+        {"id":22,"name":"12星卷","count":10,"Image":"GameOver/tubiao_12xingjuan.png"},
+        {"id":23,"name":"13星卷","count":10,"Image":"GameOver/tubiao_13xingjuan.png"},
+        {"id":24,"name":"14星卷","count":10,"Image":"GameOver/tubiao_14xingjuan.png"},		
+		{"id":25,"name":"15星卷","count":10,"Image":"GameOver/tubiao_15xingjuan.png"},
+        {"id":26,"name":"16星卷","count":10,"Image":"GameOver/tubiao_16xingjuan.png"},
+        {"id":27,"name":"17星卷","count":10,"Image":"GameOver/tubiao_17xingjuan.png"},
+        {"id":28,"name":"18星卷","count":10,"Image":"GameOver/tubiao_18xingjuan.png"},
+        {"id":29,"name":"19星卷","count":10,"Image":"GameOver/tubiao_19xingjuan.png"},
+        {"id":30,"name":"20星卷","count":10,"Image":"GameOver/tubiao_20xingjuan.png"},		
+		{"id":101,"name":"黄金圣杯","count":10,"Image":"GameOver/tubiao_shengbei.png"},		
 		{"id":102,"name":"黄金金球","count":10,"Image":"GameOver/tubiao_jinqiu.png"}
     ]
 }
