@@ -183,6 +183,12 @@ public:
 	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
 	account_info GetAccountInfo(){ return m_AccountInfo; }
 
+	duanweipaihang_info GetDuanWeiPaiHangInfo(){ return m_duanweipaihang; }
+	void SetDuanWeiPaiHangInfo(duanweipaihang_info info){ m_duanweipaihang = info; }
+
+	uint32_t GetDuanWeiChange(){ return m_duanweichange; }
+	void SetDuanWeiChange(uint32_t change){ m_duanweichange = change; }
+
 	//void SetGameOverServerData(UM_BattleResult info){ m_gameOverServerData = info; }
 	//UM_BattleResult GetGameOverServerData(){ return m_gameOverServerData; }
 
@@ -301,6 +307,9 @@ private:
 	//�ϲ�������--0924--ע������� end======================================================================
 	//UM_BattleResult m_gameOverServerData;
 	paihangplayerInfo m_paihangbangInfo;
+
+	duanweipaihang_info m_duanweipaihang;
+	uint32_t m_duanweichange;
 	
 	account_info m_AccountInfo;
     std::vector<nameMap> mComName;

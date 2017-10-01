@@ -140,6 +140,9 @@ public:
 
 	//显示战斗结束 排行界面信息
 	void showFightOverPaiHangInfo();
+	//显示战斗结束 段位排行界面信息
+	void showFightOverDuanWeiInfo();
+
 	//static  UM_BattleResult _rep;
 	std::vector<paihangplayerInfo> paihangInfos;
 
@@ -198,6 +201,14 @@ public:
 	void readyFightDaoJiShi();
 	//隐藏战斗准备倒计时
 	void delteReadyFightDaoJiShi();
+	//隐藏 星星
+	void hideXingXing1();
+	void hideXingXing2();
+	void hideXingXing3();
+	void hideXingXing4();
+	void hideXingXing5();
+	void hideXingXing6();
+	void hideXingXing7();
 	//合并代码用--0924--注册与组队 end======================================================================
 	
 	void reOpenSocket();
@@ -215,8 +226,52 @@ public:
 	paihangAward getPaiHangAwardById(int id);
 	std::vector<paihangAward> paihangAwards;
 
+	//通过段位 grade 获取 排行榜段位信息
+	duanweipaihang_info getPaiHangDuanWeiByGrade(int grade);
+
 	bool nodeComparisonLess(Node* n1,Node*n2);
 	//std::vector<UM_PlayerInfo> pInfos;
+
+	void MutUpdate(float dt);
+
+	Node* paiHangNode;
+
+
+	(cocos2d::ui::ImageView*) liangxing1  ;
+	(cocos2d::ui::ImageView*) liangxing2 ;
+	(cocos2d::ui::ImageView*) liangxing3;
+	(cocos2d::ui::ImageView*) liangxing4;
+	(cocos2d::ui::ImageView*) liangxing5;
+	(cocos2d::ui::ImageView*) liangxing6;
+	(cocos2d::ui::ImageView*) liangxing7;
+	(cocos2d::ui::ImageView*) anxing1;
+	(cocos2d::ui::ImageView*)anxing2;
+	(cocos2d::ui::ImageView*) anxing3;
+	(cocos2d::ui::ImageView*)anxing4;
+	(cocos2d::ui::ImageView*)anxing5 ;
+	(cocos2d::ui::ImageView*)anxing6 ;
+	(cocos2d::ui::ImageView*) anxing7;
+	(cocos2d::ui::ImageView*) xing8bg ;
+	(cocos2d::ui::Text*) xingNum;
+	(cocos2d::ui::ImageView*) anxing1action;
+	(cocos2d::ui::ImageView*) anxing2action ;
+	(cocos2d::ui::ImageView*) anxing3action;
+	(cocos2d::ui::ImageView*)anxing4action;
+	(cocos2d::ui::ImageView*) anxing5action ;
+	(cocos2d::ui::ImageView*)anxing6action ;
+	(cocos2d::ui::ImageView*) anxing7action ;
+	(cocos2d::ui::ImageView*) liangxing1action;
+	(cocos2d::ui::ImageView*) liangxing2action;
+	(cocos2d::ui::ImageView*) liangxing3action ;
+	(cocos2d::ui::ImageView*) liangxing4action;
+	(cocos2d::ui::ImageView*)liangxing5action ;
+	(cocos2d::ui::ImageView*) liangxing6action;
+	(cocos2d::ui::ImageView*) liangxing7action;
+
+
+
+
+
 
 #ifdef EditEXE
 	void UpdataWeight(int weight);

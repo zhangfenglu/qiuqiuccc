@@ -214,7 +214,8 @@ void MainScene::BackToLoginLayer(MainScene::tagDif tag)
 		getChildByTag(m_CurrTag)->setScale(1.0f);
 	}
 	else{
-		showFightOverPaiHangInfo();
+		showFightOverDuanWeiInfo();
+		return;
 		/*LoginLayer* login = LoginLayer::create();
 		addChild(login, 2, TAG_LAYER_LOGIN);
 		m_CurrTag = TAG_LAYER_LOGIN;*/
@@ -915,6 +916,8 @@ void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
 		_stBattleResault.round = _rep.round();
 		_stBattleResault.iswinner = _rep.iswinner();
 
+		duanweipaihang_info duanweiInfo;
+
 		std::string _str = _rep.players(0).playerid();
 		std::string _str2 = Global::getInstance()->getMyInfo().getPlayerID();
 		std::string _str3 = Global::getInstance()->GetAccountInfo().playerid;
@@ -922,6 +925,10 @@ void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
 		{
 			if (_rep.players(j).playerid() == _str3)
 			{
+				duanweiInfo = getPaiHangDuanWeiByGrade(_rep.players(j).grade() + _rep.players(j).change());
+				log("server grade:%d change:%d", _rep.players(j).grade(), _rep.players(j).change());
+				Global::getInstance()->SetDuanWeiPaiHangInfo(duanweiInfo);
+				Global::getInstance()->SetDuanWeiChange(_rep.players(j).change());
 				_stBattleResault.stPlayerInfor.playerid = _rep.players(j).playerid();
 				_stBattleResault.stPlayerInfor.monthLevel = _rep.players(j).monthlevel();
 				_stBattleResault.stPlayerInfor.yearLevel = _rep.players(j).yeallevel();
@@ -2730,11 +2737,6 @@ void MainScene::delteReadyFightDaoJiShi()
 
 void MainScene::showFightOverPaiHangInfo()
 {
-	removeChildByTag(TAG_LAYER_SCENE, true);
-
-
-
-
 	auto FightPaiHangNode = CSLoader::createNode("FightPaiMing.csb");
 	addChild(FightPaiHangNode, 3000000000);
 	auto paihangScroll = (cocos2d::ui::ScrollView*)seekNodeByName(FightPaiHangNode, "paihangScroll");
@@ -3511,6 +3513,1443 @@ paihangAward MainScene::getPaiHangAwardById(int id)
 bool MainScene::nodeComparisonLess(Node* n1, Node* n2)
 {
 	return n1->getTag() < n2->getTag();
+}
+
+void MainScene::showFightOverDuanWeiInfo()
+{
+	removeChildByTag(TAG_LAYER_SCENE, true);
+
+	duanweipaihang_info duanweiInfo = Global::getInstance()->GetDuanWeiPaiHangInfo();
+	uint32_t isChange = Global::getInstance()->GetDuanWeiChange();
+
+	//段位下降测试写死
+	//int isChange = -1;
+
+	//段位详情 
+	paiHangNode = CSLoader::createNode("PaiHangDuanWei.csb");
+	addChild(paiHangNode, 3000000000,123456);
+
+	auto btn_duanwei = (cocos2d::ui::Button*)seekNodeByName(paiHangNode, "btn_duanwei");
+	btn_duanwei->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+	{
+		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+		{
+			log("back home click========================");
+			paiHangNode->removeFromParentAndCleanup(true);
+			showFightOverPaiHangInfo();
+		}
+	});
+
+
+	auto imgDuanWei = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "imgDuanWei");
+	std::string imgDuanWeiPath = "PaiHangDuanWei\\" + duanweiInfo.duanweiIcon;
+	imgDuanWei->loadTexture(imgDuanWeiPath.c_str());
+
+	auto successText = (cocos2d::ui::Text*)seekNodeByName(paiHangNode, "successText");
+	successText->setVisible(false);
+	auto errorText = (cocos2d::ui::Text*)seekNodeByName(paiHangNode, "errorText");
+	errorText->setVisible(false);
+
+	 liangxing1 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing1");
+	 liangxing2 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing2");
+	 liangxing3 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing3");
+	 liangxing4 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing4");
+	liangxing5 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing5");
+	 liangxing6 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing6");
+	 liangxing7 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing7");
+	 anxing1 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing1");
+	 anxing2 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing2");
+	 anxing3 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing3");
+	 anxing4 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing4");
+	 anxing5 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing5");
+	 anxing6 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing6");
+	 anxing7 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing7");
+	 xing8bg = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "xing8bg");
+	 xingNum = (cocos2d::ui::Text*)seekNodeByName(paiHangNode, "xingNum");
+	 anxing1action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing7action");
+	 anxing2action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing2action");
+	 anxing3action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing3action");
+	 anxing4action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing4action");
+	 anxing5action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing5action");
+	 anxing6action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing6action");
+	 anxing7action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing7action");
+	 liangxing1action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing7action");
+	 liangxing2action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing2action");
+	liangxing3action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing3action");
+	 liangxing4action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing4action");
+	liangxing5action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing5action");
+	 liangxing6action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing6action");
+	 liangxing7action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing7action");
+	anxing1action->setVisible(false);
+	anxing2action->setVisible(false);
+	anxing3action->setVisible(false);
+	anxing4action->setVisible(false);
+	anxing5action->setVisible(false);
+	anxing6action->setVisible(false);
+	anxing7action->setVisible(false);
+	liangxing1action->setVisible(false);
+	liangxing2action->setVisible(false);
+	liangxing3action->setVisible(false);
+	liangxing4action->setVisible(false);
+	liangxing5action->setVisible(false);
+	liangxing6action->setVisible(false);
+	liangxing7action->setVisible(false);
+	anxing1->setVisible(false);
+	anxing2->setVisible(false);
+	anxing3->setVisible(false);
+	anxing4->setVisible(false);
+	anxing5->setVisible(false);
+	anxing6->setVisible(false);
+	anxing7->setVisible(false);
+	xing8bg->setVisible(false);
+
+	auto duanweiName = (cocos2d::ui::Text*)seekNodeByName(paiHangNode, "duanweiName");
+	duanweiName->setText(duanweiInfo.duanweiName.c_str());
+	
+	auto duanweiBg = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "duanweiBg");
+	//duanweiBg->setVisible(false);
+
+	ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+
+	auto duanweiBgAction = (cocos2d::ui::Scale9Sprite*)seekNodeByName(paiHangNode, "duanweiBgAction");
+	//auto duanweiBgAction = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "duanweiBgAction");
+	Texture2D *texture = TextureCache::getInstance()->addImage(imgDuanWeiPath.c_str());
+	//duanweiBgAction->initWithFile(imgDuanWeiPath.c_str());
+	duanweiBgAction->setTexture(texture);
+	//duanweiBgAction->loadTexture(imgDuanWeiPath.c_str());
+	duanweiBgAction->runAction(action);
+	//从第0帧开始，并且只播放一次  
+	action->gotoFrameAndPlay(0, false);
+	//获取动画持续时间  
+	float duration = action->getDuration();
+	//获取结束帧，经测试是你动画添加帧的最后位置  
+	float lastFrame = action->getEndFrame();
+	//捕获事件帧  
+	//action->setFrameEventCallFunc(CC_CALLBACK_1(SplashScene::onFrameEvent, this));
+	//捕获到最后一帧的回调事件，比如你总共是60帧的动画，那么60就是最后帧，每次循环到60都会触发一次  
+	//action->setLastFrameCallFunc(CC_CALLBACK_0(MainScene::delteReadyFightDaoJiShi, this));
+
+
+
+
+
+
+
+
+
+
+	if (isChange == 0)
+	{
+		successText->setVisible(false);
+		errorText->setVisible(false);
+		duanweiBgAction->setVisible(false);
+
+		switch (duanweiInfo.xing1)
+		{
+		case 0:
+			liangxing1->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing1->setVisible(true);
+				  anxing1->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing1->setVisible(true);
+				  anxing1->setVisible(true);
+				  liangxing1action->setVisible(false);
+				  anxing1action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing2)
+		{
+		case 0:
+			liangxing2->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing2->setVisible(true);
+				  anxing2->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing2->setVisible(true);
+				  anxing2->setVisible(true);
+				  liangxing2action->setVisible(false);
+				  anxing2action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing3)
+		{
+		case 0:
+			liangxing3->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing3->setVisible(true);
+				  anxing3->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing3->setVisible(true);
+				  anxing3->setVisible(true);
+				  liangxing3action->setVisible(false);
+				  anxing3action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing4)
+		{
+		case 0:
+			liangxing1->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing4->setVisible(true);
+				  anxing4->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing4->setVisible(true);
+				  anxing4->setVisible(true);
+				  liangxing4action->setVisible(false);
+				  anxing4action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing5)
+		{
+		case 0:
+			liangxing1->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing5->setVisible(true);
+				  anxing5->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing5->setVisible(true);
+				  anxing5->setVisible(true);
+				  liangxing5action->setVisible(false);
+				  anxing5action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing6)
+		{
+		case 0:
+			liangxing6->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing6->setVisible(true);
+				  anxing6->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing6->setVisible(true);
+				  anxing6->setVisible(true);
+				  liangxing6action->setVisible(false);
+				  anxing6action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing7)
+		{
+		case 0:
+			liangxing7->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing7->setVisible(true);
+				  anxing7->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing7->setVisible(true);
+				  anxing7->setVisible(true);
+				  liangxing7action->setVisible(false);
+				  anxing7action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		if (duanweiInfo.xing8 == 0)
+		{
+			xing8bg->setVisible(false);
+		}
+		else
+		{
+			liangxing1->setVisible(false);
+			liangxing2->setVisible(false);
+			liangxing3->setVisible(false);
+			liangxing4->setVisible(false);
+			liangxing5->setVisible(false);
+			liangxing6->setVisible(false);
+			liangxing7->setVisible(false);
+			xing8bg->setVisible(true);
+		}
+
+
+
+		//段位提升
+		switch (duanweiInfo.duanweiAddXingIndex)
+		{
+		case 0://不会播放星星动画 直接显示了
+		{
+
+		}
+			break;
+		case 2:
+		{
+				  liangxing2->setVisible(true);
+				  liangxing2action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  liangxing2action->runAction(action);
+		}
+			break;
+		case 3:
+		{
+				  liangxing3->setVisible(true);
+				  liangxing3action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  liangxing3action->runAction(action);
+		}
+			break;
+		case 4:
+		{
+				  liangxing4->setVisible(true);
+				  liangxing4action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  liangxing4action->runAction(action);
+		}
+			break;
+		case 5:
+		{
+				  liangxing5->setVisible(true);
+				  liangxing5action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  liangxing5action->runAction(action);
+		}
+			break;
+		case 6:
+		{
+				  liangxing6->setVisible(true);
+				  liangxing6action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  liangxing6action->runAction(action);
+		}
+			break;
+		case 7:
+		{
+				  liangxing7->setVisible(true);
+				  liangxing7action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  liangxing7action->runAction(action);
+		}
+			break;
+		default:
+			break;
+		}
+
+
+		//段位降低
+		//switch (duanweiInfo.duanweiLessXingIndex)
+		//{
+		//case 0://不会播放星星动画 直接显示了
+		//{
+
+		//}
+		//	break;
+		//case 2:
+		//{
+		//		  liangxing2->setVisible(true);
+		//		  anxing2action->setVisible(true);
+		//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+		//		  float duration = action->getDuration();
+		//		  action->gotoFrameAndPlay(0, false);
+		//		  float lastFrame = action->getEndFrame() * 2;
+		//		  anxing2action->runAction(action);
+		//}
+		//	break;
+		//case 3:
+		//{
+		//		  liangxing3->setVisible(true);
+		//		  anxing3action->setVisible(true);
+		//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+		//		  float duration = action->getDuration();
+		//		  action->gotoFrameAndPlay(0, false);
+		//		  float lastFrame = action->getEndFrame() * 2;
+		//		  anxing3action->runAction(action);
+		//}
+		//	break;
+		//case 4:
+		//{
+		//		  liangxing4->setVisible(true);
+		//		  anxing4action->setVisible(true);
+		//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+		//		  float duration = action->getDuration();
+		//		  action->gotoFrameAndPlay(0, false);
+		//		  float lastFrame = action->getEndFrame() * 2;
+		//		  anxing4action->runAction(action);
+		//}
+		//	break;
+		//case 5:
+		//{
+		//		  liangxing5->setVisible(true);
+		//		  anxing5action->setVisible(true);
+		//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+		//		  float duration = action->getDuration();
+		//		  action->gotoFrameAndPlay(0, false);
+		//		  float lastFrame = action->getEndFrame() * 2;
+		//		  anxing5action->runAction(action);
+		//}
+		//	break;
+		//case 6:
+		//{
+		//		  liangxing6->setVisible(true);
+		//		  anxing6action->setVisible(true);
+		//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+		//		  float duration = action->getDuration();
+		//		  action->gotoFrameAndPlay(0, false);
+		//		  float lastFrame = action->getEndFrame() * 2;
+		//		  anxing6action->runAction(action);
+		//}
+		//	break;
+		//case 7:
+		//{
+		//		  liangxing7->setVisible(true);
+		//		  anxing7action->setVisible(true);
+		//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+		//		  float duration = action->getDuration();
+		//		  action->gotoFrameAndPlay(0, false);
+		//		  float lastFrame = action->getEndFrame() * 2;
+		//		  anxing7action->runAction(action);
+		//}
+		//	break;
+		//default:
+		//	break;
+		//}
+
+
+
+
+
+	}
+	else if (isChange == 1)
+	{
+		successText->setVisible(true);
+		errorText->setVisible(false);
+		duanweiBgAction->setVisible(true);
+		
+
+		ActionTimeline* action1 = CSLoader::createTimeline("PaiHangDuanWei.csb");
+		//从第0帧开始，并且只播放一次  
+		action1->gotoFrameAndPlay(0, false);
+		//获取动画持续时间  
+		float duration1 = action1->getDuration();
+		//获取结束帧，经测试是你动画添加帧的最后位置  
+		float lastFrame1 = action1->getEndFrame();
+
+		duanweiBgAction->runAction(action1);
+		
+		
+
+		if (duanweiBgAction->isVisible())
+		{
+
+			
+			liangxing1->setVisible(false);
+			liangxing2->setVisible(false);
+			liangxing3->setVisible(false);
+			liangxing4->setVisible(false);
+			liangxing5->setVisible(false);
+			liangxing6->setVisible(false);
+			liangxing7->setVisible(false);
+			this->scheduleOnce(schedule_selector(MainScene::MutUpdate), 1.0f);
+		}
+		else
+		{
+			switch (duanweiInfo.xing1)
+			{
+			case 0:
+				liangxing1->setVisible(false);
+				break;
+			case 1:
+			{
+					  liangxing1->setVisible(true);
+					  anxing1->setVisible(false);
+			}
+				break;
+			case 2:
+			{
+					  liangxing1->setVisible(true);
+					  anxing1->setVisible(true);
+					  liangxing1action->setVisible(false);
+					  anxing1action->setVisible(false);
+			}
+				break;
+			default:
+				break;
+			}
+			switch (duanweiInfo.xing2)
+			{
+			case 0:
+				liangxing2->setVisible(false);
+				break;
+			case 1:
+			{
+					  liangxing2->setVisible(true);
+					  anxing2->setVisible(false);
+			}
+				break;
+			case 2:
+			{
+					  liangxing2->setVisible(true);
+					  anxing2->setVisible(true);
+					  liangxing2action->setVisible(false);
+					  anxing2action->setVisible(false);
+			}
+				break;
+			default:
+				break;
+			}
+			switch (duanweiInfo.xing3)
+			{
+			case 0:
+				liangxing3->setVisible(false);
+				break;
+			case 1:
+			{
+					  liangxing3->setVisible(true);
+					  anxing3->setVisible(false);
+			}
+				break;
+			case 2:
+			{
+					  liangxing3->setVisible(true);
+					  anxing3->setVisible(true);
+					  liangxing3action->setVisible(false);
+					  anxing3action->setVisible(false);
+			}
+				break;
+			default:
+				break;
+			}
+			switch (duanweiInfo.xing4)
+			{
+			case 0:
+				liangxing1->setVisible(false);
+				break;
+			case 1:
+			{
+					  liangxing4->setVisible(true);
+					  anxing4->setVisible(false);
+			}
+				break;
+			case 2:
+			{
+					  liangxing4->setVisible(true);
+					  anxing4->setVisible(true);
+					  liangxing4action->setVisible(false);
+					  anxing4action->setVisible(false);
+			}
+				break;
+			default:
+				break;
+			}
+			switch (duanweiInfo.xing5)
+			{
+			case 0:
+				liangxing1->setVisible(false);
+				break;
+			case 1:
+			{
+					  liangxing5->setVisible(true);
+					  anxing5->setVisible(false);
+			}
+				break;
+			case 2:
+			{
+					  liangxing5->setVisible(true);
+					  anxing5->setVisible(true);
+					  liangxing5action->setVisible(false);
+					  anxing5action->setVisible(false);
+			}
+				break;
+			default:
+				break;
+			}
+			switch (duanweiInfo.xing6)
+			{
+			case 0:
+				liangxing6->setVisible(false);
+				break;
+			case 1:
+			{
+					  liangxing6->setVisible(true);
+					  anxing6->setVisible(false);
+			}
+				break;
+			case 2:
+			{
+					  liangxing6->setVisible(true);
+					  anxing6->setVisible(true);
+					  liangxing6action->setVisible(false);
+					  anxing6action->setVisible(false);
+			}
+				break;
+			default:
+				break;
+			}
+			switch (duanweiInfo.xing7)
+			{
+			case 0:
+				liangxing7->setVisible(false);
+				break;
+			case 1:
+			{
+					  liangxing7->setVisible(true);
+					  anxing7->setVisible(false);
+			}
+				break;
+			case 2:
+			{
+					  liangxing7->setVisible(true);
+					  anxing7->setVisible(true);
+					  liangxing7action->setVisible(false);
+					  anxing7action->setVisible(false);
+			}
+				break;
+			default:
+				break;
+			}
+			if (duanweiInfo.xing8 == 0)
+			{
+				xing8bg->setVisible(false);
+			}
+			else
+			{
+				liangxing1->setVisible(false);
+				liangxing2->setVisible(false);
+				liangxing3->setVisible(false);
+				liangxing4->setVisible(false);
+				liangxing5->setVisible(false);
+				liangxing6->setVisible(false);
+				liangxing7->setVisible(false);
+				xing8bg->setVisible(true);
+			}
+		}
+		
+	}
+	else if (isChange == -1)
+	{
+		successText->setVisible(false);
+		errorText->setVisible(true);
+
+		switch (duanweiInfo.xing1)
+		{
+		case 0:
+			liangxing1->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing1->setVisible(true);
+				  anxing1->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing1->setVisible(true);
+				  anxing1->setVisible(true);
+				  liangxing1action->setVisible(false);
+				  anxing1action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing2)
+		{
+		case 0:
+			liangxing2->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing2->setVisible(true);
+				  anxing2->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing2->setVisible(true);
+				  anxing2->setVisible(true);
+				  liangxing2action->setVisible(false);
+				  anxing2action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing3)
+		{
+		case 0:
+			liangxing3->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing3->setVisible(true);
+				  anxing3->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing3->setVisible(true);
+				  anxing3->setVisible(true);
+				  liangxing3action->setVisible(false);
+				  anxing3action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing4)
+		{
+		case 0:
+			liangxing1->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing4->setVisible(true);
+				  anxing4->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing4->setVisible(true);
+				  anxing4->setVisible(true);
+				  liangxing4action->setVisible(false);
+				  anxing4action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing5)
+		{
+		case 0:
+			liangxing1->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing5->setVisible(true);
+				  anxing5->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing5->setVisible(true);
+				  anxing5->setVisible(true);
+				  liangxing5action->setVisible(false);
+				  anxing5action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing6)
+		{
+		case 0:
+			liangxing6->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing6->setVisible(true);
+				  anxing6->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing6->setVisible(true);
+				  anxing6->setVisible(true);
+				  liangxing6action->setVisible(false);
+				  anxing6action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		switch (duanweiInfo.xing7)
+		{
+		case 0:
+			liangxing7->setVisible(false);
+			break;
+		case 1:
+		{
+				  liangxing7->setVisible(true);
+				  anxing7->setVisible(false);
+		}
+			break;
+		case 2:
+		{
+				  liangxing7->setVisible(true);
+				  anxing7->setVisible(true);
+				  liangxing7action->setVisible(false);
+				  anxing7action->setVisible(false);
+		}
+			break;
+		default:
+			break;
+		}
+		if (duanweiInfo.xing8 == 0)
+		{
+			xing8bg->setVisible(false);
+		}
+		else
+		{
+			liangxing1->setVisible(false);
+			liangxing2->setVisible(false);
+			liangxing3->setVisible(false);
+			liangxing4->setVisible(false);
+			liangxing5->setVisible(false);
+			liangxing6->setVisible(false);
+			liangxing7->setVisible(false);
+			xing8bg->setVisible(true);
+		}
+
+
+
+
+
+		liangxing1action->setVisible(false);
+		liangxing2action->setVisible(false);
+		liangxing3action->setVisible(false);
+		liangxing4action->setVisible(false);
+		liangxing5action->setVisible(false);
+		liangxing6action->setVisible(false);
+		liangxing7action->setVisible(false);
+
+		//段位降低
+		switch (duanweiInfo.duanweiLessXingIndex)
+		{
+		case 0://不会播放星星动画 直接显示了
+		{
+
+		}
+			break;
+		case 2:
+		{
+				  liangxing2->setVisible(true);
+				  anxing2action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				 action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  anxing2action->runAction(action);
+				  action->setLastFrameCallFunc(CC_CALLBACK_0(MainScene::hideXingXing2, this));
+		}
+			break;
+		case 3:
+		{
+				  liangxing3->setVisible(true);
+				  anxing3action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() *2;
+				  anxing3action->runAction(action);
+				  action->setLastFrameCallFunc(CC_CALLBACK_0(MainScene::hideXingXing3, this));
+		}
+			break;
+		case 4:
+		{
+				  liangxing4->setVisible(true);
+				  anxing4action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  anxing4action->runAction(action);
+				  action->setLastFrameCallFunc(CC_CALLBACK_0(MainScene::hideXingXing4, this));
+		}
+			break;
+		case 5:
+		{
+				  liangxing5->setVisible(true);
+				  anxing5action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame()* 2;
+				  anxing5action->runAction(action);
+				  action->setLastFrameCallFunc(CC_CALLBACK_0(MainScene::hideXingXing5, this));
+		}
+			break;
+		case 6:
+		{
+				  liangxing6->setVisible(true);
+				  anxing6action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  anxing6action->runAction(action);
+				  action->setLastFrameCallFunc(CC_CALLBACK_0(MainScene::hideXingXing6, this));
+		}
+			break;
+		case 7:
+		{
+				  liangxing7->setVisible(true);
+				  anxing7action->setVisible(true);
+				  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+				  float duration = action->getDuration();
+				  action->gotoFrameAndPlay(0, false);
+				  float lastFrame = action->getEndFrame() * 2;
+				  anxing7action->runAction(action);
+				  action->setLastFrameCallFunc(CC_CALLBACK_0(MainScene::hideXingXing7, this));
+		}
+			break;
+		default:
+			break;
+		}
+	}
+	else
+	{
+		successText->setVisible(false);
+		errorText->setVisible(true);
+	}
+	std::ostringstream xingNumStr;
+	xingNumStr.clear();
+	xingNumStr << duanweiInfo.xingNum;
+	xingNum->setText(xingNumStr.str().c_str());
+
+
+
+
+
+
+	Global::getInstance()->clearMainNodes();
+	removeChildByTag(TAG_GAME_COLOR_BG, true);
+	removeChildByTag(TAG_LAYER_GRID, true);
+}
+
+duanweipaihang_info MainScene::getPaiHangDuanWeiByGrade(int grade)
+{
+	Json* root = ReadJson("duanweiPaiHang.json");
+	std::ostringstream ss;
+	ss.clear();
+	ss << grade;
+	Json* duanweiList = Json_getItem(root, ss.str().c_str());
+
+	Json* duanweiName = Json_getItem(duanweiList, "duanweiName");
+	Json* duanweiDesc = Json_getItem(duanweiList, "duanweiDesc");
+	Json* duanweiIcon = Json_getItem(duanweiList, "duanweiIcon");
+	Json* xing1 = Json_getItem(duanweiList, "xing1");
+	Json* xing2 = Json_getItem(duanweiList, "xing2");
+	Json* xing3 = Json_getItem(duanweiList, "xing3");
+	Json* xing4 = Json_getItem(duanweiList, "xing4");
+	Json* xing5 = Json_getItem(duanweiList, "xing5");
+	Json* xing6 = Json_getItem(duanweiList, "xing6");
+	Json* xing7 = Json_getItem(duanweiList, "xing7");
+	Json* xing8 = Json_getItem(duanweiList, "xing8");
+	Json* xingNum = Json_getItem(duanweiList, "xingNum");
+	Json* duanweiAddXingIndex = Json_getItem(duanweiList, "duanweiAddXingIndex");
+	Json* duanweiLessXingIndex = Json_getItem(duanweiList, "duanweiLessXingIndex");
+
+	duanweipaihang_info duanweiInfo;
+	duanweiInfo.grade = grade;
+	duanweiInfo.duanweiName = duanweiName->valueString;
+	duanweiInfo.duanweiDesc = duanweiDesc->valueString;
+	duanweiInfo.duanweiIcon = duanweiIcon->valueString;
+	duanweiInfo.xing1 = xing1->valueInt;
+	duanweiInfo.xing2 = xing2->valueInt;
+	duanweiInfo.xing3 = xing3->valueInt;
+	duanweiInfo.xing4 = xing4->valueInt;
+	duanweiInfo.xing5 = xing5->valueInt;
+	duanweiInfo.xing6 = xing6->valueInt;
+	duanweiInfo.xing7 = xing7->valueInt;
+	duanweiInfo.xing8 = xing8->valueInt;
+	duanweiInfo.xingNum = xingNum->valueInt;
+	duanweiInfo.duanweiAddXingIndex = duanweiAddXingIndex->valueInt;
+	duanweiInfo.duanweiLessXingIndex = duanweiLessXingIndex->valueInt;
+
+	return duanweiInfo;
+}
+
+void MainScene::MutUpdate(float dt)
+{
+	duanweipaihang_info duanweiInfo = Global::getInstance()->GetDuanWeiPaiHangInfo();
+	uint32_t isChange = Global::getInstance()->GetDuanWeiChange();
+
+	auto paiHangNode = getChildByTag(123456);
+	auto imgDuanWei = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "imgDuanWei");
+	//std::string imgDuanWeiPath = "PaiHangDuanWei\\" + duanweiInfo.duanweiIcon;
+	//imgDuanWei->loadTexture(imgDuanWeiPath.c_str());
+
+	auto successText = (cocos2d::ui::Text*)seekNodeByName(paiHangNode, "successText");
+	//successText->setVisible(false);
+	auto errorText = (cocos2d::ui::Text*)seekNodeByName(paiHangNode, "errorText");
+	//errorText->setVisible(false);
+
+	auto liangxing1 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing1");
+	auto liangxing2 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing2");
+	auto liangxing3 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing3");
+	auto liangxing4 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing4");
+	auto liangxing5 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing5");
+	auto liangxing6 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing6");
+	auto liangxing7 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing7");
+	auto anxing1 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing1");
+	auto anxing2 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing2");
+	auto anxing3 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing3");
+	auto anxing4 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing4");
+	auto anxing5 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing5");
+	auto anxing6 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing6");
+	auto anxing7 = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing7");
+	auto xing8bg = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "xing8bg");
+	auto xingNum = (cocos2d::ui::Text*)seekNodeByName(paiHangNode, "xingNum");
+	auto anxing1action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing7action");
+	auto anxing2action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing2action");
+	auto anxing3action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing3action");
+	auto anxing4action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing4action");
+	auto anxing5action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing5action");
+	auto anxing6action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing6action");
+	auto anxing7action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "anxing7action");
+	auto liangxing1action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing7action");
+	auto liangxing2action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing2action");
+	auto liangxing3action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing3action");
+	auto liangxing4action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing4action");
+	auto liangxing5action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing5action");
+	auto liangxing6action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing6action");
+	auto liangxing7action = (cocos2d::ui::ImageView*)seekNodeByName(paiHangNode, "liangxing7action");
+	/*anxing1action->setVisible(false);
+	anxing2action->setVisible(false);
+	anxing3action->setVisible(false);
+	anxing4action->setVisible(false);
+	anxing5action->setVisible(false);
+	anxing6action->setVisible(false);
+	anxing7action->setVisible(false);
+	liangxing1action->setVisible(false);
+	liangxing2action->setVisible(false);
+	liangxing3action->setVisible(false);
+	liangxing4action->setVisible(false);
+	liangxing5action->setVisible(false);
+	liangxing6action->setVisible(false);
+	liangxing7action->setVisible(false);
+	anxing1->setVisible(false);
+	anxing2->setVisible(false);
+	anxing3->setVisible(false);
+	anxing4->setVisible(false);
+	anxing5->setVisible(false);
+	anxing6->setVisible(false);
+	anxing7->setVisible(false);
+	xing8bg->setVisible(false);*/
+
+
+
+	switch (duanweiInfo.xing1)
+	{
+	case 0:
+		liangxing1->setVisible(false);
+		break;
+	case 1:
+	{
+			  liangxing1->setVisible(true);
+			  anxing1->setVisible(false);
+	}
+		break;
+	case 2:
+	{
+			  liangxing1->setVisible(true);
+			  anxing1->setVisible(true);
+			  liangxing1action->setVisible(false);
+			  anxing1action->setVisible(false);
+	}
+		break;
+	default:
+		break;
+	}
+	switch (duanweiInfo.xing2)
+	{
+	case 0:
+		liangxing2->setVisible(false);
+		break;
+	case 1:
+	{
+			  liangxing2->setVisible(true);
+			  anxing2->setVisible(false);
+	}
+		break;
+	case 2:
+	{
+			  liangxing2->setVisible(true);
+			  anxing2->setVisible(true);
+			  liangxing2action->setVisible(false);
+			  anxing2action->setVisible(false);
+	}
+		break;
+	default:
+		break;
+	}
+	switch (duanweiInfo.xing3)
+	{
+	case 0:
+		liangxing3->setVisible(false);
+		break;
+	case 1:
+	{
+			  liangxing3->setVisible(true);
+			  anxing3->setVisible(false);
+	}
+		break;
+	case 2:
+	{
+			  liangxing3->setVisible(true);
+			  anxing3->setVisible(true);
+			  liangxing3action->setVisible(false);
+			  anxing3action->setVisible(false);
+	}
+		break;
+	default:
+		break;
+	}
+	switch (duanweiInfo.xing4)
+	{
+	case 0:
+		liangxing1->setVisible(false);
+		break;
+	case 1:
+	{
+			  liangxing4->setVisible(true);
+			  anxing4->setVisible(false);
+	}
+		break;
+	case 2:
+	{
+			  liangxing4->setVisible(true);
+			  anxing4->setVisible(true);
+			  liangxing4action->setVisible(false);
+			  anxing4action->setVisible(false);
+	}
+		break;
+	default:
+		break;
+	}
+	switch (duanweiInfo.xing5)
+	{
+	case 0:
+		liangxing1->setVisible(false);
+		break;
+	case 1:
+	{
+			  liangxing5->setVisible(true);
+			  anxing5->setVisible(false);
+	}
+		break;
+	case 2:
+	{
+			  liangxing5->setVisible(true);
+			  anxing5->setVisible(true);
+			  liangxing5action->setVisible(false);
+			  anxing5action->setVisible(false);
+	}
+		break;
+	default:
+		break;
+	}
+	switch (duanweiInfo.xing6)
+	{
+	case 0:
+		liangxing6->setVisible(false);
+		break;
+	case 1:
+	{
+			  liangxing6->setVisible(true);
+			  anxing6->setVisible(false);
+	}
+		break;
+	case 2:
+	{
+			  liangxing6->setVisible(true);
+			  anxing6->setVisible(true);
+			  liangxing6action->setVisible(false);
+			  anxing6action->setVisible(false);
+	}
+		break;
+	default:
+		break;
+	}
+	switch (duanweiInfo.xing7)
+	{
+	case 0:
+		liangxing7->setVisible(false);
+		break;
+	case 1:
+	{
+			  liangxing7->setVisible(true);
+			  anxing7->setVisible(false);
+	}
+		break;
+	case 2:
+	{
+			  liangxing7->setVisible(true);
+			  anxing7->setVisible(true);
+			  liangxing7action->setVisible(false);
+			  anxing7action->setVisible(false);
+	}
+		break;
+	default:
+		break;
+	}
+	if (duanweiInfo.xing8 == 0)
+	{
+		xing8bg->setVisible(false);
+	}
+	else
+	{
+		liangxing1->setVisible(false);
+		liangxing2->setVisible(false);
+		liangxing3->setVisible(false);
+		liangxing4->setVisible(false);
+		liangxing5->setVisible(false);
+		liangxing6->setVisible(false);
+		liangxing7->setVisible(false);
+		xing8bg->setVisible(true);
+	}
+
+
+	//段位提升
+	switch (duanweiInfo.duanweiAddXingIndex)
+	{
+	case 0://不会播放星星动画 直接显示了
+	{
+
+	}
+		break;
+	case 2:
+	{
+			  liangxing2->setVisible(true);
+			  liangxing2action->setVisible(true);
+			  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+			  float duration = action->getDuration();
+			  action->gotoFrameAndPlay(0, false);
+			  float lastFrame = action->getEndFrame() * 2;
+			  liangxing2action->runAction(action);
+	}
+		break;
+	case 3:
+	{
+			  liangxing3->setVisible(true);
+			  liangxing3action->setVisible(true);
+			  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+			  float duration = action->getDuration();
+			  action->gotoFrameAndPlay(0, false);
+			  float lastFrame = action->getEndFrame() * 2;
+			  liangxing3action->runAction(action);
+	}
+		break;
+	case 4:
+	{
+			  liangxing4->setVisible(true);
+			  liangxing4action->setVisible(true);
+			  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+			  float duration = action->getDuration();
+			  action->gotoFrameAndPlay(0, false);
+			  float lastFrame = action->getEndFrame();
+			  liangxing4action->runAction(action);
+	}
+		break;
+	case 5:
+	{
+			  liangxing5->setVisible(true);
+			  liangxing5action->setVisible(true);
+			  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+			  float duration = action->getDuration();
+			  action->gotoFrameAndPlay(0, false);
+			  float lastFrame = action->getEndFrame() * 2;
+			  liangxing5action->runAction(action);
+	}
+		break;
+	case 6:
+	{
+			  liangxing6->setVisible(true);
+			  liangxing6action->setVisible(true);
+			  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+			  float duration = action->getDuration();
+			  action->gotoFrameAndPlay(0, false);
+			  float lastFrame = action->getEndFrame() * 2;
+			  liangxing6action->runAction(action);
+	}
+		break;
+	case 7:
+	{
+			  liangxing7->setVisible(true);
+			  liangxing7action->setVisible(true);
+			  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+			  float duration = action->getDuration();
+			  action->gotoFrameAndPlay(0, false);
+			  float lastFrame = action->getEndFrame() * 2;
+			  liangxing7action->runAction(action);
+	}
+		break;
+	default:
+		break;
+	}
+
+
+
+	//段位降低
+	//switch (duanweiInfo.duanweiLessXingIndex)
+	//{
+	//case 0://不会播放星星动画 直接显示了
+	//{
+
+	//}
+	//	break;
+	//case 2:
+	//{
+	//		  liangxing2->setVisible(true);
+	//		  anxing2action->setVisible(true);
+	//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+	//		  float duration = action->getDuration();
+	//		   action->gotoFrameAndPlay(0, false);
+	//		  float lastFrame = action->getEndFrame() * 2;
+	//		  anxing2action->runAction(action);
+	//}
+	//	break;
+	//case 3:
+	//{
+	//		  liangxing3->setVisible(true);
+	//		  anxing3action->setVisible(true);
+	//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+	//		  float duration = action->getDuration();
+	//		   action->gotoFrameAndPlay(0, false);
+	//		  float lastFrame = action->getEndFrame() * 2;
+	//		  anxing3action->runAction(action);
+	//}
+	//	break;
+	//case 4:
+	//{
+	//		  liangxing4->setVisible(true);
+	//		  anxing4action->setVisible(true);
+	//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+	//		  float duration = action->getDuration();
+	//		   action->gotoFrameAndPlay(0, false);
+	//		  float lastFrame = action->getEndFrame() * 2;
+	//		  anxing4action->runAction(action);
+	//}
+	//	break;
+	//case 5:
+	//{
+	//		  liangxing5->setVisible(true);
+	//		  anxing5action->setVisible(true);
+	//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+	//		  float duration = action->getDuration();
+	//		  action->gotoFrameAndPlay(0, false);
+	//		  float lastFrame = action->getEndFrame() * 2;
+	//		  anxing5action->runAction(action);
+	//}
+	//	break;
+	//case 6:
+	//{
+	//		  liangxing6->setVisible(true);
+	//		  anxing6action->setVisible(true);
+	//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+	//		  float duration = action->getDuration();
+	//		   action->gotoFrameAndPlay(0, false);
+	//		  float lastFrame = action->getEndFrame() * 2;
+	//		  anxing6action->runAction(action);
+	//}
+	//	break;
+	//case 7:
+	//{
+	//		  liangxing7->setVisible(true);
+	//		  anxing7action->setVisible(true);
+	//		  ActionTimeline* action = CSLoader::createTimeline("PaiHangDuanWei.csb");
+	//		  float duration = action->getDuration();
+	//		  action->gotoFrameAndPlay(0, false);
+	//		  float lastFrame = action->getEndFrame() * 2;
+	//		  anxing7action->runAction(action);
+	//}
+	//	break;
+	//default:
+	//	break;
+	//}
+
+
+
+}
+
+void MainScene::hideXingXing2()
+{
+	anxing2action->setVisible(false);
+}
+
+void MainScene::hideXingXing3()
+{
+	anxing3action->setVisible(false);
+}
+
+void MainScene::hideXingXing4()
+{
+	anxing4action->setVisible(false);
+}
+
+void MainScene::hideXingXing5()
+{
+	anxing5action->setVisible(false);
+
+}
+
+void MainScene::hideXingXing6()
+{
+	anxing6action->setVisible(false);
+}
+
+void MainScene::hideXingXing7()
+{
+	anxing7action->setVisible(false);
 }
 
 

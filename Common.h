@@ -253,6 +253,46 @@ struct timeyuanzheng_cangku_info
 //合并代码用--0924--注册与组队 end=======================
 
 
+//段位排行信息
+struct duanweipaihang_info
+{
+	duanweipaihang_info()
+	{
+		grade = 0;
+		duanweiDesc = "";
+		duanweiName = "";
+		duanweiIcon = "";
+		xing1 = 0;
+		xing2 = 0;
+		xing3 = 0;
+		xing4 = 0;
+		xing5 = 0;
+		xing6 = 0;
+		xing7 = 0;
+		xing8 = 0;
+		duanweiAddXingIndex = 0;
+		duanweiLessXingIndex = 0;
+	}
+
+	uint32_t grade;
+	std::string duanweiName;
+	std::string duanweiDesc;
+	std::string duanweiIcon;
+	uint32_t xing1;
+	uint32_t xing2;
+	uint32_t xing3;
+	uint32_t xing4;
+	uint32_t xing5;
+	uint32_t xing6;
+	uint32_t xing7;
+	uint32_t xing8;
+	uint32_t xingNum;
+	uint32_t duanweiAddXingIndex;
+	uint32_t duanweiLessXingIndex;
+
+
+};
+
 //张锋露 账号
 struct account_info
 {
