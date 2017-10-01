@@ -7,8 +7,8 @@ std::string ExchangeInfo::getIdentifier()
 	int  num = (CCRANDOM_0_1()*(end - start + 1) + start);
 	log("num==================================%d" + num);
 	String* ns = String::createWithFormat("%d", num);
-	//return ns->getCString();
-	return "1116";
+	return ns->getCString();
+	//return "1116";
 	//user: 1351258
 	//return "66666666-6666-6666-6666-666666666666";
 }

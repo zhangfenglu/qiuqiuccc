@@ -1,4 +1,4 @@
-#ifndef _GLOBAL_H_
+ï»¿#ifndef _GLOBAL_H_
 #define _GLOBAL_H_
 #pragma once
 
@@ -7,8 +7,8 @@
 #include "cocos-ext.h"
 #include "spine/Json.h"
 
-#include "UI/CocosGUI.h"                               //Õ½¶·ºËÐÄcgyÔö¼Ó0908
-#include "editor-support/cocostudio/CocoStudio.h"		//Õ½¶·ºËÐÄcgyÔö¼Ó0908
+#include "UI/CocosGUI.h"                               //Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cgyï¿½ï¿½ï¿½ï¿½0908
+#include "editor-support/cocostudio/CocoStudio.h"		//Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cgyï¿½ï¿½ï¿½ï¿½0908
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -22,7 +22,7 @@ using namespace com::suyin::proto;
 
 
 #include "Common.h"
-//¿Í»§¶Ë²âÊÔËã·¨¿ØÖÆºê
+//ï¿½Í»ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ã·¨ï¿½ï¿½ï¿½Æºï¿½
 //#define EditEXE
 
 #define PRI _pri(this)
@@ -174,38 +174,38 @@ public:
 
 	PlayerInfo& getMyInfo() { return m_myInfo; }
 
-	//ÕÅ·æÂ¶
+	//ï¿½Å·ï¿½Â¶
 	void SetplayerDengLuInfo(player_info info){ m_PlayerDengLuInfo = info; }
 	player_info GetPlayerDengLuInfo(){ return m_PlayerDengLuInfo; }
 	void SetHeadInfo(head_info info){ m_HeadInfo = info; }
 	head_info GetHeadInfo(){ return m_HeadInfo; }
-	//ÕÅ·æÂ¶
+	//ï¿½Å·ï¿½Â¶
 	void SetAccountInfo(account_info info){ m_AccountInfo = info; }
 	account_info GetAccountInfo(){ return m_AccountInfo; }
 
 	//void SetGameOverServerData(UM_BattleResult info){ m_gameOverServerData = info; }
 	//UM_BattleResult GetGameOverServerData(){ return m_gameOverServerData; }
 
-	//Õ½¶·½áÊøÅÅÐÐ°ñ
+	//Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð°ï¿½
 	void SetPaiHangBangInfo(paihangplayerInfo info){ m_paihangbangInfo = info; }
 	paihangplayerInfo GetPaiHangBangInfo(){ return m_paihangbangInfo; }
 	
 	
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
-	//µ¹¼ÆÊ±
+	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
+	//ï¿½ï¿½ï¿½ï¿½Ê±
 	void SetZuDuiDaoJiShiInfo(zuduidaojishi_info info){ m_ZuDuiDaoJiShi = info; }
 	zuduidaojishi_info GetZuDuiDaoJiShiInfo(){ return m_ZuDuiDaoJiShi; }
 
-	//È¼ÉÕÔ¶Õ÷×é¶Ó ¶ÔÓ¦µÄÏûºÄ¼°Æä½±ÀøÐÅÏ¢
+	//È¼ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ä½±ï¿½ï¿½ï¿½ï¿½Ï¢
 	void SetAwardInfo(AwardInfo info){ m_AwardInfo = info; }
 	AwardInfo GetAwardInfo(){ return m_AwardInfo; }
 
-	//ÒÔ Ä³¸ö·ûºÅ±ê¼Ç ·Ö¸î×Ö·û´®Êý×é
+	//ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½ï¿½ ï¿½Ö¸ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	std::vector<std::string> split(std::string str, std::string pattern)
 	{
 		std::string::size_type pos;
 		std::vector<std::string> result;
-		str += pattern;//À©Õ¹×Ö·û´®ÒÔ·½±ã²Ù×÷
+		str += pattern;//ï¿½ï¿½Õ¹ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int size = str.size();
 
 		for (int i = 0; i < size; i++)
@@ -224,18 +224,18 @@ public:
 
 	void SetCangKuObj(timeyuanzheng_cangku_info info){ m_CangKuObj = info; }
 	timeyuanzheng_cangku_info GetCangKuObj(){ return m_CangKuObj; }
-	//ÊÇ·ñÉêÇëÁË×é¶Ó
+	//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void SetIsZuDui(bool isZuDui){ m_IsZuDui = isZuDui; }
 	bool GetIsZuDui(){ return m_IsZuDui; }
 
-	//±£´æ ÉèÖÃ ´óÌü ×é¶ÓµÈ´ýÊ±¼ä¿ò ÄÄÖÖÈ¼ÉÕÔ¶Õ÷±êÌâ
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ÓµÈ´ï¿½Ê±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void SetWaitTimeBoxTitleStr(std::string title){ 
 		m_Title = title;
 	}
 	std::string GetWaitTimeBoxTitleStr(){
 		return m_Title; 
 	}
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Óend=============================================================================
+	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½end=============================================================================
 	
 	
 	
@@ -292,13 +292,13 @@ private:
     user_info m_PlayerInfo;
 	player_info m_PlayerDengLuInfo;
 	
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó start======================================================================
+	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ start======================================================================
 	zuduidaojishi_info m_ZuDuiDaoJiShi;
 	AwardInfo m_AwardInfo;
 	timeyuanzheng_cangku_info m_CangKuObj;
 	bool m_IsZuDui = false;
 	std::string m_Title;
-	//ºÏ²¢´úÂëÓÃ--0924--×¢²áÓë×é¶Ó end======================================================================
+	//ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--0924--×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ end======================================================================
 	//UM_BattleResult m_gameOverServerData;
 	paihangplayerInfo m_paihangbangInfo;
 	

@@ -122,7 +122,7 @@ struct paihangplayerInfo
 		icon = "";
 		name = "";
 		account = "";
-		awardsPath = "";
+		awardsPaths;
 		rank = 0;
 		monthLevel = 0;
 		yealLevel = 0;
@@ -130,12 +130,14 @@ struct paihangplayerInfo
 		change = 0;
 		grade = 0;
 		sex = 0;
+		num;
 	}
 	std::string playerid;
 	std::string icon;
 	std::string name;
 	std::string account;
-	std::string awardsPath;
+	std::vector<std::string> awardsPaths;
+	std::vector<std::uint32_t> num;
 	uint32_t rank;
 	uint32_t monthLevel;
 	uint32_t yealLevel;

@@ -143,6 +143,14 @@ public:
 	//static  UM_BattleResult _rep;
 	std::vector<paihangplayerInfo> paihangInfos;
 
+	struct myFuncton
+	{
+		bool operator()(const paihangplayerInfo &n1, const paihangplayerInfo &n2)
+		{
+			return n1.rank < n2.rank;
+		}
+	};
+
 	// common
 	void reqSendUIMsg(uint16_t type, std::string str);
 
@@ -207,6 +215,9 @@ public:
 	paihangAward getPaiHangAwardById(int id);
 	std::vector<paihangAward> paihangAwards;
 
+	bool nodeComparisonLess(Node* n1,Node*n2);
+	//std::vector<UM_PlayerInfo> pInfos;
+
 #ifdef EditEXE
 	void UpdataWeight(int weight);
 #endif
@@ -236,6 +247,9 @@ private:
 	float jiangX;
 	float jiangY;
 	float jiangWidth;
+
+	float tishiX;
+	float tishiY;
 
 	cocos2d::Point  m_grid_off_pos;
 

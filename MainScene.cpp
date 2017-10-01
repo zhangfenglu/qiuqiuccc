@@ -214,9 +214,10 @@ void MainScene::BackToLoginLayer(MainScene::tagDif tag)
 		getChildByTag(m_CurrTag)->setScale(1.0f);
 	}
 	else{
-		LoginLayer* login = LoginLayer::create();
+		showFightOverPaiHangInfo();
+		/*LoginLayer* login = LoginLayer::create();
 		addChild(login, 2, TAG_LAYER_LOGIN);
-		m_CurrTag = TAG_LAYER_LOGIN;
+		m_CurrTag = TAG_LAYER_LOGIN;*/
 	}
 }
 
@@ -904,8 +905,8 @@ void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
     if(!_bGetData)
         return;
 	//Global::getInstance()->SetGameOverServerData(_rep);
-	showFightOverPaiHangInfo();
-	return;
+	//showFightOverPaiHangInfo();
+	
 	{
 		BattleResault _stBattleResault;
 		_stBattleResault.aid = _rep.aid();
@@ -949,14 +950,14 @@ void MainScene::GameOverState(const cocos2d::network::WebSocket::Data &data)
 		}
 		else
 		{
-			removeChildByTag(TAG_LAYER_SCENE, true);
+			//removeChildByTag(TAG_LAYER_SCENE, true);//张锋露暂时删除
 			auto gameEnd = GameOverLayer::createGameOver(_stBattleResault);
 			addChild(gameEnd, 2, TAG_GAME_END);
 			gameEnd->setOverData(_stBattleResault);
 
 			Global::getInstance()->clearMainNodes();
-			removeChildByTag(TAG_GAME_COLOR_BG, true);
-			removeChildByTag(TAG_LAYER_GRID, true);
+			//removeChildByTag(TAG_GAME_COLOR_BG, true); 张锋露暂时删除
+			//removeChildByTag(TAG_LAYER_GRID, true); 张锋露暂时删除
 			//CloseWebNet();
 		}
 		/*int headSize = sizeof(uint8_t);
@@ -2730,14 +2731,27 @@ void MainScene::delteReadyFightDaoJiShi()
 void MainScene::showFightOverPaiHangInfo()
 {
 	removeChildByTag(TAG_LAYER_SCENE, true);
+
+
+
+
 	auto FightPaiHangNode = CSLoader::createNode("FightPaiMing.csb");
 	addChild(FightPaiHangNode, 3000000000);
 	auto paihangScroll = (cocos2d::ui::ScrollView*)seekNodeByName(FightPaiHangNode, "paihangScroll");
 	auto list = (cocos2d::ui::Layout*)seekNodeByName(FightPaiHangNode, "List");
 	list->setVisible(false);
+
+	auto listMySelf = (cocos2d::ui::Layout*)seekNodeByName(FightPaiHangNode, "ListMySelf");
+	//listMySelf->setVisible(false);
+
 	listX = list->getPositionX();
 	listY = list->getPositionY();
 	listHeight = list->getContentSize().height;
+
+	auto piaoZi = (cocos2d::ui::Text*)seekNodeByName(FightPaiHangNode, "tishi");
+	tishiY = piaoZi->getPositionY();
+	tishiX = piaoZi->getPositionX();
+	auto Image_1 = (cocos2d::ui::Text*)seekNodeByName(FightPaiHangNode, "Image_1");
 
 	auto btnbackhome = (cocos2d::ui::Button*)seekNodeByName(FightPaiHangNode, "btnbackhome");
 	btnbackhome->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
@@ -2745,9 +2759,25 @@ void MainScene::showFightOverPaiHangInfo()
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
 			log("back home click========================");
+
+			FightPaiHangNode->removeFromParentAndCleanup(true);
+			LoginLayer* login = LoginLayer::create();
+			addChild(login, 2, TAG_LAYER_LOGIN);
+			m_CurrTag = TAG_LAYER_LOGIN;
+
 		}
 	});
 
+	
+	Json* root = ReadJson("tishi.json");
+	Json* haoke = Json_getItem(root, "haoke");//毫克
+	Json* ke = Json_getItem(root, "ke");//克
+	Json* qianke = Json_getItem(root, "qianke");//千克
+	Json* dun = Json_getItem(root, "dun");//吨
+	Json* wandun = Json_getItem(root, "wandun");//万吨
+	Json* yidun = Json_getItem(root, "yidun");//亿吨
+	Json* wanyidun = Json_getItem(root, "wanyidun");//万亿吨
+	Json* guanzhuchenggong = Json_getItem(root, "guanzhuchenggong");//关注成功
 
 
 	//UM_BattleResult _rep = Global::getInstance()->GetGameOverServerData();
@@ -2763,78 +2793,456 @@ void MainScene::showFightOverPaiHangInfo()
 	//std::string _str = _rep.players(0).playerid();
 	std::string _str2 = Global::getInstance()->getMyInfo().getPlayerID();
 	std::string _str3 = Global::getInstance()->GetAccountInfo().playerid;
+
+	
+	//std::sort(_rep.players(0), _rep.players(_rep.players_size()));
+	
 	for (int j = 0; j < _rep.players_size(); j++)
 	{
-		//if (_rep.players(j).playerid() == _str3)
 		
-			auto listClone = list->clone();
-			auto ListBg = (cocos2d::ui::ImageView*)listClone->getChildByName("ListBg");
-			auto btn_paihang = (cocos2d::ui::Button*)listClone->getChildByName("btn_paihang");
-			if (j % 2 == 0)
-			{
-				ListBg->loadTexture("FightPaiMing\\shen.png");
-			}
-			else
-			{
-				ListBg->loadTexture("FightPaiMing\\qian.png");
-			}
-			btn_paihang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
-			{
-				if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
-				{
-					for (int q = 0; q < _rep.players_size();q++)
-					{
-						auto btn_paihang = (cocos2d::ui::Button*)listClone->getChildByName("btn_paihang");
-						if (q % 2 == 0)
-						{
-							ListBg->loadTexture("FightPaiMing\\shen.png");
-						}
-						else
-						{
-							ListBg->loadTexture("FightPaiMing\\qian.png");
-						}
-					}
-
-
-					ListBg->loadTexture("FightPaiMing\\select.png");
-				}
-			});
-			auto name = (cocos2d::ui::Text*)listClone->getChildByName("name");
-			auto tizhong = (cocos2d::ui::Text*)listClone->getChildByName("tizhong");
-			auto sexImg = (cocos2d::ui::ImageView*)listClone->getChildByName("sexImg");
-			auto paimingTxt = (cocos2d::ui::Text*)listClone->getChildByName("paimingTxt");
-			auto paimingImg = (cocos2d::ui::ImageView*)paimingTxt->getChildByName("paimingImg");
-			auto jiang = (cocos2d::ui::ImageView*)listClone->getChildByName("jiang");
-			auto biankuangAll = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangAll");
-			auto biankuangAllnian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "nian");
-			auto biankuangAllyue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "yue");
-			auto biankuangNian = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangNian");
-			auto biankuangNianNian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangNian, "nian");
-			auto biankuangYue = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangYue");
-			auto biankuangYueYue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangYue, "yue");
-
-			jiangX = jiang->getPositionX();
-			jiangY = jiang->getPositionY();
-			jiangWidth = jiang->getBoundingBox().size.width;
-
-			listClone->setVisible(true);
-			listClone->setPosition(ccp(listX,listY - listHeight*j ));
-			paihangScroll->addChild(listClone);
 			paihangplayerInfo paiHangInfo;
 			paiHangInfo.playerid = _rep.players(j).playerid();
 			paiHangInfo.account = _rep.players(j).account();
 			paiHangInfo.sex = _rep.players(j).sex();
 			paiHangInfo.rank = _rep.players(j).rank();
 			paiHangInfo.name = _rep.players(j).name();
-
-			UserDefault::getInstance()->setStringForKey("paihangname", _rep.players(j).name().c_str());
 			paiHangInfo.grade = _rep.players(j).grade();
 			paiHangInfo.icon = _rep.players(j).icon();
 			paiHangInfo.weight = _rep.players(j).weight();
 			paiHangInfo.yealLevel = _rep.players(j).yeallevel();
 			paiHangInfo.change = _rep.players(j).change();
 			paiHangInfo.monthLevel = _rep.players(j).monthlevel();
+			log("server: playerid=%s account=%s sex=%d rank=%d name=%s grade=%d icon=%s weight=%d yealLevel=%d monthLevel=%d", paiHangInfo.playerid.c_str(), paiHangInfo.account.c_str(),  paiHangInfo.sex, paiHangInfo.rank, paiHangInfo.name.c_str(), paiHangInfo.grade, paiHangInfo.icon.c_str(), paiHangInfo.weight, paiHangInfo.yealLevel, paiHangInfo.monthLevel);
 
+			if (_rep.players(j).items_size() == 0)
+			{
+				//jiang->setVisible(false);
+			}
+			else
+			{
+				for (int k = 0; k < _rep.players(j).items_size(); k++)
+				{
+					if (_rep.players(j).items(k).id() != 0)
+					{
+					
+						paihangAward award = getPaiHangAwardById(_rep.players(j).items(k).id());
+						paiHangInfo.awardsPaths.push_back(award.image.c_str());
+						paiHangInfo.num.push_back(_rep.players(j).items(k).num());
+
+					
+					}
+				}
+			}
+
+
+
+			paihangInfos.push_back(paiHangInfo);
+
+			
+		
+	}
+	
+
+	sort(paihangInfos.begin(), paihangInfos.end(),myFuncton());
+
+
+	for (int k = 0; k < paihangInfos.size();k++)
+	{
+		
+		auto paiHangInfo = (paihangplayerInfo)paihangInfos.at(k);
+		log("server: playerid=%s account=%s sex=%d rank=%d name=%s grade=%d icon=%s weight=%d yealLevel=%d monthLevel=%d", paiHangInfo.playerid.c_str(), paiHangInfo.account.c_str(), paiHangInfo.sex, paiHangInfo.rank, paiHangInfo.name.c_str(), paiHangInfo.grade, paiHangInfo.icon.c_str(), paiHangInfo.weight, paiHangInfo.yealLevel, paiHangInfo.monthLevel);
+		log("====================================================================");
+
+
+		auto listClone = list->clone();
+		auto ListBg = (cocos2d::ui::ImageView*)listClone->getChildByName("ListBg");
+		auto btn_paihang = (cocos2d::ui::Button*)listClone->getChildByName("btn_paihang");
+		if (k % 2 == 0)
+		{
+			ListBg->loadTexture("FightPaiMing\\shen.png");
+		}
+		else
+		{
+			ListBg->loadTexture("FightPaiMing\\qian.png");
+		}
+		btn_paihang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+		{
+			if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+			{
+				/*for (int q = 0; q < _rep.players_size();q++)
+				{
+				auto btn_paihang = (cocos2d::ui::Button*)listClone->getChildByName("btn_paihang");
+				if (q % 2 == 0)
+				{
+				ListBg->loadTexture("FightPaiMing\\shen.png");
+				}
+				else
+				{
+				ListBg->loadTexture("FightPaiMing\\qian.png");
+				}
+				}
+
+
+				ListBg->loadTexture("FightPaiMing\\select.png");*/
+			}
+		});
+		auto name = (cocos2d::ui::Text*)listClone->getChildByName("name");
+		auto tizhong = (cocos2d::ui::Text*)listClone->getChildByName("tizhong");
+		auto sexImg = (cocos2d::ui::ImageView*)listClone->getChildByName("sexImg");
+		auto paimingTxt = (cocos2d::ui::Text*)listClone->getChildByName("paimingTxt");
+		auto paimingImg = (cocos2d::ui::ImageView*)paimingTxt->getChildByName("paimingImg");
+		auto jiang = (cocos2d::ui::ImageView*)listClone->getChildByName("jiang");
+		auto biankuangAll = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangAll");
+		auto biankuangAllnian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "nian");
+		auto biankuangAllyue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "yue");
+		auto biankuangNian = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangNian");
+		auto biankuangNianNian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangNian, "nian");
+		auto biankuangYue = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "biankuangYue");
+		auto biankuangYueYue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangYue, "yue");
+		auto btnGuanZhu = (cocos2d::ui::Button*)seekNodeByName(listClone, "btnGuanZhu");
+		auto headImg = (cocos2d::ui::ImageView*)seekNodeByName(listClone, "headImg");
+		std::string touPath = "Head\\" + paiHangInfo.icon;
+		headImg->loadTexture(touPath.c_str());
+		if (paiHangInfo.playerid == _str3)
+			btnGuanZhu->setVisible(false);
+		else
+			btnGuanZhu->setVisible(true);
+
+		jiangX = jiang->getPositionX();
+		jiangY = jiang->getPositionY();
+		jiangWidth = jiang->getBoundingBox().size.width;
+
+		listClone->setVisible(true);
+		listClone->setPosition(ccp(listX, listY - listHeight*k));
+		paihangScroll->addChild(listClone);
+		log("server: playerid=%s account=%s sex=%d rank=%d name=%s grade=%d icon=%s weight=%d yealLevel=%d monthLevel=%d", paiHangInfo.playerid.c_str(), paiHangInfo.account.c_str(), paiHangInfo.sex, paiHangInfo.rank, paiHangInfo.name.c_str(), paiHangInfo.grade, paiHangInfo.icon.c_str(), paiHangInfo.weight, paiHangInfo.yealLevel, paiHangInfo.monthLevel);
+
+		if (paiHangInfo.monthLevel == 0 && paiHangInfo.yealLevel == 0)
+		{
+			biankuangAll->setVisible(false);
+			biankuangNian->setVisible(false);
+			biankuangYue->setVisible(false);
+		}
+		else if (paiHangInfo.monthLevel > 0 && paiHangInfo.yealLevel > 0)
+		{
+			biankuangAll->setVisible(true);
+			biankuangNian->setVisible(false);
+			biankuangYue->setVisible(false);
+			std::ostringstream nianFlag;
+			nianFlag.clear();
+			nianFlag << "DaTingLayer\\touxiang\\nian" << paiHangInfo.yealLevel << ".png";
+			biankuangAllnian->loadTexture(nianFlag.str());
+			std::ostringstream yueFlag;
+			yueFlag.clear();
+			yueFlag << "DaTingLayer\\touxiang\\yue" << paiHangInfo.monthLevel << ".png";
+			biankuangAllyue->loadTexture(yueFlag.str());
+		}
+		else if (paiHangInfo.monthLevel > 0)
+		{
+			biankuangAll->setVisible(false);
+			biankuangNian->setVisible(false);
+			biankuangYue->setVisible(true);
+			std::ostringstream yueFlag;
+			yueFlag.clear();
+			yueFlag << "DaTingLayer\\touxiang\\yue" << paiHangInfo.monthLevel << ".png";
+			biankuangYueYue->loadTexture(yueFlag.str());
+		}
+		else if (paiHangInfo.yealLevel > 0)
+		{
+			biankuangAll->setVisible(false);
+			biankuangNian->setVisible(true);
+			biankuangYue->setVisible(false);
+			std::ostringstream nianFlag;
+			nianFlag.clear();
+			nianFlag << "DaTingLayer\\touxiang\\nian" << paiHangInfo.yealLevel << ".png";
+			biankuangNianNian->loadTexture(nianFlag.str());
+		}
+
+
+		name->setText(paiHangInfo.name.c_str());
+
+		std::string danwei = "";
+		uint32_t huansuan = 0;
+		/*	if (paiHangInfo.weight >= 1000000000000000000000)
+		{
+		danwei = wanyidun->valueString;
+		huansuan = paiHangInfo.weight / 1000000000000000000000;
+		}
+		else */
+		if (paiHangInfo.weight >= 100000000000000000)
+		{
+			danwei = yidun->valueString;
+			huansuan = paiHangInfo.weight / 100000000000000000;
+		}
+		else if (paiHangInfo.weight >= 10000000000000)
+		{
+			danwei = wandun->valueString;
+			huansuan = paiHangInfo.weight / 10000000000000;
+		}
+		else if (paiHangInfo.weight >= 1000000000)
+		{
+			danwei = dun->valueString;
+			huansuan = paiHangInfo.weight / 1000000000;
+		}
+		else if (paiHangInfo.weight >= 1000000)
+		{
+			danwei = qianke->valueString;
+			huansuan = paiHangInfo.weight / 1000000;
+		}
+		else if (paiHangInfo.weight >= 1000)
+		{
+			danwei = ke->valueString;
+			huansuan = paiHangInfo.weight / 1000;
+		}
+		else
+		{
+			danwei = haoke->valueString;
+			huansuan = paiHangInfo.weight;
+		}
+		std::ostringstream tizhongStr;
+		tizhongStr.clear();
+		tizhongStr << huansuan << danwei;
+		tizhong->setText(tizhongStr.str());
+
+		if (paiHangInfo.sex == 0)
+		{
+			sexImg->loadTexture("FightPaiMing\\nv.png");
+		}
+		else
+		{
+			sexImg->loadTexture("FightPaiMing\\nan.png");
+		}
+		std::ostringstream rankStr;
+		rankStr.clear();
+		rankStr << paiHangInfo.rank;
+		paimingTxt->setText(rankStr.str());
+		if (paiHangInfo.rank == 1)
+		{
+			paimingImg->loadTexture("FightPaiMing\\one.png");
+		}
+		else if (paiHangInfo.rank == 2)
+		{
+			paimingImg->loadTexture("FightPaiMing\\two.png");
+		}
+		else if (paiHangInfo.rank == 3)
+		{
+			paimingImg->loadTexture("FightPaiMing\\three.png");
+		}
+		else
+		{
+			paimingImg->setVisible(false);
+		}
+
+		if (paiHangInfo.awardsPaths.size() == 0)
+		{
+			jiang->setVisible(false);
+		}
+		else
+		{
+			for (int q = 0; q < paiHangInfo.awardsPaths.size(); q++)
+			{
+				//if (_rep.players(j).items(k).id() != 0)
+				{
+					jiang->setVisible(false);
+					auto cloneAward = (cocos2d::ui::ImageView*)jiang->clone();
+					cloneAward->setVisible(true);
+					cloneAward->setPosition(ccp(jiangX - jiangWidth * q, jiangY));
+					listClone->addChild(cloneAward);
+					auto daojuNum = (cocos2d::ui::Text*)cloneAward->getChildByName("daojuNum");
+					cloneAward->loadTexture(paiHangInfo.awardsPaths.at(q).c_str());
+					std::ostringstream daojuNumStr;
+					daojuNumStr.clear();
+					daojuNumStr << paiHangInfo.num.at(q);
+					daojuNum->setText(daojuNumStr.str());
+				}
+			}
+		}
+
+
+		btnGuanZhu->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+		{
+			if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+			{
+				log("guanzhu click================");
+
+				std::string data = "playerid=" + _str3 + "&socialplayerid=" + paiHangInfo.playerid;
+
+				std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/addfollow";
+
+				requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+				{
+					if (response == nullptr || !response->isSucceed())
+					{
+						CCLOG("responese is null");
+						CCLOG("responese not succeed");
+
+						return;
+					}
+
+					vector<char> *buffer = response->getResponseData();
+
+					std::string responseStr = std::string(buffer->begin(), buffer->end());
+					CCLOG("%s", responseStr.c_str());
+
+					Json* root = Json_create(responseStr.c_str());
+					Json* result = Json_getItem(root, "resultCode");
+					Json* message = Json_getItem(root, "message");
+
+					if (result->type == Json_Number)
+					{
+						if (result->valueInt == 1)
+						{
+							log("*******************************guanzhu success");
+
+							piaoZi->setString(guanzhuchenggong->valueString);
+							auto clonePiaoZi = piaoZi->clone();
+							Image_1->addChild(clonePiaoZi);
+							clonePiaoZi->setVisible(true);
+							auto action1 = FadeOut::create(1.8);
+							auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+							auto func = [=](){
+								clonePiaoZi->setPosition(Point(tishiX, tishiY));
+								clonePiaoZi->removeFromParentAndCleanup(true);
+							};
+							auto callBack = CallFunc::create(func);
+
+							clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+							return;
+
+
+						}
+						else
+						{
+							log("*******************************guanzhu error");
+							piaoZi->setString(message->valueString);
+							auto clonePiaoZi = piaoZi->clone();
+							Image_1->addChild(clonePiaoZi);
+							clonePiaoZi->setVisible(true);
+							auto action1 = FadeOut::create(1.8);
+							auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+							auto func = [=](){
+								clonePiaoZi->setPosition(Point(tishiX, tishiY));
+								clonePiaoZi->removeFromParentAndCleanup(true);
+							};
+							auto callBack = CallFunc::create(func);
+
+							clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+							return;
+						}
+					}
+					else
+					{
+						log("*******************************guanzhu error");
+					}
+
+					btnGuanZhu->setVisible(false);
+
+				}, "guanzhu");
+
+			}
+		});
+
+
+
+
+		//如果是自己 则克隆一份 加载到 第六排显示去
+		if (paiHangInfo.playerid == _str3)
+		{
+			//auto ListMySelf = (cocos2d::ui::Layout*)seekNodeByName(FightPaiHangNode, "ListMySelf");
+			//auto cloneMy = listClone->clone();
+			//cloneMy->setPosition(Point::ZERO);
+			//auto ListBg = (cocos2d::ui::ImageView*)cloneMy->getChildByName("ListBg");
+			//auto btnGuanZhu = (cocos2d::ui::Button*)cloneMy->getChildByName("btnGuanZhu");
+			//btnGuanZhu->setVisible(false);
+			//ListBg->loadTexture("FightPaiMing\\select.png");
+			//ListMySelf->addChild(cloneMy);
+
+
+			//for (int t = 0; t < paiHangInfo.awardsPaths.size(); t++)
+			//{
+			//	//if (_rep.players(j).items(t).id() != 0)
+			//	{
+			//		auto jiangli = (cocos2d::ui::ImageView*)cloneMy->getChildByName("jiang");
+			//		jiangli->setVisible(false);
+			//		auto cloneAward = (cocos2d::ui::ImageView*)jiangli->clone();
+			//		cloneAward->setVisible(true);
+			//		cloneAward->setPosition(ccp(jiangX - jiangWidth * t, jiangY));
+			//		cloneMy->addChild(cloneAward);
+			//		/*auto paimingTxt = (cocos2d::ui::Text*)jiangli->getChildByName("paimingTxt");
+			//		auto paimingImg = (cocos2d::ui::ImageView*)paimingTxt->getChildByName("paimingImg");
+			//		paimingImg->loadTexture(paiHangInfo.icon.c_str());
+			//		if (paiHangInfo.rank > 3)
+			//		{
+			//			paimingImg->setVisible(false);
+			//		}
+			//		else
+			//		{
+			//			paimingImg->setVisible(true);
+			//		}*/
+
+			//		auto daojuNum = (cocos2d::ui::Text*)cloneAward->getChildByName("daojuNum");
+			//		cloneAward->loadTexture(paiHangInfo.awardsPaths.at(t).c_str());
+			//		std::ostringstream daojuNumStr;
+			//		daojuNumStr.clear();
+			//		daojuNumStr << paiHangInfo.num.at(t);
+			//		daojuNum->setText(daojuNumStr.str());
+			//	}
+			//}
+
+
+
+			
+
+			auto ListBg = (cocos2d::ui::ImageView*)listMySelf->getChildByName("ListBg");
+			auto btn_paihang = (cocos2d::ui::Button*)listMySelf->getChildByName("btn_paihang");
+			btn_paihang->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+			{
+				if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+				{
+					/*for (int q = 0; q < _rep.players_size();q++)
+					{
+					auto btn_paihang = (cocos2d::ui::Button*)listClone->getChildByName("btn_paihang");
+					if (q % 2 == 0)
+					{
+					ListBg->loadTexture("FightPaiMing\\shen.png");
+					}
+					else
+					{
+					ListBg->loadTexture("FightPaiMing\\qian.png");
+					}
+					}
+
+
+					ListBg->loadTexture("FightPaiMing\\select.png");*/
+				}
+			});
+			auto name = (cocos2d::ui::Text*)listMySelf->getChildByName("name");
+			auto tizhong = (cocos2d::ui::Text*)listMySelf->getChildByName("tizhong");
+			auto sexImg = (cocos2d::ui::ImageView*)listMySelf->getChildByName("sexImg");
+			auto paimingTxt = (cocos2d::ui::Text*)listMySelf->getChildByName("paimingTxt");
+			auto paimingImg = (cocos2d::ui::ImageView*)paimingTxt->getChildByName("paimingImg");
+			auto jiang = (cocos2d::ui::ImageView*)listMySelf->getChildByName("jiang");
+			auto biankuangAll = (cocos2d::ui::ImageView*)seekNodeByName(listMySelf, "biankuangAll");
+			auto biankuangAllnian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "nian");
+			auto biankuangAllyue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangAll, "yue");
+			auto biankuangNian = (cocos2d::ui::ImageView*)seekNodeByName(listMySelf, "biankuangNian");
+			auto biankuangNianNian = (cocos2d::ui::ImageView*)seekNodeByName(biankuangNian, "nian");
+			auto biankuangYue = (cocos2d::ui::ImageView*)seekNodeByName(listMySelf, "biankuangYue");
+			auto biankuangYueYue = (cocos2d::ui::ImageView*)seekNodeByName(biankuangYue, "yue");
+			auto btnGuanZhu = (cocos2d::ui::Button*)seekNodeByName(listMySelf, "btnGuanZhu");
+			auto headImg = (cocos2d::ui::ImageView*)seekNodeByName(listMySelf, "headImg");
+			std::string touPath = "Head\\" + paiHangInfo.icon;
+			headImg->loadTexture(touPath.c_str());
+			if (paiHangInfo.playerid == _str3)
+				btnGuanZhu->setVisible(false);
+			else
+				btnGuanZhu->setVisible(true);
+
+			jiangX = jiang->getPositionX();
+			jiangY = jiang->getPositionY();
+			jiangWidth = jiang->getBoundingBox().size.width;
+
+			log("server: playerid=%s account=%s sex=%d rank=%d name=%s grade=%d icon=%s weight=%d yealLevel=%d monthLevel=%d", paiHangInfo.playerid.c_str(), paiHangInfo.account.c_str(), paiHangInfo.sex, paiHangInfo.rank, paiHangInfo.name.c_str(), paiHangInfo.grade, paiHangInfo.icon.c_str(), paiHangInfo.weight, paiHangInfo.yealLevel, paiHangInfo.monthLevel);
 
 			if (paiHangInfo.monthLevel == 0 && paiHangInfo.yealLevel == 0)
 			{
@@ -2879,10 +3287,50 @@ void MainScene::showFightOverPaiHangInfo()
 
 
 			name->setText(paiHangInfo.name.c_str());
+
+			std::string danwei = "";
+			uint32_t huansuan = 0;
+			/*	if (paiHangInfo.weight >= 1000000000000000000000)
+			{
+			danwei = wanyidun->valueString;
+			huansuan = paiHangInfo.weight / 1000000000000000000000;
+			}
+			else */
+			if (paiHangInfo.weight >= 100000000000000000)
+			{
+				danwei = yidun->valueString;
+				huansuan = paiHangInfo.weight / 100000000000000000;
+			}
+			else if (paiHangInfo.weight >= 10000000000000)
+			{
+				danwei = wandun->valueString;
+				huansuan = paiHangInfo.weight / 10000000000000;
+			}
+			else if (paiHangInfo.weight >= 1000000000)
+			{
+				danwei = dun->valueString;
+				huansuan = paiHangInfo.weight / 1000000000;
+			}
+			else if (paiHangInfo.weight >= 1000000)
+			{
+				danwei = qianke->valueString;
+				huansuan = paiHangInfo.weight / 1000000;
+			}
+			else if (paiHangInfo.weight >= 1000)
+			{
+				danwei = ke->valueString;
+				huansuan = paiHangInfo.weight / 1000;
+			}
+			else
+			{
+				danwei = haoke->valueString;
+				huansuan = paiHangInfo.weight;
+			}
 			std::ostringstream tizhongStr;
 			tizhongStr.clear();
-			tizhongStr << paiHangInfo.weight;
+			tizhongStr << huansuan << danwei;
 			tizhong->setText(tizhongStr.str());
+
 			if (paiHangInfo.sex == 0)
 			{
 				sexImg->loadTexture("FightPaiMing\\nv.png");
@@ -2912,38 +3360,127 @@ void MainScene::showFightOverPaiHangInfo()
 				paimingImg->setVisible(false);
 			}
 
-
-			//_stBattleResault.stPlayerInfor.playerid = _rep.players(j).playerid();
-			//_stBattleResault.stPlayerInfor.monthLevel = _rep.players(j).monthlevel();
-			//_stBattleResault.stPlayerInfor.yearLevel = _rep.players(j).yeallevel();
-			if (_rep.players(j).items_size() == 0)
+			if (paiHangInfo.awardsPaths.size() == 0)
 			{
 				jiang->setVisible(false);
 			}
 			else
 			{
-				for (int k = 0; k < _rep.players(j).items_size(); k++)
+				for (int q = 0; q < paiHangInfo.awardsPaths.size(); q++)
 				{
-					if (_rep.players(j).items(k).id() != 0)
+					//if (_rep.players(j).items(k).id() != 0)
 					{
+						jiang->setVisible(false);
 						auto cloneAward = (cocos2d::ui::ImageView*)jiang->clone();
 						cloneAward->setVisible(true);
-						cloneAward->setPosition(ccp(jiangX - jiangWidth * k, jiangY));
-						listClone->addChild(cloneAward);
+						cloneAward->setPosition(ccp(jiangX - jiangWidth * q, jiangY));
+						listMySelf->addChild(cloneAward);
 						auto daojuNum = (cocos2d::ui::Text*)cloneAward->getChildByName("daojuNum");
-						paihangAward award = getPaiHangAwardById(_rep.players(j).items(k).id());
-						cloneAward->loadTexture(award.image.c_str());
+						cloneAward->loadTexture(paiHangInfo.awardsPaths.at(q).c_str());
 						std::ostringstream daojuNumStr;
 						daojuNumStr.clear();
-						daojuNumStr << award.count;
+						daojuNumStr << paiHangInfo.num.at(q);
 						daojuNum->setText(daojuNumStr.str());
 					}
 				}
 			}
-		
 
-			//break;
-		
+
+			btnGuanZhu->addTouchEventListener([=](Ref*, cocos2d::ui::Widget::TouchEventType type)
+			{
+				if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
+				{
+					log("guanzhu click================");
+
+					std::string data = "playerid=" + _str3 + "&socialplayerid=" + paiHangInfo.playerid;
+
+					std::string url = "http://47.93.50.101:8080/QQWar/Qqwar/addfollow";
+
+					requestForPost(url, data.c_str(), [=](HttpClient *sender, HttpResponse *response)
+					{
+						if (response == nullptr || !response->isSucceed())
+						{
+							CCLOG("responese is null");
+							CCLOG("responese not succeed");
+
+							return;
+						}
+
+						vector<char> *buffer = response->getResponseData();
+
+						std::string responseStr = std::string(buffer->begin(), buffer->end());
+						CCLOG("%s", responseStr.c_str());
+
+						Json* root = Json_create(responseStr.c_str());
+						Json* result = Json_getItem(root, "resultCode");
+						Json* message = Json_getItem(root, "message");
+
+						if (result->type == Json_Number)
+						{
+							if (result->valueInt == 1)
+							{
+								log("*******************************guanzhu success");
+
+								piaoZi->setString(guanzhuchenggong->valueString);
+								auto clonePiaoZi = piaoZi->clone();
+								Image_1->addChild(clonePiaoZi);
+								clonePiaoZi->setVisible(true);
+								auto action1 = FadeOut::create(1.8);
+								auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+								auto func = [=](){
+									clonePiaoZi->setPosition(Point(tishiX, tishiY));
+									clonePiaoZi->removeFromParentAndCleanup(true);
+								};
+								auto callBack = CallFunc::create(func);
+
+								clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+								return;
+
+
+							}
+							else
+							{
+								log("*******************************guanzhu error");
+								piaoZi->setString(message->valueString);
+								auto clonePiaoZi = piaoZi->clone();
+								Image_1->addChild(clonePiaoZi);
+								clonePiaoZi->setVisible(true);
+								auto action1 = FadeOut::create(1.8);
+								auto moveTo1 = MoveTo::create(0.3, Point(tishiX, tishiY + 380));
+								auto func = [=](){
+									clonePiaoZi->setPosition(Point(tishiX, tishiY));
+									clonePiaoZi->removeFromParentAndCleanup(true);
+								};
+								auto callBack = CallFunc::create(func);
+
+								clonePiaoZi->runAction(Sequence::create(Spawn::create(moveTo1, action1, NULL), callBack, NULL));
+								return;
+							}
+						}
+						else
+						{
+							log("*******************************guanzhu error");
+						}
+
+						btnGuanZhu->setVisible(false);
+
+					}, "guanzhu");
+
+				}
+			});
+
+
+
+
+
+
+
+
+
+
+		}
+
+
 	}
 
 	Global::getInstance()->clearMainNodes();
@@ -2970,6 +3507,13 @@ paihangAward MainScene::getPaiHangAwardById(int id)
 
 	return info;
 }
+
+bool MainScene::nodeComparisonLess(Node* n1, Node* n2)
+{
+	return n1->getTag() < n2->getTag();
+}
+
+
 
 //合并代码用--0924--注册与组队 end======================================================================
 
