@@ -2994,16 +2994,16 @@ void LoginLayer::showBaoMingXiangQing()
 			xiangQing_Info xiangInfo =  getXiangQingInfoByAid(aid);
 			std::string iconPath = "BaoMingShowLayer\\icon\\" + xiangInfo.icon;
 			std::string wordsPicPath = "BaoMingShowLayer\\wordsPic\\" + xiangInfo.wordsPic;
-			uint32_t startGameTime = xiangInfo.statGameTime;
-			uint32_t whatDay = xiangInfo.whatDay;
+			int startGameTime = xiangInfo.statGameTime;
+			int whatDay = xiangInfo.whatDay;
 
-			uint32_t shiTime = startGameTime / 60;
-			uint32_t fenTime = startGameTime % 60;
+			int shiTime = startGameTime / 60;
+			int fenTime = startGameTime % 60;
 
 			//结算时间
-			uint32_t jiesuanTime = xiangInfo.jiesuanTime;
-			uint32_t shiTime1 = jiesuanTime / 60;
-			uint32_t fenTime1 = jiesuanTime % 60;
+			int jiesuanTime = xiangInfo.jiesuanTime;
+			int shiTime1 = jiesuanTime / 60;
+			int fenTime1 = jiesuanTime % 60;
 
 			std::string tishi2 = kaiqishijian->valueString;
 			if (whatDay == 0)
@@ -3060,7 +3060,7 @@ void LoginLayer::showBaoMingXiangQing()
 			{
 
 				//求剩余开启时间
-				uint32_t shengTianTime = 0;
+				int shengTianTime = 0;
 				if (whatDay > 0)
 				{
 					if (whatDay > xingqi)
@@ -3068,8 +3068,12 @@ void LoginLayer::showBaoMingXiangQing()
 					else
 						shengTianTime = whatDay + 7 - xingqi;
 				}
-				uint32_t shengShiTime = shiTime - hour;
-				uint32_t shengFenTime = 0;
+				int shengShiTime = shiTime - hour;
+				int shengFenTime = 0;
+				if (shengShiTime < 0)
+				{
+					shengShiTime = hour - shiTime;
+				}
 				if (shengTianTime > 0)
 				{
 					shengFenTime += 24 * shengTianTime;
@@ -3115,7 +3119,7 @@ void LoginLayer::showBaoMingXiangQing()
 				else
 				{
 					//求剩余开启时间
-					uint32_t shengTianTime = 0;
+					int shengTianTime = 0;
 					if (whatDay > 0)
 					{
 						if (whatDay > xingqi)
@@ -3123,8 +3127,8 @@ void LoginLayer::showBaoMingXiangQing()
 						else
 							shengTianTime = whatDay + 7 - xingqi;
 					}
-					uint32_t shengShiTime = shiTime1 - hour;
-					uint32_t shengFenTime = 0;
+					int shengShiTime = shiTime1 - hour;
+					int shengFenTime = 0;
 					if (shengTianTime > 0)
 					{
 						shengFenTime += 24 * shengTianTime;
@@ -3169,11 +3173,11 @@ void LoginLayer::showBaoMingXiangQing()
 			xiangQing_Info xiangInfo = getXiangQingInfoByAid(aid);
 			std::string iconPath = "BaoMingShowLayer\\icon\\" + xiangInfo.icon;
 			std::string wordsPicPath = "BaoMingShowLayer\\wordsPic\\" + xiangInfo.wordsPic;
-			uint32_t startGameTime = xiangInfo.statGameTime;
-			uint32_t whatDay = xiangInfo.whatDay;
+			int startGameTime = xiangInfo.statGameTime;
+			int whatDay = xiangInfo.whatDay;
 
-			uint32_t shiTime = startGameTime / 60;
-			uint32_t fenTime = startGameTime % 60;
+			int shiTime = startGameTime / 60;
+			int fenTime = startGameTime % 60;
 
 
 			/*int year = tm->tm_year + 1900;
@@ -3184,7 +3188,7 @@ void LoginLayer::showBaoMingXiangQing()
 			int second = tm->tm_sec;
 			int xingqi = tm->tm_wday + 1;*/
 			//求剩余开启时间
-			uint32_t shengTianTime = 0;
+			int shengTianTime = 0;
 			if (whatDay > 0)
 			{
 				if (whatDay > xingqi)
@@ -3192,8 +3196,12 @@ void LoginLayer::showBaoMingXiangQing()
 				else 
 					shengTianTime = whatDay + 7 - xingqi;
 			}
-			uint32_t shengShiTime = shiTime - hour;
-			uint32_t shengFenTime = 0;
+			int shengShiTime = shiTime - hour;
+			int shengFenTime = 0;
+			if (shengShiTime < 0)
+			{
+				shengShiTime = hour - shiTime;
+			}
 			if (shengTianTime > 0)
 			{
 				shengFenTime += 24 * shengTianTime;
